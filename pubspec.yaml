@@ -1,7 +1,6 @@
 name: amps_sdk
 description: "A new Flutter plugin project."
 version: 0.0.1
-author: luhenchang1314@gmail.com
 homepage: https://github.com/luhenchang/amps_sdk.git
 
 environment:
