@@ -29,9 +29,9 @@ allprojects {
             url = uri("file://${rootProject.projectDir}/m2repository")
         }
 //        //声明本地libs目录为仓库，以便查找.aar文件
-//        flatDir{
-//            dirs(rootProject.file("libs"))
-//        }
+        flatDir{
+            dirs(rootProject.file("libs"))
+        }
     }
 }
 
@@ -92,10 +92,11 @@ android {
     }
 
     dependencies {
-        // 依赖第一个 AAR (amps-sdk)
-        api ('com.example:amps-sdk:1.0')
-        // 依赖第二个 AAR (common)
-        api ('com.example:common:1.0')
+        compileOnly fileTree(dir: 'libs', include: '*.aar')
+//        // 依赖第一个 AAR (amps-sdk)
+//        api ('com.example:amps-sdk:1.0')
+//        // 依赖第二个 AAR (common)
+//        api ('com.example:common:1.0')
         compileOnly ('androidx.annotation:annotation:1.8.0')
         compileOnly ('androidx.appcompat:appcompat:1.7.1')
         compileOnly ('com.google.android.material:material:1.13.0')

@@ -39,6 +39,7 @@ android {
     }
     dependencies {
         // ... 其他依赖
+        implementation(fileTree(mapOf("include" to listOf("*.aar"), "dir" to "libs")))
         implementation("androidx.appcompat:appcompat:1.7.1")
     }
 }
