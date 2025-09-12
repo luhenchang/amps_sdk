@@ -4,7 +4,7 @@ allprojects {
         mavenCentral()
         maven {
             name = "myrepo"
-            url = uri("file://Users/wangfeiwangfei/wangfei/GitHub/ad_scope_sdk_project/amps_sdk/android/m2repository")
+            url = uri("file://${rootProject.projectDir.parentFile.parentFile}/android/m2repository")
         }
     }
 }
