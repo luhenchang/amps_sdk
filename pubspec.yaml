@@ -4,7 +4,7 @@ version: 0.0.3
 homepage: https://github.com/luhenchang/amps_sdk.git
 
 environment:
-  sdk: ^3.9.2
+  sdk: ^3.4.0
   flutter: '>=3.3.0'
 
 dependencies:
@@ -15,7 +15,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^4.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -38,6 +38,8 @@ flutter:
         package: com.example.amps_sdk
         pluginClass: AmpsSdkPlugin
       ios:
+        pluginClass: AmpsSdkPlugin
+      ohos:
         pluginClass: AmpsSdkPlugin
 
   # To add assets to your plugin package, add an assets section, like this:

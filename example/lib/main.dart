@@ -3,6 +3,7 @@ import 'package:amps_sdk_example/widgets/blurred_background.dart';
 import 'package:amps_sdk_example/widgets/button_widget.dart';
 import 'package:amps_sdk/amps_sdk_export.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,10 +38,11 @@ class _MyHomePageState extends State<MyHomePage> {
   late AMPSIInitCallBack _callBack;
   AMPSSplashAd? _splashAd;
   late AdCallBack _adCallBack;
-  bool _isSplashHidden = true;//默认不可见，但是需要能渲染。所以使用Offstage
+  bool _isSplashHidden = true; //默认不可见，但是需要能渲染。所以使用Offstage
 
   @override
   void initState() {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     super.initState();
     _callBack = AMPSIInitCallBack(
         initSuccess: () {
@@ -153,18 +155,16 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Stack(
-      alignment: Alignment.center,
-      children: [
-        const BlurredBackground(),
-        ButtonWidget(buttonText: "点击开屏", callBack:(){
-           _splashAd?.load();
-        }),
-        Offstage(
-          offstage: false,//使用Offstage保证试图可以被渲染。
+        appBar: PreferredSize(
+            preferredSize:
+                Size.fromHeight(MediaQuery.of(context).size.height * 0.07),
+            child: const SafeArea(
+              top: true,
+              child: Offstage(),
+            )),
+        body: Offstage(
+          offstage: false, //使用Offstage保证试图可以被渲染。
           child: AMPSBuildSplashView(_splashAd),
-        )
-      ],
-    ));
+        ));
   }
 }

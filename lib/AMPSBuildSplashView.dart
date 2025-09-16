@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'common.dart';
 import 'controller/AMPSSplashAd.dart';
@@ -19,14 +20,21 @@ class _AMPSBuildSplashViewState extends State<AMPSBuildSplashView> {
 
   @override
   Widget build(BuildContext context) {
-    return  _getAmpsSplashView();
+    return _getAmpsSplashView();
   }
 
   Widget _getAmpsSplashView() {
-    return AndroidView(
-      viewType: AMPSPlatformViewRegistry.ampsSdkSplashViewId,
-      onPlatformViewCreated: _onPlatformViewCreated
-    );
+    if (Platform.isAndroid) {
+      return AndroidView(
+          viewType: AMPSPlatformViewRegistry.ampsSdkSplashViewId,
+          onPlatformViewCreated: _onPlatformViewCreated);
+    } else if (Platform.isIOS) {
+      return UiKitView(
+          viewType: AMPSPlatformViewRegistry.ampsSdkSplashViewId,
+          onPlatformViewCreated: _onPlatformViewCreated);
+    } else {
+      return Container();
+    }
   }
 
   void _onPlatformViewCreated(int id) {

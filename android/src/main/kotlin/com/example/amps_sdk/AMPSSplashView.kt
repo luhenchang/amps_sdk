@@ -1,9 +1,11 @@
 package com.example.amps_sdk    // In your Android project (e.g., MainActivity.kt or a new Kotlin file)
+import android.R
+import android.app.Activity
 import android.content.Context
-import android.graphics.Color
 import android.util.Log
 import android.view.View
 import android.view.View.GONE
+import android.view.ViewGroup
 import android.widget.FrameLayout
 import biz.beizi.adn.ad.publish.ASNPAdSDK
 import biz.beizi.adn.ad.publish.ASNPConstants
@@ -20,19 +22,31 @@ import xyz.adscope.common.v2.log.SDKLog
 
 
 // 1. Define your Native View
-class AMPSSplashView(private val mContext: Context, id: Int, creationParams: Map<*, *>?) : PlatformView,
+class AMPSSplashView(private val mContext: Context,activity: Activity, id: Int, creationParams: Map<*, *>?) : PlatformView,
     MethodChannel.MethodCallHandler {
     private var splashAd: SplashAd? = null
+    private var mDecorView: ViewGroup? = null
     private val frameLayout: FrameLayout = FrameLayout(mContext)
     init {
-        frameLayout.layoutParams = FrameLayout.LayoutParams(
-            FrameLayout.LayoutParams.MATCH_PARENT,
-            FrameLayout.LayoutParams.MATCH_PARENT
+        mDecorView = activity.findViewById<ViewGroup?>(R.id.content)
+        frameLayout.setLayoutParams(
+            ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
         )
-        frameLayout.setBackgroundColor(Color.RED)
+        mDecorView?.addView(frameLayout)
         initScopeSDK("12379")
     }
 
+    fun getStatusBarHeight(): Int {
+        var result = 0
+        val resourceId: Int = mContext.getResources().getIdentifier("status_bar_height", "dimen", "android")
+        if (resourceId > 0) {
+            result = mContext.getResources().getDimensionPixelSize(resourceId)
+        }
+        return result
+    }
     private fun initScopeSDK(appID: String?) {
         SDKLog.setLogLevel(SDKLog.LOG_LEVEL.LOG_LEVEL_ALL);
         val builder = ASNPInitConfig.Builder(appID)
@@ -69,7 +83,7 @@ class AMPSSplashView(private val mContext: Context, id: Int, creationParams: Map
 
     override fun dispose() {
         // Cleanup, if needed, when the view is removed from Flutter
-        frameLayout.visibility = GONE
+        frameLayout.removeAllViews()
     }
 
     override fun onMethodCall(
