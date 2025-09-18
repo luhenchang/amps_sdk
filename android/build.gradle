@@ -120,28 +120,6 @@ android {
         }
     }
 }
-// 读取 local.properties 文件
-def localProperties = new Properties()
-def localPropertiesFile = rootProject.file('local.properties')
-if (localPropertiesFile.exists()) {
-    localProperties.load(new FileInputStream(localPropertiesFile))
-}
-
-// 获取 Flutter SDK 路径
-def flutterRoot = localProperties.getProperty('flutter.sdk')
-if (flutterRoot == null) {
-    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
-}
-
-// 定义一个变量来存储 Flutter 引擎库路径
-def flutterEnginePath = "$flutterRoot/bin/cache/artifacts/engine/android-arm/flutter.jar"
-
-// 确保 Flutter 引擎库存在
-if (!file(flutterEnginePath).exists()) {
-    throw new GradleException("Flutter engine library not found at: $flutterEnginePath")
-}
-
-dependencies {
-    compileOnly files(flutterEnginePath)
-    compileOnly 'androidx.annotation:annotation:1.8.0'
+flutter {
+    source = "../.."
 }

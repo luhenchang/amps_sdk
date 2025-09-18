@@ -19,10 +19,10 @@ class AMPSSplashAd {
     _channel = null;
     _channel = MethodChannel('${AMPSPlatformViewRegistry.ampsSdkSplashViewId}$id');
     setMethodCallHandler();
-    if (needLoad) {
-      load();
-      needLoad = false;
-    }
+    _channel?.invokeMethod(
+      AMPSAdSdkMethodNames.splashLoad,
+      config.toMap(),
+    );
   }
 
   void setMethodCallHandler() {
@@ -86,16 +86,8 @@ class AMPSSplashAd {
   }
 
   void load() async {
-    if (_channel == null) {
-       needLoad = true;
-       _channel = const MethodChannel(AMPSPlatformViewRegistry.ampsSdkSplashViewLoadAdId);
-       setMethodCallHandler();
-       await _channel?.invokeMethod(
-         AMPSAdSdkMethodNames.splashLoad,
-         config.toMap(),
-       );
-      return;
-    }
+    _channel = const MethodChannel(AMPSChannels.ampsSdkSplashAdLoad);
+    setMethodCallHandler();
     await _channel?.invokeMethod(
       AMPSAdSdkMethodNames.splashLoad,
       config.toMap(),

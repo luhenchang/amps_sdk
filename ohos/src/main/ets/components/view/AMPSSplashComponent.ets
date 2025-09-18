@@ -1,17 +1,14 @@
-import { OhosPlatformSplashView } from './OhosPlatformSplashView'; //这里的CustomView是我们后面需要继承PlatformView的类
+import { globalSplashBottomBuilder, OhosPlatformSplashView } from './OhosPlatformSplashView';
 import { Params } from '@ohos/flutter_ohos/src/main/ets/plugin/platform/PlatformView';
 import { ampsAd, AMPSBuildSplashView, AMPSSplashAd } from 'biz.beizi.adn';
 import { common } from '@kit.AbilityKit';
-import { AMPSSplashChannelMethod, AD_OPTION } from '../data/common';
-
+import { AMPSSplashChannelMethod } from '../data/common';
 @Component
 struct AMPSSplashComponent {
   @State hasSplash: boolean = false
   @Prop params: Params
+  @Prop adOption: ampsAd.AdOptions
   customView: OhosPlatformSplashView = this.params.platformView as OhosPlatformSplashView
-  @Watch("loadAd") @StorageLink(AD_OPTION) adOption: ampsAd.AdOptions = {
-    spaceId: ''
-  }
   @State bkColor: Color = Color.Red
   splashAd?: AMPSSplashAd
   callback: ampsAd.CallBack = {
@@ -62,24 +59,26 @@ struct AMPSSplashComponent {
     }
   }
 
+  aboutToAppear(): void {
+    this.splashAd = new AMPSSplashAd(this.adOption, this.callback, this.getUIContext())
+    this.splashAd?.load()
+  }
+
   build() {
     Column() {
-      if (this.hasSplash) {
-        AMPSBuildSplashView(this.splashAd, {
-          windowStage: (getContext() as common.UIAbilityContext).windowStage
-        })
-      }
+      if (this.hasSplash && this.splashAd) {
+          AMPSBuildSplashView(
+            this.splashAd, {
+            windowStage: (this.getUIContext().getHostContext() as common.UIAbilityContext).windowStage,
+            bottomWrappedBuilder:globalSplashBottomBuilder
+          })
+        }
     }
     .alignItems(HorizontalAlign.Center)
     .justifyContent(FlexAlign.Center)
     .direction(Direction.Ltr)
     .width('100%')
     .height('100%')
-  }
-
-  loadAd() {
-    this.splashAd = new AMPSSplashAd(this.adOption, this.callback, this.getUIContext())
-    this.splashAd?.load()
   }
 }
 

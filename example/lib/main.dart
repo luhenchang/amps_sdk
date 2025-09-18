@@ -1,6 +1,5 @@
 import 'dart:collection';
 import 'package:amps_sdk_example/widgets/blurred_background.dart';
-import 'package:amps_sdk_example/widgets/button_widget.dart';
 import 'package:amps_sdk/amps_sdk_export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -39,6 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
   AMPSSplashAd? _splashAd;
   late AdCallBack _adCallBack;
   bool _isSplashHidden = true; //默认不可见，但是需要能渲染。所以使用Offstage
+  bool initSuccess = false;
 
   @override
   void initState() {
@@ -46,10 +46,17 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     _callBack = AMPSIInitCallBack(
         initSuccess: () {
-          _splashAd?.load();
+          setState(() {
+            initSuccess = true;
+          });
+          //_splashAd?.load();
         },
         initializing: () {},
-        alreadyInit: () {},
+        alreadyInit: () {
+          setState(() {
+            initSuccess = true;
+          });
+        },
         initFailed: (code, msg) {
           debugPrint("result callBack=code$code;message=$msg");
         });
@@ -150,21 +157,39 @@ class _MyHomePageState extends State<MyHomePage> {
 
     AdOptions options = AdOptions(spaceId: '15288');
     _splashAd = AMPSSplashAd(config: options, mCallBack: _adCallBack);
+    //_splashAd?.load();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: PreferredSize(
-            preferredSize:
-                Size.fromHeight(MediaQuery.of(context).size.height * 0.07),
-            child: const SafeArea(
-              top: true,
-              child: Offstage(),
-            )),
-        body: Offstage(
-          offstage: false, //使用Offstage保证试图可以被渲染。
-          child: AMPSBuildSplashView(_splashAd),
-        ));
+      body: Stack(children: [
+        const BlurredBackground(),
+        _buildSplashWidget(),
+      ],)
+    );
+  }
+
+  Widget _buildSplashWidget() {
+    return AMPSBuildSplashView(_splashAd,
+        splashBottomWidget: SplashBottomWidget(
+            height: 100.0,
+            backgroundColor: "#FFFFFFFF",
+            children: [
+              ImageComponent(
+                width: 25,
+                height: 25,
+                x: 170,
+                y: 10,
+                imageUrl: 'assets/images/img.png',
+              ),
+              TextComponent(
+                fontSize: 24,
+                color: "#00ff00",
+                x: 140,
+                y: 50,
+                text: 'Hello Android!',
+              ),
+            ]));
   }
 }

@@ -1,7 +1,8 @@
 package com.example.amps_sdk    // In your Android project (e.g., MainActivity.kt or a new Kotlin file)
-import android.R
 import android.app.Activity
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.util.Log
 import android.view.View
 import android.view.View.GONE
@@ -25,27 +26,21 @@ import xyz.adscope.common.v2.log.SDKLog
 class AMPSSplashView(private val mContext: Context,activity: Activity, id: Int, creationParams: Map<*, *>?) : PlatformView,
     MethodChannel.MethodCallHandler {
     private var splashAd: SplashAd? = null
-    private var mDecorView: ViewGroup? = null
     private val frameLayout: FrameLayout = FrameLayout(mContext)
     init {
-        mDecorView = activity.findViewById<ViewGroup?>(R.id.content)
         frameLayout.setLayoutParams(
             ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT
             )
         )
-        mDecorView?.addView(frameLayout)
         initScopeSDK("12379")
-    }
-
-    fun getStatusBarHeight(): Int {
-        var result = 0
-        val resourceId: Int = mContext.getResources().getIdentifier("status_bar_height", "dimen", "android")
-        if (resourceId > 0) {
-            result = mContext.getResources().getDimensionPixelSize(resourceId)
-        }
-        return result
+        println("资源地址path=${mContext.resources.assets.locales}")
+        val flutterAssetPath = "flutter_assets/assets/images/img.png"
+        val inputStream =mContext.assets.open(flutterAssetPath)
+        // 将文件流解码为 Bitmap 对象
+        val bitmap: Bitmap = BitmapFactory.decodeStream(inputStream)
+        println("资源地址bitmap=${bitmap.height}")
     }
     private fun initScopeSDK(appID: String?) {
         SDKLog.setLogLevel(SDKLog.LOG_LEVEL.LOG_LEVEL_ALL);

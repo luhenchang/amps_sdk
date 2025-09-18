@@ -38,7 +38,7 @@ export class AMPSSplash {
   constructor(flutterEngine: FlutterEngine, ability: FlutterAbility) {
     this.mMethodChannel = new MethodChannel(
       flutterEngine.dartExecutor.getBinaryMessenger(),
-      AMPSChannels.ampsSdkSplashViewLoadAdId
+      AMPSChannels.ampsSdkSplashAdLoad
     );
     this.setupMethodCallHandler(ability);
   }

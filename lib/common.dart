@@ -2,10 +2,10 @@ const String channelDomain = "biz.beizi.adn";
 class AMPSChannels {
   static const String ampsSdkInit = '$channelDomain/sdk';
   static const String ampsSdkSplash = '$channelDomain/splash';
+  static const ampsSdkSplashAdLoad = '$channelDomain/splash_ad_load';
 }
 class AMPSPlatformViewRegistry {
-  static const ampsSdkSplashViewId = "biz.beizi.adn/splash_view_id";//'$channelDomain/splash_view_id';
-  static const ampsSdkSplashViewLoadAdId = '$channelDomain/splash_view_load_id';
+  static const ampsSdkSplashViewId = '$channelDomain/splash_view_id';
 }
 //初始化交互通道方法名称
 class AMPSInitChannelMethod {
@@ -49,3 +49,7 @@ class AMPSSdkCallBackErrorKey {
 class AMPSSdkCallBackParamsKey {
   static const String playDurationMs = "playDurationMs";
 }
+
+const String adOption = 'AdOption';
+const String splashConfig = "config";
+const String splashBottomView = "SplashBottomView";

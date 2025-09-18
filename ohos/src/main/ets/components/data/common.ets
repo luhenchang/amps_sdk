@@ -1,9 +1,12 @@
+import { ampsAd } from "biz.beizi.adn";
+import { StringConstants } from "./StringConstants";
+
 const channelDomain = "biz.beizi.adn";
 
 export class AMPSChannels {
   static readonly ampsSdkInit = `${channelDomain}/sdk`;
   static readonly ampsSdkSplash = `${channelDomain}/splash`;
-  static readonly ampsSdkSplashViewLoadAdId = `${channelDomain}/splash_view_load_id`;
+  static readonly ampsSdkSplashAdLoad = `${channelDomain}/splash_ad_load`;
 }
 
 export class AMPSPlatformViewRegistry {
@@ -44,3 +47,8 @@ export class AMPSAdSdkMethodNames {
 }
 
 export const AD_OPTION = 'AdOption';
+export const SPLASH_CONFIG = "config";
+export const SPLASH_BOTTOM = "SplashBottomView";
+export const defaultAdOption: ampsAd.AdOptions = {
+  spaceId: StringConstants.EMPTY_STRING
+}
