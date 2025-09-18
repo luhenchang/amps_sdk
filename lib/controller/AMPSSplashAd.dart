@@ -2,6 +2,7 @@ import 'package:flutter/services.dart';
 
 import '../common.dart';
 import '../data/ampsAd.dart';
+import '../widget/splash_bottom_widget.dart';
 
 class AMPSSplashAd {
   MethodChannel? _channel;
@@ -94,7 +95,7 @@ class AMPSSplashAd {
     );
   }
 
-  void showAd() async {
-    await _channel?.invokeMethod(AMPSAdSdkMethodNames.splashShowAd, "");
+  void showAd({SplashBottomWidget? splashBottomWidget}) async {
+    await _channel?.invokeMethod(AMPSAdSdkMethodNames.splashShowAd, splashBottomWidget?.toMap());
   }
 }

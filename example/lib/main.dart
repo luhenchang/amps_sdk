@@ -37,7 +37,6 @@ class _MyHomePageState extends State<MyHomePage> {
   late AMPSIInitCallBack _callBack;
   AMPSSplashAd? _splashAd;
   late AdCallBack _adCallBack;
-  bool _isSplashHidden = true; //默认不可见，但是需要能渲染。所以使用Offstage
   bool initSuccess = false;
 
   @override
@@ -46,18 +45,24 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     _callBack = AMPSIInitCallBack(
         initSuccess: () {
+          debugPrint("adk is initSuccess");
           setState(() {
             initSuccess = true;
           });
-          //_splashAd?.load();
+          _splashAd?.load();
         },
-        initializing: () {},
+        initializing: () {
+          debugPrint("adk is initializing");
+        },
         alreadyInit: () {
+          debugPrint("adk is alreadyInit");
           setState(() {
             initSuccess = true;
+            _splashAd?.load();
           });
         },
         initFailed: (code, msg) {
+          debugPrint("adk is initFailed");
           debugPrint("result callBack=code$code;message=$msg");
         });
     HashMap<String, dynamic> optionFields = HashMap();
@@ -106,19 +111,33 @@ class _MyHomePageState extends State<MyHomePage> {
     AMPSAdSdk().init(sdkConfig, _callBack);
     _adCallBack = AdCallBack(
         onRenderOk: () {
-          _splashAd?.showAd();
+          _splashAd?.showAd(
+              splashBottomWidget: SplashBottomWidget(
+                  height: 100.0,
+                  backgroundColor: "#FFFFFFFF",
+                  children: [
+                    ImageComponent(
+                      width: 25,
+                      height: 25,
+                      x: 170,
+                      y: 10,
+                      imageUrl: 'assets/images/img.png',
+                    ),
+                    TextComponent(
+                      fontSize: 24,
+                      color: "#00ff00",
+                      x: 140,
+                      y: 50,
+                      text: 'Hello Android!',
+                    ),
+                  ])
+          );
           debugPrint("ad load onRenderOk");
-          setState(() {
-            _isSplashHidden = false;
-          });
         },
         onLoadFailure: (code, msg) {
           debugPrint("ad load failure=$code;$msg");
         },
         onAdClicked: () {
-          setState(() {
-            _isSplashHidden = true;
-          });
           debugPrint("ad load onAdClicked");
         },
         onAdExposure: () {
@@ -126,7 +145,6 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         onAdClosed: () {
           setState(() {
-            _isSplashHidden = true;
           });
           debugPrint("ad load onAdClosed");
         },
@@ -157,15 +175,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
     AdOptions options = AdOptions(spaceId: '15288');
     _splashAd = AMPSSplashAd(config: options, mCallBack: _adCallBack);
-    //_splashAd?.load();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Stack(children: [
-        const BlurredBackground(),
-        _buildSplashWidget(),
+        BlurredBackground(),
+        //_buildSplashWidget(),
       ],)
     );
   }
