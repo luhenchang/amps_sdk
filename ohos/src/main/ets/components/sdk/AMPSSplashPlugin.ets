@@ -1,8 +1,10 @@
-import { Any, FlutterPlugin, FlutterPluginBinding, MethodCall,
+import {
+  AbilityPluginBinding,
+  Any, FlutterPlugin, FlutterPluginBinding, MethodCall,
   MethodCallHandler,
   MethodChannel, MethodResult } from '@ohos/flutter_ohos';
 import { ampsAd, AMPSSplashAd } from 'biz.beizi.adn';
-import { AMPSAdSdkMethodNames, AMPSChannels, AMPSSplashChannelMethod } from '../data/common';
+import { AMPSAdSdkMethodNames, AMPSChannels, AMPSAdCallBackChannelMethod } from '../data/common';
 import { AdOptionsModule } from '../data/AdOptionsModule';
 import { UIContext, window } from '@kit.ArkUI';
 import { SplashBottomModule } from '../data/SplashBottomModule';
@@ -16,32 +18,36 @@ export class AMPSSplashPlugin implements FlutterPlugin,MethodCallHandler {
   private mWindowStage?: window.WindowStage;
   private mSplashAd?: AMPSSplashAd;
   private mWindow?: window.Window;
-  private mUIContext?: UIContext;
+  private mUIBContext?: common.UIAbilityContext | null= null;
   static splashBottomModule: SplashBottomModule | null | undefined = null
 
   // 优化回调定义，减少重复代码
   private callback: ampsAd.CallBack = {
-    onLoadSuccess: () => this.sendMessage(AMPSSplashChannelMethod.onLoadSuccess),
+    onLoadSuccess: () => this.sendMessage(AMPSAdCallBackChannelMethod.onLoadSuccess),
     onLoadFailure: (code: number, message: string) =>
-    this.sendMessage(AMPSSplashChannelMethod.onLoadFailure, { code, message }),
-    onRenderOk: () => this.sendMessage(AMPSSplashChannelMethod.onRenderOk),
-    onAdShow: () => this.sendMessage(AMPSSplashChannelMethod.onAdShow),
-    onAdExposure: () => this.sendMessage(AMPSSplashChannelMethod.onAdExposure),
-    onAdClicked: () => this.sendMessage(AMPSSplashChannelMethod.onAdClicked),
-    onAdClosed: () => this.sendMessage(AMPSSplashChannelMethod.onAdClosed),
-    onRenderFailure: () => this.sendMessage(AMPSSplashChannelMethod.onRenderFailure),
+    this.sendMessage(AMPSAdCallBackChannelMethod.onLoadFailure, { code, message }),
+    onRenderOk: () => this.sendMessage(AMPSAdCallBackChannelMethod.onRenderOk),
+    onAdShow: () => this.sendMessage(AMPSAdCallBackChannelMethod.onAdShow),
+    onAdExposure: () => this.sendMessage(AMPSAdCallBackChannelMethod.onAdExposure),
+    onAdClicked: () => this.sendMessage(AMPSAdCallBackChannelMethod.onAdClicked),
+    onAdClosed: () => this.sendMessage(AMPSAdCallBackChannelMethod.onAdClosed),
+    onRenderFailure: () => this.sendMessage(AMPSAdCallBackChannelMethod.onRenderFailure),
     onAdShowError: (code: number, message: string) =>
-    this.sendMessage(AMPSSplashChannelMethod.onAdShowError, { code, message }),
-    onVideoPlayStart: () => this.sendMessage(AMPSSplashChannelMethod.onVideoPlayStart),
-    onVideoPlayEnd: () => this.sendMessage(AMPSSplashChannelMethod.onVideoPlayEnd),
+    this.sendMessage(AMPSAdCallBackChannelMethod.onAdShowError, { code, message }),
+    onVideoPlayStart: () => this.sendMessage(AMPSAdCallBackChannelMethod.onVideoPlayStart),
+    onVideoPlayEnd: () => this.sendMessage(AMPSAdCallBackChannelMethod.onVideoPlayEnd),
     onVideoPlayError: (code: number, message: string) =>
-    this.sendMessage(AMPSSplashChannelMethod.onVideoPlayEnd, { code, message }),
+    this.sendMessage(AMPSAdCallBackChannelMethod.onVideoPlayEnd, { code, message }),
     onVideoSkipToEnd: (playDurationMs?: number) =>
-    this.sendMessage(AMPSSplashChannelMethod.onVideoSkipToEnd, { playDurationMs }),
-    onAdReward: () => this.sendMessage(AMPSSplashChannelMethod.onAdReward)
+    this.sendMessage(AMPSAdCallBackChannelMethod.onVideoSkipToEnd, { playDurationMs }),
+    onAdReward: () => this.sendMessage(AMPSAdCallBackChannelMethod.onAdReward)
   };
 
   constructor() {
+  }
+
+  onAttachedToAbility(binding: AbilityPluginBinding): void {
+    this.mUIBContext = binding.getAbility().context;
   }
 
   onMethodCall(call: MethodCall, result: MethodResult): void {
@@ -74,13 +80,11 @@ export class AMPSSplashPlugin implements FlutterPlugin,MethodCallHandler {
   private handleSplashLoad(call: MethodCall, result: MethodResult): void {
     try {
       const adOption: ampsAd.AdOptions = AdOptionsModule.getAdOptionFromMap(call.args);
-      let uIContext = getContext(this) as common.UIAbilityContext;// 获取当前组件的UIAbilityContext上下文
-      this.mWindowStage = uIContext.windowStage;
+      this.mWindowStage = this.mUIBContext?.windowStage;
       if (this.mWindowStage) {
         this.mWindow = this.mWindowStage.getMainWindowSync();
-        this.mUIContext = this.mWindow?.getUIContext();
-        if (this.mWindow && this.mUIContext) {
-          this.mSplashAd = new AMPSSplashAd(adOption, this.callback, this.mUIContext);
+        if (this.mWindow) {
+          this.mSplashAd = new AMPSSplashAd(adOption, this.callback,this.mWindow.getUIContext());
           this.mSplashAd.load();
           result.success(true);
         } else {

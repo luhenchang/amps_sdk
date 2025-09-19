@@ -2,26 +2,22 @@ import 'package:flutter/services.dart';
 
 import '../common.dart';
 import '../data/ampsAd.dart';
-import '../widget/splash_bottom_widget.dart';
 
-class AMPSSplashAd {
+class AMPSInterstitialAd {
   MethodChannel? _channel;
   AdOptions config;
   AdCallBack? mCallBack;
   AdCallBack? mViewCallBack;
   bool needLoad = false;
 
-  AMPSSplashAd({required this.config, this.mCallBack});
+  AMPSInterstitialAd({required this.config, this.mCallBack});
 
-  setAMPSViewCallBack (AdCallBack viewCallBack) {
-    mViewCallBack = viewCallBack;
-  }
   void registerChannel(int id) {
     _channel = null;
-    _channel = MethodChannel('${AMPSPlatformViewRegistry.ampsSdkSplashViewId}$id');
+    _channel = MethodChannel('${AMPSPlatformViewRegistry.ampsSdkInterstitialViewId}$id');
     setMethodCallHandler();
     _channel?.invokeMethod(
-      AMPSAdSdkMethodNames.splashLoad,
+      AMPSAdSdkMethodNames.interstitialLoad,
       config.toMap(),
     );
   }
@@ -87,15 +83,15 @@ class AMPSSplashAd {
   }
 
   void load() async {
-    _channel = const MethodChannel(AMPSChannels.ampsSdkSplashAdLoad);
+    _channel = const MethodChannel(AMPSChannels.ampsSdkInterstitialAdLoad);
     setMethodCallHandler();
     await _channel?.invokeMethod(
-      AMPSAdSdkMethodNames.splashLoad,
+      AMPSAdSdkMethodNames.interstitialLoad,
       config.toMap(),
     );
   }
 
-  void showAd({SplashBottomWidget? splashBottomWidget}) async {
-    await _channel?.invokeMethod(AMPSAdSdkMethodNames.splashShowAd, splashBottomWidget?.toMap());
+  void showAd() async {
+    await _channel?.invokeMethod(AMPSAdSdkMethodNames.interstitialShowAd);
   }
 }

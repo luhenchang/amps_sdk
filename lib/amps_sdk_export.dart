@@ -5,3 +5,5 @@ export 'package:amps_sdk/data/ampsAd.dart';
 export 'package:amps_sdk/controller/AMPSSplashAd.dart';
 export 'package:amps_sdk/data/AMPSInitConfig.dart';
 export 'package:amps_sdk/widget/splash_bottom_widget.dart';
+export 'package:amps_sdk/controller/AMPSInterstitialAd.dart';
+export 'package:amps_sdk/AMPSBuildInterstitialView.dart';

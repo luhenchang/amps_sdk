@@ -1,4 +1,5 @@
 import {
+  AbilityPluginBinding,
   Any,
   FlutterPlugin,
   FlutterPluginBinding,
@@ -14,9 +15,14 @@ import { common } from '@kit.AbilityKit';
 
 @Observed
 export class AMPSSdkPlugin implements FlutterPlugin, MethodCallHandler {
-  methodChannel?: MethodChannel;
+  private methodChannel?: MethodChannel;
+  private uiContext: common.UIAbilityContext | null= null;
 
   constructor() {
+  }
+
+  onAttachedToAbility(binding: AbilityPluginBinding): void {
+    this.uiContext = binding.getAbility().context;
   }
 
   onMethodCall(call: MethodCall, result: MethodResult): void {
@@ -24,10 +30,11 @@ export class AMPSSdkPlugin implements FlutterPlugin, MethodCallHandler {
     let flutterParams: Map<string, Any> = call.args;
     switch (method) {
       case AMPSAdSdkMethodNames.init:
-        const context = getContext(this) as common.UIAbilityContext
-        const ampsConfig = new AMPSInitConfigConverter().convert(flutterParams, context);
-        this.initAMPSSDK(ampsConfig)
-        result.success(true);
+        if (this.uiContext) {
+          const ampsConfig = new AMPSInitConfigConverter().convert(flutterParams, this.uiContext);
+          this.initAMPSSDK(ampsConfig)
+          result.success(true);
+        }
         break;
     }
   }
@@ -67,5 +74,6 @@ export class AMPSSdkPlugin implements FlutterPlugin, MethodCallHandler {
 
   public sendMessage = (method: string, args?: Any) => {
     this.methodChannel?.invokeMethod(method, args);
+    this.uiContext = null
   }
 }

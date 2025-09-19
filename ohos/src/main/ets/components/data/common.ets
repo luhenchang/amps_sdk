@@ -7,10 +7,12 @@ export class AMPSChannels {
   static readonly ampsSdkInit = `${channelDomain}/sdk`;
   static readonly ampsSdkSplash = `${channelDomain}/splash`;
   static readonly ampsSdkSplashAdLoad = `${channelDomain}/splash_ad_load`;
+  static readonly ampsSdkInterstitialAdLoad = `${channelDomain}/interstitial_ad_load`;
 }
 
 export class AMPSPlatformViewRegistry {
   static readonly ampsSdkSplashViewId = `${channelDomain}/splash_view_id`;
+  static readonly ampsSdkInterstitialViewId = `${channelDomain}/interstitial_view_id`;
 }
 
 //初始化交互通道方法名称
@@ -22,7 +24,7 @@ export class AMPSInitChannelMethod {
 }
 
 //开屏广告加载方法
-export class AMPSSplashChannelMethod {
+export class AMPSAdCallBackChannelMethod {
   static readonly onLoadSuccess = "onLoadSuccess";
   static readonly onLoadFailure = "onLoadFailure";
   static readonly onRenderOk = "onRenderOk";
@@ -44,6 +46,8 @@ export class AMPSAdSdkMethodNames {
   static readonly init = 'AMPSAdSdk_init';
   static readonly splashLoad = 'AMPSSplashAd_load';
   static readonly splashShowAd = 'AMPSSplashAd_showAd';
+  static readonly interstitialLoad = 'AMPSInterstitial_load';
+  static readonly interstitialShowAd = 'AMPSSInterstitial_showAd';
 }
 
 export const AD_OPTION = 'AdOption';

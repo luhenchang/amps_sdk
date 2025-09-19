@@ -1,8 +1,11 @@
 import 'dart:collection';
 import 'package:amps_sdk_example/widgets/blurred_background.dart';
 import 'package:amps_sdk/amps_sdk_export.dart';
+import 'package:amps_sdk_example/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'InterstitialPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,26 +17,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+       initialRoute: 'splashPage',
+       routes: {
+         'splashPage':(context)=>const SplashPage(title: '开屏页面'),
+         'InterstitialPage':(context)=> const InterstitialPage(title: '插屏页面',)
+       },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class SplashPage extends StatefulWidget {
+  const SplashPage({super.key, required this.title});
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<SplashPage> createState() => _SplashPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _SplashPageState extends State<SplashPage> {
   late AMPSIInitCallBack _callBack;
   AMPSSplashAd? _splashAd;
   late AdCallBack _adCallBack;
@@ -41,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+    //SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     super.initState();
     _callBack = AMPSIInitCallBack(
         initSuccess: () {
@@ -173,18 +175,26 @@ class _MyHomePageState extends State<MyHomePage> {
          debugPrint("ad load onVideoSkipToEnd=$duration");
        });
 
-    AdOptions options = AdOptions(spaceId: '15288');
+    AdOptions options = AdOptions(spaceId: '15288',splashAdBottomBuilderHeight: 200);
     _splashAd = AMPSSplashAd(config: options, mCallBack: _adCallBack);
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Stack(children: [
-        BlurredBackground(),
+    return Scaffold(body: Stack(
+      alignment: AlignmentDirectional.center,
+      children: [
+        const BlurredBackground(),
+        ButtonWidget(
+          buttonText: '点击跳转插屏页面',
+          callBack: () {
+            // 使用命名路由跳转
+            Navigator.pushNamed(context, 'InterstitialPage');
+          }
+        )
         //_buildSplashWidget(),
-      ],)
-    );
+      ],
+    ));
   }
 
   Widget _buildSplashWidget() {

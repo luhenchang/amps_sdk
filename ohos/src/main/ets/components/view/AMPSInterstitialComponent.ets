@@ -1,16 +1,17 @@
-import { globalSplashBottomBuilder, OhosPlatformSplashView } from './OhosPlatformSplashView';
 import { Params } from '@ohos/flutter_ohos/src/main/ets/plugin/platform/PlatformView';
-import { ampsAd, AMPSBuildSplashView, AMPSSplashAd } from 'biz.beizi.adn';
-import { common } from '@kit.AbilityKit';
+import {
+  ampsAd, AMPSBuildInterstitialView, AMPSInterstitialAd
+} from 'biz.beizi.adn';
 import { AMPSAdCallBackChannelMethod } from '../data/common';
+import { OhosPlatformInterstitialView } from './OhosPlatformInterstitialView';
+
 @Component
-struct AMPSSplashComponent {
-  @State hasSplash: boolean = false
+struct AMPSInterstitialComponent {
+  @State showAd: boolean = false
   @Prop params: Params
   @Prop adOption: ampsAd.AdOptions
-  customView: OhosPlatformSplashView = this.params.platformView as OhosPlatformSplashView
-  @State bkColor: Color = Color.Red
-  splashAd?: AMPSSplashAd
+  @State customView: OhosPlatformInterstitialView = this.params.platformView as OhosPlatformInterstitialView
+  interAd?: AMPSInterstitialAd
   callback: ampsAd.CallBack = {
     onLoadSuccess: (): void => {
       this.customView.sendMessage(AMPSAdCallBackChannelMethod.onLoadSuccess, undefined)
@@ -19,7 +20,7 @@ struct AMPSSplashComponent {
       this.customView.sendMessage(AMPSAdCallBackChannelMethod.onLoadFailure, { code, message })
     },
     onRenderOk: (): void => {
-      this.hasSplash = true
+      this.showAd = true
       this.customView.sendMessage(AMPSAdCallBackChannelMethod.onRenderOk, undefined)
     },
     onAdShow: (): void => {
@@ -29,11 +30,11 @@ struct AMPSSplashComponent {
       this.customView.sendMessage(AMPSAdCallBackChannelMethod.onAdExposure, undefined)
     },
     onAdClicked: (): void => {
-      this.hasSplash = false
+      this.showAd = false
       this.customView.sendMessage(AMPSAdCallBackChannelMethod.onAdClicked, undefined)
     },
     onAdClosed: (): void => {
-      this.hasSplash = false
+      this.showAd = false
       this.customView.sendMessage(AMPSAdCallBackChannelMethod.onAdClosed, undefined)
     },
     onRenderFailure: (): void => {
@@ -60,18 +61,16 @@ struct AMPSSplashComponent {
   }
 
   aboutToAppear(): void {
-    this.splashAd = new AMPSSplashAd(this.adOption, this.callback, this.getUIContext())
-    this.splashAd?.load()
+    this.interAd = new AMPSInterstitialAd(this.adOption, this.callback)
+    this.interAd?.load()
   }
+
 
   build() {
     Column() {
-      if (this.hasSplash && this.splashAd) {
-          AMPSBuildSplashView(
-            this.splashAd, {
-            windowStage: (this.getUIContext().getHostContext() as common.UIAbilityContext).windowStage,
-            bottomWrappedBuilder:globalSplashBottomBuilder
-          })
+      if (this.showAd && this.interAd) {
+          AMPSBuildInterstitialView(
+            this.interAd)
         }
     }
     .alignItems(HorizontalAlign.Center)
@@ -82,4 +81,4 @@ struct AMPSSplashComponent {
   }
 }
 
-export { AMPSSplashComponent };
+export { AMPSInterstitialComponent };

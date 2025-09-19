@@ -3,9 +3,11 @@ class AMPSChannels {
   static const String ampsSdkInit = '$channelDomain/sdk';
   static const String ampsSdkSplash = '$channelDomain/splash';
   static const ampsSdkSplashAdLoad = '$channelDomain/splash_ad_load';
+  static const ampsSdkInterstitialAdLoad = '$channelDomain/interstitial_ad_load';
 }
 class AMPSPlatformViewRegistry {
   static const ampsSdkSplashViewId = '$channelDomain/splash_view_id';
+  static const ampsSdkInterstitialViewId = '$channelDomain/interstitial_view_id';
 }
 //初始化交互通道方法名称
 class AMPSInitChannelMethod {
@@ -17,7 +19,7 @@ class AMPSInitChannelMethod {
 
 
 //开屏广告加载方法
-class AMPSSplashChannelMethod {
+class AMPSAdCallBackChannelMethod {
   static const String onLoadSuccess = "onLoadSuccess";
   static const String onLoadFailure = "onLoadFailure";
   static const String onRenderOk = "onRenderOk";
@@ -39,6 +41,8 @@ class AMPSAdSdkMethodNames {
   static const String init = 'AMPSAdSdk_init';
   static const String splashLoad = 'AMPSSplashAd_load';
   static const String splashShowAd = 'AMPSSplashAd_showAd';
+  static const String interstitialLoad = 'AMPSInterstitial_load';
+  static const String interstitialShowAd = 'AMPSSInterstitial_showAd';
 }
 
 class AMPSSdkCallBackErrorKey {
