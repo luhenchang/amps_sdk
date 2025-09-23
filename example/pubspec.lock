@@ -137,6 +137,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "4.0.0"
+  loadany:
+    dependency: "direct main"
+    description:
+      name: loadany
+      sha256: "484ecada7164a71a2f71676a832c2a41fc9b16c897ac833954b42d856edcc82a"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.0"
   matcher:
     dependency: transitive
     description:
