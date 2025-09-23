@@ -9,6 +9,8 @@ class AMPSAdSdk {
   final MethodChannel  _channel = const MethodChannel(AMPSChannels.ampsSdkInit);
   final StreamController<String> _controller = StreamController<String>();
   AMPSIInitCallBack?  _callBack;
+
+  static bool testModel = false;
   AMPSAdSdk() {
     _channel.setMethodCallHandler(
           (call) async {
@@ -40,7 +42,7 @@ class AMPSAdSdk {
     // 使用时
     await _channel.invokeMethod(
       AMPSAdSdkMethodNames.init,
-      sdkConfig.toMap(),
+      sdkConfig.toMap(AMPSAdSdk.testModel),
     );
   }
 }

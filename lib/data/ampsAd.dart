@@ -4,7 +4,7 @@ class AdOptions {
   final int? adCount;
   final String? s2sImpl;
   final int? timeoutInterval;
-  final List<int?>? expressSize;
+  final List<num?>? expressSize;
   final int? splashAdBottomBuilderHeight;
   final String? userId;
   final String? extra;

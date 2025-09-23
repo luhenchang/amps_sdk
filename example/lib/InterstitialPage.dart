@@ -1,5 +1,4 @@
 import 'package:amps_sdk/amps_sdk_export.dart';
-import 'package:amps_sdk/controller/AMPSSplashAd.dart';
 import 'package:amps_sdk/data/ampsAd.dart';
 import 'package:flutter/material.dart';
 class InterstitialPage extends StatefulWidget {
@@ -14,6 +13,7 @@ class InterstitialPage extends StatefulWidget {
 class _SplashPageState extends State<InterstitialPage> {
   late AdCallBack _adCallBack;
   AMPSInterstitialAd? _interAd;
+  bool visibleAd = true;
   @override
   void initState() {
     super.initState();
@@ -33,6 +33,7 @@ class _SplashPageState extends State<InterstitialPage> {
         },
         onAdClosed: () {
           setState(() {
+            visibleAd = false;
           });
           debugPrint("ad load onAdClosed");
         },
@@ -70,16 +71,18 @@ class _SplashPageState extends State<InterstitialPage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: AMPSBuildInterstitialView(_interAd)
-      // Center(
-      //   child: ElevatedButton(
-      //     child: const Text('点击展示插屏'),
-      //     onPressed: () {
-      //       // 返回上一页
-      //    _interAd?.load();
-      //     },
-      //   ),
-      // ),
+      body: Stack(children: [
+        Center(
+          child: ElevatedButton(
+            child: const Text('点击展示插屏'),
+            onPressed: () {
+              // 返回上一页
+              _interAd?.load();
+            },
+          ),
+        ),
+        if(visibleAd) AMPSBuildInterstitialView(_interAd)
+      ],)
     );
   }
 }

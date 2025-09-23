@@ -31,10 +31,12 @@ class _AMPSBuildSplashViewState extends State<AMPSBuildSplashView> {
     if (Platform.isAndroid) {
       return AndroidView(
           viewType: AMPSPlatformViewRegistry.ampsSdkSplashViewId,
+          creationParams: splashParam,
           onPlatformViewCreated: _onPlatformViewCreated);
     } else if (Platform.isIOS) {
       return UiKitView(
           viewType: AMPSPlatformViewRegistry.ampsSdkSplashViewId,
+          creationParams: splashParam,
           onPlatformViewCreated: _onPlatformViewCreated);
     }
     else if(Platform.isOhos) {

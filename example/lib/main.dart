@@ -3,9 +3,9 @@ import 'package:amps_sdk_example/widgets/blurred_background.dart';
 import 'package:amps_sdk/amps_sdk_export.dart';
 import 'package:amps_sdk_example/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'InterstitialPage.dart';
+import 'NativePage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +20,8 @@ class MyApp extends StatelessWidget {
        initialRoute: 'splashPage',
        routes: {
          'splashPage':(context)=>const SplashPage(title: '开屏页面'),
-         'InterstitialPage':(context)=> const InterstitialPage(title: '插屏页面',)
+         'InterstitialPage':(context)=> const InterstitialPage(title: '插屏页面'),
+         'NativePage':(context)=> const NativePage(title: '原生页面')
        },
     );
   }
@@ -109,7 +110,8 @@ class _SplashPageState extends State<SplashPage> {
         .setIsMediation(false)
         .setUiModel(UiModel.uiModelAuto)
         .build();
-    debugPrint("sdkConfigJson=${sdkConfig.toMap()}");
+    debugPrint("sdkConfigJson=${sdkConfig.toMap(true)}");
+    AMPSAdSdk.testModel = true;
     AMPSAdSdk().init(sdkConfig, _callBack);
     _adCallBack = AdCallBack(
         onRenderOk: () {
@@ -191,6 +193,13 @@ class _SplashPageState extends State<SplashPage> {
             // 使用命名路由跳转
             Navigator.pushNamed(context, 'InterstitialPage');
           }
+        ),
+        ButtonWidget(
+            buttonText: '点击跳转原生页面',
+            callBack: () {
+              // 使用命名路由跳转
+              Navigator.pushNamed(context, 'NativePage');
+            }
         )
         //_buildSplashWidget(),
       ],

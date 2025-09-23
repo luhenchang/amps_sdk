@@ -7,3 +7,6 @@ export 'package:amps_sdk/data/AMPSInitConfig.dart';
 export 'package:amps_sdk/widget/splash_bottom_widget.dart';
 export 'package:amps_sdk/controller/AMPSInterstitialAd.dart';
 export 'package:amps_sdk/AMPSBuildInterstitialView.dart';
+export 'package:amps_sdk/controller/AMPSNativeAd.dart';
+export 'package:amps_sdk/data/AMPSNativeInteractiveListener.dart';
+export 'package:amps_sdk/AMPSBuildNativeView.dart';

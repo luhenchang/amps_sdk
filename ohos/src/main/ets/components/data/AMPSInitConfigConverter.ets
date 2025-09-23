@@ -21,6 +21,7 @@ interface CoordinateConstantInterface {
 // 外部参数Key接口
 interface ParamsKeyInterface {
   // 核心参数
+  readonly TEST_MODEL: string;
   readonly APP_ID: string;
   readonly IS_DEBUG_SETTING: string;
   readonly IS_USE_HTTPS: string;
@@ -86,6 +87,7 @@ export const CoordinateConstant: CoordinateConstantInterface = {
 // 外部参数Key常量
 export const ParamsKey: ParamsKeyInterface = {
   // 核心参数
+  TEST_MODEL: "testModel",
   APP_ID: "appId",
   IS_DEBUG_SETTING: "_isDebugSetting",
   IS_USE_HTTPS: "_isUseHttps",
@@ -138,6 +140,7 @@ type LocationMapType = HashMap<string, number | string>;
 
 // -------------------------- 4. 业务类（逻辑完全不变） --------------------------
 export class AMPSInitConfigConverter {
+  static  testModel:boolean = false;
   /**
    * 将Flutter传递的Map参数转换为AMPSInitConfig实例
    * @param flutterParams Flutter端传递的初始化参数Map
@@ -151,6 +154,10 @@ export class AMPSInitConfigConverter {
     if (flutterParams && flutterParams.size > 0) {
       if (context.windowStage) {
         ampsInitConfigBuilder?.setWindowStage(context.windowStage)
+      }
+      const _testModel = flutterParams.get(ParamsKey.TEST_MODEL) as boolean;
+      if (_testModel) {
+        AMPSInitConfigConverter.testModel = _testModel;
       }
       // 调试与网络配置
       const _isDebugSetting = flutterParams.get(ParamsKey.IS_DEBUG_SETTING) as boolean;

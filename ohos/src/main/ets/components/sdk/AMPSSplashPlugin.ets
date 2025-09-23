@@ -112,7 +112,7 @@ export class AMPSSplashPlugin implements FlutterPlugin,MethodCallHandler {
       result.error('SHOW_EXCEPTION', `显示广告异常: ${error instanceof Error ? error.message : error}`,undefined);
     }
   }
-  // 发送消息方法，使用箭头函数绑定this，符合ArkTS实践
+
   sendMessage = (method: string, args?: Any): void => {
     try {
       this.mMethodChannel?.invokeMethod(method, args);

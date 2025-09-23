@@ -8,11 +8,13 @@ export class AMPSChannels {
   static readonly ampsSdkSplash = `${channelDomain}/splash`;
   static readonly ampsSdkSplashAdLoad = `${channelDomain}/splash_ad_load`;
   static readonly ampsSdkInterstitialAdLoad = `${channelDomain}/interstitial_ad_load`;
+  static readonly ampsSdkNativeAdLoad = `${channelDomain}/native_ad_load`;
 }
 
 export class AMPSPlatformViewRegistry {
   static readonly ampsSdkSplashViewId = `${channelDomain}/splash_view_id`;
   static readonly ampsSdkInterstitialViewId = `${channelDomain}/interstitial_view_id`;
+  static readonly ampsSdkNativeViewId = `${channelDomain}/native_view_id`;
 }
 
 //初始化交互通道方法名称
@@ -41,13 +43,37 @@ export class AMPSAdCallBackChannelMethod {
   static readonly onAdReward = "onAdReward";
 }
 
+//原生和原生自渲染标识
+export class AMPSNativeCallBackChannelMethod {
+  //广告加载回调标识
+  static readonly loadOk = "loadOk";
+  static readonly loadFail = "loadFail";
+  static readonly renderSuccess = "renderSuccess";
+  static readonly renderFailed = "renderFailed";
+  //具体广告组件回调
+  static readonly onAdShow = "onAdShow";
+  static readonly onAdExposure = "onAdExposure";
+  static readonly onAdClicked = "onAdClicked";
+  static readonly onAdClosed = "onAdClosed"; // 广告关闭
+  //视频组件回调
+  static readonly onVideoReady = "onVideoReady"; // 视频准备就绪
+  static readonly onVideoPlayStart = "onVideoPlayStart"; // 视频开始播放
+  static readonly onVideoPlayComplete = "onVideoPlayComplete"; // 视频播放完成
+  static readonly onVideoPause = "onVideoPause"; // 视频暂停
+  static readonly onVideoResume = "onVideoResume"; // 视频恢复播放
+  static readonly onVideoPlayError = "onVideoPlayError"; // 视频播放错误
+}
+
 export class AMPSAdSdkMethodNames {
   // 初始化AMPS广告SDK的方法名
+  static readonly testMode = 'testMode'
   static readonly init = 'AMPSAdSdk_init';
   static readonly splashLoad = 'AMPSSplashAd_load';
   static readonly splashShowAd = 'AMPSSplashAd_showAd';
   static readonly interstitialLoad = 'AMPSInterstitial_load';
   static readonly interstitialShowAd = 'AMPSSInterstitial_showAd';
+  static readonly nativeLoad = 'AMPSNative_load';
+  static readonly nativeShowAd = 'AMPSNative_showAd';
 }
 
 export const AD_OPTION = 'AdOption';

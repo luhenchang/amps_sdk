@@ -46,6 +46,7 @@ class AMPSLocationKey {
 }
 
 class AMPSInitConfigKey {
+  static const String testModel = 'testModel';
   /// 对应 appId 的序列化键
   static const String appId = 'appId';
 

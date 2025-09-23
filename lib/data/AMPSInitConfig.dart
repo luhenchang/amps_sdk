@@ -1,3 +1,4 @@
+import '../controller/AMPSAdSdk.dart';
 import 'AMPSSdkAPIKeys.dart';
 //UI模式【自动、黑色、浅色】
 enum UiModel { uiModelAuto, uiModelDark, uiModelLight }
@@ -248,9 +249,10 @@ class AMPSInitConfig {
         isMediation = builder.isMediation;
 
   // 转为 Map（用于JSON序列化）
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toMap(bool testModel) {
     return {
       // 基础类型直接传递
+      AMPSInitConfigKey.testModel: testModel,
       AMPSInitConfigKey.appId: appId,
       AMPSInitConfigKey.isDebugSetting: _isDebugSetting,
       AMPSInitConfigKey.isUseHttps: _isUseHttps,

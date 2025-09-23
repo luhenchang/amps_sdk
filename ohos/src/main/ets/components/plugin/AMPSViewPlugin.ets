@@ -5,6 +5,7 @@ import {
 import StandardMessageCodec from '@ohos/flutter_ohos/src/main/ets/plugin/common/StandardMessageCodec';
 import { AMPSPlatformViewRegistry } from '../data/common';
 import { InterstitialFactory } from '../view/InterstitialFactory';
+import { NativeFactory } from '../view/NativeFactory';
 import { SplashFactory } from '../view/SplashFactory';
 
 const uniqueClassName = "AMPSViewPlugin"
@@ -20,6 +21,8 @@ export class AMPSViewPlugin implements FlutterPlugin {
       new SplashFactory(binding.getBinaryMessenger(), StandardMessageCodec.INSTANCE));
     binding.getPlatformViewRegistry()?.registerViewFactory(AMPSPlatformViewRegistry.ampsSdkInterstitialViewId,
       new InterstitialFactory(binding.getBinaryMessenger(), StandardMessageCodec.INSTANCE));
+    binding.getPlatformViewRegistry()?.registerViewFactory(AMPSPlatformViewRegistry.ampsSdkNativeViewId,
+      new NativeFactory(binding.getBinaryMessenger(), StandardMessageCodec.INSTANCE));
   }
 
   onDetachedFromEngine(binding: FlutterPluginBinding): void {

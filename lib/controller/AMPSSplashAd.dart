@@ -9,7 +9,6 @@ class AMPSSplashAd {
   AdOptions config;
   AdCallBack? mCallBack;
   AdCallBack? mViewCallBack;
-  bool needLoad = false;
 
   AMPSSplashAd({required this.config, this.mCallBack});
 

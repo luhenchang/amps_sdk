@@ -11,7 +11,7 @@ import { AdOptionsModule } from '../data/AdOptionsModule';
 import { SplashBottomModule } from '../data/SplashBottomModule';
 
 //底部自定义组件全局WrappedBuilder
-export let globalSplashBottomBuilder: WrappedBuilder<[]> | undefined | null = wrapBuilder(MyBuilder);
+export let globalSplashBottomBuilder: WrappedBuilder<[]> | undefined  = wrapBuilder(MyBuilder);
 @Observed
 export class OhosPlatformSplashView extends PlatformView {
   methodChannel: MethodChannel | null | undefined

@@ -50,6 +50,7 @@ export class AMPSSdkPlugin implements FlutterPlugin, MethodCallHandler {
 
   onDetachedFromEngine(binding: FlutterPluginBinding): void {
     this.methodChannel?.setMethodCallHandler(null)
+    this.uiContext = null
   }
 
   initAMPSSDK(ampsInitConfig?: AMPSInitConfig) {
@@ -68,12 +69,12 @@ export class AMPSSdkPlugin implements FlutterPlugin, MethodCallHandler {
       }
     }
     if (ampsInitConfig) {
+      AMPSAdSdk.testMode = AMPSInitConfigConverter.testModel
       AMPSAdSdk.init(ampsInitConfig, callback)
     }
   }
 
   public sendMessage = (method: string, args?: Any) => {
     this.methodChannel?.invokeMethod(method, args);
-    this.uiContext = null
   }
 }

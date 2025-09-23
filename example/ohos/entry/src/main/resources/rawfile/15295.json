@@ -1,0 +1,823 @@
+{
+    "bidid": "1833761072665415681",
+    "cur": [
+        "CNY"
+    ],
+    "ext": {
+        "updateCfg": true
+    },
+    "id": "D6CE9726-48F-268-120-4182FDE4640",
+    "seatbid": [
+        {
+            "bid": [
+                {
+                    "exp": 900000,
+                    "ext": {
+                        "dspId": "6666"
+                    },
+                    "id": "0",
+                    "lurl": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendCallBackLog?reqId=D6CE9726-48F-268-120-4182FDE4640&eventCode=601&customId=ssp&eventTime=__TS__&at=__AT__&price=__PRICE__",
+                    "media": {
+                        "ad": {
+
+                            "cattax": 2,
+                            "display": {
+                                "ctype": 3,
+                                "event": [
+                                    {
+                                        "method": 0,
+                                        "type": 501,
+                                        "url": "http://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072652832768&eventCode=501&customId=dsp&ts=1726037684010&campaignId=330176&orderId=112053&orderParentId=111997&creativeId=504128&creativeParentId=504081&materialId=2071&custom=null&sdkUId=09B55506-D8B-C77-4B3-752E45A8832"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 502,
+                                        "url": "http://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072652832768&eventCode=502&customId=dsp&campaignId=330176&orderId=112053&orderParentId=111997&creativeId=504128&creativeParentId=504081&materialId=2071&custom=null&sdkUId=09B55506-D8B-C77-4B3-752E45A8832&requestuuid=__REQUESTUUID__&src_up_y=__SRC_UP_Y__&mat_down_y=__MAT_DOWN_Y__&mat_down_x=__MAT_DOWN_X__&up_ts=__UP_TS__&src_down_y=__SRC_DOWN_Y__&src_down_x=__SRC_DOWN_X__&action=__ACTION__&adx=__ADX__&ady=__ADY__&src_up_x=__SRC_UP_X__&down_ts=__DOWN_TS__&mat_up_x=__MAT_UP_X__&interactive=__INTERACTIVE__&mat_up_y=__MAT_UP_Y__&ts=1726037684010"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 520,
+                                        "url": "http://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072652832768&customId=dsp&eventCode=520&campaignId=330176&orderId=112053&orderParentId=111997&creativeId=504128&creativeParentId=504081&materialId=2071&custom=null&sdkUId=09B55506-D8B-C77-4B3-752E45A8832"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 521,
+                                        "url": "http://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072652832768&customId=dsp&eventCode=521&campaignId=330176&orderId=112053&orderParentId=111997&creativeId=504128&creativeParentId=504081&materialId=2071&custom=null&sdkUId=09B55506-D8B-C77-4B3-752E45A8832"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 522,
+                                        "url": "http://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072652832768&customId=dsp&eventCode=522&campaignId=330176&orderId=112053&orderParentId=111997&creativeId=504128&creativeParentId=504081&materialId=2071&custom=null&sdkUId=09B55506-D8B-C77-4B3-752E45A8832"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 523,
+                                        "url": "http://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072652832768&customId=dsp&eventCode=523&campaignId=330176&orderId=112053&orderParentId=111997&creativeId=504128&creativeParentId=504081&materialId=2071&custom=null&sdkUId=09B55506-D8B-C77-4B3-752E45A8832"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 524,
+                                        "url": "http://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072652832768&customId=dsp&eventCode=524&campaignId=330176&orderId=112053&orderParentId=111997&creativeId=504128&creativeParentId=504081&materialId=2071&custom=null&sdkUId=09B55506-D8B-C77-4B3-752E45A8832"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 501,
+                                        "url": "http://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072673804288&eventCode=501&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 502,
+                                        "url": "http://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072673804288&eventCode=502&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&requestuuid=__REQUESTUUID__&src_up_y=__SRC_UP_Y__&mat_down_y=__MAT_DOWN_Y__&mat_down_x=__MAT_DOWN_X__&up_ts=__UP_TS__&src_down_y=__SRC_DOWN_Y__&src_down_x=__SRC_DOWN_X__&action=__ACTION__&adx=__ADX__&ady=__ADY__&src_up_x=__SRC_UP_X__&down_ts=__DOWN_TS__&mat_up_x=__MAT_UP_X__&interactive=__INTERACTIVE__&mat_up_y=__MAT_UP_Y__&ts=__TS__"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 520,
+                                        "url": "http://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072673804288&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&eventCode=520&buyerSpaceId=13836&buyerId=6666&strategyId=157227&spaceId=15296"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 521,
+                                        "url": "http://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072673804288&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&eventCode=521&buyerSpaceId=13836&buyerId=6666&strategyId=157227&spaceId=15296"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 522,
+                                        "url": "http://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072673804288&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&eventCode=522&buyerSpaceId=13836&buyerId=6666&strategyId=157227&spaceId=15296"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 523,
+                                        "url": "http://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072673804288&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&eventCode=523&buyerSpaceId=13836&buyerId=6666&strategyId=157227&spaceId=15296"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 524,
+                                        "url": "http://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072673804288&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&eventCode=524&buyerSpaceId=13836&buyerId=6666&strategyId=157227&spaceId=15296"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 501,
+                                        "url": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072719941632&eventCode=501&customId=ssp&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&bidPrice=4200.0&testType=1"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 502,
+                                        "url": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072719941632&eventCode=502&customId=ssp&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 530,
+                                        "url": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072719941632&eventCode=530&customId=ssp&spaceId=15295&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 520,
+                                        "url": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072719941632&customId=ssp&spaceId=15295&eventCode=520&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 521,
+                                        "url": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072719941632&customId=ssp&spaceId=15295&eventCode=521&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 522,
+                                        "url": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072719941632&customId=ssp&spaceId=15295&eventCode=522&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 523,
+                                        "url": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072719941632&customId=ssp&spaceId=15295&eventCode=523&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 524,
+                                        "url": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072719941632&customId=ssp&spaceId=15295&eventCode=524&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                                    }
+                                ],
+                                "ext": {
+                                    "cmd5": "41B0AC9C33DF5419"
+                                },
+                                "id": "509B45A041B0AC9C33DF5419FCB2F438",
+                                "mime": "image/jpeg",
+                                "native": {
+                                    "asset": [
+                                        {
+                                            "id": "1001",
+                                            "image": {
+                                                "h": 1280,
+                                                "type": 3,
+                                                "url": "http://resource.ad-scope.com.cn/zGR0YtbfbtmhmLR75brSG..png",
+                                                "w": 720
+                                            }
+                                        }
+                                    ],
+                                    "dwinfo": {
+                                        "bundle": "com.youjia",
+                                        "developer": "youjia",
+                                        "iconurl": "http://resource.ad-scope.com.cn/bJWGj9P5KTQLvWKERUp89..png",
+                                        "name": "优加测试应用-Android",
+                                        "permissionUrl": "http://dsp.adn-plus.com.cn/#/product/dsp/publisher/property/app/create",
+                                        "policy": "http://dsp.adn-plus.com.cn/#/product/dsp/publisher/property/app/create",
+                                        "storeUrl": "http://dsp.adn-plus.com.cn/#/product/dsp/publisher/property/app/create",
+                                        "version": "1.0.0"
+                                    },
+                                    "interactionId": "157234",
+                                    "link": {
+                                        "interact_type": 0,
+                                        "url": "https://render.alipay.com/p/s/i/?scheme=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FsceneCode%3DKF_DYW_KA%26appId%3D20002097%26waitouChInfo%3DHK257835%26spmAB%3Da2609.b103561%26partnerId%3Dcpalhguangtuiapkdef457%26templateId%3DADUniversalGuide_BenefitGuide2%26autoMode%3Dtrue%26spmBizCode%3Dgrowth%26shareUserId%3D2088231746029491%26benefit%3DHK257835%26scene%3DBenefitGuide2",
+                                        "urldw": "http://dsp.adn-plus.com.cn/#/product/dsp/publisher/property/app/create",
+                                        "urlfb": "alipays://platformapi/startapp?sceneCode=KF_DYW_KA&appId=20002097&waitouChInfo=HK257835&spmAB=a2609.b103561&partnerId=cpalhguangtuiapkdef457&templateId=ADUniversalGuide_BenefitGuide2&autoMode=true&spmBizCode=growth&shareUserId=2088231746029491&benefit=HK257835&scene=BenefitGuide2"
+                                    },
+                                    "render": [
+
+                                    ],
+                                    "renderId": "21",
+                                    "scheme": [
+                                        {
+                                            "execution": "click",
+                                            "superView": "none",
+                                            "layer": "1",
+                                            "marginLeft": {
+                                                "layout": "left",
+                                                "reference": "super",
+                                                "size": "0"
+                                            },
+                                            "marginRight": {
+                                                "layout": "right",
+                                                "reference": "super",
+                                                "size": "0"
+                                            },
+                                            "uid": "100001",
+                                            "bgColor": "#FFFFFF",
+                                            "controlType": "view",
+                                            "name": "白色背景图",
+                                            "marginBottom": {
+                                                "layout": "bottom",
+                                                "reference": "super",
+                                                "size": "0"
+                                            },
+                                            "id": "100001",
+                                            "marginTop": {
+                                                "layout": "top",
+                                                "reference": "super",
+                                                "size": "0"
+                                            },
+                                            "bindEvent": "click"
+                                        },
+                                        {
+                                            "superView": "100001",
+                                            "layer": "1",
+                                            "marginLeft": {
+                                                "layout": "left",
+                                                "reference": "super",
+                                                "size": "0"
+                                            },
+                                            "marginRight": {
+                                                "layout": "right",
+                                                "reference": "super",
+                                                "size": "0"
+                                            },
+                                            "isBlur": 1,
+                                            "uid": "110001",
+                                            "bgColor": "#00000000",
+                                            "controlType": "image",
+                                            "maxHeight": "60%",
+                                            "assetId": "1001",
+                                            "name": "原生主素材",
+                                            "marginBottom": {
+                                                "layout": "bottom",
+                                                "reference": "super",
+                                                "size": "0"
+                                            },
+                                            "id": "110001",
+                                            "marginTop": {
+                                                "layout": "top",
+                                                "reference": "super",
+                                                "size": "0"
+                                            }
+                                        },
+                                        {
+                                            "execution": "close",
+                                            "textAlign": "center",
+                                            "superView": "100001",
+                                            "title": "关闭",
+                                            "textColor": "#FFFFFF",
+                                            "countDownTime": 0,
+                                            "layer": "10",
+                                            "marginRight": {
+                                                "layout": "right",
+                                                "reference": "super",
+                                                "size": "-10"
+                                            },
+                                            "uid": "120001",
+                                            "bgColor": "#66333333",
+                                            "controlType": "countdownClose",
+                                            "borderRadius": "50%",
+                                            "name": "原生关闭按钮",
+                                            "width": {
+                                                "layout": "width",
+                                                "reference": "own",
+                                                "size": "60"
+                                            },
+                                            "fontSize": 12,
+                                            "id": "120001",
+                                            "marginTop": {
+                                                "layout": "top",
+                                                "reference": "super",
+                                                "size": "10"
+                                            },
+                                            "bindEvent": "click",
+                                            "autoClose": 0,
+                                            "height": {
+                                                "layout": "height",
+                                                "reference": "own",
+                                                "size": "22"
+                                            }
+                                        },
+                                        {
+                                            "textAlign": "right",
+                                            "superView": "100001",
+                                            "textColor": "#000000",
+                                            "layer": "2",
+                                            "marginRight": {
+                                                "layout": "right",
+                                                "reference": "100001",
+                                                "size": "-15"
+                                            },
+                                            "uid": "130001",
+                                            "bgColor": "#00000000",
+                                            "controlType": "tag",
+                                            "name": "原生素材标签",
+                                            "width": {
+                                                "layout": "width",
+                                                "reference": "super",
+                                                "size": "50%"
+                                            },
+                                            "marginBottom": {
+                                                "layout": "bottom",
+                                                "reference": "100001",
+                                                "size": "-15"
+                                            },
+                                            "fontSize": 9,
+                                            "id": "130001",
+                                            "height": {
+                                                "layout": "height",
+                                                "reference": "own",
+                                                "size": "15"
+                                            }
+                                        },
+                                        {
+                                            "textAlign": "center",
+                                            "superView": "100001",
+                                            "title": "广告",
+                                            "textColor": "#DDDDDD",
+                                            "layer": "2",
+                                            "marginLeft": {
+                                                "layout": "left",
+                                                "reference": "100001",
+                                                "size": "15"
+                                            },
+                                            "uid": "140001",
+                                            "bgColor": "#66888888",
+                                            "controlType": "logo",
+                                            "borderRadius": 2,
+                                            "name": "原生角标",
+                                            "width": {
+                                                "layout": "width",
+                                                "reference": "own",
+                                                "size": "100"
+                                            },
+                                            "marginBottom": {
+                                                "layout": "bottom",
+                                                "reference": "100001",
+                                                "size": "-15"
+                                            },
+                                            "fontSize": 9,
+                                            "id": "140001",
+                                            "height": {
+                                                "layout": "height",
+                                                "reference": "own",
+                                                "size": "15"
+                                            }
+                                        },
+                                        {
+                                            "execution": "anyElement",
+                                            "textAlign": "left",
+                                            "superView": "100001",
+                                            "textColor": "#333333",
+                                            "layer": "3",
+                                            "marginLeft": {
+                                                "layout": "left",
+                                                "reference": "110001",
+                                                "size": "10"
+                                            },
+                                            "uid": "170001",
+                                            "bgColor": "#00000000",
+                                            "controlType": "anyElement",
+                                            "name": "下载要素",
+                                            "width": {
+                                                "layout": "width",
+                                                "reference": "110001",
+                                                "size": "80%"
+                                            },
+                                            "fontSize": 12,
+                                            "id": "170001",
+                                            "marginTop": {
+                                                "layout": "top",
+                                                "reference": "110001",
+                                                "size": "10"
+                                            },
+                                            "bindEvent": "click"
+                                        }
+                                    ],
+                                    "schemeId": "25"
+                                },
+                                "report": {
+
+                                }
+                            },
+                            "ext": {
+
+                            },
+                            "id": "111997_112053"
+                        }
+                    },
+                    "price": 4200,
+                    "purl": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&eventCode=600&customId=ssp&eventTime=__TS__&at=__AT__&price=__PRICE__",
+                    "trackId": 1833761072652832800
+                }
+            ],
+            "ext": {
+                "dspId": "6666"
+            },
+            "seat": "6666"
+        },
+        {
+            "bid": [
+                {
+                    "exp": 900000,
+                    "ext": {
+                        "dspId": "6666"
+                    },
+                    "id": "0",
+                    "lurl": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendCallBackLog?reqId=D6CE9726-48F-268-120-4182FDE4640&eventCode=601&customId=ssp&eventTime=__TS__&at=__AT__&price=__PRICE__",
+                    "media": {
+                        "ad": {
+
+                            "cattax": 2,
+                            "display": {
+                                "ctype": 3,
+                                "event": [
+                                    {
+                                        "method": 0,
+                                        "type": 501,
+                                        "url": "http://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072652832768&eventCode=501&customId=dsp&ts=1726037684010&campaignId=330176&orderId=112053&orderParentId=111997&creativeId=504128&creativeParentId=504081&materialId=2071&custom=null&sdkUId=09B55506-D8B-C77-4B3-752E45A8832"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 502,
+                                        "url": "http://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072652832768&eventCode=502&customId=dsp&campaignId=330176&orderId=112053&orderParentId=111997&creativeId=504128&creativeParentId=504081&materialId=2071&custom=null&sdkUId=09B55506-D8B-C77-4B3-752E45A8832&requestuuid=__REQUESTUUID__&src_up_y=__SRC_UP_Y__&mat_down_y=__MAT_DOWN_Y__&mat_down_x=__MAT_DOWN_X__&up_ts=__UP_TS__&src_down_y=__SRC_DOWN_Y__&src_down_x=__SRC_DOWN_X__&action=__ACTION__&adx=__ADX__&ady=__ADY__&src_up_x=__SRC_UP_X__&down_ts=__DOWN_TS__&mat_up_x=__MAT_UP_X__&interactive=__INTERACTIVE__&mat_up_y=__MAT_UP_Y__&ts=1726037684010"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 520,
+                                        "url": "http://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072652832768&customId=dsp&eventCode=520&campaignId=330176&orderId=112053&orderParentId=111997&creativeId=504128&creativeParentId=504081&materialId=2071&custom=null&sdkUId=09B55506-D8B-C77-4B3-752E45A8832"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 521,
+                                        "url": "http://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072652832768&customId=dsp&eventCode=521&campaignId=330176&orderId=112053&orderParentId=111997&creativeId=504128&creativeParentId=504081&materialId=2071&custom=null&sdkUId=09B55506-D8B-C77-4B3-752E45A8832"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 522,
+                                        "url": "http://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072652832768&customId=dsp&eventCode=522&campaignId=330176&orderId=112053&orderParentId=111997&creativeId=504128&creativeParentId=504081&materialId=2071&custom=null&sdkUId=09B55506-D8B-C77-4B3-752E45A8832"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 523,
+                                        "url": "http://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072652832768&customId=dsp&eventCode=523&campaignId=330176&orderId=112053&orderParentId=111997&creativeId=504128&creativeParentId=504081&materialId=2071&custom=null&sdkUId=09B55506-D8B-C77-4B3-752E45A8832"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 524,
+                                        "url": "http://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072652832768&customId=dsp&eventCode=524&campaignId=330176&orderId=112053&orderParentId=111997&creativeId=504128&creativeParentId=504081&materialId=2071&custom=null&sdkUId=09B55506-D8B-C77-4B3-752E45A8832"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 501,
+                                        "url": "http://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072673804288&eventCode=501&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 502,
+                                        "url": "http://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072673804288&eventCode=502&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&requestuuid=__REQUESTUUID__&src_up_y=__SRC_UP_Y__&mat_down_y=__MAT_DOWN_Y__&mat_down_x=__MAT_DOWN_X__&up_ts=__UP_TS__&src_down_y=__SRC_DOWN_Y__&src_down_x=__SRC_DOWN_X__&action=__ACTION__&adx=__ADX__&ady=__ADY__&src_up_x=__SRC_UP_X__&down_ts=__DOWN_TS__&mat_up_x=__MAT_UP_X__&interactive=__INTERACTIVE__&mat_up_y=__MAT_UP_Y__&ts=__TS__"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 520,
+                                        "url": "http://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072673804288&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&eventCode=520&buyerSpaceId=13836&buyerId=6666&strategyId=157227&spaceId=15296"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 521,
+                                        "url": "http://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072673804288&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&eventCode=521&buyerSpaceId=13836&buyerId=6666&strategyId=157227&spaceId=15296"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 522,
+                                        "url": "http://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072673804288&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&eventCode=522&buyerSpaceId=13836&buyerId=6666&strategyId=157227&spaceId=15296"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 523,
+                                        "url": "http://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072673804288&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&eventCode=523&buyerSpaceId=13836&buyerId=6666&strategyId=157227&spaceId=15296"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 524,
+                                        "url": "http://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072673804288&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&eventCode=524&buyerSpaceId=13836&buyerId=6666&strategyId=157227&spaceId=15296"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 501,
+                                        "url": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072719941632&eventCode=501&customId=ssp&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&bidPrice=4200.0&testType=1"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 502,
+                                        "url": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072719941632&eventCode=502&customId=ssp&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 530,
+                                        "url": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072719941632&eventCode=530&customId=ssp&spaceId=15295&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 520,
+                                        "url": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072719941632&customId=ssp&spaceId=15295&eventCode=520&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 521,
+                                        "url": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072719941632&customId=ssp&spaceId=15295&eventCode=521&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 522,
+                                        "url": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072719941632&customId=ssp&spaceId=15295&eventCode=522&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 523,
+                                        "url": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072719941632&customId=ssp&spaceId=15295&eventCode=523&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                                    },
+                                    {
+                                        "method": 0,
+                                        "type": 524,
+                                        "url": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&trackId=1833761072719941632&customId=ssp&spaceId=15295&eventCode=524&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                                    }
+                                ],
+                                "ext": {
+                                    "cmd5": "41B0AC9C33DF5419"
+                                },
+                                "id": "509B45A041B0AC9C33DF5419FCB2F438",
+                                "mime": "image/jpeg",
+                                "native": {
+                                    "asset": [
+                                        {
+                                            "id": "1001",
+                                            "image": {
+                                                "h": 1280,
+                                                "type": 3,
+                                                "url": "https://ww3.sinaimg.cn/mw690/008rCYyTly1hsohnuyd8uj32d235c1ky.jpg",
+                                                "w": 720
+                                            }
+                                        },
+                                        {
+                                            "id": "10011",
+                                            "req": 1,
+                                            "video": {
+                                                "url": "https://adhub-assc-file.oss-cn-beijing.aliyuncs.com/83627c5cfea69ed2188452a3e2258de8.mp4",
+                                                "w": "1080",
+                                                "h": "1920",
+                                                "videoDuration": 12000
+                                            }
+                                        }
+                                    ],
+                                    "dwinfo": {
+                                        "bundle": "com.youjia",
+                                        "developer": "youjia",
+                                        "iconurl": "https://ww3.sinaimg.cn/mw690/008rCYyTly1hsohnuyd8uj32d235c1ky.jpg",
+                                        "name": "优加测试应用-Android",
+                                        "permissionUrl": "http://dsp.adn-plus.com.cn/#/product/dsp/publisher/property/app/create",
+                                        "policy": "http://dsp.adn-plus.com.cn/#/product/dsp/publisher/property/app/create",
+                                        "storeUrl": "http://dsp.adn-plus.com.cn/#/product/dsp/publisher/property/app/create",
+                                        "version": "1.0.0"
+                                    },
+                                    "interactionId": "157234",
+                                    "link": {
+                                        "interact_type": 0,
+                                        "url": "https://render.alipay.com/p/s/i/?scheme=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FsceneCode%3DKF_DYW_KA%26appId%3D20002097%26waitouChInfo%3DHK257835%26spmAB%3Da2609.b103561%26partnerId%3Dcpalhguangtuiapkdef457%26templateId%3DADUniversalGuide_BenefitGuide2%26autoMode%3Dtrue%26spmBizCode%3Dgrowth%26shareUserId%3D2088231746029491%26benefit%3DHK257835%26scene%3DBenefitGuide2",
+                                        "urldw": "http://dsp.adn-plus.com.cn/#/product/dsp/publisher/property/app/create",
+                                        "urlfb": "alipays://platformapi/startapp?sceneCode=KF_DYW_KA&appId=20002097&waitouChInfo=HK257835&spmAB=a2609.b103561&partnerId=cpalhguangtuiapkdef457&templateId=ADUniversalGuide_BenefitGuide2&autoMode=true&spmBizCode=growth&shareUserId=2088231746029491&benefit=HK257835&scene=BenefitGuide2"
+                                    },
+                                    "render": [
+
+                                    ],
+                                    "renderId": "21",
+                                    "scheme": [
+                                        {
+                                            "execution": "click",
+                                            "superView": "none",
+                                            "layer": "1",
+                                            "marginLeft": {
+                                                "layout": "left",
+                                                "reference": "super",
+                                                "size": "0"
+                                            },
+                                            "marginRight": {
+                                                "layout": "right",
+                                                "reference": "super",
+                                                "size": "0"
+                                            },
+                                            "uid": "100001",
+                                            "bgColor": "#FFFFFF",
+                                            "controlType": "view",
+                                            "name": "白色背景图",
+                                            "marginBottom": {
+                                                "layout": "bottom",
+                                                "reference": "super",
+                                                "size": "0"
+                                            },
+                                            "id": "100001",
+                                            "marginTop": {
+                                                "layout": "top",
+                                                "reference": "super",
+                                                "size": "0"
+                                            },
+                                            "bindEvent": "click"
+                                        },
+                                        {
+                                            "uid": "1000011",
+                                            "layer": 1,
+                                            "marginTop": {
+                                                "size": "0",
+                                                "reference": "super",
+                                                "layout": "top"
+                                            },
+                                            "marginLeft": {
+                                                "size": "0",
+                                                "reference": "super",
+                                                "layout": "left"
+                                            },
+                                            "marginRight": {
+                                                "size": "0",
+                                                "reference": "super",
+                                                "layout": "right"
+                                            },
+                                            "marginBottom": {
+                                                "size": "0",
+                                                "reference": "super",
+                                                "layout": "bottom"
+                                            },
+                                            "superView": "100001",
+                                            "bgColor": "#00000000",
+                                            "controlType": "video",
+                                            "isBlur": 1,
+                                            "assetId": "10011",
+                                            "replay": 1,
+                                            "imageUrl": "https://cysion-box-1257966290.cos.ap-beijing.myqcloud.com/img/540%2A960/videoframe_0.png"
+                                        },
+                                        {
+                                            "superView": "100001",
+                                            "layer": "1",
+                                            "marginLeft": {
+                                                "layout": "left",
+                                                "reference": "super",
+                                                "size": "0"
+                                            },
+                                            "marginRight": {
+                                                "layout": "right",
+                                                "reference": "super",
+                                                "size": "0"
+                                            },
+                                            "isBlur": 1,
+                                            "uid": "110001",
+                                            "bgColor": "#00000000",
+                                            "controlType": "image",
+                                            "maxHeight": "60%",
+                                            "assetId": "1001",
+                                            "name": "原生主素材",
+                                            "marginBottom": {
+                                                "layout": "bottom",
+                                                "reference": "super",
+                                                "size": "0"
+                                            },
+                                            "id": "110001",
+                                            "marginTop": {
+                                                "layout": "top",
+                                                "reference": "super",
+                                                "size": "0"
+                                            }
+                                        },
+                                        {
+                                            "execution": "close",
+                                            "textAlign": "center",
+                                            "superView": "100001",
+                                            "title": "关闭",
+                                            "textColor": "#FFFFFF",
+                                            "countDownTime": 0,
+                                            "layer": "10",
+                                            "marginRight": {
+                                                "layout": "right",
+                                                "reference": "super",
+                                                "size": "-10"
+                                            },
+                                            "uid": "120001",
+                                            "bgColor": "#66333333",
+                                            "controlType": "countdownClose",
+                                            "borderRadius": "50%",
+                                            "name": "原生关闭按钮",
+                                            "width": {
+                                                "layout": "width",
+                                                "reference": "own",
+                                                "size": "60"
+                                            },
+                                            "fontSize": 12,
+                                            "id": "120001",
+                                            "marginTop": {
+                                                "layout": "top",
+                                                "reference": "super",
+                                                "size": "10"
+                                            },
+                                            "bindEvent": "click",
+                                            "autoClose": 0,
+                                            "height": {
+                                                "layout": "height",
+                                                "reference": "own",
+                                                "size": "22"
+                                            }
+                                        },
+                                        {
+                                            "textAlign": "right",
+                                            "superView": "100001",
+                                            "textColor": "#000000",
+                                            "layer": "2",
+                                            "marginRight": {
+                                                "layout": "right",
+                                                "reference": "100001",
+                                                "size": "-15"
+                                            },
+                                            "uid": "130001",
+                                            "bgColor": "#00000000",
+                                            "controlType": "tag",
+                                            "name": "原生素材标签",
+                                            "width": {
+                                                "layout": "width",
+                                                "reference": "super",
+                                                "size": "50%"
+                                            },
+                                            "marginBottom": {
+                                                "layout": "bottom",
+                                                "reference": "100001",
+                                                "size": "-15"
+                                            },
+                                            "fontSize": 9,
+                                            "id": "130001",
+                                            "height": {
+                                                "layout": "height",
+                                                "reference": "own",
+                                                "size": "15"
+                                            }
+                                        },
+                                        {
+                                            "textAlign": "center",
+                                            "superView": "100001",
+                                            "title": "广告",
+                                            "textColor": "#DDDDDD",
+                                            "layer": "2",
+                                            "marginLeft": {
+                                                "layout": "left",
+                                                "reference": "100001",
+                                                "size": "15"
+                                            },
+                                            "uid": "140001",
+                                            "bgColor": "#66888888",
+                                            "controlType": "logo",
+                                            "borderRadius": 2,
+                                            "name": "原生角标",
+                                            "width": {
+                                                "layout": "width",
+                                                "reference": "own",
+                                                "size": "100"
+                                            },
+                                            "marginBottom": {
+                                                "layout": "bottom",
+                                                "reference": "100001",
+                                                "size": "-15"
+                                            },
+                                            "fontSize": 9,
+                                            "id": "140001",
+                                            "height": {
+                                                "layout": "height",
+                                                "reference": "own",
+                                                "size": "15"
+                                            }
+                                        },
+                                        {
+                                            "execution": "anyElement",
+                                            "textAlign": "left",
+                                            "superView": "100001",
+                                            "textColor": "#333333",
+                                            "layer": "3",
+                                            "marginLeft": {
+                                                "layout": "left",
+                                                "reference": "110001",
+                                                "size": "10"
+                                            },
+                                            "uid": "170001",
+                                            "bgColor": "#00000000",
+                                            "controlType": "anyElement",
+                                            "name": "下载要素",
+                                            "width": {
+                                                "layout": "width",
+                                                "reference": "110001",
+                                                "size": "80%"
+                                            },
+                                            "fontSize": 12,
+                                            "id": "170001",
+                                            "marginTop": {
+                                                "layout": "top",
+                                                "reference": "110001",
+                                                "size": "10"
+                                            },
+                                            "bindEvent": "click"
+                                        }
+                                    ],
+                                    "schemeId": "25"
+                                },
+                                "report": {
+
+                                }
+                            },
+                            "ext": {
+
+                            },
+                            "id": "111997_112053"
+                        }
+                    },
+                    "price": 4200,
+                    "purl": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=D6CE9726-48F-268-120-4182FDE4640&eventCode=600&customId=ssp&eventTime=__TS__&at=__AT__&price=__PRICE__",
+                    "trackId": 1833761072652832800
+                }
+            ],
+            "ext": {
+                "dspId": "6666"
+            },
+            "seat": "6666"
+        }
+    ]
+}
