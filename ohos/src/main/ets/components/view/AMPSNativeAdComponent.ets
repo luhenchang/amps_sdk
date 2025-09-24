@@ -1,13 +1,13 @@
 import { Params } from '@ohos/flutter_ohos/src/main/ets/plugin/platform/PlatformView';
 import { AMPSBuildNativeView, AMPSNativeAdWrapper } from 'biz.beizi.adn';
 import { AdWrapperManager } from '../manager/AdWrapperManager';
-import { OhosPlatformInterstitialView } from './OhosPlatformInterstitialView';
+import { OhosPlatformNativeView } from './OhosPlatformNativeView';
 
 @Component
 export struct AMPSNativeAdComponent {
   @Prop params: Params
   @Prop adId: string
-  @State customView: OhosPlatformInterstitialView = this.params.platformView as OhosPlatformInterstitialView
+  @State customView: OhosPlatformNativeView = this.params.platformView as OhosPlatformNativeView
   @State wrapper: AMPSNativeAdWrapper | undefined = undefined
   @State closeAd: boolean = false
   aboutToAppear(): void {

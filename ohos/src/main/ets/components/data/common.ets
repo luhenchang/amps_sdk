@@ -15,6 +15,7 @@ export class AMPSPlatformViewRegistry {
   static readonly ampsSdkSplashViewId = `${channelDomain}/splash_view_id`;
   static readonly ampsSdkInterstitialViewId = `${channelDomain}/interstitial_view_id`;
   static readonly ampsSdkNativeViewId = `${channelDomain}/native_view_id`;
+  static readonly ampsSdkUnifiedViewId = `${channelDomain}/unified_view_id`;
 }
 
 //初始化交互通道方法名称

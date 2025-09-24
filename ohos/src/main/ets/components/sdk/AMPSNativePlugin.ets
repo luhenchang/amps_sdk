@@ -14,8 +14,7 @@ import {
   AMPSNativeAdListener,
   AMPSNativeAdWrapper,
   AMPSNativeInteractiveListener,
-  AMPSNativeRenderListener,
-  AMPSVideoPlayListener
+  AMPSNativeRenderListener
 } from 'biz.beizi.adn';
 import { AMPSAdSdkMethodNames, AMPSChannels, AMPSNativeCallBackChannelMethod } from '../data/common';
 import { AdOptionsModule } from '../data/AdOptionsModule';
@@ -48,39 +47,31 @@ export class AMPSNativePlugin implements FlutterPlugin, MethodCallHandler {
       }
     }
   }
-  private mVideoPlayerCallBack: AMPSVideoPlayListener = {
-    onVideoReady: () => {
-      console.error("视频准备好了==")
-      //this.sendMessage(AMPSNativeCallBackChannelMethod.onVideoReady,adWrapper.adId)
-    },
-    onVideoPlayStart: () => {
-      console.error("视频准备好了 播放==")
-      //this.sendMessage(AMPSNativeCallBackChannelMethod.onVideoPlayStart,adWrapper.adId)
-    },
-    onVideoPause: () => {
-      console.error("视频准备好了 暂停==")
-      //this.sendMessage(AMPSNativeCallBackChannelMethod.onVideoPause,adWrapper.adId)
-    },
-    onVideoResume: () => {
-      console.error("视频准备好了 激活==")
-      //this.sendMessage(AMPSNativeCallBackChannelMethod.onVideoResume,adWrapper.adId)
-    },
-    onVideoPlayComplete: () => {
-      console.error("视频准备好了 播放完成==")
-      //this.sendMessage(AMPSNativeCallBackChannelMethod.onVideoPlayComplete,adWrapper.adId)
-    },
-    onVideoPlayError: (code, extra) => {
-      console.error("视频准备好了 播放错误==")
-      //let adId = adWrapper.adId
-      //this.sendMessage(AMPSNativeCallBackChannelMethod.onVideoPlayError, {adId, code, extra })
-    }
-
-  };
   private mRenderCallBack: AMPSNativeRenderListener = {
     renderSuccess: (adWrapper: AMPSNativeAdWrapper): void => {
       this.sendMessage(AMPSNativeCallBackChannelMethod.renderSuccess, adWrapper.adId)
       adWrapper.interactCallBack = this.mAdWrapperCallBack;
-      adWrapper.videoPlayCallBack = this.mVideoPlayerCallBack;
+      adWrapper.videoPlayCallBack = {
+        onVideoReady: () => {
+          this.sendMessage(AMPSNativeCallBackChannelMethod.onVideoReady, adWrapper.adId)
+        },
+        onVideoPlayStart: () => {
+          this.sendMessage(AMPSNativeCallBackChannelMethod.onVideoPlayStart, adWrapper.adId)
+        },
+        onVideoPause: () => {
+          this.sendMessage(AMPSNativeCallBackChannelMethod.onVideoPause, adWrapper.adId)
+        },
+        onVideoResume: () => {
+          this.sendMessage(AMPSNativeCallBackChannelMethod.onVideoResume, adWrapper.adId)
+        },
+        onVideoPlayComplete: () => {
+          this.sendMessage(AMPSNativeCallBackChannelMethod.onVideoPlayComplete, adWrapper.adId)
+        },
+        onVideoPlayError: (code, extra) => {
+          let adId = adWrapper.adId
+          this.sendMessage(AMPSNativeCallBackChannelMethod.onVideoPlayError, { adId, code, extra })
+        }
+      };
       //需要缓存到单利。使用完毕之后移除
       AdWrapperManager.getInstance().addAd(adWrapper);
     },

@@ -10,6 +10,7 @@ class AMPSPlatformViewRegistry {
   static const ampsSdkSplashViewId = '$channelDomain/splash_view_id';
   static const ampsSdkInterstitialViewId = '$channelDomain/interstitial_view_id';
   static const ampsSdkNativeViewId = '$channelDomain/native_view_id';
+  static const ampsSdkUnifiedViewId = '$channelDomain/unified_view_id';
 }
 //初始化交互通道方法名称
 class AMPSInitChannelMethod {

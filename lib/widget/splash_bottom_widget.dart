@@ -1,6 +1,4 @@
-abstract class LayoutWidget {
-  Map<String, dynamic> toMap();
-}
+import 'widget_layout.dart';
 
 class SplashBottomWidget extends LayoutWidget {
   final double height;

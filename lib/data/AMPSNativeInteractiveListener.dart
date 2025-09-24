@@ -1,6 +1,4 @@
 //原生和原生自渲染广告相关回调
-import 'dart:ffi';
-
 //原生广告加载回调
 typedef AdLoadCallback = void Function(List<String> adIds);
 typedef AdLoadErrorCallback = void Function(int code, String message);
@@ -41,7 +39,7 @@ class AmpsNativeInteractiveListener {
 }
 
 // 视频相关回调
-typedef VideoPlayerEventCallback = void Function(int adId);
+typedef VideoPlayerEventCallback = void Function(String adId);
 typedef VideoPlayerErrorCallback = void Function(int code, String extra);
 
 class AmpsVideoPlayListener {

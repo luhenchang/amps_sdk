@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'package:amps_sdk_example/NativeUnifiedPage.dart';
 import 'package:amps_sdk_example/widgets/blurred_background.dart';
 import 'package:amps_sdk/amps_sdk_export.dart';
 import 'package:amps_sdk_example/widgets/button_widget.dart';
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
        routes: {
          'splashPage':(context)=>const SplashPage(title: '开屏页面'),
          'InterstitialPage':(context)=> const InterstitialPage(title: '插屏页面'),
-         'NativePage':(context)=> const NativePage(title: '原生页面')
+         'NativePage':(context)=> const NativePage(title: '原生页面'),
+         'NativeUnifiedPage':(context)=> const NativeUnifiedPage(title: '原生自渲染页面')
        },
     );
   }
@@ -187,20 +189,29 @@ class _SplashPageState extends State<SplashPage> {
       alignment: AlignmentDirectional.center,
       children: [
         const BlurredBackground(),
-        ButtonWidget(
-          buttonText: '点击跳转插屏页面',
-          callBack: () {
-            // 使用命名路由跳转
-            Navigator.pushNamed(context, 'InterstitialPage');
-          }
-        ),
-        ButtonWidget(
-            buttonText: '点击跳转原生页面',
-            callBack: () {
-              // 使用命名路由跳转
-              Navigator.pushNamed(context, 'NativePage');
-            }
-        )
+        Column(children: [
+          ButtonWidget(
+              buttonText: '点击跳转插屏页面',
+              callBack: () {
+                // 使用命名路由跳转
+                Navigator.pushNamed(context, 'InterstitialPage');
+              }
+          ),
+          ButtonWidget(
+              buttonText: '点击跳转原生页面',
+              callBack: () {
+                // 使用命名路由跳转
+                Navigator.pushNamed(context, 'NativePage');
+              }
+          ),
+          ButtonWidget(
+              buttonText: '点击跳转自渲染页面',
+              callBack: () {
+                // 使用命名路由跳转
+                Navigator.pushNamed(context, 'NativeUnifiedPage');
+              }
+          )
+        ],)
         //_buildSplashWidget(),
       ],
     ));

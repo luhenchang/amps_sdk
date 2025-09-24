@@ -1,0 +1,413 @@
+{
+  "bidid": "1916773297738567680",
+  "cur": [
+    "CNY"
+  ],
+  "ext": {
+    "updateCfg": true
+  },
+  "id": "1748160C-E78-E1A-DE7-816BADCA9DA",
+  "seatbid": [
+    {
+      "bid": [
+        {
+          "exp": 900000,
+          "ext": {
+            "dspId": "6666"
+          },
+          "id": "0",
+          "lurl": "https://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&eventCode=601&customId=ssp&eventTime=__TS__&at=__AT__&price=__PRICE__",
+          "media": {
+            "ad": {
+              "adType": "3",
+              "cattax": 2,
+              "display": {
+                "ctype": 3,
+                "event": [
+                  {
+                    "method": 0,
+                    "type": 501,
+                    "url": "https://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297717596160&eventCode=501&customId=dsp&ts=1745829340758&campaignId=330176&orderId=150745&orderParentId=111997&creativeId=826136&creativeParentId=826136&materialId=4516&custom=null&sdkUId=BCDCFEE6-ED5-863-7D7-3B6603B28B9"
+                  },
+                  {
+                    "method": 0,
+                    "type": 502,
+                    "url": "https://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297717596160&eventCode=502&customId=dsp&campaignId=330176&orderId=150745&orderParentId=111997&creativeId=826136&creativeParentId=826136&materialId=4516&custom=null&sdkUId=BCDCFEE6-ED5-863-7D7-3B6603B28B9&requestuuid=__REQUESTUUID__&src_up_y=__SRC_UP_Y__&mat_down_y=__MAT_DOWN_Y__&mat_down_x=__MAT_DOWN_X__&up_ts=__UP_TS__&src_down_y=__SRC_DOWN_Y__&src_down_x=__SRC_DOWN_X__&action=__ACTION__&adx=__ADX__&ady=__ADY__&src_up_x=__SRC_UP_X__&down_ts=__DOWN_TS__&mat_up_x=__MAT_UP_X__&interactive=__INTERACTIVE__&mat_up_y=__MAT_UP_Y__&ts=1745829340758"
+                  },
+                  {
+                    "method": 0,
+                    "type": 520,
+                    "url": "https://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297717596160&customId=dsp&eventCode=520&campaignId=330176&orderId=150745&orderParentId=111997&creativeId=826136&creativeParentId=826136&materialId=4516&custom=null&sdkUId=BCDCFEE6-ED5-863-7D7-3B6603B28B9"
+                  },
+                  {
+                    "method": 0,
+                    "type": 521,
+                    "url": "https://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297717596160&customId=dsp&eventCode=521&campaignId=330176&orderId=150745&orderParentId=111997&creativeId=826136&creativeParentId=826136&materialId=4516&custom=null&sdkUId=BCDCFEE6-ED5-863-7D7-3B6603B28B9"
+                  },
+                  {
+                    "method": 0,
+                    "type": 522,
+                    "url": "https://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297717596160&customId=dsp&eventCode=522&campaignId=330176&orderId=150745&orderParentId=111997&creativeId=826136&creativeParentId=826136&materialId=4516&custom=null&sdkUId=BCDCFEE6-ED5-863-7D7-3B6603B28B9"
+                  },
+                  {
+                    "method": 0,
+                    "type": 523,
+                    "url": "https://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297717596160&customId=dsp&eventCode=523&campaignId=330176&orderId=150745&orderParentId=111997&creativeId=826136&creativeParentId=826136&materialId=4516&custom=null&sdkUId=BCDCFEE6-ED5-863-7D7-3B6603B28B9"
+                  },
+                  {
+                    "method": 0,
+                    "type": 524,
+                    "url": "https://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297717596160&customId=dsp&eventCode=524&campaignId=330176&orderId=150745&orderParentId=111997&creativeId=826136&creativeParentId=826136&materialId=4516&custom=null&sdkUId=BCDCFEE6-ED5-863-7D7-3B6603B28B9"
+                  },
+                  {
+                    "method": 0,
+                    "type": 501,
+                    "url": "https://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297738567681&eventCode=501&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__"
+                  },
+                  {
+                    "method": 0,
+                    "type": 502,
+                    "url": "https://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297738567681&eventCode=502&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&requestuuid=__REQUESTUUID__&src_up_y=__SRC_UP_Y__&mat_down_y=__MAT_DOWN_Y__&mat_down_x=__MAT_DOWN_X__&up_ts=__UP_TS__&src_down_y=__SRC_DOWN_Y__&src_down_x=__SRC_DOWN_X__&action=__ACTION__&adx=__ADX__&ady=__ADY__&src_up_x=__SRC_UP_X__&down_ts=__DOWN_TS__&mat_up_x=__MAT_UP_X__&interactive=__INTERACTIVE__&mat_up_y=__MAT_UP_Y__&ts=__TS__"
+                  },
+                  {
+                    "method": 0,
+                    "type": 520,
+                    "url": "https://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297738567681&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&eventCode=520&buyerSpaceId=56806&buyerId=6666&strategyId=1006539&spaceId=118008"
+                  },
+                  {
+                    "method": 0,
+                    "type": 521,
+                    "url": "https://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297738567681&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&eventCode=521&buyerSpaceId=56806&buyerId=6666&strategyId=1006539&spaceId=118008"
+                  },
+                  {
+                    "method": 0,
+                    "type": 522,
+                    "url": "https://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297738567681&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&eventCode=522&buyerSpaceId=56806&buyerId=6666&strategyId=1006539&spaceId=118008"
+                  },
+                  {
+                    "method": 0,
+                    "type": 523,
+                    "url": "https://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297738567681&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&eventCode=523&buyerSpaceId=56806&buyerId=6666&strategyId=1006539&spaceId=118008"
+                  },
+                  {
+                    "method": 0,
+                    "type": 524,
+                    "url": "https://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297738567681&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&eventCode=524&buyerSpaceId=56806&buyerId=6666&strategyId=1006539&spaceId=118008"
+                  },
+                  {
+                    "method": 0,
+                    "type": 501,
+                    "url": "https://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297755344896&eventCode=501&customId=ssp&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&bidPrice=0.0&testType=1"
+                  },
+                  {
+                    "method": 0,
+                    "type": 502,
+                    "url": "https://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297755344896&eventCode=502&customId=ssp&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                  },
+                  {
+                    "method": 0,
+                    "type": 530,
+                    "url": "https://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297755344896&eventCode=530&customId=ssp&spaceId=118007&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                  },
+                  {
+                    "method": 0,
+                    "type": 520,
+                    "url": "https://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297755344896&customId=ssp&spaceId=118007&eventCode=520&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                  },
+                  {
+                    "method": 0,
+                    "type": 521,
+                    "url": "https://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297755344896&customId=ssp&spaceId=118007&eventCode=521&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                  },
+                  {
+                    "method": 0,
+                    "type": 522,
+                    "url": "https://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297755344896&customId=ssp&spaceId=118007&eventCode=522&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                  },
+                  {
+                    "method": 0,
+                    "type": 523,
+                    "url": "https://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297755344896&customId=ssp&spaceId=118007&eventCode=523&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                  },
+                  {
+                    "method": 0,
+                    "type": 524,
+                    "url": "https://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297755344896&customId=ssp&spaceId=118007&eventCode=524&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                  }
+                ],
+                "ext": {
+                  "cmd5": "5A9D3B747E99DC97"
+                },
+                "id": "AD56B7045A9D3B747E99DC971D09D692",
+                "mime": "image/jpeg",
+                "native": {
+                  "asset": [
+                    {
+                      "id": "3001",
+                      "title": {
+                        "text": "晚餐优惠卡",
+                        "type": 1
+                      }
+                    },
+                    {
+                      "id": "2001",
+                      "req": 1,
+                      "video": {
+                        "url": "https://adhub-assc-file.oss-cn-beijing.aliyuncs.com/83627c5cfea69ed2188452a3e2258de8.mp4",
+                        "w": "1080",
+                        "h": "1920"
+                      }
+                    },
+                    {
+                      "id": "4001",
+                      "title": {
+                        "text": "格林豪泰-晚餐优惠卡，优惠价格8折情人节限定",
+                        "type": 1
+                      }
+                    },
+                    {
+                      "id": "1001",
+                      "image": {
+                        "h": 720,
+                        "type": 3,
+                        "url": "https://resource.ad-scope.com.cn/qt7i9QnowsxpiU5wvixKq..jpg",
+                        "w": 1280
+                      }
+                    }
+                  ],
+                  "dwinfo": {
+                    "bundle": "com.youku.phone",
+                    "developer": "youjia",
+                    "functionDesc": "https://dsp.adn-plus.com.cn/#/product/dsp/publisher/property/app/create",
+                    "iconurl": "https://resource.ad-scope.com.cn/bJWGj9P5KTQLvWKERUp89..png",
+                    "name": "优加测试应用-Android",
+                    "permissionUrl": "https://dsp.adn-plus.com.cn/#/product/dsp/publisher/property/app/create",
+                    "policyurl": "https://dsp.adn-plus.com.cn/#/product/dsp/publisher/property/app/create",
+                    "storeUrl": "https://youku-cpms-cdn.youku.com/apk/19babfbcea8e1838/latest.apk?spm=a2hcb.25507605.product.1&file=latest.apk",
+                    "version": "11.1.01"
+                  },
+                  "link": {
+                    "interact_type": 0,
+                    "url": "https://render.alipay.com/p/s/i/?scheme=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FappId%3D68687805%26url%3Dhttps%253A%252F%252Frender.alipay.com%252Fp%252Fyuyan%252F180020380000000023%252Fpoint-sign-in.html%253FsceneCode%253DKF_DYW_KA%2526wishPoolSource%253Dxiacu_waitou%2526partnerId%253Dcpalhshunfeiapkdef41%2526shareUserId%253D2088901940515969%2526benefit%253DHK172997%2526chInfo%253Dxiacu_waitou",
+                    "urldw": "https://youku-cpms-cdn.youku.com/apk/19babfbcea8e1838/latest.apk?spm=a2hcb.25507605.product.1&file=latest.apk",
+                    "urlfb": "alipays://platformapi/startapp?appId=68687805&spmAB=a159.b25648&spmBizCode=Membership&url=https%3A%2F%2Frender.alipay.com%2Fp%2Fyuyan%2F180020380000000023%2Fpoint-sign-in.html%3FsceneCode%3DKF_DYW_KA%26wishPoolSource%3Dxiacu_waitou%26partnerId%3Dcpalhshunfeiapkdef41%26shareUserId%3D2088901940515969%26benefit%3DHK172997%26chInfo%3Dxiacu_waitou&jsmb=BenefitGuide2"
+                  },
+                  "render": [],
+                  "renderId": "native-255",
+                  "scheme": []
+                },
+                "report": {}
+              },
+              "ext": {},
+              "id": "111997_150745",
+              "renderType": 1
+            }
+          },
+          "price": 0,
+          "purl": "https://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&eventCode=600&customId=ssp&eventTime=__TS__&at=__AT__&price=__PRICE__",
+          "trackId": 1916773297717596200
+        }
+      ],
+      "ext": {
+        "dspId": "6666"
+      },
+      "seat": "6666"
+    },
+    {
+      "bid": [
+        {
+          "exp": 900000,
+          "ext": {
+            "dspId": "6666"
+          },
+          "id": "0",
+          "lurl": "https://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&eventCode=601&customId=ssp&eventTime=__TS__&at=__AT__&price=__PRICE__",
+          "media": {
+            "ad": {
+              "adType": "3",
+              "cattax": 2,
+              "display": {
+                "ctype": 3,
+                "event": [
+                  {
+                    "method": 0,
+                    "type": 501,
+                    "url": "https://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297717596160&eventCode=501&customId=dsp&ts=1745829340758&campaignId=330176&orderId=150745&orderParentId=111997&creativeId=826136&creativeParentId=826136&materialId=4516&custom=null&sdkUId=BCDCFEE6-ED5-863-7D7-3B6603B28B9"
+                  },
+                  {
+                    "method": 0,
+                    "type": 502,
+                    "url": "https://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297717596160&eventCode=502&customId=dsp&campaignId=330176&orderId=150745&orderParentId=111997&creativeId=826136&creativeParentId=826136&materialId=4516&custom=null&sdkUId=BCDCFEE6-ED5-863-7D7-3B6603B28B9&requestuuid=__REQUESTUUID__&src_up_y=__SRC_UP_Y__&mat_down_y=__MAT_DOWN_Y__&mat_down_x=__MAT_DOWN_X__&up_ts=__UP_TS__&src_down_y=__SRC_DOWN_Y__&src_down_x=__SRC_DOWN_X__&action=__ACTION__&adx=__ADX__&ady=__ADY__&src_up_x=__SRC_UP_X__&down_ts=__DOWN_TS__&mat_up_x=__MAT_UP_X__&interactive=__INTERACTIVE__&mat_up_y=__MAT_UP_Y__&ts=1745829340758"
+                  },
+                  {
+                    "method": 0,
+                    "type": 520,
+                    "url": "https://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297717596160&customId=dsp&eventCode=520&campaignId=330176&orderId=150745&orderParentId=111997&creativeId=826136&creativeParentId=826136&materialId=4516&custom=null&sdkUId=BCDCFEE6-ED5-863-7D7-3B6603B28B9"
+                  },
+                  {
+                    "method": 0,
+                    "type": 521,
+                    "url": "https://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297717596160&customId=dsp&eventCode=521&campaignId=330176&orderId=150745&orderParentId=111997&creativeId=826136&creativeParentId=826136&materialId=4516&custom=null&sdkUId=BCDCFEE6-ED5-863-7D7-3B6603B28B9"
+                  },
+                  {
+                    "method": 0,
+                    "type": 522,
+                    "url": "https://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297717596160&customId=dsp&eventCode=522&campaignId=330176&orderId=150745&orderParentId=111997&creativeId=826136&creativeParentId=826136&materialId=4516&custom=null&sdkUId=BCDCFEE6-ED5-863-7D7-3B6603B28B9"
+                  },
+                  {
+                    "method": 0,
+                    "type": 523,
+                    "url": "https://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297717596160&customId=dsp&eventCode=523&campaignId=330176&orderId=150745&orderParentId=111997&creativeId=826136&creativeParentId=826136&materialId=4516&custom=null&sdkUId=BCDCFEE6-ED5-863-7D7-3B6603B28B9"
+                  },
+                  {
+                    "method": 0,
+                    "type": 524,
+                    "url": "https://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297717596160&customId=dsp&eventCode=524&campaignId=330176&orderId=150745&orderParentId=111997&creativeId=826136&creativeParentId=826136&materialId=4516&custom=null&sdkUId=BCDCFEE6-ED5-863-7D7-3B6603B28B9"
+                  },
+                  {
+                    "method": 0,
+                    "type": 501,
+                    "url": "https://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297738567681&eventCode=501&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__"
+                  },
+                  {
+                    "method": 0,
+                    "type": 502,
+                    "url": "https://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297738567681&eventCode=502&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&requestuuid=__REQUESTUUID__&src_up_y=__SRC_UP_Y__&mat_down_y=__MAT_DOWN_Y__&mat_down_x=__MAT_DOWN_X__&up_ts=__UP_TS__&src_down_y=__SRC_DOWN_Y__&src_down_x=__SRC_DOWN_X__&action=__ACTION__&adx=__ADX__&ady=__ADY__&src_up_x=__SRC_UP_X__&down_ts=__DOWN_TS__&mat_up_x=__MAT_UP_X__&interactive=__INTERACTIVE__&mat_up_y=__MAT_UP_Y__&ts=__TS__"
+                  },
+                  {
+                    "method": 0,
+                    "type": 520,
+                    "url": "https://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297738567681&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&eventCode=520&buyerSpaceId=56806&buyerId=6666&strategyId=1006539&spaceId=118008"
+                  },
+                  {
+                    "method": 0,
+                    "type": 521,
+                    "url": "https://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297738567681&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&eventCode=521&buyerSpaceId=56806&buyerId=6666&strategyId=1006539&spaceId=118008"
+                  },
+                  {
+                    "method": 0,
+                    "type": 522,
+                    "url": "https://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297738567681&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&eventCode=522&buyerSpaceId=56806&buyerId=6666&strategyId=1006539&spaceId=118008"
+                  },
+                  {
+                    "method": 0,
+                    "type": 523,
+                    "url": "https://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297738567681&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&eventCode=523&buyerSpaceId=56806&buyerId=6666&strategyId=1006539&spaceId=118008"
+                  },
+                  {
+                    "method": 0,
+                    "type": 524,
+                    "url": "https://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297738567681&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&eventCode=524&buyerSpaceId=56806&buyerId=6666&strategyId=1006539&spaceId=118008"
+                  },
+                  {
+                    "method": 0,
+                    "type": 501,
+                    "url": "https://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297755344896&eventCode=501&customId=ssp&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&bidPrice=0.0&testType=1"
+                  },
+                  {
+                    "method": 0,
+                    "type": 502,
+                    "url": "https://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297755344896&eventCode=502&customId=ssp&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                  },
+                  {
+                    "method": 0,
+                    "type": 530,
+                    "url": "https://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297755344896&eventCode=530&customId=ssp&spaceId=118007&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                  },
+                  {
+                    "method": 0,
+                    "type": 520,
+                    "url": "https://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297755344896&customId=ssp&spaceId=118007&eventCode=520&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                  },
+                  {
+                    "method": 0,
+                    "type": 521,
+                    "url": "https://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297755344896&customId=ssp&spaceId=118007&eventCode=521&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                  },
+                  {
+                    "method": 0,
+                    "type": 522,
+                    "url": "https://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297755344896&customId=ssp&spaceId=118007&eventCode=522&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                  },
+                  {
+                    "method": 0,
+                    "type": 523,
+                    "url": "https://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297755344896&customId=ssp&spaceId=118007&eventCode=523&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                  },
+                  {
+                    "method": 0,
+                    "type": 524,
+                    "url": "https://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&trackId=1916773297755344896&customId=ssp&spaceId=118007&eventCode=524&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                  }
+                ],
+                "ext": {
+                  "cmd5": "5A9D3B747E99DC97"
+                },
+                "id": "AD56B7045A9D3B747E99DC971D09D692",
+                "mime": "image/jpeg",
+                "native": {
+                  "asset": [
+                    {
+                      "id": "3001",
+                      "title": {
+                        "text": "晚餐优惠卡",
+                        "type": 1
+                      }
+                    },
+                    {
+                      "id": "4001",
+                      "title": {
+                        "text": "格林豪泰-晚餐优惠卡，优惠价格8折情人节限定",
+                        "type": 1
+                      }
+                    },
+                    {
+                      "id": "1001",
+                      "image": {
+                        "h": 720,
+                        "type": 3,
+                        "url": "https://resource.ad-scope.com.cn/qt7i9QnowsxpiU5wvixKq..jpg",
+                        "w": 1280
+                      }
+                    }
+                  ],
+                  "dwinfo": {
+                    "bundle": "com.youku.phone",
+                    "developer": "youjia",
+                    "functionDesc": "https://dsp.adn-plus.com.cn/#/product/dsp/publisher/property/app/create",
+                    "iconurl": "https://resource.ad-scope.com.cn/bJWGj9P5KTQLvWKERUp89..png",
+                    "name": "优加测试应用-Android",
+                    "permissionUrl": "https://dsp.adn-plus.com.cn/#/product/dsp/publisher/property/app/create",
+                    "policyurl": "https://dsp.adn-plus.com.cn/#/product/dsp/publisher/property/app/create",
+                    "storeUrl": "https://youku-cpms-cdn.youku.com/apk/19babfbcea8e1838/latest.apk?spm=a2hcb.25507605.product.1&file=latest.apk",
+                    "version": "11.1.01"
+                  },
+                  "link": {
+                    "interact_type": 0,
+                    "url": "https://render.alipay.com/p/s/i/?scheme=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FappId%3D68687805%26url%3Dhttps%253A%252F%252Frender.alipay.com%252Fp%252Fyuyan%252F180020380000000023%252Fpoint-sign-in.html%253FsceneCode%253DKF_DYW_KA%2526wishPoolSource%253Dxiacu_waitou%2526partnerId%253Dcpalhshunfeiapkdef41%2526shareUserId%253D2088901940515969%2526benefit%253DHK172997%2526chInfo%253Dxiacu_waitou",
+                    "urldw": "https://youku-cpms-cdn.youku.com/apk/19babfbcea8e1838/latest.apk?spm=a2hcb.25507605.product.1&file=latest.apk",
+                    "urlfb": "alipays://platformapi/startapp?appId=68687805&spmAB=a159.b25648&spmBizCode=Membership&url=https%3A%2F%2Frender.alipay.com%2Fp%2Fyuyan%2F180020380000000023%2Fpoint-sign-in.html%3FsceneCode%3DKF_DYW_KA%26wishPoolSource%3Dxiacu_waitou%26partnerId%3Dcpalhshunfeiapkdef41%26shareUserId%3D2088901940515969%26benefit%3DHK172997%26chInfo%3Dxiacu_waitou&jsmb=BenefitGuide2"
+                  },
+                  "render": [],
+                  "renderId": "native-255",
+                  "scheme": []
+                },
+                "report": {}
+              },
+              "ext": {},
+              "id": "111997_150745",
+              "renderType": 1
+            }
+          },
+          "price": 0,
+          "purl": "https://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=1748160C-E78-E1A-DE7-816BADCA9DA&eventCode=600&customId=ssp&eventTime=__TS__&at=__AT__&price=__PRICE__",
+          "trackId": 1916773297717596200
+        }
+      ],
+      "ext": {
+        "dspId": "6666"
+      },
+      "seat": "6666"
+    }
+  ]
+}

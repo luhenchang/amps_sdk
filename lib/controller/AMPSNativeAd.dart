@@ -1,6 +1,4 @@
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-
 import '../common.dart';
 import '../data/AMPSNativeInteractiveListener.dart';
 import '../data/ampsAd.dart';
@@ -40,7 +38,6 @@ class AMPSNativeAd {
     _channel = const MethodChannel(AMPSChannels.ampsSdkNativeAdLoad);
     _channel?.setMethodCallHandler(
       (call) async {
-        //debugPrint("methodName=${call.method}");
         switch (call.method) {
           case AMPSNativeCallBackChannelMethod.loadOk:
             final List<String>? receivedList = call.arguments?.cast<String>();
