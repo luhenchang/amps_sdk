@@ -1,5 +1,4 @@
 import 'package:amps_sdk/amps_sdk_export.dart';
-import 'package:amps_sdk/data/ampsAd.dart';
 import 'package:flutter/material.dart';
 class InterstitialPage extends StatefulWidget {
   const InterstitialPage({super.key, required this.title});
@@ -19,6 +18,9 @@ class _SplashPageState extends State<InterstitialPage> {
     super.initState();
     _adCallBack = AdCallBack(
         onRenderOk: () {
+          setState(() {
+            visibleAd = true;
+          });
           //_interAd?.showAd();
           debugPrint("ad load onRenderOk");
         },
@@ -26,6 +28,9 @@ class _SplashPageState extends State<InterstitialPage> {
           debugPrint("ad load failure=$code;$msg");
         },
         onAdClicked: () {
+          setState(() {
+            visibleAd = false;
+          });
           debugPrint("ad load onAdClicked");
         },
         onAdExposure: () {
@@ -66,6 +71,11 @@ class _SplashPageState extends State<InterstitialPage> {
     _interAd = AMPSInterstitialAd(config: options, mCallBack: _adCallBack);
   }
   @override
+  void dispose() {
+    debugPrint("差评调用来了11");
+    super.dispose();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -77,6 +87,7 @@ class _SplashPageState extends State<InterstitialPage> {
             child: const Text('点击展示插屏'),
             onPressed: () {
               // 返回上一页
+              debugPrint("差评调用来了11");
               _interAd?.load();
             },
           ),

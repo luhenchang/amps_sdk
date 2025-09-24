@@ -1,0 +1,521 @@
+{
+  "bidid": "1833755309431672832",
+  "cur": [
+    "CNY"
+  ],
+  "ext": {
+    "updateCfg": true
+  },
+  "id": "02749B13-539-E3C-879-59DC9D3E8D5",
+  "seatbid": [
+    {
+      "bid": [
+        {
+          "exp": 900000,
+          "ext": {
+            "dspId": "6666"
+          },
+          "id": "0",
+          "lurl": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendCallBackLog?reqId=02749B13-539-E3C-879-59DC9D3E8D5&eventCode=601&customId=ssp&eventTime=__TS__&at=__AT__&price=__PRICE__",
+          "media": {
+            "ad": {
+              "cattax": 2,
+              "display": {
+                "ctype": 3,
+                "event": [
+                  {
+                    "method": 0,
+                    "type": 501,
+                    "url": "http://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=02749B13-539-E3C-879-59DC9D3E8D5&trackId=1833755309419089920&eventCode=501&customId=dsp&ts=1726036309948&campaignId=330176&orderId=112052&orderParentId=111996&creativeId=504127&creativeParentId=504080&materialId=2071&custom=null&sdkUId=09B55506-D8B-C77-4B3-752E45A8832"
+                  },
+                  {
+                    "method": 0,
+                    "type": 502,
+                    "url": "http://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=02749B13-539-E3C-879-59DC9D3E8D5&trackId=1833755309419089920&eventCode=502&customId=dsp&campaignId=330176&orderId=112052&orderParentId=111996&creativeId=504127&creativeParentId=504080&materialId=2071&custom=null&sdkUId=09B55506-D8B-C77-4B3-752E45A8832&requestuuid=__REQUESTUUID__&src_up_y=__SRC_UP_Y__&mat_down_y=__MAT_DOWN_Y__&mat_down_x=__MAT_DOWN_X__&up_ts=__UP_TS__&src_down_y=__SRC_DOWN_Y__&src_down_x=__SRC_DOWN_X__&action=__ACTION__&adx=__ADX__&ady=__ADY__&src_up_x=__SRC_UP_X__&down_ts=__DOWN_TS__&mat_up_x=__MAT_UP_X__&interactive=__INTERACTIVE__&mat_up_y=__MAT_UP_Y__&ts=1726036309948"
+                  },
+                  {
+                    "method": 0,
+                    "type": 520,
+                    "url": "http://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=02749B13-539-E3C-879-59DC9D3E8D5&trackId=1833755309419089920&customId=dsp&eventCode=520&campaignId=330176&orderId=112052&orderParentId=111996&creativeId=504127&creativeParentId=504080&materialId=2071&custom=null&sdkUId=09B55506-D8B-C77-4B3-752E45A8832"
+                  },
+                  {
+                    "method": 0,
+                    "type": 521,
+                    "url": "http://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=02749B13-539-E3C-879-59DC9D3E8D5&trackId=1833755309419089920&customId=dsp&eventCode=521&campaignId=330176&orderId=112052&orderParentId=111996&creativeId=504127&creativeParentId=504080&materialId=2071&custom=null&sdkUId=09B55506-D8B-C77-4B3-752E45A8832"
+                  },
+                  {
+                    "method": 0,
+                    "type": 522,
+                    "url": "http://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=02749B13-539-E3C-879-59DC9D3E8D5&trackId=1833755309419089920&customId=dsp&eventCode=522&campaignId=330176&orderId=112052&orderParentId=111996&creativeId=504127&creativeParentId=504080&materialId=2071&custom=null&sdkUId=09B55506-D8B-C77-4B3-752E45A8832"
+                  },
+                  {
+                    "method": 0,
+                    "type": 523,
+                    "url": "http://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=02749B13-539-E3C-879-59DC9D3E8D5&trackId=1833755309419089920&customId=dsp&eventCode=523&campaignId=330176&orderId=112052&orderParentId=111996&creativeId=504127&creativeParentId=504080&materialId=2071&custom=null&sdkUId=09B55506-D8B-C77-4B3-752E45A8832"
+                  },
+                  {
+                    "method": 0,
+                    "type": 524,
+                    "url": "http://dsp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=02749B13-539-E3C-879-59DC9D3E8D5&trackId=1833755309419089920&customId=dsp&eventCode=524&campaignId=330176&orderId=112052&orderParentId=111996&creativeId=504127&creativeParentId=504080&materialId=2071&custom=null&sdkUId=09B55506-D8B-C77-4B3-752E45A8832"
+                  },
+                  {
+                    "method": 0,
+                    "type": 501,
+                    "url": "http://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=02749B13-539-E3C-879-59DC9D3E8D5&trackId=1833755309440061440&eventCode=501&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__"
+                  },
+                  {
+                    "method": 0,
+                    "type": 502,
+                    "url": "http://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=02749B13-539-E3C-879-59DC9D3E8D5&trackId=1833755309440061440&eventCode=502&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&requestuuid=__REQUESTUUID__&src_up_y=__SRC_UP_Y__&mat_down_y=__MAT_DOWN_Y__&mat_down_x=__MAT_DOWN_X__&up_ts=__UP_TS__&src_down_y=__SRC_DOWN_Y__&src_down_x=__SRC_DOWN_X__&action=__ACTION__&adx=__ADX__&ady=__ADY__&src_up_x=__SRC_UP_X__&down_ts=__DOWN_TS__&mat_up_x=__MAT_UP_X__&interactive=__INTERACTIVE__&mat_up_y=__MAT_UP_Y__&ts=__TS__"
+                  },
+                  {
+                    "method": 0,
+                    "type": 520,
+                    "url": "http://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=02749B13-539-E3C-879-59DC9D3E8D5&trackId=1833755309440061440&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&eventCode=520&buyerSpaceId=38149&buyerId=6666&strategyId=157226&spaceId=111503"
+                  },
+                  {
+                    "method": 0,
+                    "type": 521,
+                    "url": "http://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=02749B13-539-E3C-879-59DC9D3E8D5&trackId=1833755309440061440&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&eventCode=521&buyerSpaceId=38149&buyerId=6666&strategyId=157226&spaceId=111503"
+                  },
+                  {
+                    "method": 0,
+                    "type": 522,
+                    "url": "http://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=02749B13-539-E3C-879-59DC9D3E8D5&trackId=1833755309440061440&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&eventCode=522&buyerSpaceId=38149&buyerId=6666&strategyId=157226&spaceId=111503"
+                  },
+                  {
+                    "method": 0,
+                    "type": 523,
+                    "url": "http://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=02749B13-539-E3C-879-59DC9D3E8D5&trackId=1833755309440061440&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&eventCode=523&buyerSpaceId=38149&buyerId=6666&strategyId=157226&spaceId=111503"
+                  },
+                  {
+                    "method": 0,
+                    "type": 524,
+                    "url": "http://adx-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=02749B13-539-E3C-879-59DC9D3E8D5&trackId=1833755309440061440&customId=adx&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&eventCode=524&buyerSpaceId=38149&buyerId=6666&strategyId=157226&spaceId=111503"
+                  },
+                  {
+                    "method": 0,
+                    "type": 501,
+                    "url": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=02749B13-539-E3C-879-59DC9D3E8D5&trackId=1833755309477810177&eventCode=501&customId=ssp&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&bidPrice=0.0&testType=1"
+                  },
+                  {
+                    "method": 0,
+                    "type": 502,
+                    "url": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=02749B13-539-E3C-879-59DC9D3E8D5&trackId=1833755309477810177&eventCode=502&customId=ssp&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                  },
+                  {
+                    "method": 0,
+                    "type": 530,
+                    "url": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=02749B13-539-E3C-879-59DC9D3E8D5&trackId=1833755309477810177&eventCode=530&customId=ssp&spaceId=111502&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                  },
+                  {
+                    "method": 0,
+                    "type": 520,
+                    "url": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=02749B13-539-E3C-879-59DC9D3E8D5&trackId=1833755309477810177&customId=ssp&spaceId=111502&eventCode=520&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                  },
+                  {
+                    "method": 0,
+                    "type": 521,
+                    "url": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=02749B13-539-E3C-879-59DC9D3E8D5&trackId=1833755309477810177&customId=ssp&spaceId=111502&eventCode=521&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                  },
+                  {
+                    "method": 0,
+                    "type": 522,
+                    "url": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=02749B13-539-E3C-879-59DC9D3E8D5&trackId=1833755309477810177&customId=ssp&spaceId=111502&eventCode=522&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                  },
+                  {
+                    "method": 0,
+                    "type": 523,
+                    "url": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=02749B13-539-E3C-879-59DC9D3E8D5&trackId=1833755309477810177&customId=ssp&spaceId=111502&eventCode=523&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                  },
+                  {
+                    "method": 0,
+                    "type": 524,
+                    "url": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=02749B13-539-E3C-879-59DC9D3E8D5&trackId=1833755309477810177&customId=ssp&spaceId=111502&eventCode=524&eventTime=__TS__&oaid=__OAID__&idfa=__IDFA__&said=__SAID__&testType=1"
+                  }
+                ],
+                "ext": {
+                  "cmd5": "41B0AC9C33DF5419"
+                },
+                "id": "509B45A041B0AC9C33DF5419FCB2F438",
+                "mime": "image/jpeg",
+                "native": {
+                  "asset": [
+                    {
+                      "id": "1001",
+                      "image": {
+                        "h": 1280,
+                        "type": 3,
+                        "url": "http://resource.ad-scope.com.cn/zGR0YtbfbtmhmLR75brSG..png",
+                        "w": 720
+                      }
+                    }
+                  ],
+                  "dwinfo": {
+                    "bundle": "com.youjia",
+                    "developer": "youjia",
+                    "iconurl": "http://resource.ad-scope.com.cn/bJWGj9P5KTQLvWKERUp89..png",
+                    "name": "优加测试应用-Android",
+                    "permissionUrl": "http://dsp.adn-plus.com.cn/#/product/dsp/publisher/property/app/create",
+                    "policy": "http://dsp.adn-plus.com.cn/#/product/dsp/publisher/property/app/create",
+                    "storeUrl": "http://dsp.adn-plus.com.cn/#/product/dsp/publisher/property/app/create",
+                    "version": "1.0.0"
+                  },
+                  "interactionId": "157232",
+                  "link": {
+                    "interact_type": 0,
+                    "url": "https://render.alipay.com/p/s/i/?scheme=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FsceneCode%3DKF_DYW_KA%26appId%3D20002097%26waitouChInfo%3DHK257835%26spmAB%3Da2609.b103561%26partnerId%3Dcpalhguangtuiapkdef457%26templateId%3DADUniversalGuide_BenefitGuide2%26autoMode%3Dtrue%26spmBizCode%3Dgrowth%26shareUserId%3D2088231746029491%26benefit%3DHK257835%26scene%3DBenefitGuide2",
+                    "urldw": "http://dsp.adn-plus.com.cn/#/product/dsp/publisher/property/app/create",
+                    "urlfb": "alipays://platformapi/startapp?sceneCode=KF_DYW_KA&appId=20002097&waitouChInfo=HK257835&spmAB=a2609.b103561&partnerId=cpalhguangtuiapkdef457&templateId=ADUniversalGuide_BenefitGuide2&autoMode=true&spmBizCode=growth&shareUserId=2088231746029491&benefit=HK257835&scene=BenefitGuide2"
+                  },
+                  "render": [
+
+                  ],
+                  "renderId": "17",
+                  "scheme": [
+                    {
+                      "marginRight": {
+                        "layout": "right",
+                        "reference": "super",
+                        "size": "0"
+                      },
+                      "uid": "100001",
+                      "bgColor": "#80000000",
+                      "controlType": "view",
+                      "name": "半透明黑色遮罩",
+                      "superView": "none",
+                      "marginBottom": {
+                        "layout": "bottom",
+                        "reference": "super",
+                        "size": "0"
+                      },
+                      "id": "100001",
+                      "layer": "1",
+                      "marginTop": {
+                        "layout": "top",
+                        "reference": "super",
+                        "size": "0"
+                      },
+                      "marginLeft": {
+                        "layout": "left",
+                        "reference": "super",
+                        "size": "0"
+                      }
+                    },
+                    {
+                      "marginRight": {
+                        "layout": "right",
+                        "reference": "super",
+                        "size": "-18%"
+                      },
+                      "uid": "110001",
+                      "centerY": {
+                        "layout": "centerY",
+                        "reference": "super",
+                        "size": "-25"
+                      },
+                      "bgColor": "#FFFFFF",
+                      "controlType": "view",
+                      "borderRadius": "10",
+                      "name": "白色背景图",
+                      "superView": "100001",
+                      "id": "110001",
+                      "layer": "1",
+                      "height": {
+                        "layout": "width",
+                        "reference": "own",
+                        "size": "177%"
+                      },
+                      "marginLeft": {
+                        "layout": "left",
+                        "reference": "super",
+                        "size": "18%"
+                      }
+                    },
+                    {
+                      "superView": "110001",
+                      "layer": "1",
+                      "marginLeft": {
+                        "layout": "left",
+                        "reference": "super",
+                        "size": "5"
+                      },
+                      "marginRight": {
+                        "layout": "right",
+                        "reference": "super",
+                        "size": "-5"
+                      },
+                      "isBlur": 1,
+                      "uid": "120001",
+                      "bgColor": "#00000000",
+                      "controlType": "image",
+                      "borderRadius": "6",
+                      "assetId": "1001",
+                      "name": "插屏主素材",
+                      "marginBottom": {
+                        "layout": "bottom",
+                        "reference": "super",
+                        "size": "-5"
+                      },
+                      "id": "120001",
+                      "marginTop": {
+                        "layout": "top",
+                        "reference": "super",
+                        "size": "5"
+                      }
+                    },
+                    {
+                      "execution": "close",
+                      "textAlign": "center",
+                      "superView": "110001",
+                      "title": "关闭",
+                      "textColor": "#FFFFFF",
+                      "countDownTime": 10000,
+                      "layer": "10",
+                      "marginRight": {
+                        "layout": "right",
+                        "reference": "120001",
+                        "size": "-10"
+                      },
+                      "uid": "130001",
+                      "bgColor": "#66333333",
+                      "controlType": "countdownClose",
+                      "borderRadius": "50%",
+                      "name": "插屏关闭按钮",
+                      "width": {
+                        "layout": "width",
+                        "reference": "own",
+                        "size": "60"
+                      },
+                      "fontSize": 12,
+                      "id": "130001",
+                      "marginTop": {
+                        "layout": "top",
+                        "reference": "120001",
+                        "size": "10"
+                      },
+                      "bindEvent": "click",
+                      "autoClose": 0,
+                      "height": {
+                        "layout": "height",
+                        "reference": "own",
+                        "size": "22"
+                      }
+                    },
+                    {
+                      "textAlign": "right",
+                      "superView": "110001",
+                      "textColor": "#000000",
+                      "layer": "2",
+                      "marginRight": {
+                        "layout": "right",
+                        "reference": "120001",
+                        "size": "-22"
+                      },
+                      "uid": "140001",
+                      "bgColor": "#00000000",
+                      "controlType": "tag",
+                      "name": "插屏素材标签",
+                      "width": {
+                        "layout": "width",
+                        "reference": "super",
+                        "size": "50%"
+                      },
+                      "marginBottom": {
+                        "layout": "bottom",
+                        "reference": "120001",
+                        "size": "-15"
+                      },
+                      "fontSize": 9,
+                      "id": "140001",
+                      "height": {
+                        "layout": "height",
+                        "reference": "own",
+                        "size": "15"
+                      }
+                    },
+                    {
+                      "textAlign": "center",
+                      "superView": "110001",
+                      "title": "广告",
+                      "textColor": "#DDDDDD",
+                      "layer": "2",
+                      "marginLeft": {
+                        "layout": "left",
+                        "reference": "super",
+                        "size": "20"
+                      },
+                      "uid": "150001",
+                      "bgColor": "#66888888",
+                      "controlType": "logo",
+                      "borderRadius": 2,
+                      "name": "插屏角标",
+                      "width": {
+                        "layout": "width",
+                        "reference": "own",
+                        "size": "100"
+                      },
+                      "marginBottom": {
+                        "layout": "bottom",
+                        "reference": "super",
+                        "size": "-20"
+                      },
+                      "fontSize": 9,
+                      "id": "150001",
+                      "height": {
+                        "layout": "height",
+                        "reference": "own",
+                        "size": "20"
+                      }
+                    },
+                    {
+                      "textAlign": "center",
+                      "interactiveTitle": {
+                        "normal": {
+                          "normal": "摇动跳转APP或详情",
+                          "cool": "摇动跳转APP或详情",
+                          "passivation": "摇动跳转APP或详情"
+                        }
+                      },
+                      "superView": "100001",
+                      "textColor": "#FFFFFF",
+                      "layer": "2",
+                      "marginLeft": {
+                        "layout": "left",
+                        "reference": "110001",
+                        "size": "0"
+                      },
+                      "marginRight": {
+                        "layout": "right",
+                        "reference": "110001",
+                        "size": "0"
+                      },
+                      "uid": "160001",
+                      "bgColor": "#3976FF",
+                      "controlType": "region",
+                      "borderRadius": "10",
+                      "name": "插屏区域点击",
+                      "fontSize": 17,
+                      "id": "160001",
+                      "marginTop": {
+                        "layout": "bottom",
+                        "reference": "110001",
+                        "size": "10"
+                      },
+                      "height": {
+                        "layout": "height",
+                        "reference": "own",
+                        "size": "40"
+                      }
+                    },
+                    {
+                      "execution": "click",
+                      "shake": {
+                        "axial": {
+                          "normal": "xyz",
+                          "cool": "xyz",
+                          "passivation": ""
+                        },
+                        "startAmplitude": {
+                          "normal": "1.2",
+                          "cool": "1.9",
+                          "passivation": "1.9"
+                        },
+                        "endAmplitude": {
+                          "normal": "1.1",
+                          "cool": "1.5",
+                          "passivation": "1.5"
+                        },
+                        "count": {
+                          "normal": "1",
+                          "cool": "2",
+                          "passivation": "1"
+                        }
+                      },
+                      "superView": "100001",
+                      "passivationType": 1,
+                      "layer": "3",
+                      "marginLeft": {
+                        "layout": "left",
+                        "reference": "160001",
+                        "size": "0"
+                      },
+                      "uid": "170001",
+                      "bgColor": "#00000000",
+                      "controlType": "shake",
+                      "name": "插屏传感器",
+                      "width": {
+                        "layout": "height",
+                        "reference": "own",
+                        "size": "100%"
+                      },
+                      "passivationTime": "2000",
+                      "protectTime": "259200000",
+                      "id": "170001",
+                      "coolTime": "43200000",
+                      "marginTop": {
+                        "layout": "top",
+                        "reference": "160001",
+                        "size": "0"
+                      },
+                      "bindEvent": "shake",
+                      "height": {
+                        "layout": "height",
+                        "reference": "160001",
+                        "size": "100%"
+                      }
+                    },
+                    {
+                      "execution": "anyElement",
+                      "textAlign": "left",
+                      "superView": "100001",
+                      "textColor": "#333333",
+                      "layer": "3",
+                      "marginLeft": {
+                        "layout": "left",
+                        "reference": "super",
+                        "size": "20"
+                      },
+                      "uid": "180001",
+                      "bgColor": "#00000000",
+                      "controlType": "anyElement",
+                      "name": "下载要素",
+                      "width": {
+                        "layout": "width",
+                        "reference": "super",
+                        "size": "90%"
+                      },
+                      "marginBottom": {
+                        "layout": "bottom",
+                        "reference": "super",
+                        "size": "-20"
+                      },
+                      "fontSize": 12,
+                      "id": "180001",
+                      "bindEvent": "click"
+                    }
+                  ],
+                  "schemeId": "30"
+                },
+                "report": {
+
+                }
+              },
+              "ext": {
+
+              },
+              "id": "111996_112052"
+            }
+          },
+          "price": 0,
+          "purl": "http://ssp-track.adn-plus.com.cn/api/v1/monitor/sendLog?reqId=02749B13-539-E3C-879-59DC9D3E8D5&eventCode=600&customId=ssp&eventTime=__TS__&at=__AT__&price=__PRICE__",
+          "trackId": 1833755309419090000
+        }
+      ],
+      "ext": {
+        "dspId": "6666"
+      },
+      "seat": "6666"
+    }
+  ]
+}

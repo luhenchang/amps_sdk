@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
 import '../common.dart';
@@ -85,6 +86,7 @@ class AMPSInterstitialAd {
   void load() async {
     _channel = const MethodChannel(AMPSChannels.ampsSdkInterstitialAdLoad);
     setMethodCallHandler();
+    debugPrint("差评调用来了");
     await _channel?.invokeMethod(
       AMPSAdSdkMethodNames.interstitialLoad,
       config.toMap(),

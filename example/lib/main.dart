@@ -190,6 +190,7 @@ class _SplashPageState extends State<SplashPage> {
       children: [
         const BlurredBackground(),
         Column(children: [
+          const SizedBox(height: 100,width: 0),
           ButtonWidget(
               buttonText: '点击跳转插屏页面',
               callBack: () {
@@ -197,6 +198,7 @@ class _SplashPageState extends State<SplashPage> {
                 Navigator.pushNamed(context, 'InterstitialPage');
               }
           ),
+          const SizedBox(height: 20,width: 0),
           ButtonWidget(
               buttonText: '点击跳转原生页面',
               callBack: () {
@@ -204,6 +206,7 @@ class _SplashPageState extends State<SplashPage> {
                 Navigator.pushNamed(context, 'NativePage');
               }
           ),
+          const SizedBox(height: 20,width: 0),
           ButtonWidget(
               buttonText: '点击跳转自渲染页面',
               callBack: () {
