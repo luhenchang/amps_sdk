@@ -3,9 +3,9 @@ import MessageCodec from '@ohos/flutter_ohos/src/main/ets/plugin/common/MessageC
 import PlatformViewFactory from '@ohos/flutter_ohos/src/main/ets/plugin/platform/PlatformViewFactory';
 import { BinaryMessenger } from '@ohos/flutter_ohos/src/main/ets/plugin/common/BinaryMessenger';
 import PlatformView from '@ohos/flutter_ohos/src/main/ets/plugin/platform/PlatformView';
-import { OhosPlatformNativeView } from './OhosPlatformNativeView';
+import { OhosPlatformSplashView } from '../view/OhosPlatformSplashView';
 
-export class NativeFactory extends PlatformViewFactory {
+export class SplashFactory extends PlatformViewFactory {
   message: BinaryMessenger;
 
   constructor(message: BinaryMessenger, createArgsCodes: MessageCodec<Object>) {
@@ -14,6 +14,6 @@ export class NativeFactory extends PlatformViewFactory {
   }
 
   public create(context: common.Context, viewId: number, args: Object): PlatformView {
-    return new OhosPlatformNativeView(context, viewId, args, this.message);
+    return new OhosPlatformSplashView(context, viewId, args, this.message);
   }
 }

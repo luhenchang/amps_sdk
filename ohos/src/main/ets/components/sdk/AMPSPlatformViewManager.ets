@@ -1,9 +1,9 @@
 import { FlutterPluginBinding, StandardMessageCodec } from '@ohos/flutter_ohos';
 import { AMPSPlatformViewRegistry } from '../data/common';
-import { InterstitialFactory } from '../view/InterstitialFactory';
-import { NativeFactory } from '../view/NativeFactory';
-import { SplashFactory } from '../view/SplashFactory';
-import { UnifiedFactory } from '../view/UnifiedFactory';
+import { InterstitialFactory } from './InterstitialFactory';
+import { NativeFactory } from './NativeFactory';
+import { SplashFactory } from './SplashFactory';
+import { UnifiedFactory } from './UnifiedFactory';
 
 export class AMPSPlatformViewManager {
   private static sInstance: AMPSPlatformViewManager;
