@@ -10,6 +10,7 @@ class BlurredBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Container();
     return ImageFiltered(
       // 模糊参数：sigmaX（水平模糊度）、sigmaY（垂直模糊度），值越大越模糊
       imageFilter: ImageFilter.blur(sigmaX: 125.0, sigmaY: 125.0),

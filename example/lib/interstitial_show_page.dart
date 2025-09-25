@@ -1,45 +1,35 @@
 import 'package:amps_sdk/amps_sdk_export.dart';
 import 'package:flutter/material.dart';
-class InterstitialPage extends StatefulWidget {
-  const InterstitialPage({super.key, required this.title});
+class InterstitialShowPage extends StatefulWidget {
+  const InterstitialShowPage({super.key, required this.title});
 
   final String title;
 
   @override
-  State<InterstitialPage> createState() => _InterstitialPageState();
+  State<InterstitialShowPage> createState() => _InterstitialShowPageState();
 }
 
-class _InterstitialPageState extends State<InterstitialPage> {
+class _InterstitialShowPageState extends State<InterstitialShowPage> {
   late AdCallBack _adCallBack;
   AMPSInterstitialAd? _interAd;
-  bool visibleAd = true;
   @override
   void initState() {
     super.initState();
     _adCallBack = AdCallBack(
         onRenderOk: () {
-          setState(() {
-            visibleAd = true;
-          });
-          //_interAd?.showAd();
+          _interAd?.showAd();
           debugPrint("ad load onRenderOk");
         },
         onLoadFailure: (code, msg) {
           debugPrint("ad load failure=$code;$msg");
         },
         onAdClicked: () {
-          setState(() {
-            visibleAd = false;
-          });
           debugPrint("ad load onAdClicked");
         },
         onAdExposure: () {
           debugPrint("ad load onAdExposure");
         },
         onAdClosed: () {
-          setState(() {
-            visibleAd = false;
-          });
           debugPrint("ad load onAdClosed");
         },
         onAdReward: () {
@@ -92,7 +82,6 @@ class _InterstitialPageState extends State<InterstitialPage> {
             },
           ),
         ),
-        if(visibleAd) InterstitialWidget(_interAd)
       ],)
     );
   }
