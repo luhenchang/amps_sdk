@@ -76,7 +76,6 @@ struct AMPSSplashComponent {
       .alignItems(HorizontalAlign.Center)
       .justifyContent(FlexAlign.Center)
       .direction(Direction.Ltr)
-      .backgroundColor(Color.Red)
       .width('100%')
       .height('100%')
     }
