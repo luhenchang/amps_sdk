@@ -1,0 +1,12 @@
+{
+  "name": "amps_sdk",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "index.ets",
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "biz.beizi.adn": "file:./libs/biz.beizi.adn.5.3.2.har"
+  },
+  "modelVersion": "1.0.0"
+}

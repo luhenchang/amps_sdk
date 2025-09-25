@@ -78,7 +78,7 @@ export class AMPSAdSdkMethodNames {
 }
 
 export const AD_OPTION = 'AdOption';
-export const SPLASH_CONFIG = "config";
+export const CONFIG = "config";
 export const SPLASH_BOTTOM = "SplashBottomView";
 export const defaultAdOption: ampsAd.AdOptions = {
   spaceId: StringConstants.EMPTY_STRING

@@ -4,7 +4,7 @@ import common from '@ohos.app.ability.common';
 import { BinaryMessenger } from '@ohos/flutter_ohos/src/main/ets/plugin/common/BinaryMessenger';
 import StandardMethodCodec from '@ohos/flutter_ohos/src/main/ets/plugin/common/StandardMethodCodec';
 import { AMPSSplashComponent } from './AMPSSplashComponent';
-import { AMPSPlatformViewRegistry, defaultAdOption, SPLASH_BOTTOM, SPLASH_CONFIG } from '../data/common';
+import { AMPSPlatformViewRegistry, defaultAdOption, SPLASH_BOTTOM, CONFIG } from '../data/common';
 import { Any } from '@ohos/flutter_ohos';
 import { ampsAd } from 'biz.beizi.adn';
 import { AdOptionsModule } from '../data/AdOptionsModule';
@@ -22,7 +22,7 @@ export class OhosPlatformSplashView extends PlatformView {
     super();
     const channelName = `${AMPSPlatformViewRegistry.ampsSdkSplashViewId}${viewId}`;
     OhosPlatformSplashView.splashBottomModule = new SplashBottomModule(args.get(SPLASH_BOTTOM));
-    OhosPlatformSplashView.adOptionsWeakRef = new WeakRef(AdOptionsModule.getAdOptionFromMap(args.get(SPLASH_CONFIG)));
+    OhosPlatformSplashView.adOptionsWeakRef = new WeakRef(AdOptionsModule.getAdOptionFromMap(args.get(CONFIG)));
     this.methodChannel = new MethodChannel(message, channelName, StandardMethodCodec.INSTANCE);
   }
 

@@ -65,20 +65,21 @@ struct AMPSSplashComponent {
   }
 
   build() {
-    Column() {
-      if (this.hasSplash && this.splashAd) {
-          AMPSBuildSplashView(
-            this.splashAd, {
-            windowStage: (this.getUIContext().getHostContext() as common.UIAbilityContext).windowStage,
-            bottomWrappedBuilder:globalSplashBottomBuilder
-          })
-        }
+    if (this.hasSplash && this.splashAd) {
+      Column() {
+        AMPSBuildSplashView(
+          this.splashAd, {
+          windowStage: (this.getUIContext().getHostContext() as common.UIAbilityContext).windowStage,
+          bottomWrappedBuilder: globalSplashBottomBuilder
+        })
+      }
+      .alignItems(HorizontalAlign.Center)
+      .justifyContent(FlexAlign.Center)
+      .direction(Direction.Ltr)
+      .backgroundColor(Color.Red)
+      .width('100%')
+      .height('100%')
     }
-    .alignItems(HorizontalAlign.Center)
-    .justifyContent(FlexAlign.Center)
-    .direction(Direction.Ltr)
-    .width('100%')
-    .height('100%')
   }
 }
 

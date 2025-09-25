@@ -3,7 +3,7 @@ import PlatformView, { Params } from '@ohos/flutter_ohos/src/main/ets/plugin/pla
 import common from '@ohos.app.ability.common';
 import { BinaryMessenger } from '@ohos/flutter_ohos/src/main/ets/plugin/common/BinaryMessenger';
 import StandardMethodCodec from '@ohos/flutter_ohos/src/main/ets/plugin/common/StandardMethodCodec';
-import { AMPSPlatformViewRegistry, defaultAdOption, SPLASH_CONFIG } from '../data/common';
+import { AMPSPlatformViewRegistry, defaultAdOption, CONFIG } from '../data/common';
 import { Any, MethodCall, MethodCallHandler, MethodResult } from '@ohos/flutter_ohos';
 import { ampsAd } from 'biz.beizi.adn';
 import { AdOptionsModule } from '../data/AdOptionsModule';
@@ -17,7 +17,7 @@ export class OhosPlatformInterstitialView extends PlatformView implements Method
   constructor(context: common.Context, viewId: number, args: ESObject, message: BinaryMessenger) {
     super();
     const channelName = `${AMPSPlatformViewRegistry.ampsSdkInterstitialViewId}${viewId}`;
-    OhosPlatformInterstitialView.adOptionsWeakRef = new WeakRef(AdOptionsModule.getAdOptionFromMap(args.get(SPLASH_CONFIG)));
+    OhosPlatformInterstitialView.adOptionsWeakRef = new WeakRef(AdOptionsModule.getAdOptionFromMap(args.get(CONFIG)));
     this.methodChannel = new MethodChannel(message, channelName, StandardMethodCodec.INSTANCE);
     this.methodChannel.setMethodCallHandler(this);
   }
