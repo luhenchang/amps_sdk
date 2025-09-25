@@ -95,7 +95,7 @@ class _SplashPageState extends State<NativeUnifiedPage> {
               String adId = feedAdList[adIndex];
               double marginLeft = (MediaQuery.of(context).size.width - 350)/2;
               debugPrint(adId);
-              return AMPSBuildUnifiedView(
+              return UnifiedWidget(
                 _nativeAd,
                 key: ValueKey(adId),
                 posId: adId,

@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
+import '../amps_sdk.dart';
 import '../common.dart';
-import '../data/ampsAd.dart';
+import '../data/amps_ad.dart';
 
 class AMPSInterstitialAd {
-  MethodChannel? _channel;
   AdOptions config;
   AdCallBack? mCallBack;
   AdCallBack? mViewCallBack;
@@ -14,17 +13,16 @@ class AMPSInterstitialAd {
   AMPSInterstitialAd({required this.config, this.mCallBack});
 
   void registerChannel(int id) {
-    _channel = null;
-    _channel = MethodChannel('${AMPSPlatformViewRegistry.ampsSdkInterstitialViewId}$id');
-    setMethodCallHandler();
-    _channel?.invokeMethod(
+    var channel = MethodChannel('${AMPSPlatformViewRegistry.ampsSdkInterstitialViewId}$id');
+    setMethodCallHandler(channel);
+    channel.invokeMethod(
       AMPSAdSdkMethodNames.interstitialLoad,
       config.toMap(),
     );
   }
 
-  void setMethodCallHandler() {
-    _channel?.setMethodCallHandler(
+  void setMethodCallHandler(MethodChannel channel) {
+    channel.setMethodCallHandler(
       (call) async {
         switch (call.method) {
           case AMPSAdCallBackChannelMethod.onLoadSuccess:
@@ -84,16 +82,14 @@ class AMPSInterstitialAd {
   }
 
   void load() async {
-    _channel = const MethodChannel(AMPSChannels.ampsSdkInterstitialAdLoad);
-    setMethodCallHandler();
-    debugPrint("差评调用来了");
-    await _channel?.invokeMethod(
+    setMethodCallHandler(AmpsSdk.channel);
+    await AmpsSdk.channel.invokeMethod(
       AMPSAdSdkMethodNames.interstitialLoad,
       config.toMap(),
     );
   }
 
   void showAd() async {
-    await _channel?.invokeMethod(AMPSAdSdkMethodNames.interstitialShowAd);
+    await AmpsSdk.channel.invokeMethod(AMPSAdSdkMethodNames.interstitialShowAd);
   }
 }

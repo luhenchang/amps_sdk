@@ -1,5 +1,4 @@
-import '../controller/AMPSAdSdk.dart';
-import 'AMPSSdkAPIKeys.dart';
+import 'amps_sdk_api_keys.dart';
 //UI模式【自动、黑色、浅色】
 enum UiModel { uiModelAuto, uiModelDark, uiModelLight }
 

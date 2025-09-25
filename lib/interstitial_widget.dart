@@ -4,15 +4,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'common.dart';
 
-class AMPSBuildInterstitialView extends StatefulWidget {
+class InterstitialWidget extends StatefulWidget {
   final AMPSInterstitialAd? ad;
-  const AMPSBuildInterstitialView(this.ad, {super.key});
+  const InterstitialWidget(this.ad, {super.key});
 
   @override
-  State<StatefulWidget> createState() => _AMPSBuildInterstitialViewState();
+  State<StatefulWidget> createState() => _InterstitialWidgetState();
 }
 
-class _AMPSBuildInterstitialViewState extends State<AMPSBuildInterstitialView> {
+class _InterstitialWidgetState extends State<InterstitialWidget> {
   var param = <dynamic, dynamic>{};
   @override
   void initState() {
@@ -29,21 +29,25 @@ class _AMPSBuildInterstitialViewState extends State<AMPSBuildInterstitialView> {
     if (Platform.isAndroid) {
       return AndroidView(
           viewType: AMPSPlatformViewRegistry.ampsSdkInterstitialViewId,
-          onPlatformViewCreated: _onPlatformViewCreated);
+          creationParams: param,
+          onPlatformViewCreated: _onPlatformViewCreated,
+          creationParamsCodec: const StandardMessageCodec());
     } else if (Platform.isIOS) {
       return UiKitView(
           viewType: AMPSPlatformViewRegistry.ampsSdkInterstitialViewId,
-          onPlatformViewCreated: _onPlatformViewCreated);
+          creationParams: param,
+          onPlatformViewCreated: _onPlatformViewCreated,
+          creationParamsCodec: const StandardMessageCodec());
     }
     else if(Platform.isOhos) {
       return OhosView(
           viewType: AMPSPlatformViewRegistry.ampsSdkInterstitialViewId,
-          onPlatformViewCreated: _onPlatformViewCreated,
           creationParams: param,
+          onPlatformViewCreated: _onPlatformViewCreated,
           creationParamsCodec:  const StandardMessageCodec());
     }
     else {
-      return Container();
+      return const Center(child: Text("暂不支持此平台"));
     }
   }
 

@@ -1,18 +1,15 @@
 import 'dart:async';
-
-import 'package:flutter/services.dart';
-
+import '../amps_sdk.dart';
 import '../common.dart';
-import '../data/AMPSInitConfig.dart';
+import '../data/amps_init_config.dart';
 
 class AMPSAdSdk {
-  final MethodChannel  _channel = const MethodChannel(AMPSChannels.ampsSdkInit);
   final StreamController<String> _controller = StreamController<String>();
   AMPSIInitCallBack?  _callBack;
 
   static bool testModel = false;
   AMPSAdSdk() {
-    _channel.setMethodCallHandler(
+    AmpsSdk.channel.setMethodCallHandler(
           (call) async {
         switch (call.method) {
           case AMPSInitChannelMethod.initSuccess:
@@ -40,7 +37,7 @@ class AMPSAdSdk {
   Future<void> init(AMPSInitConfig sdkConfig,AMPSIInitCallBack callBack) async {
     _callBack = callBack;
     // 使用时
-    await _channel.invokeMethod(
+    await AmpsSdk.channel.invokeMethod(
       AMPSAdSdkMethodNames.init,
       sdkConfig.toMap(AMPSAdSdk.testModel),
     );

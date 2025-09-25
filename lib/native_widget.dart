@@ -1,12 +1,10 @@
 import 'dart:io';
 import 'package:amps_sdk/amps_sdk_export.dart';
-import 'package:amps_sdk/controller/AMPSNativeAd.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'common.dart';
-import 'widget/native_unified_widget.dart';
 
-class AMPSBuildUnifiedView extends StatefulWidget {
+class NativeWidget extends StatefulWidget {
   // 返回的广告 id，这里不是广告位id
   final String posId;
 
@@ -16,23 +14,21 @@ class AMPSBuildUnifiedView extends StatefulWidget {
   // 宽高
   final double width, height;
   final AMPSNativeAd? adNative;
-  final NativeUnifiedWidget? unifiedWidget;
 
-  const AMPSBuildUnifiedView(
+  const NativeWidget(
     this.adNative, {
     super.key,
     required this.posId,
-    required this.unifiedWidget,
     this.show = true,
     this.width = 375,
     this.height = 128,
   });
 
   @override
-  State<StatefulWidget> createState() => _AMPSBuildUnifiedViewState();
+  State<StatefulWidget> createState() => _NativeWidgetState();
 }
 
-class _AMPSBuildUnifiedViewState extends State<AMPSBuildUnifiedView> with AutomaticKeepAliveClientMixin{
+class _NativeWidgetState extends State<NativeWidget> with AutomaticKeepAliveClientMixin{
   // 创建参数
   late Map<String, dynamic> creationParams;
   // 宽高
@@ -43,7 +39,6 @@ class _AMPSBuildUnifiedViewState extends State<AMPSBuildUnifiedView> with Automa
     height = widget.height;
     creationParams = <String, dynamic>{
       "posId": widget.posId,
-      'unifiedWidget': widget.unifiedWidget?.toMap()
     };
     super.initState();
   }
@@ -57,19 +52,19 @@ class _AMPSBuildUnifiedViewState extends State<AMPSBuildUnifiedView> with Automa
     Widget view;
     if (Platform.isAndroid) {
       view = AndroidView(
-          viewType: AMPSPlatformViewRegistry.ampsSdkUnifiedViewId,
+          viewType: AMPSPlatformViewRegistry.ampsSdkNativeViewId,
           creationParams: creationParams,
           onPlatformViewCreated: _onPlatformViewCreated,
           creationParamsCodec: const StandardMessageCodec());
     } else if (Platform.isIOS) {
       view =  UiKitView(
-          viewType: AMPSPlatformViewRegistry.ampsSdkUnifiedViewId,
+          viewType: AMPSPlatformViewRegistry.ampsSdkNativeViewId,
           creationParams: creationParams,
           onPlatformViewCreated: _onPlatformViewCreated,
           creationParamsCodec: const StandardMessageCodec());
     } else if (Platform.isOhos) {
       view =  OhosView(
-          viewType: AMPSPlatformViewRegistry.ampsSdkUnifiedViewId,
+          viewType: AMPSPlatformViewRegistry.ampsSdkNativeViewId,
           onPlatformViewCreated: _onPlatformViewCreated,
           creationParams: creationParams,
           creationParamsCodec: const StandardMessageCodec());
@@ -89,6 +84,5 @@ class _AMPSBuildUnifiedViewState extends State<AMPSBuildUnifiedView> with Automa
 
   }
   void _onPlatformViewCreated(int id) {
-    widget.adNative?.registerChannel(id);
   }
 }

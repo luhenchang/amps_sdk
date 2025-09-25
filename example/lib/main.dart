@@ -1,12 +1,13 @@
 import 'dart:collection';
-import 'package:amps_sdk_example/NativeUnifiedPage.dart';
 import 'package:amps_sdk_example/widgets/blurred_background.dart';
 import 'package:amps_sdk/amps_sdk_export.dart';
 import 'package:amps_sdk_example/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
 
-import 'InterstitialPage.dart';
-import 'NativePage.dart';
+import 'interstitial_page.dart';
+import 'native_page.dart';
+import 'native_unified_page.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -112,7 +113,6 @@ class _SplashPageState extends State<SplashPage> {
         .setIsMediation(false)
         .setUiModel(UiModel.uiModelAuto)
         .build();
-    debugPrint("sdkConfigJson=${sdkConfig.toMap(true)}");
     AMPSAdSdk.testModel = true;
     AMPSAdSdk().init(sdkConfig, _callBack);
     _adCallBack = AdCallBack(
@@ -221,7 +221,7 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   Widget _buildSplashWidget() {
-    return AMPSBuildSplashView(_splashAd,
+    return SplashWidget(_splashAd,
         splashBottomWidget: SplashBottomWidget(
             height: 100.0,
             backgroundColor: "#FFFFFFFF",

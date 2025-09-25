@@ -4,16 +4,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'common.dart';
 
-class AMPSBuildSplashView extends StatefulWidget {
+class SplashWidget extends StatefulWidget {
   final AMPSSplashAd? adSplash;
   final SplashBottomWidget? splashBottomWidget;
-  const AMPSBuildSplashView(this.adSplash, {super.key,this.splashBottomWidget});
+  const SplashWidget(this.adSplash, {super.key,this.splashBottomWidget});
 
   @override
-  State<StatefulWidget> createState() => _AMPSBuildSplashViewState();
+  State<StatefulWidget> createState() => _SplashWidgetState();
 }
 
-class _AMPSBuildSplashViewState extends State<AMPSBuildSplashView> {
+class _SplashWidgetState extends State<SplashWidget> {
   var splashParam = <dynamic, dynamic>{};
   @override
   void initState() {
@@ -47,7 +47,7 @@ class _AMPSBuildSplashViewState extends State<AMPSBuildSplashView> {
           creationParamsCodec:  const StandardMessageCodec());
     }
     else {
-      return Container();
+      return const Center(child: Text("暂不支持此平台"));
     }
   }
 

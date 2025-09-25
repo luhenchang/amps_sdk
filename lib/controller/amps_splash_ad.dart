@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 
 import '../common.dart';
-import '../data/ampsAd.dart';
+import '../data/amps_ad.dart';
 import '../widget/splash_bottom_widget.dart';
 
 class AMPSSplashAd {
@@ -86,7 +86,7 @@ class AMPSSplashAd {
   }
 
   void load() async {
-    _channel = const MethodChannel(AMPSChannels.ampsSdkSplashAdLoad);
+    _channel = const MethodChannel(AMPSChannels.ampsSdk);
     setMethodCallHandler();
     await _channel?.invokeMethod(
       AMPSAdSdkMethodNames.splashLoad,

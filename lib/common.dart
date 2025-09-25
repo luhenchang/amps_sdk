@@ -1,5 +1,6 @@
 const String channelDomain = "biz.beizi.adn";
 class AMPSChannels {
+  static const String ampsSdk = 'amps_sdk';
   static const String ampsSdkInit = '$channelDomain/sdk';
   static const String ampsSdkSplash = '$channelDomain/splash';
   static const ampsSdkSplashAdLoad = '$channelDomain/splash_ad_load';

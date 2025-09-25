@@ -1,11 +1,9 @@
-import 'package:flutter/services.dart';
+import '../amps_sdk.dart';
 import '../common.dart';
-import '../data/AMPSNativeInteractiveListener.dart';
-import '../data/ampsAd.dart';
+import '../data/amps_native_Interactive_listener.dart';
+import '../data/amps_ad.dart';
 
 class AMPSNativeAd {
-  MethodChannel? _channel;
-  MethodChannel? _viewChannel;
   AdOptions config;
   AmpsNativeAdListener? mCallBack;
   AMPSNativeRenderListener? mRenderCallBack;
@@ -19,24 +17,8 @@ class AMPSNativeAd {
       this.mInteractiveCallBack,
       this.mVideoPlayerCallBack});
 
-  void registerChannel(int id) {
-    _viewChannel = null;
-    _viewChannel =
-        MethodChannel('${AMPSPlatformViewRegistry.ampsSdkNativeViewId}$id');
-    setMethodCallHandler();
-  }
-
-  void setMethodCallHandler() {
-    _viewChannel?.setMethodCallHandler(
-      (call) async {
-        switch (call.method) {}
-      },
-    );
-  }
-
   void load() async {
-    _channel = const MethodChannel(AMPSChannels.ampsSdkNativeAdLoad);
-    _channel?.setMethodCallHandler(
+    AmpsSdk.channel.setMethodCallHandler(
       (call) async {
         switch (call.method) {
           case AMPSNativeCallBackChannelMethod.loadOk:
@@ -95,7 +77,7 @@ class AMPSNativeAd {
         }
       },
     );
-    _channel?.invokeMethod(
+    AmpsSdk.channel.invokeMethod(
       AMPSAdSdkMethodNames.nativeLoad,
       config.toMap(),
     );

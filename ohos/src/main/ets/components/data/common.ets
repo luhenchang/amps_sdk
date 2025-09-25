@@ -83,3 +83,9 @@ export const SPLASH_BOTTOM = "SplashBottomView";
 export const defaultAdOption: ampsAd.AdOptions = {
   spaceId: StringConstants.EMPTY_STRING
 }
+
+export let InitMethodNames: string[] = [AMPSAdSdkMethodNames.init];
+export let SplashMethodNames: string[] = [AMPSAdSdkMethodNames.splashLoad,AMPSAdSdkMethodNames.splashShowAd];
+export let InterstitialMethodNames: string[] = [AMPSAdSdkMethodNames.interstitialLoad,AMPSAdSdkMethodNames.interstitialShowAd];
+export let NativeMethodNames: string[] = [AMPSAdSdkMethodNames.nativeLoad,AMPSAdSdkMethodNames.nativeShowAd];
+

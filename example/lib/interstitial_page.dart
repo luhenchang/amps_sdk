@@ -92,7 +92,7 @@ class _SplashPageState extends State<InterstitialPage> {
             },
           ),
         ),
-        if(visibleAd) AMPSBuildInterstitialView(_interAd)
+        if(visibleAd) InterstitialWidget(_interAd)
       ],)
     );
   }

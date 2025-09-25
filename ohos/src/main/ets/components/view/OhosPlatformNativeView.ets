@@ -11,21 +11,14 @@ import { AMPSNativeAdComponent } from './AMPSNativeAdComponent';
 
 @Observed
 export class OhosPlatformNativeView extends PlatformView {
-  methodChannel: MethodChannel | null | undefined
   static adId: string | undefined;
   static wrapper: AMPSNativeAdWrapper | undefined
   constructor(context: common.Context, viewId: number, args: ESObject, message: BinaryMessenger) {
     super();
-    const channelName = `${AMPSPlatformViewRegistry.ampsSdkNativeViewId}${viewId}`;
     OhosPlatformNativeView.adId = args.get("posId")
-    this.methodChannel = new MethodChannel(message, channelName, StandardMethodCodec.INSTANCE);
     if (OhosPlatformNativeView.adId) {
       OhosPlatformNativeView.wrapper = AdWrapperManager.getInstance().getAd(OhosPlatformNativeView.adId)
     }
-  }
-
-  public sendMessage = (methodName: string, args: Any) => {
-    this.methodChannel?.invokeMethod(methodName, args);
   }
 
   getView(): WrappedBuilder<[Params]> {
@@ -33,7 +26,6 @@ export class OhosPlatformNativeView extends PlatformView {
   }
 
   dispose(): void {
-    this.methodChannel = null;
   }
 }
 

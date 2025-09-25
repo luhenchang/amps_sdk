@@ -93,7 +93,7 @@ class _SplashPageState extends State<NativePage> {
             if (index % 5 == 4 && adIndex < feedAdList.length) {
               String adId = feedAdList[adIndex];
               debugPrint(adId);
-              return AMPSBuildNativeView(_nativeAd,
+              return NativeWidget(_nativeAd,
                   key: ValueKey(adId),
                   posId: adId,
                   width: expressWidth,

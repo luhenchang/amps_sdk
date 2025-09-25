@@ -1,39 +1,29 @@
 import {
-  FlutterPlugin,
-  FlutterPluginBinding,
-  MethodCall,
-  MethodCallHandler,
-  MethodChannel,
-  MethodResult,
+  AbilityAware, AbilityPluginBinding, FlutterPlugin, FlutterPluginBinding
 } from '@ohos/flutter_ohos';
+import { AMPSEventManager } from '../sdk/AMPSEventManager';
+import { AMPSPlatformViewManager } from '../sdk/AMPSPlatformViewManager';
 
 /** AmpsSdkPlugin **/
-export default class AmpsSdkPlugin implements FlutterPlugin, MethodCallHandler {
-  private channel: MethodChannel | null = null;
-
-  constructor() {
-  }
-
+export default class AmpsSdkPlugin implements FlutterPlugin, AbilityAware {
   getUniqueClassName(): string {
     return "AmpsSdkPlugin"
   }
 
+  onAttachedToAbility(binding: AbilityPluginBinding): void {
+    AMPSEventManager.getInstance().setContext(binding.getAbility().context);
+  }
+
   onAttachedToEngine(binding: FlutterPluginBinding): void {
-    this.channel = new MethodChannel(binding.getBinaryMessenger(), "amps_sdk");
-    this.channel.setMethodCallHandler(this)
+    AMPSEventManager.getInstance().init(binding.getBinaryMessenger());
+    AMPSPlatformViewManager.getInstance().init(binding);
   }
 
   onDetachedFromEngine(binding: FlutterPluginBinding): void {
-    if (this.channel != null) {
-      this.channel.setMethodCallHandler(null)
-    }
+    AMPSEventManager.getInstance().release();
   }
 
-  onMethodCall(call: MethodCall, result: MethodResult): void {
-    if (call.method == "getPlatformVersion") {
-      result.success("OpenHarmony ^ ^ ")
-    } else {
-      result.notImplemented()
-    }
+  onDetachedFromAbility(): void {
+
   }
 }

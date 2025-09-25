@@ -1,8 +1,6 @@
 
-import 'amps_sdk_platform_interface.dart';
+import 'package:flutter/services.dart';
 
 class AmpsSdk {
-  Future<String?> getPlatformVersion() {
-    return AmpsSdkPlatform.instance.getPlatformVersion();
-  }
+  static const MethodChannel channel = MethodChannel('amps_sdk');
 }
