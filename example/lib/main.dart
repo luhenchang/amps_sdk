@@ -1,12 +1,16 @@
 import 'dart:collection';
+import 'package:amps_sdk_example/interstitial_show_page.dart';
+import 'package:amps_sdk_example/splash_show_page.dart';
 import 'package:amps_sdk_example/widgets/blurred_background.dart';
 import 'package:amps_sdk/amps_sdk_export.dart';
 import 'package:amps_sdk_example/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
 
+import 'data/init_data.dart';
 import 'interstitial_page.dart';
 import 'native_page.dart';
 import 'native_unified_page.dart';
+import 'splash_widget_page.dart';
 
 
 void main() {
@@ -19,9 +23,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-       initialRoute: 'splashPage',
+       initialRoute: 'SplashPage',
        routes: {
-         'splashPage':(context)=>const SplashPage(title: '开屏页面'),
+         'SplashPage':(context)=>const SplashPage(title: '开屏页面'),
+         'SplashShowPage':(context)=>const SplashShowPage(title: '开屏页面'),
+         'SplashWidgetPage':(context)=>const SplashWidgetPage(title: '开屏页面'),
+         'InterstitialShowPage':(context)=> const InterstitialShowPage(title: '插屏页面'),
          'InterstitialPage':(context)=> const InterstitialPage(title: '插屏页面'),
          'NativePage':(context)=> const NativePage(title: '原生页面'),
          'NativeUnifiedPage':(context)=> const NativeUnifiedPage(title: '原生自渲染页面')
@@ -41,10 +48,8 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> {
   late AMPSIInitCallBack _callBack;
-  AMPSSplashAd? _splashAd;
-  late AdCallBack _adCallBack;
-  bool initSuccess = false;
-
+  InitStatus initStatus = InitStatus.normal;
+  late AMPSInitConfig sdkConfig;
   @override
   void initState() {
     //SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
@@ -53,9 +58,8 @@ class _SplashPageState extends State<SplashPage> {
         initSuccess: () {
           debugPrint("adk is initSuccess");
           setState(() {
-            initSuccess = true;
+            initStatus = InitStatus.success;
           });
-          _splashAd?.load();
         },
         initializing: () {
           debugPrint("adk is initializing");
@@ -63,11 +67,11 @@ class _SplashPageState extends State<SplashPage> {
         alreadyInit: () {
           debugPrint("adk is alreadyInit");
           setState(() {
-            initSuccess = true;
-            _splashAd?.load();
+            initStatus = InitStatus.alreadyInit;
           });
         },
         initFailed: (code, msg) {
+          initStatus = InitStatus.failed;
           debugPrint("adk is initFailed");
           debugPrint("result callBack=code$code;message=$msg");
         });
@@ -79,7 +83,7 @@ class _SplashPageState extends State<SplashPage> {
     ksSdkEx["crashLog"] = true;
     ksSdkEx["ks_sdk_roller"] = "roller_click";
     ksSdkEx["ks_sdk_location"] = "baidu";
-    AMPSInitConfig sdkConfig = AMPSBuilder("12379")
+    sdkConfig = AMPSBuilder("12379")
         .setCity("北京")
         .setRegion("朝阳区双井")
         .setCurrency(CurrencyType.CURRENCY_TYPE_USD)
@@ -114,73 +118,6 @@ class _SplashPageState extends State<SplashPage> {
         .setUiModel(UiModel.uiModelAuto)
         .build();
     AMPSAdSdk.testModel = true;
-    AMPSAdSdk().init(sdkConfig, _callBack);
-    _adCallBack = AdCallBack(
-        onRenderOk: () {
-          _splashAd?.showAd(
-              splashBottomWidget: SplashBottomWidget(
-                  height: 100.0,
-                  backgroundColor: "#FFFFFFFF",
-                  children: [
-                    ImageComponent(
-                      width: 25,
-                      height: 25,
-                      x: 170,
-                      y: 10,
-                      imageUrl: 'assets/images/img.png',
-                    ),
-                    TextComponent(
-                      fontSize: 24,
-                      color: "#00ff00",
-                      x: 140,
-                      y: 50,
-                      text: 'Hello Android!',
-                    ),
-                  ])
-          );
-          debugPrint("ad load onRenderOk");
-        },
-        onLoadFailure: (code, msg) {
-          debugPrint("ad load failure=$code;$msg");
-        },
-        onAdClicked: () {
-          debugPrint("ad load onAdClicked");
-        },
-        onAdExposure: () {
-          debugPrint("ad load onAdExposure");
-        },
-        onAdClosed: () {
-          setState(() {
-          });
-          debugPrint("ad load onAdClosed");
-        },
-        onAdReward: () {
-          debugPrint("ad load onAdReward");
-        },
-        onAdShow: () {
-          debugPrint("ad load onAdShow");
-        },
-        onAdShowError: (code, msg) {
-          debugPrint("ad load onAdShowError");
-        },
-        onRenderFailure: () {
-          debugPrint("ad load onRenderFailure");
-        },
-        onVideoPlayStart: () {
-          debugPrint("ad load onVideoPlayStart");
-        },
-        onVideoPlayError: (code,msg) {
-          debugPrint("ad load onVideoPlayError");
-        },
-       onVideoPlayEnd: () {
-         debugPrint("ad load onVideoPlayEnd");
-       },
-       onVideoSkipToEnd: (duration) {
-         debugPrint("ad load onVideoSkipToEnd=$duration");
-       });
-
-    AdOptions options = AdOptions(spaceId: '15288',splashAdBottomBuilderHeight: 200);
-    _splashAd = AMPSSplashAd(config: options, mCallBack: _adCallBack);
   }
 
   @override
@@ -192,7 +129,39 @@ class _SplashPageState extends State<SplashPage> {
         Column(children: [
           const SizedBox(height: 100,width: 0),
           ButtonWidget(
-              buttonText: '点击跳转插屏页面',
+              buttonText: getInitResult(initStatus),
+              backgroundColor: getInitColor(initStatus),
+              callBack: () {
+                AMPSAdSdk().init(sdkConfig, _callBack);
+              }
+          ),
+          const SizedBox(height: 20,width: 0),
+          ButtonWidget(
+              buttonText: '开屏show案例页面',
+              callBack: () {
+                // 使用命名路由跳转
+                Navigator.pushNamed(context, 'SplashShowPage');
+              }
+          ),
+          const SizedBox(height: 20,width: 0),
+          ButtonWidget(
+              buttonText: '开屏组件案例页面',
+              callBack: () {
+                // 使用命名路由跳转
+                Navigator.pushNamed(context, 'SplashWidgetPage');
+              }
+          ),
+          const SizedBox(height: 20,width: 0),
+          ButtonWidget(
+              buttonText: '插屏show案例页面',
+              callBack: () {
+                // 使用命名路由跳转
+                Navigator.pushNamed(context, 'InterstitialShowPage');
+              }
+          ),
+          const SizedBox(height: 20,width: 0),
+          ButtonWidget(
+              buttonText: '插屏组件案例页面',
               callBack: () {
                 // 使用命名路由跳转
                 Navigator.pushNamed(context, 'InterstitialPage');
@@ -214,32 +183,38 @@ class _SplashPageState extends State<SplashPage> {
                 Navigator.pushNamed(context, 'NativeUnifiedPage');
               }
           )
-        ],)
-        //_buildSplashWidget(),
+        ],),
       ],
     ));
   }
 
-  Widget _buildSplashWidget() {
-    return SplashWidget(_splashAd,
-        splashBottomWidget: SplashBottomWidget(
-            height: 100.0,
-            backgroundColor: "#FFFFFFFF",
-            children: [
-              ImageComponent(
-                width: 25,
-                height: 25,
-                x: 170,
-                y: 10,
-                imageUrl: 'assets/images/img.png',
-              ),
-              TextComponent(
-                fontSize: 24,
-                color: "#00ff00",
-                x: 140,
-                y: 50,
-                text: 'Hello Android!',
-              ),
-            ]));
+  String getInitResult(InitStatus status) {
+    switch (status) {
+      case InitStatus.normal:
+        return '点击初始化SDK';
+      case InitStatus.initialing:
+        return '初始化中';
+      case InitStatus.alreadyInit:
+        return '已初始化';
+      case InitStatus.success:
+        return '初始化成功';
+      case InitStatus.failed:
+        return '初始化失败';
+      }
+  }
+
+  Color? getInitColor(InitStatus initStatus) {
+    switch (initStatus) {
+      case InitStatus.normal:
+        return Colors.blue;
+      case InitStatus.initialing:
+        return Colors.grey;
+      case InitStatus.alreadyInit:
+        return Colors.green;
+      case InitStatus.success:
+        return Colors.green;
+      case InitStatus.failed:
+        return Colors.red;
+    }
   }
 }

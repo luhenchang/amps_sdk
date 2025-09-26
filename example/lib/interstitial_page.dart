@@ -13,12 +13,14 @@ class _InterstitialPageState extends State<InterstitialPage> {
   late AdCallBack _adCallBack;
   AMPSInterstitialAd? _interAd;
   bool visibleAd = true;
+  bool couldBack = true;
   @override
   void initState() {
     super.initState();
     _adCallBack = AdCallBack(
         onRenderOk: () {
           setState(() {
+            couldBack = false;
             visibleAd = true;
           });
           //_interAd?.showAd();
@@ -29,6 +31,7 @@ class _InterstitialPageState extends State<InterstitialPage> {
         },
         onAdClicked: () {
           setState(() {
+            couldBack = true;
             visibleAd = false;
           });
           debugPrint("ad load onAdClicked");
@@ -38,6 +41,7 @@ class _InterstitialPageState extends State<InterstitialPage> {
         },
         onAdClosed: () {
           setState(() {
+            couldBack = true;
             visibleAd = false;
           });
           debugPrint("ad load onAdClosed");
@@ -77,7 +81,9 @@ class _InterstitialPageState extends State<InterstitialPage> {
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  PopScope(
+        canPop: couldBack,
+        child:  Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
@@ -94,6 +100,6 @@ class _InterstitialPageState extends State<InterstitialPage> {
         ),
         if(visibleAd) InterstitialWidget(_interAd)
       ],)
-    );
+    ));
   }
 }

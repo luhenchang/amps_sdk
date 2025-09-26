@@ -17,7 +17,7 @@ class _SplashShowPageState extends State<SplashShowPage> {
   AMPSSplashAd? _splashAd;
   late AdCallBack _adCallBack;
   bool initSuccess = false;
-
+  bool couldBack = true;
   @override
   void initState() {
     //SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
@@ -47,10 +47,19 @@ class _SplashShowPageState extends State<SplashShowPage> {
     }, onLoadFailure: (code, msg) {
       debugPrint("ad load failure=$code;$msg");
     }, onAdClicked: () {
+      setState(() {
+        couldBack = true;
+      });
       debugPrint("ad load onAdClicked");
     }, onAdExposure: () {
+      setState(() {
+        couldBack = false;
+      });
       debugPrint("ad load onAdExposure");
     }, onAdClosed: () {
+      setState(() {
+        couldBack = true;
+      });
       debugPrint("ad load onAdClosed");
     }, onAdReward: () {
       debugPrint("ad load onAdReward");
@@ -78,7 +87,7 @@ class _SplashShowPageState extends State<SplashShowPage> {
   @override
   Widget build(BuildContext context) {
     return PopScope(
-        canPop: false,
+        canPop: couldBack,
         child: Scaffold(
             appBar: AppBar(
               title: Text(widget.title),
