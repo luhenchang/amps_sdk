@@ -1,5 +1,5 @@
-import { ampsAd } from "biz.beizi.adn";
-import { StringConstants } from "./StringConstants";
+import { ampsAd } from 'biz.beizi.adn';
+import { StringConstants } from './StringConstants';
 
 const channelDomain = "biz.beizi.adn";
 
@@ -69,23 +69,77 @@ export class AMPSAdSdkMethodNames {
   // 初始化AMPS广告SDK的方法名
   static readonly testMode = 'testMode'
   static readonly init = 'AMPSAdSdk_init';
+  // 开屏相关方法
   static readonly splashLoad = 'AMPSSplashAd_load';
   static readonly splashShowAd = 'AMPSSplashAd_showAd';
+  static readonly splashGetECPM = 'AMPSSplashAd_getECPM';
+  static readonly splashNotifyRTBWin = 'AMPSSplashAd_notifyRTBWin';
+  static readonly splashNotifyRTBLoss = 'AMPSSplashAd_notifyRTBLoss';
+  static readonly splashIsReadyAd = 'AMPSSplashAd_isReadyAd';
+
   static readonly interstitialLoad = 'AMPSInterstitial_load';
   static readonly interstitialShowAd = 'AMPSSInterstitial_showAd';
+  static readonly interstitialGetECPM = 'AMPSSInterstitial_getECPM';
+  static readonly interstitialNotifyRTBWin = 'AMPSInterstitial_notifyRTBWin';
+  static readonly interstitialNotifyRTBLoss = 'AMPSInterstitial_notifyRTBLoss';
+  static readonly interstitialIsReadyAd = 'AMPSInterstitial_isReadyAd';
+
   static readonly nativeLoad = 'AMPSNative_load';
   static readonly nativeShowAd = 'AMPSNative_showAd';
+  static readonly nativeGetECPM = 'AMPSNative_getECPM';
+  static readonly nativeNotifyRTBWin = 'AMPSNative_notifyRTBWin';
+  static readonly nativeNotifyRTBLoss = 'AMPSNative_notifyRTBLoss';
+  static readonly nativeIsReadyAd = 'AMPSNative_isReadyAd';
+  static readonly nativeIsNativeExpress = 'AMPSNative_isNativeExpress';
+  static readonly nativeGetVideoDuration = 'AMPSNative_getVideoDuration';
+  static readonly nativeSetVideoPlayConfig = 'AMPSNative_setVideoPlayConfig';
 }
 
+export const AD_WIN_PRICE = 'winPrice'
+export const AD_SEC_PRICE = 'secPrice'
+export const AD_ID = 'adId';
+export const AD_LOSS_REASON = 'lossReason'
 export const AD_OPTION = 'AdOption';
 export const CONFIG = "config";
 export const SPLASH_BOTTOM = "SplashBottomView";
+export const VIDEO_SOUND = "videoSoundEnable";
+export const VIDEO_PLAY_TYPE = "videoAutoPlayType";
+export const VIDEO_LOOP_REPLAY = "videoLoopReplay";
 export const defaultAdOption: ampsAd.AdOptions = {
   spaceId: StringConstants.EMPTY_STRING
 }
 
 export let InitMethodNames: string[] = [AMPSAdSdkMethodNames.init];
-export let SplashMethodNames: string[] = [AMPSAdSdkMethodNames.splashLoad,AMPSAdSdkMethodNames.splashShowAd];
-export let InterstitialMethodNames: string[] = [AMPSAdSdkMethodNames.interstitialLoad,AMPSAdSdkMethodNames.interstitialShowAd];
-export let NativeMethodNames: string[] = [AMPSAdSdkMethodNames.nativeLoad,AMPSAdSdkMethodNames.nativeShowAd];
+
+export let SplashMethodNames: string[] =
+  [
+    AMPSAdSdkMethodNames.splashLoad,
+    AMPSAdSdkMethodNames.splashShowAd,
+    AMPSAdSdkMethodNames.splashGetECPM,
+    AMPSAdSdkMethodNames.splashNotifyRTBWin,
+    AMPSAdSdkMethodNames.splashNotifyRTBLoss,
+    AMPSAdSdkMethodNames.splashIsReadyAd
+  ];
+
+export let InterstitialMethodNames: string[] =
+  [
+    AMPSAdSdkMethodNames.interstitialLoad,
+    AMPSAdSdkMethodNames.interstitialShowAd,
+    AMPSAdSdkMethodNames.interstitialGetECPM,
+    AMPSAdSdkMethodNames.interstitialNotifyRTBWin,
+    AMPSAdSdkMethodNames.interstitialNotifyRTBLoss,
+    AMPSAdSdkMethodNames.interstitialIsReadyAd,
+  ];
+
+export let NativeMethodNames: string[] = [
+  AMPSAdSdkMethodNames.nativeLoad,
+  AMPSAdSdkMethodNames.nativeShowAd,
+  AMPSAdSdkMethodNames.nativeGetECPM,
+  AMPSAdSdkMethodNames.nativeNotifyRTBWin,
+  AMPSAdSdkMethodNames.nativeNotifyRTBLoss,
+  AMPSAdSdkMethodNames.nativeIsReadyAd,
+  AMPSAdSdkMethodNames.nativeIsNativeExpress,
+  AMPSAdSdkMethodNames.nativeGetVideoDuration,
+  AMPSAdSdkMethodNames.nativeSetVideoPlayConfig
+];
 

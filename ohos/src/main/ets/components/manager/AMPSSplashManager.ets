@@ -1,10 +1,14 @@
 import { Any, MethodCall, MethodResult } from '@ohos/flutter_ohos';
-import { AMPSAdCallBackChannelMethod, AMPSAdSdkMethodNames } from '../data/common';
+import {
+  AD_LOSS_REASON,
+  AD_SEC_PRICE, AD_WIN_PRICE, AMPSAdCallBackChannelMethod, AMPSAdSdkMethodNames } from '../data/common';
 import { AMPSEventManager } from '../sdk/AMPSEventManager';
 import { ampsAd, AMPSSplashAd } from 'biz.beizi.adn';
 import { AdOptionsModule } from '../data/AdOptionsModule';
 import { SplashBottomModule } from '../data/SplashBottomModule';
 import { window } from '@kit.ArkUI';
+import { HashMap } from '@kit.ArkTS';
+import { StringConstants } from '../data/StringConstants';
 
 export let globalSplashBottomBuilder: WrappedBuilder<[]> | undefined  = wrapBuilder(SplashBottomBuilder);
 export class AMPSSplashManager {
@@ -50,6 +54,30 @@ export class AMPSSplashManager {
         break;
       case AMPSAdSdkMethodNames.splashShowAd:
         this.handleSplashShowAd(result, call.args);
+        break;
+      case AMPSAdSdkMethodNames.splashGetECPM:
+        const mEcpm = this.mSplashAd?.getECPM() ?? 0
+        result.success(mEcpm);
+        break;
+      case AMPSAdSdkMethodNames.splashNotifyRTBWin:
+        const params: HashMap<String, number> = call.args;
+        const winPrice: number = params.get(AD_WIN_PRICE) ?? 0
+        const secPrice: number = params.get(AD_SEC_PRICE) ?? 0
+        if (winPrice != undefined && secPrice != undefined) {
+          this.mSplashAd?.notifyRTBWin(winPrice, secPrice)
+        }
+        break;
+      case AMPSAdSdkMethodNames.splashNotifyRTBLoss:
+        const lossParams: HashMap<String, Any> = call.args;
+        const lossWinPrice: number = lossParams.get(AD_WIN_PRICE) ?? 0
+        const lossSecPrice: number = lossParams.get(AD_SEC_PRICE) ?? 0
+        const lossReason: string = lossParams.get(AD_LOSS_REASON) ?? StringConstants.EMPTY_STRING
+        if (lossWinPrice != undefined  && lossSecPrice != undefined  && lossReason != undefined ) {
+          this.mSplashAd?.notifyRTBLoss(lossWinPrice, lossSecPrice, lossReason)
+        }
+        break;
+      case AMPSAdSdkMethodNames.splashIsReadyAd:
+        result.success(this.mSplashAd?.isReadyAd() ?? false);
         break;
       default:
         result.notImplemented();

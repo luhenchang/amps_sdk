@@ -15,13 +15,13 @@ class UnifiedWidget extends StatefulWidget {
   // 宽高
   final double width, height;
   final AMPSNativeAd? adNative;
-  final NativeUnifiedWidget? unifiedWidget;
+  final NativeUnifiedWidget? unifiedContent;
 
   const UnifiedWidget(
     this.adNative, {
     super.key,
     required this.posId,
-    required this.unifiedWidget,
+    required this.unifiedContent,
     this.show = true,
     this.width = 375,
     this.height = 128,
@@ -42,7 +42,7 @@ class _UnifiedWidgetState extends State<UnifiedWidget> with AutomaticKeepAliveCl
     height = widget.height;
     creationParams = <String, dynamic>{
       "posId": widget.posId,
-      'unifiedWidget': widget.unifiedWidget?.toMap()
+      'unifiedWidget': widget.unifiedContent?.toMap()
     };
     super.initState();
   }

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:amps_sdk/amps_sdk_export.dart';
 import 'package:amps_sdk/widget/native_unified_widget.dart';
 import 'package:flutter/material.dart';
@@ -101,13 +103,13 @@ class _SplashPageState extends State<NativeUnifiedPage> {
                 posId: adId,
                 width: expressWidth,
                 height: expressHeight,
-                unifiedWidget: NativeUnifiedWidget(
+                unifiedContent: NativeUnifiedWidget(
                     height: expressHeight,
                     backgroundColor: '#FFFFFF',
                     children: [
                       UnifiedMainImgWidget(
-                          width: 350,
-                          height: 128,
+                          width: expressWidth,
+                          height: expressHeight,
                           x: marginLeft,
                           y: 0,
                           backgroundColor: '#FFFFFF',

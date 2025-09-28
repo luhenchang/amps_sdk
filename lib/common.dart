@@ -63,12 +63,30 @@ class AMPSNativeCallBackChannelMethod {
 class AMPSAdSdkMethodNames {
   // 初始化AMPS广告SDK的方法名
   static const String init = 'AMPSAdSdk_init';
+  // 开屏相关方法
   static const String splashLoad = 'AMPSSplashAd_load';
   static const String splashShowAd = 'AMPSSplashAd_showAd';
+  static const String splashGetECPM = 'AMPSSplashAd_getECPM';
+  static const String splashNotifyRTBWin = 'AMPSSplashAd_notifyRTBWin';
+  static const String splashNotifyRTBLoss = 'AMPSSplashAd_notifyRTBLoss';
+  static const String splashIsReadyAd = 'AMPSSplashAd_isReadyAd';
+
   static const String interstitialLoad = 'AMPSInterstitial_load';
   static const String interstitialShowAd = 'AMPSSInterstitial_showAd';
+  static const String interstitialGetECPM = 'AMPSSInterstitial_getECPM';
+  static const String interstitialNotifyRTBWin = 'AMPSInterstitial_notifyRTBWin';
+  static const String interstitialNotifyRTBLoss = 'AMPSInterstitial_notifyRTBLoss';
+  static const String interstitialIsReadyAd = 'AMPSInterstitial_isReadyAd';
+
   static const String nativeLoad = 'AMPSNative_load';
   static const String nativeShowAd = 'AMPSNative_showAd';
+  static const String nativeGetECPM = 'AMPSNative_getECPM';
+  static const String nativeNotifyRTBWin = 'AMPSNative_notifyRTBWin';
+  static const String nativeNotifyRTBLoss = 'AMPSNative_notifyRTBLoss';
+  static const String nativeIsReadyAd = 'AMPSNative_isReadyAd';
+  static const String nativeIsNativeExpress = 'AMPSNative_isNativeExpress';
+  static const String nativeGetVideoDuration = 'AMPSNative_getVideoDuration';
+  static const String nativeSetVideoPlayConfig = 'AMPSNative_setVideoPlayConfig';
 }
 
 class AMPSSdkCallBackErrorKey {
@@ -80,7 +98,10 @@ class AMPSSdkCallBackErrorKey {
 class AMPSSdkCallBackParamsKey {
   static const String playDurationMs = "playDurationMs";
 }
-
+const String adWinPrice = 'winPrice';
+const String adSecPrice = 'secPrice';
+const String adAdId = 'adId';
+const String adLossReason = 'lossReason';
 const String adOption = 'AdOption';
 const String splashConfig = "config";
 const String splashBottomView = "SplashBottomView";

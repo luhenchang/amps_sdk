@@ -12,9 +12,6 @@ class AMPSSplashAd {
 
   AMPSSplashAd({required this.config, this.mCallBack});
 
-  setAMPSViewCallBack (AdCallBack viewCallBack) {
-    mViewCallBack = viewCallBack;
-  }
   void registerChannel(int id) {
     _channel = null;
     _channel = MethodChannel('${AMPSPlatformViewRegistry.ampsSdkSplashViewId}$id');
@@ -96,5 +93,30 @@ class AMPSSplashAd {
 
   void showAd({SplashBottomWidget? splashBottomWidget}) async {
     await _channel?.invokeMethod(AMPSAdSdkMethodNames.splashShowAd, splashBottomWidget?.toMap());
+  }
+
+  Future<bool> isReadyAd() async {
+    return await _channel?.invokeMethod(AMPSAdSdkMethodNames.splashIsReadyAd);
+  }
+
+  Future<num> getECPM() async {
+    return await _channel?.invokeMethod(AMPSAdSdkMethodNames.splashGetECPM);
+  }
+
+  notifyRTBWin(double winPrice, double secPrice) {
+    final Map<String, dynamic> args = {
+      adWinPrice: winPrice,
+      adSecPrice: secPrice,
+    };
+    _channel?.invokeMethod(AMPSAdSdkMethodNames.splashNotifyRTBWin, args);
+  }
+
+  notifyRTBLoss(double winPrice, double secPrice, String lossReason) {
+    final Map<String, dynamic> args = {
+      adWinPrice: winPrice,
+      adSecPrice: secPrice,
+      adLossReason: lossReason,
+    };
+    _channel?.invokeMethod(AMPSAdSdkMethodNames.splashNotifyRTBLoss,args);
   }
 }

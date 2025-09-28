@@ -537,7 +537,7 @@
                                             }
                                         },
                                         {
-                                            "id": "10011",
+                                            "id": "2001",
                                             "req": 1,
                                             "video": {
                                                 "url": "https://adhub-assc-file.oss-cn-beijing.aliyuncs.com/83627c5cfea69ed2188452a3e2258de8.mp4",
@@ -627,7 +627,7 @@
                                             "bgColor": "#00000000",
                                             "controlType": "video",
                                             "isBlur": 1,
-                                            "assetId": "10011",
+                                            "assetId": "2001",
                                             "replay": 1,
                                             "imageUrl": "https://cysion-box-1257966290.cos.ap-beijing.myqcloud.com/img/540%2A960/videoframe_0.png"
                                         },

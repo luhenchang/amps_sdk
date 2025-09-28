@@ -92,4 +92,29 @@ class AMPSInterstitialAd {
   void showAd() async {
     await AmpsSdk.channel.invokeMethod(AMPSAdSdkMethodNames.interstitialShowAd);
   }
+
+  Future<bool> isReadyAd() async {
+    return await AmpsSdk.channel.invokeMethod(AMPSAdSdkMethodNames.interstitialIsReadyAd);
+  }
+
+  Future<num> getECPM() async {
+    return await AmpsSdk.channel.invokeMethod(AMPSAdSdkMethodNames.interstitialGetECPM);
+  }
+
+  notifyRTBWin(double winPrice, double secPrice) {
+    final Map<String, dynamic> args = {
+      adWinPrice: winPrice,
+      adSecPrice: secPrice,
+    };
+    AmpsSdk.channel.invokeMethod(AMPSAdSdkMethodNames.interstitialNotifyRTBWin, args);
+  }
+
+  notifyRTBLoss(double winPrice, double secPrice, String lossReason) {
+    final Map<String, dynamic> args = {
+      adWinPrice: winPrice,
+      adSecPrice: secPrice,
+      adLossReason: lossReason,
+    };
+    AmpsSdk.channel.invokeMethod(AMPSAdSdkMethodNames.interstitialNotifyRTBLoss,args);
+  }
 }

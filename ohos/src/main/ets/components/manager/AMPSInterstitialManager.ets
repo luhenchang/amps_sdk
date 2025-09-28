@@ -1,8 +1,12 @@
 import { Any, MethodCall, MethodResult } from '@ohos/flutter_ohos';
-import { AMPSAdCallBackChannelMethod, AMPSAdSdkMethodNames } from '../data/common';
+import {
+  AD_LOSS_REASON,
+  AD_SEC_PRICE, AD_WIN_PRICE, AMPSAdCallBackChannelMethod, AMPSAdSdkMethodNames } from '../data/common';
 import { AMPSEventManager } from '../sdk/AMPSEventManager';
 import { ampsAd, AMPSInterstitialAd } from 'biz.beizi.adn';
 import { AdOptionsModule } from '../data/AdOptionsModule';
+import { HashMap } from '@kit.ArkTS';
+import { StringConstants } from '../data/StringConstants';
 
 export class AMPSInterstitialManager {
   private static instance: AMPSInterstitialManager;
@@ -43,6 +47,30 @@ export class AMPSInterstitialManager {
         break;
       case AMPSAdSdkMethodNames.interstitialShowAd:
         this.handleShowAd(result,call.args);
+        break;
+      case AMPSAdSdkMethodNames.interstitialGetECPM:
+        const mEcpm = this.interstitialAd?.getECPM() ?? 0
+        result.success(mEcpm);
+        break;
+      case AMPSAdSdkMethodNames.interstitialNotifyRTBWin:
+        const params: HashMap<String, number> = call.args;
+        const winPrice: number = params.get(AD_WIN_PRICE) ?? 0
+        const secPrice: number = params.get(AD_SEC_PRICE) ?? 0
+        if (winPrice != undefined && secPrice != undefined) {
+          this.interstitialAd?.notifyRTBWin(winPrice, secPrice)
+        }
+        break;
+      case AMPSAdSdkMethodNames.interstitialNotifyRTBLoss:
+        const lossParams: HashMap<String, Any> = call.args;
+        const lossWinPrice: number = lossParams.get(AD_WIN_PRICE) ?? 0
+        const lossSecPrice: number = lossParams.get(AD_SEC_PRICE) ?? 0
+        const lossReason: string = lossParams.get(AD_LOSS_REASON) ?? StringConstants.EMPTY_STRING
+        if (lossWinPrice != undefined  && lossSecPrice != undefined  && lossReason != undefined ) {
+          this.interstitialAd?.notifyRTBLoss(lossWinPrice, lossSecPrice, lossReason)
+        }
+        break;
+      case AMPSAdSdkMethodNames.interstitialIsReadyAd:
+        result.success(this.interstitialAd?.isReadyAd() ?? false);
         break;
       default:
         result.notImplemented();

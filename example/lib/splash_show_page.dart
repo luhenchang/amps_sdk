@@ -13,9 +13,9 @@ class SplashShowPage extends StatefulWidget {
 }
 
 class _SplashShowPageState extends State<SplashShowPage> {
-  late AMPSIInitCallBack _callBack;
   AMPSSplashAd? _splashAd;
   late AdCallBack _adCallBack;
+  num eCpm = 0;
   bool initSuccess = false;
   bool couldBack = true;
   @override
@@ -104,6 +104,29 @@ class _SplashShowPageState extends State<SplashShowPage> {
                         callBack: () {
                           // 使用命名路由跳转
                           _splashAd?.load();
+                        }),
+                    ButtonWidget(
+                        buttonText: '获取竞价=$eCpm',
+                        callBack: () async {
+                          bool? isReadyAd = await _splashAd?.isReadyAd();
+                          debugPrint("isReadyAd=$isReadyAd");
+                          if(_splashAd != null){
+                            num ecPmResult =  await _splashAd!.getECPM();
+                            debugPrint("ecPm请求结果=$eCpm");
+                            setState(() {
+                              eCpm = ecPmResult;
+                            });
+                          }
+                        }),
+                    ButtonWidget(
+                        buttonText: '上报竞胜',
+                        callBack: () async {
+                          _splashAd?.notifyRTBWin(11, 3);
+                        }),
+                    ButtonWidget(
+                        buttonText: '上报竞价失败',
+                        callBack: () async {
+                          _splashAd?.notifyRTBLoss(11, 3,"给的价格太低");
                         }),
                   ],
                 )

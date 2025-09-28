@@ -1,4 +1,5 @@
 import 'package:amps_sdk/amps_sdk_export.dart';
+import 'package:amps_sdk_example/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
 
 class NativePage extends StatefulWidget {
@@ -29,10 +30,20 @@ class _SplashPageState extends State<NativePage> {
     }
     setState(() {});
     _adCallBack = AmpsNativeAdListener(
-        loadOk: (adIds) {}, loadFail: (code, message) => {});
+        loadOk: (adIds) {
+        },
+        loadFail: (code, message) => {
+
+        });
 
     _renderCallBack = AMPSNativeRenderListener(renderSuccess: (adId) {
       setState(() {
+       _nativeAd?.isNativeExpress(adId).then((isNativeExpress){
+         debugPrint("isNativeExpress=$isNativeExpress");
+       });
+       _nativeAd?.getVideoDuration(adId).then((duration){
+         debugPrint("getVideoDuration=$duration");
+       });
         debugPrint("adId renderCallBack=$adId");
         feedAdList.add(adId);
       });
@@ -76,6 +87,12 @@ class _SplashPageState extends State<NativePage> {
         mRenderCallBack: _renderCallBack,
         mInteractiveCallBack: _interactiveCallBack,
         mVideoPlayerCallBack: _videoPlayerCallBack);
+    _nativeAd?.setVideoPlayConfig(
+        const AMPSAdVideoPlayConfig(
+          videoSoundEnable: true, // 启用声音
+          videoAutoPlayType: 3, // 设置自动播放类型
+          videoLoopReplay: true, // 启用循环播放
+        ));
     _nativeAd?.load();
   }
 
@@ -100,13 +117,20 @@ class _SplashPageState extends State<NativePage> {
                   height: expressHeight);
             }
             return Center(
-              child: Container(
-                height: 128,
-                width: 350,
-                color: Colors.blueAccent,
-                alignment: Alignment.centerLeft,
-                child: Text('List item ${feedList[feedIndex]}'),
-              ),
+              child:Column(
+                children: [
+                  ButtonWidget(buttonText: "buttonText", callBack: ()=>{
+                    _nativeAd?.notifyRTBLoss(2,1,"失败",feedAdList[0])
+                  }),
+                  Container(
+                    height: 128,
+                    width: 350,
+                    color: Colors.blueAccent,
+                    alignment: Alignment.centerLeft,
+                    child: Text('List item ${feedList[feedIndex]}'),
+                  ),
+                ],
+              )
             );
           },
         ));

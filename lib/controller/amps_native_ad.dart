@@ -1,5 +1,6 @@
 import '../amps_sdk.dart';
 import '../common.dart';
+import '../data/amps_ad_video_play_config.dart';
 import '../data/amps_native_Interactive_listener.dart';
 import '../data/amps_ad.dart';
 
@@ -83,4 +84,43 @@ class AMPSNativeAd {
     );
   }
 
+  Future<bool> isReadyAd(String adId) async {
+    return await AmpsSdk.channel.invokeMethod(AMPSAdSdkMethodNames.nativeIsReadyAd,adId);
+  }
+
+  Future<num> getECPM(String adId) async {
+    return await AmpsSdk.channel.invokeMethod(AMPSAdSdkMethodNames.nativeGetECPM,adId);
+  }
+
+  notifyRTBWin(double winPrice, double secPrice, String adId) {
+    final Map<String, dynamic> args = {
+      adWinPrice: winPrice,
+      adSecPrice: secPrice,
+      adAdId: adId
+    };
+    AmpsSdk.channel.invokeMethod(AMPSAdSdkMethodNames.nativeNotifyRTBWin, args);
+  }
+
+  notifyRTBLoss(double winPrice, double secPrice, String lossReason,String adId) {
+    final Map<String, dynamic> args = {
+      adWinPrice: winPrice,
+      adSecPrice: secPrice,
+      adLossReason: lossReason,
+      adAdId: adId
+    };
+    AmpsSdk.channel.invokeMethod(AMPSAdSdkMethodNames.nativeNotifyRTBLoss,args);
+  }
+
+  Future<bool> isNativeExpress(String adId) async{
+    return await AmpsSdk.channel.invokeMethod(AMPSAdSdkMethodNames.nativeIsNativeExpress, adId);
+  }
+
+  Future<num> getVideoDuration(String adId) async{
+    return await AmpsSdk.channel.invokeMethod(AMPSAdSdkMethodNames.nativeGetVideoDuration, adId);
+  }
+
+  void setVideoPlayConfig(AMPSAdVideoPlayConfig videoPlayConfig) {
+    AmpsSdk.channel.invokeMethod(AMPSAdSdkMethodNames.nativeSetVideoPlayConfig,
+        videoPlayConfig.toJson());
+  }
 }

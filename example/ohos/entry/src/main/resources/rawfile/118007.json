@@ -155,7 +155,8 @@
                       "video": {
                         "url": "https://adhub-assc-file.oss-cn-beijing.aliyuncs.com/83627c5cfea69ed2188452a3e2258de8.mp4",
                         "w": "1080",
-                        "h": "1920"
+                        "h": "1920",
+                        "videoDuration": 12000
                       }
                     },
                     {
