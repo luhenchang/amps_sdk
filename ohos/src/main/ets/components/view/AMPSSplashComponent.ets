@@ -61,6 +61,7 @@ struct AMPSSplashComponent {
 
   aboutToAppear(): void {
     this.splashAd = new AMPSSplashAd(this.adOption, this.callback, this.getUIContext())
+    OhosPlatformSplashView.mSplashAd = this.splashAd;
     this.splashAd?.load()
   }
 

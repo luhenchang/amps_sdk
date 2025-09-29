@@ -18,6 +18,8 @@ class _SplashWidgetPageState extends State<SplashWidgetPage> {
   bool splashVisible = true;
   bool couldBack = true;
 
+  num eCpm = -1;
+
   @override
   void initState() {
     //SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
@@ -70,6 +72,19 @@ class _SplashWidgetPageState extends State<SplashWidgetPage> {
                       setState(() {
                         splashVisible = true;
                       });
+                    }),
+                ButtonWidget(
+                    buttonText: '获取竞价=$eCpm',
+                    callBack: () async {
+                      bool? isReadyAd = await _splashAd?.isReadyAd();
+                      debugPrint("isReadyAd=$isReadyAd");
+                      if(_splashAd != null){
+                        num ecPmResult =  await _splashAd!.getECPM();
+                        debugPrint("ecPm请求结果=$eCpm");
+                        setState(() {
+                          eCpm = ecPmResult;
+                        });
+                      }
                     }),
               ],
             ),

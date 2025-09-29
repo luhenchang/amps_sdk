@@ -101,9 +101,9 @@ class _InterstitialShowPageState extends State<InterstitialShowPage> {
                   debugPrint("isReadyAd=$isReadyAd");
                   if(_interAd != null){
                     num ecPmResult =  await _interAd!.getECPM();
-                    debugPrint("ecPm请求结果=$eCpm");
                     setState(() {
                       eCpm = ecPmResult;
+                      debugPrint("ecPm请求结果=$eCpm");
                     });
                   }
                 }),

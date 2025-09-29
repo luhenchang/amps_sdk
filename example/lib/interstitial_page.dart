@@ -1,4 +1,5 @@
 import 'package:amps_sdk/amps_sdk_export.dart';
+import 'package:amps_sdk_example/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
 class InterstitialPage extends StatefulWidget {
   const InterstitialPage({super.key, required this.title});
@@ -14,6 +15,8 @@ class _InterstitialPageState extends State<InterstitialPage> {
   AMPSInterstitialAd? _interAd;
   bool visibleAd = true;
   bool couldBack = true;
+
+  num eCpm = -1;
   @override
   void initState() {
     super.initState();
@@ -88,15 +91,43 @@ class _InterstitialPageState extends State<InterstitialPage> {
         title: Text(widget.title),
       ),
       body: Stack(children: [
-        Center(
-          child: ElevatedButton(
-            child: const Text('点击展示插屏'),
-            onPressed: () {
-              // 返回上一页
-              debugPrint("差评调用来了11");
-              _interAd?.load();
-            },
-          ),
+        Column(
+            children:[
+              ElevatedButton(
+                child: const Text('点击展示插屏'),
+                onPressed: () {
+                  // 返回上一页
+                  debugPrint("差评调用来了11");
+                  setState(() {
+                    visibleAd = true;
+                  });
+                },
+              ),
+              ButtonWidget(
+                  buttonText: '获取竞价=$eCpm',
+                  callBack: () async {
+                    bool? isReadyAd = await _interAd?.isReadyAd();
+                    debugPrint("isReadyAd=$isReadyAd");
+                    if(_interAd != null){
+                      num ecPmResult =  await _interAd!.getECPM();
+                      setState(() {
+                        eCpm = ecPmResult;
+                        debugPrint("ecPm请求结果=$eCpm");
+                      });
+                    }
+                  }),
+              ButtonWidget(
+                  buttonText: '上报竞胜',
+                  callBack: () async {
+                    _interAd?.notifyRTBWin(11, 3);
+                  }),
+              ButtonWidget(
+                  buttonText: '上报竞价失败',
+                  callBack: () async {
+                    _interAd?.notifyRTBLoss(11, 3,"给的价格太低");
+                  }),
+
+            ]
         ),
         if(visibleAd) InterstitialWidget(_interAd)
       ],)

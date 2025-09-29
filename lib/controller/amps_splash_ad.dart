@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
 
+import '../amps_sdk.dart';
 import '../common.dart';
 import '../data/amps_ad.dart';
 import '../widget/splash_bottom_widget.dart';
@@ -12,17 +13,13 @@ class AMPSSplashAd {
 
   AMPSSplashAd({required this.config, this.mCallBack});
 
-  void registerChannel(int id) {
+  void registerChannel(int id,AdWidgetNeedCloseCall? closeWidgetCall) {
     _channel = null;
     _channel = MethodChannel('${AMPSPlatformViewRegistry.ampsSdkSplashViewId}$id');
-    setMethodCallHandler();
-    _channel?.invokeMethod(
-      AMPSAdSdkMethodNames.splashLoad,
-      config.toMap(),
-    );
+    setMethodCallHandler(closeWidgetCall);
   }
 
-  void setMethodCallHandler() {
+  void setMethodCallHandler(AdWidgetNeedCloseCall? closeWidgetCall) {
     _channel?.setMethodCallHandler(
       (call) async {
         switch (call.method) {
@@ -35,7 +32,6 @@ class AMPSSplashAd {
                 map[AMPSSdkCallBackErrorKey.message]);
             break;
           case AMPSAdCallBackChannelMethod.onRenderOk:
-            mViewCallBack?.onRenderOk?.call();
             mCallBack?.onRenderOk?.call();
             break;
           case AMPSAdCallBackChannelMethod.onAdShow:
@@ -45,10 +41,11 @@ class AMPSSplashAd {
             mCallBack?.onAdExposure?.call();
             break;
           case AMPSAdCallBackChannelMethod.onAdClicked:
+            closeWidgetCall?.call();
             mCallBack?.onAdClicked?.call();
             break;
           case AMPSAdCallBackChannelMethod.onAdClosed:
-            mViewCallBack?.onAdClosed?.call();
+            closeWidgetCall?.call();
             mCallBack?.onAdClosed?.call();
             break;
           case AMPSAdCallBackChannelMethod.onRenderFailure:
@@ -84,7 +81,7 @@ class AMPSSplashAd {
 
   void load() async {
     _channel = const MethodChannel(AMPSChannels.ampsSdk);
-    setMethodCallHandler();
+    setMethodCallHandler(null);
     await _channel?.invokeMethod(
       AMPSAdSdkMethodNames.splashLoad,
       config.toMap(),

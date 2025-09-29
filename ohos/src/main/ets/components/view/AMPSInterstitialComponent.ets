@@ -62,6 +62,7 @@ struct AMPSInterstitialComponent {
 
   aboutToAppear(): void {
     this.interAd = new AMPSInterstitialAd(this.adOption, this.callback)
+    OhosPlatformInterstitialView.interstitialAd = this.interAd;
     this.interAd?.load()
   }
 

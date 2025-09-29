@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:amps_sdk/amps_sdk_export.dart';
 import 'package:amps_sdk/widget/native_unified_widget.dart';
+import 'package:amps_sdk_example/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
 
 class NativeUnifiedPage extends StatefulWidget {
@@ -152,15 +153,20 @@ class _SplashPageState extends State<NativeUnifiedPage> {
                 ),
               );
             }
-            return Center(
-              child: Container(
-                height: 128,
-                width: 350,
-                color: Colors.blueAccent,
-                alignment: Alignment.centerLeft,
-                child: Text('List item ${feedList[feedIndex]}'),
-              ),
-            );
+          return Column(
+                  children: [
+                    ButtonWidget(buttonText: "buttonText", callBack: ()=>{
+                      _nativeAd?.notifyRTBLoss(2,1,"失败",feedAdList[0])
+                    }),
+                    Container(
+                      height: 128,
+                      width: 350,
+                      color: Colors.blueAccent,
+                      alignment: Alignment.centerLeft,
+                      child: Text('List item ${feedList[feedIndex]}'),
+                    ),
+                  ],
+                );
           },
         ));
   }

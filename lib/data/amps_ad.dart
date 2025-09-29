@@ -77,3 +77,5 @@ class AdCallBack {
     this.onAdReward,
   });
 }
+
+typedef AdWidgetNeedCloseCall = void Function();

@@ -7,22 +7,19 @@ import '../data/amps_ad.dart';
 class AMPSInterstitialAd {
   AdOptions config;
   AdCallBack? mCallBack;
-  AdCallBack? mViewCallBack;
   bool needLoad = false;
+
+  MethodChannel? _channel;
 
   AMPSInterstitialAd({required this.config, this.mCallBack});
 
-  void registerChannel(int id) {
-    var channel = MethodChannel('${AMPSPlatformViewRegistry.ampsSdkInterstitialViewId}$id');
-    setMethodCallHandler(channel);
-    channel.invokeMethod(
-      AMPSAdSdkMethodNames.interstitialLoad,
-      config.toMap(),
-    );
+  void registerChannel(int id,AdWidgetNeedCloseCall? closeWidgetCall) {
+    _channel = MethodChannel('${AMPSPlatformViewRegistry.ampsSdkInterstitialViewId}$id');
+    setMethodCallHandler(closeWidgetCall);
   }
 
-  void setMethodCallHandler(MethodChannel channel) {
-    channel.setMethodCallHandler(
+  void setMethodCallHandler(AdWidgetNeedCloseCall? closeWidgetCall) {
+    _channel?.setMethodCallHandler(
       (call) async {
         switch (call.method) {
           case AMPSAdCallBackChannelMethod.onLoadSuccess:
@@ -34,7 +31,6 @@ class AMPSInterstitialAd {
                 map[AMPSSdkCallBackErrorKey.message]);
             break;
           case AMPSAdCallBackChannelMethod.onRenderOk:
-            mViewCallBack?.onRenderOk?.call();
             mCallBack?.onRenderOk?.call();
             break;
           case AMPSAdCallBackChannelMethod.onAdShow:
@@ -44,10 +40,11 @@ class AMPSInterstitialAd {
             mCallBack?.onAdExposure?.call();
             break;
           case AMPSAdCallBackChannelMethod.onAdClicked:
+            closeWidgetCall?.call();
             mCallBack?.onAdClicked?.call();
             break;
           case AMPSAdCallBackChannelMethod.onAdClosed:
-            mViewCallBack?.onAdClosed?.call();
+            closeWidgetCall?.call();
             mCallBack?.onAdClosed?.call();
             break;
           case AMPSAdCallBackChannelMethod.onRenderFailure:
@@ -82,7 +79,8 @@ class AMPSInterstitialAd {
   }
 
   void load() async {
-    setMethodCallHandler(AmpsSdk.channel);
+    _channel = AmpsSdk.channel;
+    setMethodCallHandler(null);
     await AmpsSdk.channel.invokeMethod(
       AMPSAdSdkMethodNames.interstitialLoad,
       config.toMap(),
@@ -90,15 +88,15 @@ class AMPSInterstitialAd {
   }
 
   void showAd() async {
-    await AmpsSdk.channel.invokeMethod(AMPSAdSdkMethodNames.interstitialShowAd);
+    await _channel?.invokeMethod(AMPSAdSdkMethodNames.interstitialShowAd);
   }
 
   Future<bool> isReadyAd() async {
-    return await AmpsSdk.channel.invokeMethod(AMPSAdSdkMethodNames.interstitialIsReadyAd);
+    return await _channel?.invokeMethod(AMPSAdSdkMethodNames.interstitialIsReadyAd);
   }
 
   Future<num> getECPM() async {
-    return await AmpsSdk.channel.invokeMethod(AMPSAdSdkMethodNames.interstitialGetECPM);
+    return await _channel?.invokeMethod(AMPSAdSdkMethodNames.interstitialGetECPM);
   }
 
   notifyRTBWin(double winPrice, double secPrice) {
@@ -106,7 +104,7 @@ class AMPSInterstitialAd {
       adWinPrice: winPrice,
       adSecPrice: secPrice,
     };
-    AmpsSdk.channel.invokeMethod(AMPSAdSdkMethodNames.interstitialNotifyRTBWin, args);
+    _channel?.invokeMethod(AMPSAdSdkMethodNames.interstitialNotifyRTBWin, args);
   }
 
   notifyRTBLoss(double winPrice, double secPrice, String lossReason) {
@@ -115,6 +113,6 @@ class AMPSInterstitialAd {
       adSecPrice: secPrice,
       adLossReason: lossReason,
     };
-    AmpsSdk.channel.invokeMethod(AMPSAdSdkMethodNames.interstitialNotifyRTBLoss,args);
+    _channel?.invokeMethod(AMPSAdSdkMethodNames.interstitialNotifyRTBLoss,args);
   }
 }
