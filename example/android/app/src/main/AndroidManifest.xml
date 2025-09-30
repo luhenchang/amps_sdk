@@ -45,7 +45,7 @@
             android:name="flutterEmbedding"
             android:value="2" />
         <provider
-            android:name="biz.beizi.adn.ad.publish.provider.ASNPFileProvider"
+            android:name="biz.beizi.adn.amps.AMPSFileProvider"
             android:authorities="${applicationId}.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">

@@ -1,6 +1,6 @@
 package com.example.amps_sdk.manager
 
-import android.content.Context
+import android.app.Activity
 import com.example.amps_sdk.data.InitMethodNames
 import com.example.amps_sdk.data.SplashMethodNames
 import com.example.amps_sdk.data.InterstitialMethodNames
@@ -15,7 +15,7 @@ import java.lang.ref.WeakReference
 class AMPSEventManager private constructor() : MethodCallHandler {
 
     private var channel: MethodChannel? = null
-    private var mContext: WeakReference<Context>? = null // 在 Android 中通常使用 Context
+    private var mContext: WeakReference<Activity>? = null // 在 Android 中通常使用 Context
 
     companion object {
         private var sInstance: AMPSEventManager? = null
@@ -26,11 +26,11 @@ class AMPSEventManager private constructor() : MethodCallHandler {
         }
     }
 
-    fun setContext(context: Context) {
+    fun setContext(context: Activity) {
         this.mContext = WeakReference(context) // 存储 application context 避免内存泄漏
     }
 
-    fun getContext(): Context? {
+    fun getContext(): Activity? {
         return this.mContext?.get()
     }
 
@@ -54,7 +54,7 @@ class AMPSEventManager private constructor() : MethodCallHandler {
                 AMPSSDKInitManager.getInstance().handleMethodCall(call, result)
             }
             SplashMethodNames.contains(call.method) -> {
-                //AMPSSplashManager.getInstance().handleMethodCall(call, result)
+                AMPSSplashManager.getInstance().handleMethodCall(call, result)
             }
             InterstitialMethodNames.contains(call.method) -> {
                 //AMPSInterstitialManager.getInstance().handleMethodCall(call, result)
@@ -81,7 +81,6 @@ class AMPSEventManager private constructor() : MethodCallHandler {
      * 释放资源，清除 MethodChannel 的回调处理器和 Context
      */
     fun release() {
-
         channel?.setMethodCallHandler(null)
         channel = null // 可选，如果不再需要这个channel实例
         mContext = null

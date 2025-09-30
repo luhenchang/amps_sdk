@@ -1,7 +1,5 @@
 package com.example.amps_sdk_example
 
-import androidx.core.view.WindowCompat
-import com.example.amps_sdk.AMPSSplashViewFactory
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugins.GeneratedPluginRegistrant

@@ -1,9 +1,8 @@
 package com.example.amps_sdk.data
 
-import biz.beizi.adn.ad.publish.ASNPConstants
-import biz.beizi.adn.ad.publish.ASNPInitConfig
-import biz.beizi.adn.ad.publish.IASNPCustomController
-import biz.beizi.adn.ad.publish.loc.ASNPLocation
+import biz.beizi.adn.amps.config.AMPSPrivacyConfig
+import biz.beizi.adn.amps.config.model.AMPSLocation
+import biz.beizi.adn.amps.init.AMPSInitConfig
 import xyz.adscope.common.v2.location.ILocation
 import java.util.HashMap
 
@@ -77,7 +76,8 @@ class AMPSInitConfigConverter {
         @JvmField // Makes it accessible like a static field from Java if needed
         var testModel: Boolean = false
     }
-    fun convert(flutterParams: Map<String, Any>?): ASNPInitConfig? {
+
+    fun convert(flutterParams: Map<String, Any>?): AMPSInitConfig? {
         if (flutterParams == null) {
             println("AMPSInitConfigConverter: flutterParams are null.")
             return null
@@ -88,32 +88,31 @@ class AMPSInitConfigConverter {
             println("AMPSInitConfigConverter: App ID is missing or empty.")
             return null
         }
-
-        val ampsInitConfigBuilder = ASNPInitConfig.Builder(mAppId)
+        val ampsInitConfigBuilder = AMPSInitConfig.Builder()
+        ampsInitConfigBuilder.setAppId(mAppId)
         (flutterParams[ParamsKey.TEST_MODEL] as? Boolean)?.let {
             testModel = it
         }
         (flutterParams[ParamsKey.IS_DEBUG_SETTING] as? Boolean)?.let {
-            ampsInitConfigBuilder.setDebugSetting(it)
+            ampsInitConfigBuilder.openDebugLog(it)
         }
         (flutterParams[ParamsKey.IS_USE_HTTPS] as? Boolean)?.let {
             ampsInitConfigBuilder.setUseHttps(it)
         }
         (flutterParams[ParamsKey.IS_TEST_AD] as? Boolean)?.let {
-            ampsInitConfigBuilder.setIsTestAd(it)
+            //ampsInitConfigBuilder
         }
 
-        (flutterParams[ParamsKey.CURRENCY] as? String)?.let { ampsInitConfigBuilder.addCurrency(it) }
-        (flutterParams[ParamsKey.COUNTRY_CN] as? Number)?.toInt()?.let { ampsInitConfigBuilder.setCountryCN(it) } // Assuming it's an Int
+        (flutterParams[ParamsKey.CURRENCY] as? String)?.let { ampsInitConfigBuilder.setCustomUA(it) }
         (flutterParams[ParamsKey.APP_NAME] as? String)?.let { ampsInitConfigBuilder.setAppName(it) }
         (flutterParams[ParamsKey.USER_ID] as? String)?.let { ampsInitConfigBuilder.setUserId(it) }
 
         // UI Model Configuration
         (flutterParams[ParamsKey.UI_MODEL] as? String)?.let { uiModelValue ->
             when (uiModelValue) {
-                UiModelConstant.AUTO -> ampsInitConfigBuilder.setUiModel(ASNPConstants.UiModel.UI_MODEL_AUTO)
-                UiModelConstant.DARK -> ampsInitConfigBuilder.setUiModel(ASNPConstants.UiModel.UI_MODEL_DARK)
-                UiModelConstant.LIGHT -> ampsInitConfigBuilder.setUiModel(ASNPConstants.UiModel.UI_MODEL_LIGHT)
+//                UiModelConstant.AUTO -> ampsInitConfigBuilder.setUiModel(ASNPConstants.UiModel.UI_MODEL_AUTO)
+//                UiModelConstant.DARK -> ampsInitConfigBuilder.setUiModel(ASNPConstants.UiModel.UI_MODEL_DARK)
+//                UiModelConstant.LIGHT -> ampsInitConfigBuilder.setUiModel(ASNPConstants.UiModel.UI_MODEL_LIGHT)
             }
         }
 
@@ -150,7 +149,7 @@ class AMPSInitConfigConverter {
                 .filterValues { it is String }
                 .mapValues { it.value as String }
             if (safeStringMap.isNotEmpty()) {
-                ampsInitConfigBuilder.setOptionFields(safeStringMap)
+                //ampsInitConfigBuilder.setOptionFields(safeStringMap)
             }
         }
 
@@ -160,99 +159,149 @@ class AMPSInitConfigConverter {
             //ampsInitConfigBuilder.setLandStatusBarHeight(it) // Assuming this method exists
         }
         (flutterParams[ParamsKey.AD_CONTROLLER] as? Map<*, *>)?.let { adControllerMap ->
-            val ampsCustomController: IASNPCustomController = object : IASNPCustomController() {
-                override fun getOAID(): String? {
-                    val oAID = adControllerMap[AdControllerPropKey.OAID] as? String
-                    return oAID ?: ""
-                }
-
-                override fun getAndroidID(): String? {
-                    val androidID = adControllerMap[AdControllerPropKey.AndroidID] as? String
-                    return androidID ?: ""
-                }
-
-                override fun getGAID(): String? {
-                    val androidGAID = adControllerMap[AdControllerPropKey.GAID] as? String
-                    return androidGAID ?: ""
-                }
-
-                override fun getUnderageTag(): UnderageTag? {
-                    val underageTag = adControllerMap[AdControllerPropKey.USER_AGENT] as? Int
-                    return when (underageTag) {
-                        UnderageTag.ADULT.code -> UnderageTag.ADULT
-                        UnderageTag.UNDERAGE.code -> UnderageTag.UNDERAGE
-                        else -> UnderageTag.UNKNOWN
-                    }
-                }
-
-                override fun getUserAgent(): String? {
-                    val useAgent = adControllerMap[AdControllerPropKey.USER_AGENT] as? String
-                    return useAgent ?: ""
-                }
-
-                override fun isSupportPersonalized(): Boolean {
-                    val isSupportPersonalized = adControllerMap[AdControllerPropKey.IS_SUPPORT_PERSONALIZED] as? Boolean
-                    return isSupportPersonalized?: true
-                }
-
-                override fun isCanGatherOAID(): Boolean {
-                    val isCanGatherOAID = adControllerMap[AdControllerPropKey.IS_CAN_GATHER_OAID] as? Boolean
-                    return isCanGatherOAID?: true
-                }
-
-                override fun isCanUseSensor(): Boolean {
-                    val isCanUseSensor = adControllerMap[AdControllerPropKey.IS_CAN_USE_SENSOR] as? Boolean
-                    return isCanUseSensor?: true
-                }
-
-                override fun isCanUpdateLocation(): Boolean {
-                    val isCanUpdateLocation = adControllerMap[AdControllerPropKey.IS_LOCATION_ENABLED] as? Boolean
-                    return isCanUpdateLocation ?: true
-                }
-
+            //ampsInitConfigBuilder.setAMPSPrivacyConfig()
+//            val ampsCustomController: IASNPCustomController = object : IASNPCustomController() {
+//                override fun getOAID(): String? {
+//                    val oAID = adControllerMap[AdControllerPropKey.OAID] as? String
+//                    return oAID ?: ""
+//                }
+//
+//                override fun getAndroidID(): String? {
+//                    val androidID = adControllerMap[AdControllerPropKey.AndroidID] as? String
+//                    return androidID ?: ""
+//                }
+//
+//                override fun getGAID(): String? {
+//                    val androidGAID = adControllerMap[AdControllerPropKey.GAID] as? String
+//                    return androidGAID ?: ""
+//                }
+//
+//                override fun getUnderageTag(): UnderageTag? {
+//                    val underageTag = adControllerMap[AdControllerPropKey.USER_AGENT] as? Int
+//                    return when (underageTag) {
+//                        UnderageTag.ADULT.code -> UnderageTag.ADULT
+//                        UnderageTag.UNDERAGE.code -> UnderageTag.UNDERAGE
+//                        else -> UnderageTag.UNKNOWN
+//                    }
+//                }
+//
+//                override fun getUserAgent(): String? {
+//                    val useAgent = adControllerMap[AdControllerPropKey.USER_AGENT] as? String
+//                    return useAgent ?: ""
+//                }
+//
+//                override fun isSupportPersonalized(): Boolean {
+//                    val isSupportPersonalized = adControllerMap[AdControllerPropKey.IS_SUPPORT_PERSONALIZED] as? Boolean
+//                    return isSupportPersonalized?: true
+//                }
+//
+//                override fun isCanGatherOAID(): Boolean {
+//                    val isCanGatherOAID = adControllerMap[AdControllerPropKey.IS_CAN_GATHER_OAID] as? Boolean
+//                    return isCanGatherOAID?: true
+//                }
+//
+//                override fun isCanUseSensor(): Boolean {
+//                    val isCanUseSensor = adControllerMap[AdControllerPropKey.IS_CAN_USE_SENSOR] as? Boolean
+//                    return isCanUseSensor?: true
+//                }
+//
+//                override fun isCanUpdateLocation(): Boolean {
+//                    val isCanUpdateLocation = adControllerMap[AdControllerPropKey.IS_LOCATION_ENABLED] as? Boolean
+//                    return isCanUpdateLocation ?: true
+//                }
+//
+//                override fun isCanUseAndroidID(): Boolean {
+//                    val isCanUseAndroidID = adControllerMap[AdControllerPropKey.IS_CAN_USE_ANDROID_ID] as? Boolean
+//                    return isCanUseAndroidID ?: true
+//                }
+//
+//                override fun getASNPLocation(): ASNPLocation? {
+//                    val locationMap = adControllerMap[AdControllerPropKey.LOCATION] as? Map<*, *>
+//                    if (locationMap == null) {
+//                        return null
+//                    }
+//                    return object : ASNPLocation {
+//                        override fun getLatitude(): Double {
+//                            val latitude =
+//                                (locationMap[LocationPropKey.LATITUDE] as? Number)?.toDouble()
+//                            return latitude ?: 0.0
+//                        }
+//
+//                        override fun getLongitude(): Double {
+//                            val longitude =
+//                                (locationMap[LocationPropKey.LONGITUDE] as? Number)?.toDouble()
+//                            return longitude ?: 0.0
+//                        }
+//
+//                        override fun getLocationTimestamp(): Long {
+//                            val timeStamp =
+//                                (locationMap[LocationPropKey.TIME_STAMP] as? Number)?.toLong()
+//                            return timeStamp ?: 0L
+//                        }
+//
+//                        override fun getCoordinateType(): ILocation.CoordinateType? {
+//                            return (locationMap[LocationPropKey.COORDINATE] as? String)?.let { coordinateValue ->
+//                                when (coordinateValue) {
+//                                    CoordinateConstant.BAIDU -> ILocation.CoordinateType.BD_09
+//                                    CoordinateConstant.WGS84 -> ILocation.CoordinateType.WGS_84
+//                                    CoordinateConstant.GCJ02 -> ILocation.CoordinateType.GCJ_02
+//                                    else -> null
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+            var privacyConfig = object : AMPSPrivacyConfig() {
                 override fun isCanUseAndroidID(): Boolean {
-                    val isCanUseAndroidID = adControllerMap[AdControllerPropKey.IS_CAN_USE_ANDROID_ID] as? Boolean
+                    val isCanUseAndroidID =
+                        adControllerMap[AdControllerPropKey.IS_CAN_USE_ANDROID_ID] as? Boolean
                     return isCanUseAndroidID ?: true
                 }
 
-                override fun getASNPLocation(): ASNPLocation? {
+                override fun isCanUseLocation(): Boolean {
+                    val isCanUpdateLocation =
+                        adControllerMap[AdControllerPropKey.IS_LOCATION_ENABLED] as? Boolean
+                    return isCanUpdateLocation ?: true
+                }
+
+                override fun isCanUseShakeAd(): Boolean {
+                    val isCanUseSensor =
+                        adControllerMap[AdControllerPropKey.IS_CAN_USE_SENSOR] as? Boolean
+                    return isCanUseSensor ?: true
+                }
+
+                override fun isSupportPersonalized(): Boolean {
+                    val isSupportPersonalized =
+                        adControllerMap[AdControllerPropKey.IS_SUPPORT_PERSONALIZED] as? Boolean
+                    return isSupportPersonalized ?: true
+                }
+
+                override fun getLocation(): AMPSLocation? {
                     val locationMap = adControllerMap[AdControllerPropKey.LOCATION] as? Map<*, *>
                     if (locationMap == null) {
                         return null
                     }
-                    return object : ASNPLocation {
-                        override fun getLatitude(): Double {
-                            val latitude =
-                                (locationMap[LocationPropKey.LATITUDE] as? Number)?.toDouble()
-                            return latitude ?: 0.0
-                        }
-
-                        override fun getLongitude(): Double {
-                            val longitude =
-                                (locationMap[LocationPropKey.LONGITUDE] as? Number)?.toDouble()
-                            return longitude ?: 0.0
-                        }
-
-                        override fun getLocationTimestamp(): Long {
-                            val timeStamp =
-                                (locationMap[LocationPropKey.TIME_STAMP] as? Number)?.toLong()
-                            return timeStamp ?: 0L
-                        }
-
-                        override fun getCoordinateType(): ILocation.CoordinateType? {
-                            return (locationMap[LocationPropKey.COORDINATE] as? String)?.let { coordinateValue ->
-                                when (coordinateValue) {
-                                    CoordinateConstant.BAIDU -> ILocation.CoordinateType.BD_09
-                                    CoordinateConstant.WGS84 -> ILocation.CoordinateType.WGS_84
-                                    CoordinateConstant.GCJ02 -> ILocation.CoordinateType.GCJ_02
-                                    else -> null
-                                }
-                            }
-                        }
-                    }
+                    val location = AMPSLocation()
+                    val latitude = (locationMap[LocationPropKey.LATITUDE] as? Number)?.toDouble()
+                    location.latitude = latitude ?: 0.0
+                    val longitude = (locationMap[LocationPropKey.LONGITUDE] as? Number)?.toDouble()
+                    location.longitude = longitude ?: 0.0
+                    val timeStamp = (locationMap[LocationPropKey.TIME_STAMP] as? Number)?.toLong()
+                    location.timestamp = timeStamp ?: 0L
+//                    (locationMap[LocationPropKey.COORDINATE] as? String)?.let { coordinateValue ->
+//                        when (coordinateValue) {
+//                            CoordinateConstant.BAIDU -> ILocation.CoordinateType.BD_09
+//                            CoordinateConstant.WGS84 -> ILocation.CoordinateType.WGS_84
+//                            CoordinateConstant.GCJ02 -> ILocation.CoordinateType.GCJ_02
+//                            else -> null
+//                        }
+//                    }
+//                    location.type = 1 //TODO 对应
+                    return location
                 }
             }
-            ampsInitConfigBuilder.setAdCustomController(ampsCustomController)
+            ampsInitConfigBuilder.setAMPSPrivacyConfig(privacyConfig)
         }
 
 

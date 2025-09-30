@@ -1,9 +1,9 @@
 package com.example.amps_sdk.manager
-import biz.beizi.adn.ad.publish.ASNPAdSDK
-import biz.beizi.adn.ad.publish.IInitCallback
-import biz.beizi.adn.ad.publish.ASNPInitConfig
-
+import biz.beizi.adn.amps.AMPSSDK
+import biz.beizi.adn.amps.init.AMPSInitConfig
 import android.content.Context
+import biz.beizi.adn.amps.common.AMPSError
+import biz.beizi.adn.amps.init.inter.IAMPSInitCallback
 import com.example.amps_sdk.data.AMPSAdSdkMethodNames
 import com.example.amps_sdk.data.AMPSInitChannelMethod
 import com.example.amps_sdk.data.AMPSInitConfigConverter
@@ -48,28 +48,20 @@ class AMPSSDKInitManager private constructor() {
         }
     }
 
-    fun initAMPSSDK(ampsInitConfig: ASNPInitConfig?, context: Context) {
-        val callback = object : IInitCallback {
-            override fun initSuccess() {
+    fun initAMPSSDK(ampsInitConfig: AMPSInitConfig?, context: Context) {
+        val callback = object : IAMPSInitCallback {
+            override fun successCallback() {
                 sendMessage(AMPSInitChannelMethod.INIT_SUCCESS)
             }
 
-            override fun initializing() {
-                sendMessage(AMPSInitChannelMethod.INITIALIZING)
-            }
-
-            override fun alreadyInit() {
-                sendMessage(AMPSInitChannelMethod.ALREADY_INIT)
-            }
-
-            override fun initFailed(code: Int, message: String?) {
-                sendMessage(AMPSInitChannelMethod.INIT_FAILED, mapOf("code" to code, "message" to message))
+            override fun failCallback(p0: AMPSError?) {
+                sendMessage(AMPSInitChannelMethod.INIT_FAILED, mapOf("code" to p0?.code, "message" to p0?.message))
             }
         }
 
         if (ampsInitConfig != null) {
             SDKLog.setLogLevel(SDKLog.LOG_LEVEL.LOG_LEVEL_ALL);
-            ASNPAdSDK.getInstance().init(context, ampsInitConfig,callback)
+            AMPSSDK.init(context, ampsInitConfig,callback)
         }
     }
 

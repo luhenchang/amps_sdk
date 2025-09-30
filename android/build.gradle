@@ -44,7 +44,7 @@ publishing {
             //示例：假设你的模块名为 'amps_sdk' (与项目名一致)
             //并且你要发布 release AAR
             // 这个路径是相对于当前 build.gradle 所在模块的
-            artifact "libs/amps.aar"//在同一目录层级。所以可以写成libs/amps.aar
+            artifact "libs/beiziSDK_v5.3.0.3.aar"//在同一目录层级。所以可以写成libs/amps.aar
         }
         release(MavenPublication) {
             groupId = 'com.example'
@@ -53,7 +53,7 @@ publishing {
             //示例：假设你的模块名为 'amps_sdk' (与项目名一致)
             //并且你要发布 release AAR
             // 这个路径是相对于当前 build.gradle 所在模块的
-            artifact "libs/CommonV2-cBoth-debug.aar"
+            artifact "libs/common_5.1.1.1.aar"
         }
     }
     repositories {

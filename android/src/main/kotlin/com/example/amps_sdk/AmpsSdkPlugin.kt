@@ -19,7 +19,7 @@ class AmpsSdkPlugin :
     }
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
-        AMPSEventManager.getInstance().setContext(binding.activity.baseContext)
+        AMPSEventManager.getInstance().setContext(binding.activity)
     }
 
     override fun onDetachedFromActivityForConfigChanges() {
