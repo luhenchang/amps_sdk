@@ -10,9 +10,5 @@ class MainActivity: FlutterActivity() {
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
         GeneratedPluginRegistrant.registerWith(flutterEngine)
-        flutterEngine
-            .platformViewsController
-            .registry
-            .registerViewFactory("biz.beizi.adn/splash_view_id", AMPSSplashViewFactory(this))
     }
 }
