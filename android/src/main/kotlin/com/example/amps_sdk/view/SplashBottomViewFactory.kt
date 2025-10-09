@@ -1,4 +1,4 @@
-package com.example.amps_sdk
+package com.example.amps_sdk.view
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -16,7 +16,7 @@ object SplashBottomViewFactory {
     /**
      * 根据 SplashBottomModule 数据动态创建一个 RelativeLayout 作为自定义底部视图。
      *
-     * @param context Context，通常是当前的 Activity。
+     * @param context Context
      * @param bottomModule 包含自定义底部视图数据的 SplashBottomModule 实例。
      * @return 配置好的 RelativeLayout，如果 bottomModule 未初始化或无效则返回 null。
      */
@@ -52,7 +52,7 @@ object SplashBottomViewFactory {
             val bitmap: Bitmap = BitmapFactory.decodeStream(inputStream)
             imageView.setBackgroundColor(Color.LTGRAY) // 临时占位符颜色
             imageView.scaleType = ImageView.ScaleType.FIT_CENTER // 或其他适合的 ScaleType
-
+            imageView.setImageBitmap(bitmap)
             val imgParams = RelativeLayout.LayoutParams(
                 (imgChild.width?.let { it * displayMetrics.density } ?: RelativeLayout.LayoutParams.WRAP_CONTENT).toInt(),
                 (imgChild.height?.let { it * displayMetrics.density } ?: RelativeLayout.LayoutParams.WRAP_CONTENT).toInt()

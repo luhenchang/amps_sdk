@@ -9,7 +9,7 @@ import biz.beizi.adn.amps.ad.splash.AMPSSplashAd
 import biz.beizi.adn.amps.ad.splash.AMPSSplashLoadEventListener
 import biz.beizi.adn.amps.common.AMPSError
 import biz.beizi.adn.amps.config.AMPSRequestParameters
-import com.example.amps_sdk.SplashBottomViewFactory
+import com.example.amps_sdk.view.SplashBottomViewFactory
 import com.example.amps_sdk.data.*
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel.Result
@@ -120,7 +120,7 @@ class AMPSSplashManager private constructor() {
 
         try {
             val adOptionsMap = call.arguments<Map<String, Any>?>()
-            val adOption: AMPSRequestParameters = AdOptionsModule.getAdOptionFromMap(adOptionsMap)
+            val adOption: AMPSRequestParameters = AdOptionsModule.getAdOptionFromMap(adOptionsMap, activity)
             mSplashAd = AMPSSplashAd(activity, adOption, adCallback)
             mSplashAd?.loadAd()
             result.success(true)

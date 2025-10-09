@@ -1,4 +1,6 @@
 package com.example.amps_sdk.data
+
+import android.content.Context
 import biz.beizi.adn.amps.config.AMPSRequestParameters
 
 // 定义键名常量
@@ -17,7 +19,7 @@ object AdOptionKeys {
 object AdOptionsModule {
 
     @Suppress("UNCHECKED_CAST")
-    fun getAdOptionFromMap(map: Map<String, Any?>?): AMPSRequestParameters {
+    fun getAdOptionFromMap(map: Map<String, Any?>?, context: Context): AMPSRequestParameters {
         val builder = AMPSRequestParameters.Builder()
         if (map == null) {
             return builder.build()
@@ -26,34 +28,27 @@ object AdOptionsModule {
         val spaceId = map[AdOptionKeys.KEY_SPACE_ID] as? String ?: ""
         val s2sImpl = map[AdOptionKeys.KEY_S2S_IMPL] as? String
         val timeoutInterval = map[AdOptionKeys.KEY_TIMEOUT_INTERVAL] as? Number
-        val expressSizeList = map[AdOptionKeys.KEY_EXPRESS_SIZE] as? List<*>
+        val splashBottomHeight = map[AdOptionKeys.KEY_SPLASH_BOTTOM_HEIGHT] as? Int
         val userId = map[AdOptionKeys.KEY_USER_ID] as? String
         val extra = map[AdOptionKeys.KEY_EXTRA] as? String
 
 
         builder.setSpaceId(spaceId)
-        if (userId!=null) {
+        if (userId != null) {
             builder.setUserId(userId)
         }
-        if (extra!=null) {
+        if (extra != null) {
             builder.setExtraData(extra)
         }
-        if (timeoutInterval!=null) {
+        if (timeoutInterval != null) {
             builder.setTimeOut(timeoutInterval.toInt())
         }
         if (s2sImpl != null) {
             builder.setS2SImpl(s2sImpl)
         }
-        //TODO 补全即可
-        expressSizeList?.let { list ->
-            if (list.size == 2) {
-                val width = list.getOrNull(0) as? Number
-                val height = list.getOrNull(1) as? Number
-                if (width!=null && height!=null) {
-                    builder.setWidth(width.toInt())
-                    builder.setHeight(height.toInt())
-                }
-            }
+        if (splashBottomHeight != null && splashBottomHeight > 0) {
+            val screenHeightPx = context.resources.displayMetrics.heightPixels
+            builder.setHeight(screenHeightPx - (splashBottomHeight * context.resources.displayMetrics.density).toInt())
         }
         return builder.build()
 

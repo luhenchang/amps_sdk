@@ -25,7 +25,7 @@ class _SplashShowPageState extends State<SplashShowPage> {
     _adCallBack = AdCallBack(onRenderOk: () {
       _splashAd?.showAd(
           splashBottomWidget: SplashBottomWidget(
-              height: 100.0,
+              height: 100,
               backgroundColor: "#FFFFFFFF",
               children: [
             ImageComponent(
@@ -80,7 +80,7 @@ class _SplashShowPageState extends State<SplashShowPage> {
     });
 
     AdOptions options =
-        AdOptions(spaceId: '15288', splashAdBottomBuilderHeight: 200);
+        AdOptions(spaceId: '15288', splashAdBottomBuilderHeight: 100);
     _splashAd = AMPSSplashAd(config: options, mCallBack: _adCallBack);
   }
 

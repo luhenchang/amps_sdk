@@ -49,7 +49,7 @@ class _SplashWidgetPageState extends State<SplashWidgetPage> {
       debugPrint("ad load onAdClosed");
     });
 
-    AdOptions options = AdOptions(spaceId: '15288', splashAdBottomBuilderHeight: 200);
+    AdOptions options = AdOptions(spaceId: '15288', splashAdBottomBuilderHeight: 100);
     _splashAd = AMPSSplashAd(config: options, mCallBack: _adCallBack);
   }
 
@@ -96,7 +96,7 @@ class _SplashWidgetPageState extends State<SplashWidgetPage> {
   Widget _buildSplashWidget() {
     return SplashWidget(_splashAd,
         splashBottomWidget: SplashBottomWidget(
-            height: 100.0,
+            height: 100,
             backgroundColor: "#FFFFFFFF",
             children: [
               ImageComponent(
@@ -113,6 +113,7 @@ class _SplashWidgetPageState extends State<SplashWidgetPage> {
                 y: 50,
                 text: 'Hello Android!',
               ),
-            ]));
+            ])
+    );
   }
 }
