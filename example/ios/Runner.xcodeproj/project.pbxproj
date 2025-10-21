@@ -14,6 +14,44 @@
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
+		A07F63412EA79E2B00611915 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F63402EA79E2B00611915 /* Accelerate.framework */; };
+		A07F63432EA79E3B00611915 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F63422EA79E3B00611915 /* AdSupport.framework */; };
+		A07F63452EA79E5300611915 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F63442EA79E5300611915 /* AppTrackingTransparency.framework */; };
+		A07F63472EA79E6000611915 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F63462EA79E6000611915 /* AudioToolbox.framework */; };
+		A07F63492EA79E6F00611915 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F63482EA79E6F00611915 /* AVFoundation.framework */; };
+		A07F634B2EA79E7A00611915 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F634A2EA79E7A00611915 /* CoreGraphics.framework */; };
+		A07F634D2EA79E8900611915 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F634C2EA79E8900611915 /* CoreImage.framework */; };
+		A07F634F2EA79E9500611915 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F634E2EA79E9500611915 /* CoreLocation.framework */; };
+		A07F63512EA79EA100611915 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F63502EA79EA100611915 /* CoreMedia.framework */; };
+		A07F63532EA79EAF00611915 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F63522EA79EAF00611915 /* CoreMotion.framework */; };
+		A07F63552EA79EC300611915 /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F63542EA79EC300611915 /* CoreML.framework */; };
+		A07F63572EA79ED600611915 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F63562EA79ED600611915 /* CoreTelephony.framework */; };
+		A07F63592EA79EE600611915 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F63582EA79EE600611915 /* CoreText.framework */; };
+		A07F635B2EA79EFB00611915 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F635A2EA79EFB00611915 /* Foundation.framework */; };
+		A07F635D2EA79F0A00611915 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F635C2EA79F0A00611915 /* ImageIO.framework */; };
+		A07F635F2EA79F1E00611915 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F635E2EA79F1E00611915 /* JavaScriptCore.framework */; };
+		A07F63612EA79F2900611915 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F63602EA79F2900611915 /* MapKit.framework */; };
+		A07F63632EA79F3B00611915 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F63622EA79F3B00611915 /* MediaPlayer.framework */; };
+		A07F63652EA79F5400611915 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F63642EA79F5400611915 /* MobileCoreServices.framework */; };
+		A07F63672EA79F6800611915 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F63662EA79F6800611915 /* QuartzCore.framework */; };
+		A07F63692EA79F7E00611915 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F63682EA79F7E00611915 /* Security.framework */; };
+		A07F636B2EA79F9300611915 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F636A2EA79F9200611915 /* StoreKit.framework */; };
+		A07F636D2EA79FA000611915 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F636C2EA79FA000611915 /* SystemConfiguration.framework */; };
+		A07F636F2EA79FAC00611915 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F636E2EA79FAC00611915 /* UIKit.framework */; };
+		A07F63712EA79FB700611915 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F63702EA79FB700611915 /* WebKit.framework */; };
+		A07F63732EA79FC100611915 /* DeviceCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F63722EA79FC000611915 /* DeviceCheck.framework */; };
+		A07F63752EA79FE200611915 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F63742EA79FE200611915 /* libz.tbd */; };
+		A07F63772EA79FF300611915 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F63762EA79FF300611915 /* libc++.tbd */; };
+		A07F63792EA7A00400611915 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F63782EA7A00400611915 /* libsqlite3.tbd */; };
+		A07F637B2EA7A01200611915 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F637A2EA7A01200611915 /* libxml2.tbd */; };
+		A07F637D2EA7A02000611915 /* libc++abi.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F637C2EA7A01F00611915 /* libc++abi.tbd */; };
+		A07F63812EA7BD7C00611915 /* TTFFmpeg.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F63802EA7BD7C00611915 /* TTFFmpeg.xcframework */; };
+		A07F63832EA7BDC700611915 /* TTSDKCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F63822EA7BDC700611915 /* TTSDKCore.xcframework */; };
+		A07F63852EA7BE1D00611915 /* TTSDKLiveBase.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F63842EA7BE1D00611915 /* TTSDKLiveBase.xcframework */; };
+		A07F63872EA7BE5700611915 /* TTSDKLivePlayerLite.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F63862EA7BE5700611915 /* TTSDKLivePlayerLite.xcframework */; };
+		A07F63892EA7BE9A00611915 /* TTSDKPlayerCoreLiveLite.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07F63882EA7BE9A00611915 /* TTSDKPlayerCoreLiveLite.xcframework */; };
+		C21E06928E9B89CD5BDC9508 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03F2A771B8FCD975B30BBFDB /* Pods_Runner.framework */; };
+		C9D32D47B6170EC282C41408 /* Pods_RunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1081E4C6D247D2ABF7C6B366 /* Pods_RunnerTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,14 +78,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		03F2A771B8FCD975B30BBFDB /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1081E4C6D247D2ABF7C6B366 /* Pods_RunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		12FE11305931922DD7A3A218 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
 		331C807B294A618700263BE5 /* RunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerTests.swift; sourceTree = "<group>"; };
 		331C8081294A63A400263BE5 /* RunnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
+		69D94F5E9E972EFDFE828939 /* Pods-RunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.debug.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
+		7D8B91AF4658EE202B3EE2B2 /* Pods-RunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.release.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.release.xcconfig"; sourceTree = "<group>"; };
+		91F14F8CDA225E9C82412576 /* Pods-RunnerTests.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.profile.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.profile.xcconfig"; sourceTree = "<group>"; };
 		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Flutter/Debug.xcconfig; sourceTree = "<group>"; };
 		9740EEB31CF90195004384FC /* Generated.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Generated.xcconfig; path = Flutter/Generated.xcconfig; sourceTree = "<group>"; };
 		97C146EE1CF9000F007C117D /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +99,44 @@
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		980CD6B8103E97598C067D4A /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
+		A07F63402EA79E2B00611915 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		A07F63422EA79E3B00611915 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		A07F63442EA79E5300611915 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
+		A07F63462EA79E6000611915 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		A07F63482EA79E6F00611915 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A07F634A2EA79E7A00611915 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A07F634C2EA79E8900611915 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		A07F634E2EA79E9500611915 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A07F63502EA79EA100611915 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		A07F63522EA79EAF00611915 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		A07F63542EA79EC300611915 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
+		A07F63562EA79ED600611915 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		A07F63582EA79EE600611915 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		A07F635A2EA79EFB00611915 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A07F635C2EA79F0A00611915 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		A07F635E2EA79F1E00611915 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		A07F63602EA79F2900611915 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A07F63622EA79F3B00611915 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		A07F63642EA79F5400611915 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		A07F63662EA79F6800611915 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A07F63682EA79F7E00611915 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		A07F636A2EA79F9200611915 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		A07F636C2EA79FA000611915 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A07F636E2EA79FAC00611915 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A07F63702EA79FB700611915 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		A07F63722EA79FC000611915 /* DeviceCheck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceCheck.framework; path = System/Library/Frameworks/DeviceCheck.framework; sourceTree = SDKROOT; };
+		A07F63742EA79FE200611915 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		A07F63762EA79FF300611915 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		A07F63782EA7A00400611915 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		A07F637A2EA7A01200611915 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		A07F637C2EA7A01F00611915 /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
+		A07F63802EA7BD7C00611915 /* TTFFmpeg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TTFFmpeg.xcframework; path = Pods/BUTTSDKFramework/TTSDKFramework/TTSDKTTFFmpegLiveLite/TTFFmpeg.xcframework; sourceTree = "<group>"; };
+		A07F63822EA7BDC700611915 /* TTSDKCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TTSDKCore.xcframework; path = Pods/BUTTSDKFramework/TTSDKFramework/TTSDKCore/TTSDKCore.xcframework; sourceTree = "<group>"; };
+		A07F63842EA7BE1D00611915 /* TTSDKLiveBase.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TTSDKLiveBase.xcframework; path = Pods/BUTTSDKFramework/TTSDKFramework/TTSDKLiveBase/TTSDKLiveBase.xcframework; sourceTree = "<group>"; };
+		A07F63862EA7BE5700611915 /* TTSDKLivePlayerLite.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TTSDKLivePlayerLite.xcframework; path = Pods/BUTTSDKFramework/TTSDKFramework/TTSDKLivePlayerLite/TTSDKLivePlayerLite.xcframework; sourceTree = "<group>"; };
+		A07F63882EA7BE9A00611915 /* TTSDKPlayerCoreLiveLite.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TTSDKPlayerCoreLiveLite.xcframework; path = Pods/BUTTSDKFramework/TTSDKFramework/TTSDKPlayerCoreLiveLite/TTSDKPlayerCoreLiveLite.xcframework; sourceTree = "<group>"; };
+		C966777A9A592AD94D5F491A /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +144,51 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A07F63892EA7BE9A00611915 /* TTSDKPlayerCoreLiveLite.xcframework in Frameworks */,
+				A07F63872EA7BE5700611915 /* TTSDKLivePlayerLite.xcframework in Frameworks */,
+				A07F63852EA7BE1D00611915 /* TTSDKLiveBase.xcframework in Frameworks */,
+				A07F63832EA7BDC700611915 /* TTSDKCore.xcframework in Frameworks */,
+				A07F63812EA7BD7C00611915 /* TTFFmpeg.xcframework in Frameworks */,
+				A07F637D2EA7A02000611915 /* libc++abi.tbd in Frameworks */,
+				A07F637B2EA7A01200611915 /* libxml2.tbd in Frameworks */,
+				A07F63792EA7A00400611915 /* libsqlite3.tbd in Frameworks */,
+				A07F63772EA79FF300611915 /* libc++.tbd in Frameworks */,
+				A07F63752EA79FE200611915 /* libz.tbd in Frameworks */,
+				A07F63732EA79FC100611915 /* DeviceCheck.framework in Frameworks */,
+				A07F63712EA79FB700611915 /* WebKit.framework in Frameworks */,
+				A07F636F2EA79FAC00611915 /* UIKit.framework in Frameworks */,
+				A07F636D2EA79FA000611915 /* SystemConfiguration.framework in Frameworks */,
+				A07F636B2EA79F9300611915 /* StoreKit.framework in Frameworks */,
+				A07F63692EA79F7E00611915 /* Security.framework in Frameworks */,
+				A07F63672EA79F6800611915 /* QuartzCore.framework in Frameworks */,
+				A07F63652EA79F5400611915 /* MobileCoreServices.framework in Frameworks */,
+				A07F63632EA79F3B00611915 /* MediaPlayer.framework in Frameworks */,
+				A07F63612EA79F2900611915 /* MapKit.framework in Frameworks */,
+				A07F635F2EA79F1E00611915 /* JavaScriptCore.framework in Frameworks */,
+				A07F635D2EA79F0A00611915 /* ImageIO.framework in Frameworks */,
+				A07F635B2EA79EFB00611915 /* Foundation.framework in Frameworks */,
+				A07F63592EA79EE600611915 /* CoreText.framework in Frameworks */,
+				A07F63572EA79ED600611915 /* CoreTelephony.framework in Frameworks */,
+				A07F63552EA79EC300611915 /* CoreML.framework in Frameworks */,
+				A07F63532EA79EAF00611915 /* CoreMotion.framework in Frameworks */,
+				A07F63512EA79EA100611915 /* CoreMedia.framework in Frameworks */,
+				A07F634F2EA79E9500611915 /* CoreLocation.framework in Frameworks */,
+				A07F634D2EA79E8900611915 /* CoreImage.framework in Frameworks */,
+				A07F634B2EA79E7A00611915 /* CoreGraphics.framework in Frameworks */,
+				A07F63492EA79E6F00611915 /* AVFoundation.framework in Frameworks */,
+				A07F63472EA79E6000611915 /* AudioToolbox.framework in Frameworks */,
+				A07F63452EA79E5300611915 /* AppTrackingTransparency.framework in Frameworks */,
+				A07F63432EA79E3B00611915 /* AdSupport.framework in Frameworks */,
+				A07F63412EA79E2B00611915 /* Accelerate.framework in Frameworks */,
+				C21E06928E9B89CD5BDC9508 /* Pods_Runner.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF24F688B4BE621E2FCCE27B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9D32D47B6170EC282C41408 /* Pods_RunnerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +201,19 @@
 				331C807B294A618700263BE5 /* RunnerTests.swift */,
 			);
 			path = RunnerTests;
+			sourceTree = "<group>";
+		};
+		7EF277B4394F783A267387FF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C966777A9A592AD94D5F491A /* Pods-Runner.debug.xcconfig */,
+				12FE11305931922DD7A3A218 /* Pods-Runner.release.xcconfig */,
+				980CD6B8103E97598C067D4A /* Pods-Runner.profile.xcconfig */,
+				69D94F5E9E972EFDFE828939 /* Pods-RunnerTests.debug.xcconfig */,
+				7D8B91AF4658EE202B3EE2B2 /* Pods-RunnerTests.release.xcconfig */,
+				91F14F8CDA225E9C82412576 /* Pods-RunnerTests.profile.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		9740EEB11CF90186004384FC /* Flutter */ = {
@@ -94,6 +234,8 @@
 				97C146F01CF9000F007C117D /* Runner */,
 				97C146EF1CF9000F007C117D /* Products */,
 				331C8082294A63A400263BE5 /* RunnerTests */,
+				7EF277B4394F783A267387FF /* Pods */,
+				E88F600792C82A35E67740D0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,6 +263,51 @@
 			path = Runner;
 			sourceTree = "<group>";
 		};
+		E88F600792C82A35E67740D0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A07F63882EA7BE9A00611915 /* TTSDKPlayerCoreLiveLite.xcframework */,
+				A07F63862EA7BE5700611915 /* TTSDKLivePlayerLite.xcframework */,
+				A07F63842EA7BE1D00611915 /* TTSDKLiveBase.xcframework */,
+				A07F63822EA7BDC700611915 /* TTSDKCore.xcframework */,
+				A07F63802EA7BD7C00611915 /* TTFFmpeg.xcframework */,
+				A07F637C2EA7A01F00611915 /* libc++abi.tbd */,
+				A07F637A2EA7A01200611915 /* libxml2.tbd */,
+				A07F63782EA7A00400611915 /* libsqlite3.tbd */,
+				A07F63762EA79FF300611915 /* libc++.tbd */,
+				A07F63742EA79FE200611915 /* libz.tbd */,
+				A07F63722EA79FC000611915 /* DeviceCheck.framework */,
+				A07F63702EA79FB700611915 /* WebKit.framework */,
+				A07F636E2EA79FAC00611915 /* UIKit.framework */,
+				A07F636C2EA79FA000611915 /* SystemConfiguration.framework */,
+				A07F636A2EA79F9200611915 /* StoreKit.framework */,
+				A07F63682EA79F7E00611915 /* Security.framework */,
+				A07F63662EA79F6800611915 /* QuartzCore.framework */,
+				A07F63642EA79F5400611915 /* MobileCoreServices.framework */,
+				A07F63622EA79F3B00611915 /* MediaPlayer.framework */,
+				A07F63602EA79F2900611915 /* MapKit.framework */,
+				A07F635E2EA79F1E00611915 /* JavaScriptCore.framework */,
+				A07F635C2EA79F0A00611915 /* ImageIO.framework */,
+				A07F635A2EA79EFB00611915 /* Foundation.framework */,
+				A07F63582EA79EE600611915 /* CoreText.framework */,
+				A07F63562EA79ED600611915 /* CoreTelephony.framework */,
+				A07F63542EA79EC300611915 /* CoreML.framework */,
+				A07F63522EA79EAF00611915 /* CoreMotion.framework */,
+				A07F63502EA79EA100611915 /* CoreMedia.framework */,
+				A07F634E2EA79E9500611915 /* CoreLocation.framework */,
+				A07F634C2EA79E8900611915 /* CoreImage.framework */,
+				A07F634A2EA79E7A00611915 /* CoreGraphics.framework */,
+				A07F63482EA79E6F00611915 /* AVFoundation.framework */,
+				A07F63462EA79E6000611915 /* AudioToolbox.framework */,
+				A07F63442EA79E5300611915 /* AppTrackingTransparency.framework */,
+				A07F63422EA79E3B00611915 /* AdSupport.framework */,
+				A07F63402EA79E2B00611915 /* Accelerate.framework */,
+				03F2A771B8FCD975B30BBFDB /* Pods_Runner.framework */,
+				1081E4C6D247D2ABF7C6B366 /* Pods_RunnerTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -128,8 +315,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 331C8087294A63A400263BE5 /* Build configuration list for PBXNativeTarget "RunnerTests" */;
 			buildPhases = (
+				723EEFE46F50BA9199E2BAF8 /* [CP] Check Pods Manifest.lock */,
 				331C807D294A63A400263BE5 /* Sources */,
 				331C807F294A63A400263BE5 /* Resources */,
+				FF24F688B4BE621E2FCCE27B /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -145,12 +334,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 97C147051CF9000F007C117D /* Build configuration list for PBXNativeTarget "Runner" */;
 			buildPhases = (
+				CE05CFCB25986A39819EB9FA /* [CP] Check Pods Manifest.lock */,
 				9740EEB61CF901F6004384FC /* Run Script */,
 				97C146EA1CF9000F007C117D /* Sources */,
 				97C146EB1CF9000F007C117D /* Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
 				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
+				CC557D4948BBCCE41D2C1BFD /* [CP] Embed Pods Frameworks */,
+				D6501245FEA8AB98C7D661DF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -238,6 +430,28 @@
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed_and_thin";
 		};
+		723EEFE46F50BA9199E2BAF8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RunnerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9740EEB61CF901F6004384FC /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -252,6 +466,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build";
+		};
+		CC557D4948BBCCE41D2C1BFD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE05CFCB25986A39819EB9FA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Runner-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6501245FEA8AB98C7D661DF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -327,6 +597,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -362,6 +633,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				DEVELOPMENT_TEAM = AMKR288ZLX;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -378,6 +650,7 @@
 		};
 		331C8088294A63A400263BE5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69D94F5E9E972EFDFE828939 /* Pods-RunnerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -395,6 +668,7 @@
 		};
 		331C8089294A63A400263BE5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D8B91AF4658EE202B3EE2B2 /* Pods-RunnerTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -410,6 +684,7 @@
 		};
 		331C808A294A63A400263BE5 /* Profile */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91F14F8CDA225E9C82412576 /* Pods-RunnerTests.profile.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -447,6 +722,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -504,6 +780,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -541,6 +818,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				DEVELOPMENT_TEAM = AMKR288ZLX;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -563,6 +841,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				DEVELOPMENT_TEAM = AMKR288ZLX;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

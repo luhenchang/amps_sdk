@@ -83,7 +83,7 @@ class _SplashPageState extends State<SplashPage> {
     ksSdkEx["crashLog"] = true;
     ksSdkEx["ks_sdk_roller"] = "roller_click";
     ksSdkEx["ks_sdk_location"] = "baidu";
-    sdkConfig = AMPSBuilder("12379")
+    sdkConfig = AMPSBuilder("14659")
         .setCity("北京")
         .setRegion("朝阳区双井")
         .setCurrency(CurrencyType.CURRENCY_TYPE_USD)

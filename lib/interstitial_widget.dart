@@ -39,13 +39,15 @@ class _InterstitialWidgetState extends State<InterstitialWidget> {
           creationParams: param,
           onPlatformViewCreated: _onPlatformViewCreated,
           creationParamsCodec: const StandardMessageCodec());
-    } else if (Platform.isOhos) {
-      view =  OhosView(
-          viewType: AMPSPlatformViewRegistry.ampsSdkInterstitialViewId,
-          onPlatformViewCreated: _onPlatformViewCreated,
-          creationParams: param,
-          creationParamsCodec: const StandardMessageCodec());
-    } else {
+    }
+    // else if (Platform.isOhos) {
+    //   view =  OhosView(
+    //       viewType: AMPSPlatformViewRegistry.ampsSdkInterstitialViewId,
+    //       onPlatformViewCreated: _onPlatformViewCreated,
+    //       creationParams: param,
+    //       creationParamsCodec: const StandardMessageCodec());
+    // }
+    else {
       view =  const Center(child: Text("暂不支持此平台"));
     }
     // 有宽高信息了（渲染成功了）设置对应宽高

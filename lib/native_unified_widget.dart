@@ -66,13 +66,15 @@ class _UnifiedWidgetState extends State<UnifiedWidget> with AutomaticKeepAliveCl
           creationParams: creationParams,
           onPlatformViewCreated: _onPlatformViewCreated,
           creationParamsCodec: const StandardMessageCodec());
-    } else if (Platform.isOhos) {
-      view =  OhosView(
-          viewType: AMPSPlatformViewRegistry.ampsSdkUnifiedViewId,
-          onPlatformViewCreated: _onPlatformViewCreated,
-          creationParams: creationParams,
-          creationParamsCodec: const StandardMessageCodec());
-    } else {
+    }
+    // else if (Platform.isOhos) {
+    //   view =  OhosView(
+    //       viewType: AMPSPlatformViewRegistry.ampsSdkUnifiedViewId,
+    //       onPlatformViewCreated: _onPlatformViewCreated,
+    //       creationParams: creationParams,
+    //       creationParamsCodec: const StandardMessageCodec());
+    // }
+    else {
       view =  const Center(child: Text("暂不支持此平台"));
     }
     // 有宽高信息了（渲染成功了）设置对应宽高

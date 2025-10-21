@@ -29,7 +29,14 @@ flutter_ios_podfile_setup
 
 target 'Runner' do
   use_frameworks!
-
+  pod 'AMPSAdSDK', '~> 5.1.1.0'
+  pod 'AMPSASNPAdapter', '~> 5.1.5200.1'
+  pod 'AMPSBZAdapter', '5.1.49070.0'
+  pod 'AMPSGDTAdapter', '~> 5.1.41560.2'
+  pod 'AMPSKSAdapter', '~> 5.1.4920.0'
+  pod 'AMPSGMAdapter', '~> 5.1.7200.1'
+  pod 'AMPSCSJAdapter', '~> 5.1.7200.1'
+  
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
   target 'RunnerTests' do
     inherit! :search_paths
