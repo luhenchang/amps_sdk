@@ -29,8 +29,8 @@ enum UnderageTag {
 
 ///初始化设置, 国家类型选项
 class CountryType {
-  static const COUNTRY_TYPE_CHINA_MAINLAND = 1;
-  static const COUNTRY_TYPE_OTHER = 0;
+  static const countryTypeChinaMainland = 1;
+  static const countryTypeOther = 0;
 }
 
 ///支持的货币类型
@@ -457,7 +457,7 @@ class AMPSBuilder {
   String? gaId;
   Map<String, dynamic> optionFields = {};
   String currency = "";
-  int countryCN = CountryType.COUNTRY_TYPE_CHINA_MAINLAND;
+  int countryCN = CountryType.countryTypeChinaMainland;
   bool isTestAd = false;
   bool adapter = true;
   UiModel uiModel = UiModel.uiModelAuto;
