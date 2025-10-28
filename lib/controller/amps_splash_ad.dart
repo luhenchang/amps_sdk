@@ -4,7 +4,7 @@ import '../amps_sdk.dart';
 import '../common.dart';
 import '../data/amps_ad.dart';
 import '../widget/splash_bottom_widget.dart';
-
+///开屏广告类
 class AMPSSplashAd {
   MethodChannel? _channel;
   AdOptions config;
@@ -78,7 +78,7 @@ class AMPSSplashAd {
       },
     );
   }
-
+  ///开屏广告加载调用
   void load() async {
     _channel = const MethodChannel(AMPSChannels.ampsSdk);
     setMethodCallHandler(null);
@@ -87,32 +87,34 @@ class AMPSSplashAd {
       config.toMap(),
     );
   }
-
+  ///开屏广告显示调用
   void showAd({SplashBottomWidget? splashBottomWidget}) async {
     await _channel?.invokeMethod(AMPSAdSdkMethodNames.splashShowAd, splashBottomWidget?.toMap());
   }
-
+  ///开屏广告是否有预加载
   Future<bool> isReadyAd() async {
     return await _channel?.invokeMethod(AMPSAdSdkMethodNames.splashIsReadyAd);
   }
-
+  ///获取ecpm
   Future<num> getECPM() async {
     return await _channel?.invokeMethod(AMPSAdSdkMethodNames.splashGetECPM);
   }
-
-  notifyRTBWin(double winPrice, double secPrice) {
+  ///上报竞胜
+  notifyRTBWin(double winPrice, double secPrice,{String? winAdnId}) {
     final Map<String, dynamic> args = {
       adWinPrice: winPrice,
       adSecPrice: secPrice,
+      adWinAdnId: winAdnId
     };
     _channel?.invokeMethod(AMPSAdSdkMethodNames.splashNotifyRTBWin, args);
   }
-
-  notifyRTBLoss(double winPrice, double secPrice, String lossReason) {
+  ///上报竞败
+  notifyRTBLoss(double winPrice, double secPrice, String lossReason,{String? winAdnId}) {
     final Map<String, dynamic> args = {
       adWinPrice: winPrice,
       adSecPrice: secPrice,
       adLossReason: lossReason,
+      adWinAdnId: winAdnId
     };
     _channel?.invokeMethod(AMPSAdSdkMethodNames.splashNotifyRTBLoss,args);
   }

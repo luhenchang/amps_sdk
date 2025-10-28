@@ -21,7 +21,7 @@ open class SplashBottomBaseChild(
 data class SplashBottomImageChild(
     val width: Double? = null,
     val height: Double? = null,
-    val imageUrl: String? = null,
+    val imagePath: String? = null,
     override val x: Double? = null,
     override val y: Double? = null
 ) : SplashBottomBaseChild(x, y)
@@ -96,7 +96,7 @@ data class SplashBottomModule(
                 height = (map["height"] as? Number)?.toDouble(),
                 x = (map["x"] as? Number)?.toDouble(),
                 y = (map["y"] as? Number)?.toDouble(),
-                imageUrl = map["imageUrl"] as? String
+                imagePath = map["imagePath"] as? String
             )
         }
 

@@ -1,3 +1,6 @@
+import 'package:amps_sdk/common.dart';
+
+///广告加载入参参数
 class AdOptions {
   final String spaceId;
   final String? apiKey;
@@ -23,8 +26,9 @@ class AdOptions {
     this.ipAddress,
   });
 
-  Map<dynamic, dynamic> toMap() {
+  Map<dynamic, dynamic> toMap({NativeType? nativeType}) {
     return {
+      'nativeType': nativeType?.value??0,
       'spaceId': spaceId,
       'apiKey': apiKey,
       'adCount': adCount,
@@ -43,7 +47,7 @@ typedef AdSuccessCallback = void Function();
 typedef AdFailureCallback = void Function(int code, String message);
 typedef VideoPlayErrorCallback = void Function(int code, String message);
 typedef VideoSkipToEndCallback = void Function(int? playDurationMs);
-
+///广告回调相关接口
 class AdCallBack {
   final AdSuccessCallback? onLoadSuccess;
   final AdFailureCallback? onLoadFailure;
@@ -77,5 +81,5 @@ class AdCallBack {
     this.onAdReward,
   });
 }
-
+///组件关闭通知接口
 typedef AdWidgetNeedCloseCall = void Function();

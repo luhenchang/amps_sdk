@@ -46,7 +46,7 @@ object SplashBottomViewFactory {
         // 2. 添加图片子视图 (如果存在)
         bottomModule.imgChildren?.let { imgChild ->
             val imageView = ImageView(context)
-            val flutterAssetPath = "flutter_assets/${imgChild.imageUrl}"
+            val flutterAssetPath = "flutter_assets/${imgChild.imagePath}"
             val inputStream = context.assets.open(flutterAssetPath)
             // 将文件流解码为 Bitmap 对象
             val bitmap: Bitmap = BitmapFactory.decodeStream(inputStream)

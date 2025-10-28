@@ -15,6 +15,11 @@ A new Flutter plugin project.
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
+  s.dependency 'AMPSAdSDK'
+  s.dependency 'AMPSASNPAdapter', '~> 5.1.5200.1'
+  s.dependency 'AMPSBZAdapter', '5.1.49070.0'
+  s.dependency 'AMPSGDTAdapter', '~> 5.1.41560.2'
+  s.dependency 'AMPSKSAdapter', '~> 5.1.4920.0'
   s.platform = :ios, '13.0'
 
   # Flutter.framework does not contain a i386 slice.

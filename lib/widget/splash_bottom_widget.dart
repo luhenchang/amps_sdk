@@ -1,5 +1,5 @@
 import 'widget_layout.dart';
-
+///开屏底部自定义组件
 class SplashBottomWidget extends LayoutWidget {
   final double height;
   final String backgroundColor;
@@ -21,20 +21,20 @@ class SplashBottomWidget extends LayoutWidget {
     };
   }
 }
-
+///图标
 class ImageComponent extends LayoutWidget {
   final double width;
   final double height;
   final double x;
   final double y;
-  final String imageUrl;
+  final String imagePath;
 
   ImageComponent({
     required this.width,
     required this.height,
     required this.x,
     required this.y,
-    required this.imageUrl,
+    required this.imagePath,
   });
 
   @override
@@ -45,11 +45,11 @@ class ImageComponent extends LayoutWidget {
       'height': height,
       'x': x,
       'y': y,
-      'imageUrl': imageUrl,
+      'imagePath': imagePath,
     };
   }
 }
-
+///文字
 class TextComponent extends LayoutWidget {
   final double fontSize;
   final String color;

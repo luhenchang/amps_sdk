@@ -10,6 +10,6 @@ class UnifiedFactory(binaryMessenger: BinaryMessenger, instance: StandardMessage
     PlatformViewFactory(StandardMessageCodec.INSTANCE) {
     val mBinaryMessenger: BinaryMessenger = binaryMessenger
     override fun create(context: Context, viewId: Int, args: Any?): PlatformView {
-        return AMPSSplashView(context, viewId, mBinaryMessenger, args)
+        return AMPSUnifiedView(context, viewId, mBinaryMessenger, args)
     }
 }

@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:amps_sdk/amps_sdk_export.dart';
+import 'package:amps_sdk/common.dart';
 import 'package:amps_sdk/widget/native_unified_widget.dart';
 import 'package:amps_sdk_example/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ class _SplashPageState extends State<NativeUnifiedPage> {
   late AMPSNativeRenderListener _renderCallBack;
   late AmpsNativeInteractiveListener _interactiveCallBack;
   late AmpsVideoPlayListener _videoPlayerCallBack;
+  late AMPSUnifiedDownloadListener _downloadListener;
   AMPSNativeAd? _nativeAd;
   List<String> feedList = [];
   List<String> feedAdList = [];
@@ -39,8 +41,9 @@ class _SplashPageState extends State<NativeUnifiedPage> {
       setState(() {
         debugPrint("adId renderCallBack=$adId");
         feedAdList.add(adId);
+        _nativeAd?.notifyRTBWin(11, 12, adId);
       });
-    }, renderFailed: (code, message) {
+    }, renderFailed: (adId, code, message) {
       debugPrint("渲染失败=$code,$message");
     });
 
@@ -58,7 +61,7 @@ class _SplashPageState extends State<NativeUnifiedPage> {
     });
     _videoPlayerCallBack = AmpsVideoPlayListener(onVideoPause: (adId) {
       debugPrint("视频暂停");
-    }, onVideoPlayError: (code, message) {
+    }, onVideoPlayError: (adId, code, message) {
       debugPrint("视频播放错误");
     }, onVideoResume: (adId) {
       debugPrint("视频恢复播放");
@@ -69,13 +72,33 @@ class _SplashPageState extends State<NativeUnifiedPage> {
     }, onVideoPlayComplete: (adId) {
       debugPrint("视频播放完成");
     });
+    _downloadListener = AMPSUnifiedDownloadListener(
+      onDownloadProgressUpdate: (position,adId) {
+        debugPrint("下载进度=${position}adId=$adId");
+      },
+      onDownloadFailed: (adId) {
 
+      },
+      onDownloadPaused: (position,adId){
+
+      },
+      onDownloadFinished: (adId){
+
+      },
+      onDownloadStarted: (adId){
+
+      },
+      onInstalled: (adId) {
+
+      }
+    );
     AdOptions options = AdOptions(
-        spaceId: '118007',
+        spaceId: '124302',
         adCount: 1,
         expressSize: [expressWidth, expressHeight]);
     _nativeAd = AMPSNativeAd(
         config: options,
+        nativeType: NativeType.unified,
         mCallBack: _adCallBack,
         mRenderCallBack: _renderCallBack,
         mInteractiveCallBack: _interactiveCallBack,
@@ -96,59 +119,69 @@ class _SplashPageState extends State<NativeUnifiedPage> {
             int feedIndex = index - adIndex;
             if (index % 5 == 4 && adIndex < feedAdList.length) {
               String adId = feedAdList[adIndex];
-              double marginLeft = (MediaQuery.of(context).size.width - 350)/2;
               debugPrint(adId);
               return UnifiedWidget(
                 _nativeAd,
                 key: ValueKey(adId),
-                posId: adId,
-                width: expressWidth,
-                height: expressHeight,
+                adId: adId,
                 unifiedContent: NativeUnifiedWidget(
                     height: expressHeight,
-                    backgroundColor: '#FFFFFF',
+                    backgroundColor: '#F0EDF4',
                     children: [
                       UnifiedMainImgWidget(
-                          width: expressWidth,
-                          height: expressHeight,
-                          x: marginLeft,
-                          y: 0,
+                          width: expressWidth-40,
+                          height: expressHeight-40,
+                          x: 20,
+                          y: 20,
                           backgroundColor: '#FFFFFF',
                           clickType: AMPSAdItemClickType.click),
                       UnifiedTitleWidget(
                           fontSize: 16,
                           color: "#FFFFFF",
-                          x: marginLeft+5,
+                          x: 5,
                           y: 5,
                           clickType: AMPSAdItemClickType.click),
                       UnifiedDescWidget(
                           fontSize: 16,
                           width: 200,
                           color: "#FFFFFF",
-                          x: marginLeft+5,
+                          x: 5,
                           y: 30),
                       UnifiedActionButtonWidget(
-                          fontSize: 16,
+                          fontSize: 12,
+                          width: 50,
+                          height: 20,
                           fontColor: '#FF00FF',
+                          backgroundColor: '#FFFF33',
                           x: 280,
                           y: 100),
                       UnifiedAppIconWidget(
                           width: 25,
                           height: 25,
-                          x: 330,
+                          x: 320,
                           y: 100),
+                      DownLoadWidget(
+                          width: 200,
+                          x: 22,
+                          y: 60,
+                          fontSize: 11,
+                          fontColor: "#0000FF",
+                          content: "应用名称：${AppDetail.appName} | 开发者：${AppDetail.appDeveloper}",
+                              //"| 应用版本：${AppDetail.appVersion} | 权限详情 | 隐私协议 | 功能介绍"
+                          downloadListener: _downloadListener
+                      ),
                       UnifiedVideoWidget(
                           width: 100,
-                          height: 128,
-                          x: (MediaQuery.of(context).size.width-100)/2,
+                          height: 0,
+                          x: 200,
                           y: 0
                       ),
                       UnifiedCloseWidget(
-                          imageUrl: 'assets/images/close.png',
-                          width: 25,
-                          height: 25,
+                          imagePath: 'assets/images/close.png',
+                          width: 16,
+                          height: 16,
                           x: 330,
-                          y: 10)
+                          y: 5)
                     ]
                 ),
               );
@@ -164,7 +197,7 @@ class _SplashPageState extends State<NativeUnifiedPage> {
                       color: Colors.blueAccent,
                       alignment: Alignment.centerLeft,
                       child: Text('List item ${feedList[feedIndex]}'),
-                    ),
+                    )
                   ],
                 );
           },

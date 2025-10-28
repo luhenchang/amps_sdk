@@ -57,10 +57,10 @@ class AMPSEventManager private constructor() : MethodCallHandler {
                 AMPSSplashManager.getInstance().handleMethodCall(call, result)
             }
             InterstitialMethodNames.contains(call.method) -> {
-                //AMPSInterstitialManager.getInstance().handleMethodCall(call, result)
+                AMPSInterstitialManager.getInstance().handleMethodCall(call, result)
             }
             NativeMethodNames.contains(call.method) -> {
-                //AMPSNativeManager.getInstance().handleMethodCall(call, result)
+                AMPSNativeManager.getInstance().handleMethodCall(call, result)
             }
             else -> {
                 result.notImplemented() // 如果方法名未被识别

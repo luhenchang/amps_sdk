@@ -42,13 +42,15 @@ class _SplashWidgetState extends State<SplashWidget> {
           creationParams: splashParam,
           onPlatformViewCreated: _onPlatformViewCreated,
           creationParamsCodec: const StandardMessageCodec());
-    } else if (Platform.isOhos) {
-      view =  OhosView(
-          viewType: AMPSPlatformViewRegistry.ampsSdkSplashViewId,
-          onPlatformViewCreated: _onPlatformViewCreated,
-          creationParams: splashParam,
-          creationParamsCodec: const StandardMessageCodec());
-    } else {
+    }
+    // else if (Platform.isOhos) {
+    //   view =  OhosView(
+    //       viewType: AMPSPlatformViewRegistry.ampsSdkSplashViewId,
+    //       onPlatformViewCreated: _onPlatformViewCreated,
+    //       creationParams: splashParam,
+    //       creationParamsCodec: const StandardMessageCodec());
+    // }
+    else {
       view =  const Center(child: Text("暂不支持此平台"));
     }
     // 有宽高信息了（渲染成功了）设置对应宽高
@@ -58,7 +60,7 @@ class _SplashWidgetState extends State<SplashWidget> {
   void _onPlatformViewCreated(int id) {
     registerChannel(id);
   }
-
+  ///当开屏页面关闭时，在Flutter层开屏组件内部让其开屏组件销毁，避免用户可见。
   void registerChannel(int id) {
     widget.adSplash?.registerChannel(id,(){
       setState(() {

@@ -2,6 +2,8 @@ package com.example.amps_sdk.manager
 import biz.beizi.adn.amps.AMPSSDK
 import biz.beizi.adn.amps.init.AMPSInitConfig
 import android.content.Context
+import android.os.Handler
+import android.os.Looper
 import biz.beizi.adn.amps.common.AMPSError
 import biz.beizi.adn.amps.init.inter.IAMPSInitCallback
 import com.example.amps_sdk.data.AMPSAdSdkMethodNames
@@ -10,7 +12,9 @@ import com.example.amps_sdk.data.AMPSInitConfigConverter
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel.Result
 import xyz.adscope.common.v2.log.SDKLog
+import kotlin.synchronized
 
+private val mainThreadHandler = Handler(Looper.getMainLooper())
 class AMPSSDKInitManager private constructor() {
 
     companion object {
@@ -51,11 +55,15 @@ class AMPSSDKInitManager private constructor() {
     fun initAMPSSDK(ampsInitConfig: AMPSInitConfig?, context: Context) {
         val callback = object : IAMPSInitCallback {
             override fun successCallback() {
-                sendMessage(AMPSInitChannelMethod.INIT_SUCCESS)
+                mainThreadHandler.post {
+                    sendMessage(AMPSInitChannelMethod.INIT_SUCCESS)
+                }
             }
 
             override fun failCallback(p0: AMPSError?) {
-                sendMessage(AMPSInitChannelMethod.INIT_FAILED, mapOf("code" to p0?.code, "message" to p0?.message))
+                mainThreadHandler.post {
+                    sendMessage(AMPSInitChannelMethod.INIT_FAILED, mapOf("code" to p0?.code, "message" to p0?.message))
+                }
             }
         }
 

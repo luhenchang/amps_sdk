@@ -4,6 +4,7 @@ export 'package:amps_sdk/data/amps_init_config.dart';
 export 'package:amps_sdk/data/amps_native_Interactive_listener.dart';
 export 'package:amps_sdk/data/amps_sdk_api_keys.dart';
 export 'package:amps_sdk/data/amps_ad_video_play_config.dart';
+export 'package:amps_sdk/data/app_detail.dart';
 
 export 'package:amps_sdk/widget/splash_bottom_widget.dart';
 export 'package:amps_sdk/splash_widget.dart';

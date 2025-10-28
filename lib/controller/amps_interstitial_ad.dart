@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import '../amps_sdk.dart';
 import '../common.dart';
 import '../data/amps_ad.dart';
-
+///插屏广告对象入口类
 class AMPSInterstitialAd {
   AdOptions config;
   AdCallBack? mCallBack;
@@ -77,7 +77,7 @@ class AMPSInterstitialAd {
       },
     );
   }
-
+  ///广告加载调用方法
   void load() async {
     _channel = AmpsSdk.channel;
     setMethodCallHandler(null);
@@ -86,32 +86,34 @@ class AMPSInterstitialAd {
       config.toMap(),
     );
   }
-
+  ///插屏广告显示调用方法
   void showAd() async {
     await _channel?.invokeMethod(AMPSAdSdkMethodNames.interstitialShowAd);
   }
-
+  ///是否有预加载
   Future<bool> isReadyAd() async {
     return await _channel?.invokeMethod(AMPSAdSdkMethodNames.interstitialIsReadyAd);
   }
-
+  ///获取ecpm
   Future<num> getECPM() async {
     return await _channel?.invokeMethod(AMPSAdSdkMethodNames.interstitialGetECPM);
   }
-
-  notifyRTBWin(double winPrice, double secPrice) {
+  ///上报竞胜
+  notifyRTBWin(double winPrice, double secPrice,{String? winAdnId}) {
     final Map<String, dynamic> args = {
       adWinPrice: winPrice,
       adSecPrice: secPrice,
+      adWinAdnId: winAdnId
     };
     _channel?.invokeMethod(AMPSAdSdkMethodNames.interstitialNotifyRTBWin, args);
   }
-
-  notifyRTBLoss(double winPrice, double secPrice, String lossReason) {
+  ///上报竞败
+  notifyRTBLoss(double winPrice, double secPrice, String lossReason,{String? winAdnId}) {
     final Map<String, dynamic> args = {
       adWinPrice: winPrice,
       adSecPrice: secPrice,
       adLossReason: lossReason,
+      adWinAdnId: winAdnId
     };
     _channel?.invokeMethod(AMPSAdSdkMethodNames.interstitialNotifyRTBLoss,args);
   }

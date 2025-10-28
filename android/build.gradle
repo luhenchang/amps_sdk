@@ -1,17 +1,12 @@
 group = "com.example.amps_sdk"
 version = "1.0-SNAPSHOT"
-// At the top of your build.gradle
-String mavenLocalRepoPath = "${rootProject.projectDir}/m2repository"
-// Ensure the directory exists
+String mavenLocalRepoPath = "${rootProject.projectDir.toURI()}/m2repository"
 new File(mavenLocalRepoPath).mkdirs()
 buildscript {
     ext.kotlin_version = "2.1.0"
     repositories {
         google()
         mavenCentral()
-        maven {
-            url "file://${rootProject.projectDir}/m2repository"
-        }
     }
 
     dependencies {
@@ -26,7 +21,7 @@ allprojects {
         mavenCentral()
         maven {
             name = "myrepo"
-            url = uri("file://${rootProject.projectDir}/m2repository")
+            url = uri("file:///${mavenLocalRepoPath}")
         }
     }
 }
@@ -34,41 +29,6 @@ allprojects {
 apply plugin: "com.android.library"
 apply plugin: "kotlin-android"
 apply plugin: "maven-publish"
-publishing {
-    publications {
-        // 第一个 AAR 的 Publication
-        libraryOne(MavenPublication) {
-            groupId = 'com.example'
-            artifactId = 'amps-sdk'
-            version = '1.0'
-            //示例：假设你的模块名为 'amps_sdk' (与项目名一致)
-            //并且你要发布 release AAR
-            // 这个路径是相对于当前 build.gradle 所在模块的
-            artifact "libs/beiziSDK_v5.3.0.3.aar"//在同一目录层级。所以可以写成libs/amps.aar
-        }
-        release(MavenPublication) {
-            groupId = 'com.example'
-            artifactId = 'common'
-            version = '1.0'
-            //示例：假设你的模块名为 'amps_sdk' (与项目名一致)
-            //并且你要发布 release AAR
-            // 这个路径是相对于当前 build.gradle 所在模块的
-            artifact "libs/common_5.1.1.1.aar"
-        }
-    }
-    repositories {
-        maven {
-            name = 'myrepo'
-            url = mavenLocalRepoPath
-        }
-    }
-}
-//通过调试tasks调试路径：不需要调试之后删除即可
-tasks.register("anotherTask") {
-    doLast {
-        logger.lifecycle(">>>>> [EXECUTION] 路径=${rootProject.projectDir.parentFile.parentFile}") // 使用 lifecycle 确保默认可见
-    }
-}
 android {
     namespace = "com.example.amps_sdk"
 
@@ -88,6 +48,10 @@ android {
         test.java.srcDirs += "src/test/kotlin"
     }
 
+    buildFeatures {
+        viewBinding true
+    }
+    
     defaultConfig {
         minSdk = 24
     }
@@ -95,17 +59,19 @@ android {
     dependencies {
         //compileOnly fileTree(dir: 'libs', include: '*.aar')
 //        // 依赖第一个 AAR (amps-sdk)
-        api ('com.example:amps-sdk:1.0')
+        api ('com.example:amps-sdk:1.1')
 //        // 依赖第二个 AAR (common)
-        api ('com.example:common:1.0')
-        compileOnly ('androidx.annotation:annotation:1.8.0')
-        compileOnly ('androidx.appcompat:appcompat:1.7.1')
-        compileOnly ('com.google.android.material:material:1.13.0')
+        api ('com.example:common:1.1')
+        implementation ('androidx.annotation:annotation:1.8.0')
+        implementation ('androidx.appcompat:appcompat:1.7.1')
+        implementation ('com.google.android.material:material:1.13.0')
         testImplementation ('junit:junit:4.13.2')
         androidTestImplementation ('androidx.test.ext:junit:1.3.0')
         androidTestImplementation ('androidx.test.espresso:espresso-core:3.7.0')
         testImplementation("org.jetbrains.kotlin:kotlin-test")
         testImplementation("org.mockito:mockito-core:5.19.0")
+        // 添加下面这行代码来修复 NoClassDefFoundError
+        implementation ("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
     }
 
     testOptions {
@@ -120,6 +86,9 @@ android {
         }
     }
 }
-flutter {
-    source = "../.."
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'com.google.android.material:material:1.13.0'
+    implementation 'androidx.activity:activity:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
 }

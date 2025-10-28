@@ -88,15 +88,16 @@ class _SplashPageState extends State<SplashPage> {
         .setRegion("朝阳区双井")
         .setCurrency(CurrencyType.CURRENCY_TYPE_USD)
         .setCountryCN(CountryType.COUNTRY_TYPE_CHINA_MAINLAND)
-        .setDebugSetting(true)
-        .setIsMediation(false)
-        .setIsTestAd(false)
+        //.setDebugSetting(true)
+        //.setIsMediation(false)
+        //.setIsTestAd(false)
+        //.setGAID("")
         .setLandStatusBarHeight(true)
         .setOptionFields(optionFields)
         .setProvince("北京市")
         .setUiModel(UiModel.uiModelDark)
-        .setUseHttps(true)
-        .setUserId("12345656")
+        //.setUseHttps(true)
+        //.setUserId("12345656")
         .setExtensionParamItems("KuaiShouSDK", ksSdkEx)
         .setAppName("Flutter测试APP")
         .setAdapterNames(["ampskuaishouAdapter", "ampsJdSplashAdapter"])
@@ -117,7 +118,6 @@ class _SplashPageState extends State<SplashPage> {
         .setIsMediation(false)
         .setUiModel(UiModel.uiModelAuto)
         .build();
-    AMPSAdSdk.testModel = true;
   }
 
   @override
@@ -132,7 +132,8 @@ class _SplashPageState extends State<SplashPage> {
               buttonText: getInitResult(initStatus),
               backgroundColor: getInitColor(initStatus),
               callBack: () {
-                AMPSAdSdk().init(sdkConfig, _callBack);
+                //AMPSAdSDK.testModel = true;
+                AMPSAdSDK().init(sdkConfig, _callBack);
               }
           ),
           const SizedBox(height: 20,width: 0),

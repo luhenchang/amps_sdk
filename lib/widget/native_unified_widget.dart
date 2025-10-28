@@ -1,5 +1,6 @@
+import '../data/amps_native_Interactive_listener.dart';
 import 'widget_layout.dart';
-
+///自渲染组件自定义内容
 class NativeUnifiedWidget extends LayoutWidget {
   final double height;
   final String backgroundColor;
@@ -12,16 +13,17 @@ class NativeUnifiedWidget extends LayoutWidget {
   });
 
   @override
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toMap({double? width}) {
     return {
       'type': 'parent',
       'height': height,
+      'width': width,
       'backgroundColor': backgroundColor,
       'children': children.map((child) => child.toMap()).toList(),
     };
   }
 }
-
+///自渲染主图组件
 class UnifiedMainImgWidget extends LayoutWidget {
   final double width;
   final double height;
@@ -55,7 +57,7 @@ class UnifiedMainImgWidget extends LayoutWidget {
     };
   }
 }
-
+///自渲染点击类型
 enum AMPSAdItemClickType {
   none(-1),
   click(0), // 默认跳转事件
@@ -67,7 +69,7 @@ enum AMPSAdItemClickType {
 
   const AMPSAdItemClickType(this.value);
 }
-
+///自渲染点击Id类型
 enum AMPSAdItemClickIdType {
   click(0),
   create(1);
@@ -75,7 +77,7 @@ enum AMPSAdItemClickIdType {
   const AMPSAdItemClickIdType(this.value);
 }
 
-//1、自渲染主题
+///自渲染主题
 class UnifiedTitleWidget extends LayoutWidget {
   final double fontSize;
   final String color;
@@ -107,7 +109,7 @@ class UnifiedTitleWidget extends LayoutWidget {
   }
 }
 
-//2、自渲染描述
+///自渲染描述
 class UnifiedDescWidget extends LayoutWidget {
   final double fontSize;
   final String color;
@@ -144,7 +146,7 @@ class UnifiedDescWidget extends LayoutWidget {
 
 enum ButtonType { capsule, circle, normal, roundedRectangle }
 
-//3、actionText
+///actionText
 class UnifiedActionButtonWidget extends LayoutWidget {
   final double fontSize;
   final String fontColor;
@@ -189,7 +191,7 @@ class UnifiedActionButtonWidget extends LayoutWidget {
   }
 }
 
-//4、自渲染icon
+///自渲染icon
 class UnifiedAppIconWidget extends LayoutWidget {
   final double width;
   final double height;
@@ -221,7 +223,7 @@ class UnifiedAppIconWidget extends LayoutWidget {
   }
 }
 
-//5、自渲染视频
+///自渲染视频
 class UnifiedVideoWidget extends LayoutWidget {
   final double width;
   final double height;
@@ -240,15 +242,15 @@ class UnifiedVideoWidget extends LayoutWidget {
   }
 }
 
-//6、关闭按钮
+///关闭按钮
 class UnifiedCloseWidget extends LayoutWidget {
-  final String imageUrl;
+  final String imagePath;
   final double width;
   final double height;
   final double x;
   final double y;
   UnifiedCloseWidget({
-    required this.imageUrl,
+    required this.imagePath,
     required this.width,
     required this.height,
     required this.x,
@@ -259,11 +261,70 @@ class UnifiedCloseWidget extends LayoutWidget {
   Map<String, dynamic> toMap() {
     return {
       'type': 'closeIcon',
-      'imageUrl': imageUrl,
+      'imagePath': imagePath,
       'width': width,
       'height': height,
       'x': x,
       'y': y
+    };
+  }
+}
+
+///摇一摇组件，android有
+class ShakeWidget extends LayoutWidget {
+  final double width;
+  final double height;
+  final double x;
+  final double y;
+  ShakeWidget({
+    required this.width,
+    required this.height,
+    required this.x,
+    required this.y
+  });
+
+  @override
+  Map<String, dynamic> toMap() {
+    return {
+      'type': 'shake',
+      'width': width,
+      'height': height,
+      'x': x,
+      'y': y
+    };
+  }
+
+}
+
+///下载六要素，android独有
+class DownLoadWidget extends LayoutWidget {
+  final double width;
+  final double x;
+  final double y;
+  final double fontSize;
+  final String fontColor;
+  final String content;
+  final AMPSUnifiedDownloadListener? downloadListener;
+  DownLoadWidget({
+    required this.width,
+    required this.x,
+    required this.y,
+    required this.fontSize,
+    required this.fontColor,
+    required this.content,
+    this.downloadListener
+  });
+
+  @override
+  Map<String, dynamic> toMap() {
+    return {
+      'type': 'downloadInfo',
+      'width': width,
+      'fontSize': fontSize,
+      'x': x,
+      'y': y,
+      'fontColor': fontColor,
+      'content': content
     };
   }
 }

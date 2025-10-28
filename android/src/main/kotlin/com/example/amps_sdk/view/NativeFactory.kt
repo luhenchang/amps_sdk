@@ -10,6 +10,6 @@ class NativeFactory(binaryMessenger: BinaryMessenger, instance: StandardMessageC
     PlatformViewFactory(StandardMessageCodec.INSTANCE) {
     val mBinaryMessenger: BinaryMessenger = binaryMessenger
     override fun create(context: Context, viewId: Int, args: Any?): PlatformView {
-        return AMPSSplashView(context, viewId, mBinaryMessenger, args)
+        return AMPSNativeView(context, viewId, mBinaryMessenger, args)
     }
 }

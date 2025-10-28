@@ -47,7 +47,7 @@ class _SplashPageState extends State<NativePage> {
         debugPrint("adId renderCallBack=$adId");
         feedAdList.add(adId);
       });
-    }, renderFailed: (code, message) {
+    }, renderFailed: (adId, code, message) {
       debugPrint("渲染失败=$code,$message");
     });
 
@@ -65,7 +65,7 @@ class _SplashPageState extends State<NativePage> {
     });
     _videoPlayerCallBack = AmpsVideoPlayListener(onVideoPause: (adId) {
       debugPrint("视频暂停");
-    }, onVideoPlayError: (code, message) {
+    }, onVideoPlayError: (adId ,code, message) {
       debugPrint("视频播放错误");
     }, onVideoResume: (adId) {
       debugPrint("视频恢复播放");
@@ -95,7 +95,11 @@ class _SplashPageState extends State<NativePage> {
         ));
     _nativeAd?.load();
   }
-
+  @override
+  void dispose() {
+    debugPrint("页面关闭完成");
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,9 +116,7 @@ class _SplashPageState extends State<NativePage> {
               debugPrint(adId);
               return NativeWidget(_nativeAd,
                   key: ValueKey(adId),
-                  posId: adId,
-                  width: expressWidth,
-                  height: expressHeight);
+                  adId: adId);
             }
             return Center(
               child:Column(

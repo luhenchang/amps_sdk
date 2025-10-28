@@ -33,7 +33,7 @@ class _SplashShowPageState extends State<SplashShowPage> {
               height: 25,
               x: 170,
               y: 10,
-              imageUrl: 'assets/images/img.png',
+              imagePath: 'assets/images/img.png',
             ),
             TextComponent(
               fontSize: 24,

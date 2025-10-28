@@ -10,14 +10,12 @@ import io.flutter.plugin.common.MethodChannel
 /** AmpsSdkPlugin */
 class AmpsSdkPlugin :
     FlutterPlugin, ActivityAware {
-    private lateinit var channel: MethodChannel
     override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         AMPSEventManager.getInstance().init(flutterPluginBinding.binaryMessenger)
         AMPSPlatformViewManager.getInstance().init(flutterPluginBinding)
     }
 
     override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
-        channel.setMethodCallHandler(null)
     }
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {

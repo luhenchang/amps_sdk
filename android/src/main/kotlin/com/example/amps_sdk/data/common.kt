@@ -59,16 +59,31 @@ object AMPSNativeCallBackChannelMethod {
     // Specific ad component callbacks
     const val ON_AD_SHOW = "onAdShow"
     const val ON_AD_EXPOSURE = "onAdExposure"
+    const val ON_AD_EXPOSURE_FAIL = "onAdExposureFail"
     const val ON_AD_CLICKED = "onAdClicked"
     const val ON_AD_CLOSED = "onAdClosed" // Ad closed
 
     // Video component callbacks
+    const val ON_VIDEO_INIT = "onVideoInit"; // 视频初始化
+    const val ON_VIDEO_LOADING = "onVideoLoading"; // 视频加载中正在
     const val ON_VIDEO_READY = "onVideoReady" // Video ready
+    const val ON_VIDEO_LOADED = "onVideoLoaded"; // 视频加载完成
     const val ON_VIDEO_PLAY_START = "onVideoPlayStart" // Video playback started
     const val ON_VIDEO_PLAY_COMPLETE = "onVideoPlayComplete" // Video playback completed
     const val ON_VIDEO_PAUSE = "onVideoPause" // Video paused
     const val ON_VIDEO_RESUME = "onVideoResume" // Video resumed
+    const val ON_VIDEO_STOP = "onVideoStop"; // 视频停止
+    const val ON_VIDEO_CLICKED = "onVideoClicked"; // 视频点击
     const val ON_VIDEO_PLAY_ERROR = "onVideoPlayError" // Video playback error
+}
+
+object DownLoadCallBackChannelMethod {
+    const val onDownloadPaused = "onDownloadPaused"
+    const val onDownloadStarted = "onDownloadStarted"
+    const val onDownloadProgressUpdate = "onDownloadProgressUpdate"
+    const val onDownloadFinished = "onDownloadFinished"
+    const val onDownloadFailed = "onDownloadFailed"
+    const val onInstalled = "onInstalled"
 }
 
 object AMPSAdSdkMethodNames {
@@ -105,6 +120,8 @@ object AMPSAdSdkMethodNames {
 }
 
 // Constants for argument keys or other string values
+const val NATIVE_WIDTH = "width"
+const val NATIVE_TYPE = "nativeType"
 const val AD_WIN_PRICE = "winPrice"
 const val AD_SEC_PRICE = "secPrice"
 const val AD_ID = "adId"
@@ -116,10 +133,12 @@ const val VIDEO_SOUND = "videoSoundEnable"
 const val VIDEO_PLAY_TYPE = "videoAutoPlayType"
 const val VIDEO_LOOP_REPLAY = "videoLoopReplay"
 
-val defaultAdOption: AdOptions =
-    _root_ide_package_.com.example.amps_sdk.data.AdOptions(spaceId = StringConstants.EMPTY_STRING)
-
-
+enum class NativeType(val value: Int) {
+    // 原生广告
+    NATIVE(0),
+    // 原生自渲染
+    UNIFIED(1);
+}
 
 val InitMethodNames: Set<String> = setOf(
     AMPSAdSdkMethodNames.INIT

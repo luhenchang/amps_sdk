@@ -104,7 +104,7 @@ class _SplashWidgetPageState extends State<SplashWidgetPage> {
                 height: 25,
                 x: 170,
                 y: 10,
-                imageUrl: 'assets/images/img.png',
+                imagePath: 'assets/images/img.png',
               ),
               TextComponent(
                 fontSize: 24,

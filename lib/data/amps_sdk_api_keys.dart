@@ -68,6 +68,15 @@ class AMPSInitConfigKey {
   /// 对应 appName 的序列化键
   static const String appName = 'appName';
 
+  /// 对应 customUA 的序列化键
+  static const String customUA = 'customUA';
+
+  static const String androidId = "AndroidID";
+
+  static const String gaId = "gaId";
+
+  static const String optionInfo = "optionInfo";
+
   /// 对应 userId 的序列化键
   static const String userId = 'userId';
 
