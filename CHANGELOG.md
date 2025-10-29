@@ -13,3 +13,7 @@
 ## 0.0.4
 
 *IOS，OHOS，Android提交
+
+## 0.0.5
+
+*Splash Adapter Height
