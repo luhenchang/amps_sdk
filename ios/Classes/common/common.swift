@@ -29,13 +29,13 @@ enum AMPSChannels {
 }
 
 // 平台视图注册常量
-enum AMPSPlatformViewRegistry {
+enum AMPSPlatformViewIds {
     private static let channelDomain = "biz.beizi.adn"  // 若可访问可改为 AMPSChannels.channelDomain
     
-    static let ampsSdkSplashViewId = "\(channelDomain)/splash_view_id"
-    static let ampsSdkInterstitialViewId = "\(channelDomain)/interstitial_view_id"
-    static let ampsSdkNativeViewId = "\(channelDomain)/native_view_id"
-    static let ampsSdkUnifiedViewId = "\(channelDomain)/unified_view_id"
+    static let splashViewId = "\(channelDomain)/splash_view_id"
+    static let interstitialViewId = "\(channelDomain)/interstitial_view_id"
+    static let nativeViewId = "\(channelDomain)/native_view_id"
+    static let unifiedViewId = "\(channelDomain)/unified_view_id"
 }
 
 // 初始化相关方法名
@@ -132,17 +132,26 @@ enum AdOptionKeys{
     static let keyIpAddress = "ipAddress"
 }
 
-// 参数键或其他字符串值的常量
-let adWinPrice = "winPrice"
-let adSecPrice = "secPrice"
-let adId = "adId"
-let adLossReason = "lossReason"
-let adOption = "AdOption"
-let config = "config"
-let splashBottom = "SplashBottomView"
-let videoSound = "videoSoundEnable"
-let videoPlayType = "videoAutoPlayType"
-let videoLoopReplay = "videoLoopReplay"
+enum ArgumentKeys {
+    // 参数键或其他字符串值的常量
+    static let adWinPrice = "winPrice"
+    static let adSecPrice = "secPrice"
+    static let adId = "adId"
+    static let adLossReason = "lossReason"
+    static let adOption = "AdOption"
+    static let config = "config"
+    static let splashBottom = "SplashBottomView"
+    static let videoSound = "videoSoundEnable"
+    static let videoPlayType = "videoAutoPlayType"
+    static let videoLoopReplay = "videoLoopReplay"
+}
+enum BidKeys{
+    static let winPrince = "AMPS_WIN_PRICE"
+    static let winADNId = "AMPS_WIN_ADNID"
+    static let lossSecondPrice = "AMPS_HIGHRST_LOSS_PRICE"
+    static let lossReason = "AMPS_LOSS_REASON"
+    static let expectPrice = "AMPS_EXPECT_PRICE"
+}
 
 // 默认广告配置
 let defaultAdOption = AdOptions(spaceId: StringConstants.emptyString)

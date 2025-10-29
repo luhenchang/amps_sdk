@@ -11,6 +11,7 @@ import biz.beizi.adn.amps.common.AMPSError
 import biz.beizi.adn.amps.config.AMPSRequestParameters
 import com.example.amps_sdk.view.SplashBottomViewFactory
 import com.example.amps_sdk.data.*
+import com.example.amps_sdk.utils.dpToPx
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel.Result
 import java.lang.ref.WeakReference
@@ -176,7 +177,7 @@ class AMPSSplashManager private constructor() {
                 if (customBottomLayoutLocal != null) {
                     val bottomLp = RelativeLayout.LayoutParams(
                         RelativeLayout.LayoutParams.MATCH_PARENT,
-                        (splashBottomData.height * activity.resources.displayMetrics.density).toInt()
+                        splashBottomData.height.dpToPx(activity)
                     )
                     bottomLp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM)
                     customBottomLayoutLocal.layoutParams = bottomLp

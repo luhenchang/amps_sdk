@@ -47,7 +47,7 @@ class AMPSSplashManager: NSObject, AMPSSplashAdDelegate {
             result(false)
         }
     }
-//    
+    
 //    // MARK: - Private Methods
     private func handleSplashLoad(arguments: [String: Any]?, result: FlutterResult) {
     
@@ -73,95 +73,82 @@ class AMPSSplashManager: NSObject, AMPSSplashAdDelegate {
             result(false)
             return
         }
+        if let param = arguments {
+            let height = param["height"]  as? CGFloat ?? 0
+            let bgColor = param["backgroundColor"] as? String
+            var imageModel: SplashBottomImage?
+            var textModel: SplashBottomText?
+            if let children = param["children"] as? [[String: Any]] {
+                children.forEach { child in
+                    let type = child["type"] as? String ?? ""
+                    if type == "image"{
+                        imageModel = Tools.convertToModel(from: child)
+                    }else if type == "text" {
+                        textModel = Tools.convertToModel(from: child)
+                    }
+                }
+            }
+            if height > 1 {
+                let bottomView = UIView(frame: CGRect(x: 0, y: 0, width: CGFloat(window.bounds.width), height: height))
+                if let bgColor = bgColor{
+                    bottomView.backgroundColor = UIColor(hexString: bgColor)
+                }
+                
+                if let imageModel = imageModel {
+                    let imageView = UIImageView(frame: CGRect(x: imageModel.x ?? 0, y: imageModel.y ?? 0, width: imageModel.width ?? 100, height: imageModel.height ?? 100))
+                    if let imageName =  imageModel.imagePath {
+                        imageView.image = AMPSEventManager.getInstance().getImage(imageName)
+                    }
+                    
+                    bottomView.addSubview(imageView)
+                    imageView.backgroundColor  = UIColor.orange
+                }
+                if let text = textModel?.text {
+                    let widht = window.bounds.width - (textModel?.x ?? 0)
+                    let tagLabel = UILabel(frame: CGRect(x: textModel?.x ?? 0, y: textModel?.y ?? 0, width: widht, height: 0))
+                    tagLabel.numberOfLines = 0
+                    if let color = textModel?.color {
+                        tagLabel.textColor = UIColor(hexString: color)
+                    }
+                    tagLabel.text = text
+                    if let font = textModel?.fontSize {
+                        tagLabel.font = UIFont.systemFont(ofSize: font)
+                    }
+                    bottomView.addSubview(tagLabel)
+                    let fittingSize = tagLabel.sizeThatFits(CGSize(width: widht, height: CGFloat.greatestFiniteMagnitude))
+                    tagLabel.frame.size.height = fittingSize.height // 应用计算出的高度
+                }
+                
+                splashAd.adConfiguration.bottomView = bottomView
+            }
+            
+        }
         splashAd.showSplashView(in: window)
-        
-    
-        
-//        do {
-//            // Clean up any existing splash views
-//            cleanupExistingSplashViews()
-//            
-//            // Create main container
-//            let mainContainer = UIView()
-//            mainContainer.tag = 12345 // Using tag instead of string for easier handling
-//            mainContainer.translatesAutoresizingMaskIntoConstraints = false
-//            window.addSubview(mainContainer)
-//            
-//            // Pin main container to all edges
-//            NSLayoutConstraint.activate([
-//                mainContainer.topAnchor.constraint(equalTo: window.topAnchor),
-//                mainContainer.leadingAnchor.constraint(equalTo: window.leadingAnchor),
-//                mainContainer.trailingAnchor.constraint(equalTo: window.trailingAnchor),
-//                mainContainer.bottomAnchor.constraint(equalTo: window.bottomAnchor)
-//            ])
-//            
-//            // Create and configure bottom view if needed
-//            var customBottomLayout: UIView?
-//            let splashBottomData = SplashBottomModule.fromMap(arguments)
-//            SplashBottomModule.current = splashBottomData
-//            
-//            if let data = splashBottomData, data.height > 0 {
-//                customBottomLayout = SplashBottomViewFactory.createSplashBottomLayout(viewController, data)
-//                if let bottomView = customBottomLayout {
-//                    bottomView.translatesAutoresizingMaskIntoConstraints = false
-//                    mainContainer.addSubview(bottomView)
-//                    
-//                    NSLayoutConstraint.activate([
-//                        bottomView.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor),
-//                        bottomView.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor),
-//                        bottomView.bottomAnchor.constraint(equalTo: mainContainer.bottomAnchor),
-//                        bottomView.heightAnchor.constraint(equalToConstant: data.height)
-//                    ])
-//                }
-//            }
-//            
-//            // Create ad container
-//            let adContainer = UIView()
-//            adContainer.translatesAutoresizingMaskIntoConstraints = false
-//            mainContainer.addSubview(adContainer)
-//            
-//            // Configure ad container constraints
-//            var adConstraints = [
-//                adContainer.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor),
-//                adContainer.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor),
-//                adContainer.topAnchor.constraint(equalTo: mainContainer.topAnchor)
-//            ]
-//            
-//            if let bottomView = customBottomLayout {
-//                adConstraints.append(adContainer.bottomAnchor.constraint(equalTo: bottomView.topAnchor))
-//            } else {
-//                adConstraints.append(adContainer.bottomAnchor.constraint(equalTo: mainContainer.bottomAnchor))
-//            }
-//            
-//            NSLayoutConstraint.activate(adConstraints)
-//            
-//            // Show the ad if ready
-//            if splashAd.isReady {
-//                splashAd.show(adContainer)
-//                result(true, nil)
-//            } else {
-//                cleanupExistingSplashViews()
-//                result(false, NSError(domain: "AMPSSplashManager", code: -1, userInfo: [NSLocalizedDescriptionKey: "Splash ad not ready to be shown"]))
-//            }
-//        } catch {
-//            cleanupExistingSplashViews()
-//            result(false)
-//        }
     }
     
     private func handleNotifyRTBWin(arguments: [String: Any]?, result: FlutterResult) {
-//        let winPrice = arguments?[StringConstants.AD_WIN_PRICE] as? Int ?? 0
-//        let secPrice = arguments?[StringConstants.AD_SEC_PRICE] as? Int ?? 0
-//        splashAd?.notifyRTBWin(winPrice, secPrice)
-//        result(nil, nil)
+        guard let arguments =  arguments else{
+            return
+        }
+        let winPrice = arguments[ArgumentKeys.adWinPrice] as? Int ?? 0
+        let secPrice = arguments[ArgumentKeys.adSecPrice] as? Int ?? 0
+        splashAd?.sendWinNotification(withInfo: [BidKeys.winPrince:winPrice,BidKeys.lossSecondPrice:secPrice])
+        result(true)
     }
     
     private func handleNotifyRTBLoss(arguments: [String: Any]?, result: FlutterResult) {
-//        let lossWinPrice = arguments?[StringConstants.AD_WIN_PRICE] as? Int ?? 0
-//        let lossSecPrice = arguments?[StringConstants.AD_SEC_PRICE] as? Int ?? 0
-//        let lossReason = arguments?[StringConstants.AD_LOSS_REASON] as? String ?? StringConstants.EMPTY_STRING
-//        splashAd?.notifyRTBLoss(lossWinPrice, lossSecPrice, lossReason)
-//        result(nil, nil)
+        guard let arguments =  arguments else{
+            return
+        }
+        let lossWinPrice = arguments[ArgumentKeys.adWinPrice] as? Int ?? 0
+        let lossSecPrice = arguments[ArgumentKeys.adSecPrice] as? Int ?? 0
+        let lossReason = arguments[ArgumentKeys.adLossReason] as? String ?? ""
+        splashAd?.sendLossNotification(withInfo: [
+            BidKeys.winPrince:lossWinPrice,
+            BidKeys.lossSecondPrice:lossSecPrice,
+            BidKeys.lossReason:lossReason
+        ])
+        result(true)
     }
     
     private func cleanupExistingSplashViews() {
@@ -208,26 +195,5 @@ class AMPSSplashManager: NSObject, AMPSSplashAdDelegate {
         sendMessage(AMPSAdCallBackChannelMethod.onAdClosed)
     }
 
-//    func onAmpsAdShow() {
-//        sendMessage(AMPSAdCallBackChannelMethod.ON_AD_SHOW)
-//    }
-//    
-//    func onAmpsAdClicked() {
-//        cleanupViewsAfterAdClosed()
-//        sendMessage(AMPSAdCallBackChannelMethod.ON_AD_CLICKED)
-//    }
-//    
-//    func onAmpsAdDismiss() {
-//        cleanupViewsAfterAdClosed()
-//        sendMessage(AMPSAdCallBackChannelMethod.ON_AD_CLOSED)
-//    }
-//    
-//    func onAmpsAdFailed(error: AMPSError?) {
-//        let errorDict: [String: Any?] = [
-//            "code": error?.code,
-//            "message": error?.message
-//        ]
-//        sendMessage(AMPSAdCallBackChannelMethod.ON_LOAD_FAILURE, args: errorDict)
-//    }
 }
 

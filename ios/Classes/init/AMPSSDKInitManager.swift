@@ -32,7 +32,23 @@ class AMPSSDKInitManager {
     }
     
     func initAMPSSDK(_ flutterParams: [String:Any]?) {
-        let appid = flutterParams?["appId"] as? String ?? ""
+        guard let flutterParams = flutterParams else {
+            return
+        }
+        let initParam: AMPSIOSInitModel? = Tools.convertToModel(from: flutterParams)
+        let appid = initParam?.appId ?? ""
+        AMPSAdSDKManager.sharedInstance().sdkConfiguration.city = initParam?.city ?? ""
+        AMPSAdSDKManager.sharedInstance().sdkConfiguration.province = initParam?.province ?? ""
+        AMPSAdSDKManager.sharedInstance().sdkConfiguration.region = initParam?.region ?? ""
+        if let https = initParam?._isUseHttps{
+            AMPSAdSDKManager.sharedInstance().sdkConfiguration.isUseHttps = https
+        }
+        if let recommend = initParam?.adController?.isSupportPersonalized{
+            AMPSAdSDKManager.sharedInstance().sdkConfiguration.recommend = recommend ? .open : .close
+        }
+        if let adapterNames = initParam?.adapterNames {
+            AMPSAdSDKManager.sharedInstance().sdkConfiguration.adapterName = adapterNames
+        }
         AMPSAdSDKManager.sharedInstance().startAsync(withAppId: appid) { status in
             if status == AMPSAdSDKInitStatus.success {
                 self.sendMessage(AMPSInitChannelMethod.initSuccess)
@@ -54,21 +70,4 @@ class AMPSSDKInitManager {
     }
 }
 
-// 初始化回调实现类
-//class InitCallback: IAMPSInitCallback {
-//    private let onSuccess: () -> Void
-//    private let onFail: (AMPSError?) -> Void
-//    
-//    init(success: @escaping () -> Void, failCallback: @escaping (AMPSError?) -> Void) {
-//        self.onSuccess = success
-//        self.onFail = failCallback
-//    }
-//    
-//    func successCallback() {
-//        onSuccess()
-//    }
-//    
-//    func failCallback(_ error: AMPSError?) {
-//        onFail(error)
-//    }
-//}
+

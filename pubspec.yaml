@@ -1,6 +1,6 @@
 name: amps_sdk
 description: "this plugin is use to show ad"
-version: 0.0.4
+version: 0.0.5
 homepage: https://github.com/luhenchang/amps_sdk.git
 
 environment:
