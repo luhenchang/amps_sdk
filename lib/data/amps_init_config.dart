@@ -29,8 +29,8 @@ enum UnderageTag {
 
 ///初始化设置, 国家类型选项
 class CountryType {
-  static const COUNTRY_TYPE_CHINA_MAINLAND = 1;
-  static const COUNTRY_TYPE_OTHER = 0;
+  static const countryTypeChinaMainland = 1;
+  static const countryTypeOther = 0;
 }
 
 ///支持的货币类型
@@ -97,7 +97,7 @@ class AMPSCustomController {
   bool isCanUsePhoneState;
 
   /// 透传OAID
-  String OAID;
+  String oaid;
 
   /// 是否允许使用个性化推荐
   /// true: 允许 false: 不允许
@@ -122,7 +122,7 @@ class AMPSCustomController {
   AMPSCustomController({
     required AMPSCustomControllerParam? param,
   })  : isCanUsePhoneState = param?.isCanUsePhoneState ?? false,
-        OAID = param?.OAID ?? "",
+        oaid = param?.OAID ?? "",
         isSupportPersonalized = param?.isSupportPersonalized ?? true,
         getUnderageTag = param?.getUnderageTag ?? UnderageTag.unknown,
         userAgent = param?.userAgent,
@@ -134,7 +134,7 @@ class AMPSCustomController {
   Map<String, dynamic> toJson() {
     return {
       AMPSControllerKey.isCanUsePhoneState: isCanUsePhoneState,
-      AMPSControllerKey.oaid: OAID,
+      AMPSControllerKey.oaid: oaid,
       AMPSControllerKey.isSupportPersonalized: isSupportPersonalized,
       AMPSControllerKey.getUnderageTag: getUnderageTag.value, // 枚举用名称传递
       AMPSControllerKey.userAgent: userAgent,
@@ -423,7 +423,7 @@ class AMPSInitConfig {
 
 /// 获取自定义OAID的方法
   String getCustomOAID() {
-    return adController.OAID;
+    return adController.oaid;
   }
 
 /// 获取是否可以使用电话状态的方法
@@ -457,7 +457,7 @@ class AMPSBuilder {
   String? gaId;
   Map<String, dynamic> optionFields = {};
   String currency = "";
-  int countryCN = CountryType.COUNTRY_TYPE_CHINA_MAINLAND;
+  int countryCN = CountryType.countryTypeChinaMainland;
   bool isTestAd = false;
   bool adapter = true;
   UiModel uiModel = UiModel.uiModelAuto;

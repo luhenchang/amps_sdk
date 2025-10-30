@@ -88,7 +88,7 @@ class _SplashPageState extends State<SplashPage> {
         .setCity("北京")
         .setRegion("朝阳区双井")
         .setCurrency(CurrencyType.CURRENCY_TYPE_USD)
-        .setCountryCN(CountryType.COUNTRY_TYPE_CHINA_MAINLAND)
+        .setCountryCN(CountryType.countryTypeChinaMainland)
         //.setDebugSetting(true)
         //.setIsMediation(false)
         //.setIsTestAd(false)
