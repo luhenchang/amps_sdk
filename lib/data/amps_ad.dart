@@ -1,5 +1,7 @@
 import 'package:amps_sdk/common.dart';
 
+import '../controller/screen_mode.dart';
+
 ///广告加载入参参数
 class AdOptions {
   final String spaceId;
@@ -12,6 +14,7 @@ class AdOptions {
   final String? userId;
   final String? extra;
   final String? ipAddress;
+  final ScreenMode? screenMode;
 
   AdOptions({
     required this.spaceId,
@@ -24,6 +27,7 @@ class AdOptions {
     this.userId,
     this.extra,
     this.ipAddress,
+    this.screenMode
   });
 
   Map<dynamic, dynamic> toMap({NativeType? nativeType}) {
@@ -39,6 +43,7 @@ class AdOptions {
       'userId': userId,
       'extra': extra,
       'ipAddress': ipAddress,
+      'splashAdDisplayType': screenMode?.value ?? ScreenMode.fullScreen.value
     };
   }
 }

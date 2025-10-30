@@ -17,3 +17,7 @@
 ## 0.0.5
 
 *Splash Adapter Height
+
+## 0.0.6
+
+*Splash Adapter Height by screenMode

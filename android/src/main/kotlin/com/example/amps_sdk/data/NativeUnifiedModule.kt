@@ -65,6 +65,15 @@ sealed class NativeUnifiedChild : Serializable {
         val height: Double? = null
     ) : NativeUnifiedChild()
 
+    data class AdSourceLogo(
+        override val x: Double? = null,
+        override val y: Double? = null,
+        val clickType: Int? = null,
+        val clickIdType: Int? = null,
+        val width: Double? = null,
+        val height: Double? = null
+    ) : NativeUnifiedChild()
+
     //5.1 下载六要素
     data class DownLoadInfo(
         override val x: Double? = null,
@@ -128,6 +137,8 @@ class NativeUnifiedModule(map: Map<String, Any>?) : Serializable {
         private set
      var appIconChild: NativeUnifiedChild.AppIcon? = null
         private set
+    var adSourceLogoChild: NativeUnifiedChild.AdSourceLogo? = null
+        private set
     var downloadInfoChild: NativeUnifiedChild.DownLoadInfo? = null
         private set
      var videoChild: NativeUnifiedChild.Video? = null
@@ -171,6 +182,7 @@ class NativeUnifiedModule(map: Map<String, Any>?) : Serializable {
                 "descText" -> descriptionChild = createDescriptionChild(childMap)
                 "actionButton" -> actionButtonChild = createActionButtonChild(childMap)
                 "appIcon" -> appIconChild = createAppIconChild(childMap)
+                "adSourceLogo" -> adSourceLogoChild = createAdSourceLogoChild(childMap)
                 "downloadInfo" -> downloadInfoChild = createDownloadInfoChild(childMap)
                 "video" -> videoChild = createVideoChild(childMap)
                 "shake" -> shakeChild = createShakeChild(childMap)
@@ -243,6 +255,20 @@ class NativeUnifiedModule(map: Map<String, Any>?) : Serializable {
      */
     private fun createAppIconChild(map: Map<*, *>): NativeUnifiedChild.AppIcon {
         return NativeUnifiedChild.AppIcon(
+            x = map["x"].asDouble(),
+            y = map["y"].asDouble(),
+            clickType = map["clickType"].asInt(),
+            clickIdType = map["clickIdType"].asInt(),
+            width = map["width"].asDouble(),
+            height = map["height"].asDouble()
+        )
+    }
+
+    /**
+     * 创建应用图标（AppIcon）组件
+     */
+    private fun createAdSourceLogoChild(map: Map<*, *>): NativeUnifiedChild.AdSourceLogo {
+        return NativeUnifiedChild.AdSourceLogo(
             x = map["x"].asDouble(),
             y = map["y"].asDouble(),
             clickType = map["clickType"].asInt(),

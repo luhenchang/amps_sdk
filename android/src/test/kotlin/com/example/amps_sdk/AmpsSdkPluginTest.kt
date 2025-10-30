@@ -1,4 +1,4 @@
-package com.example.amps_sdk
+package android.src.test.kotlin.com.example.amps_sdk
 
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel

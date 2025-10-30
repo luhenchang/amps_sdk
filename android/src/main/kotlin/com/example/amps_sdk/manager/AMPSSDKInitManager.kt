@@ -1,4 +1,5 @@
 package com.example.amps_sdk.manager
+import android.R
 import biz.beizi.adn.amps.AMPSSDK
 import biz.beizi.adn.amps.init.AMPSInitConfig
 import android.content.Context
@@ -9,6 +10,7 @@ import biz.beizi.adn.amps.init.inter.IAMPSInitCallback
 import com.example.amps_sdk.data.AMPSAdSdkMethodNames
 import com.example.amps_sdk.data.AMPSInitChannelMethod
 import com.example.amps_sdk.data.AMPSInitConfigConverter
+import com.example.amps_sdk.data.ParamsKey
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel.Result
 import xyz.adscope.common.v2.log.SDKLog
@@ -37,8 +39,9 @@ class AMPSSDKInitManager private constructor() {
             AMPSAdSdkMethodNames.INIT -> {
                 val context = AMPSEventManager.getInstance().getContext()
                 if (context != null && flutterParams != null) {
+                    val isMediation = flutterParams[ParamsKey.IS_MEDIATION] as? Boolean ?: false
                     val ampsConfig = AMPSInitConfigConverter().convert(flutterParams)
-                    initAMPSSDK(ampsConfig, context)
+                    initAMPSSDK(ampsConfig, context ,isMediation)
                     result.success(true)
                 } else {
                     if (context == null) {
@@ -52,7 +55,7 @@ class AMPSSDKInitManager private constructor() {
         }
     }
 
-    fun initAMPSSDK(ampsInitConfig: AMPSInitConfig?, context: Context) {
+    fun initAMPSSDK(ampsInitConfig: AMPSInitConfig?, context: Context,isMediation: Boolean) {
         val callback = object : IAMPSInitCallback {
             override fun successCallback() {
                 mainThreadHandler.post {
@@ -68,7 +71,8 @@ class AMPSSDKInitManager private constructor() {
         }
 
         if (ampsInitConfig != null) {
-            SDKLog.setLogLevel(SDKLog.LOG_LEVEL.LOG_LEVEL_ALL);
+            SDKLog.setLogLevel(SDKLog.LOG_LEVEL.LOG_LEVEL_ALL)
+            AMPSSDK.setUseMediation(isMediation)
             AMPSSDK.init(context, ampsInitConfig,callback)
         }
     }

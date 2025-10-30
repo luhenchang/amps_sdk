@@ -80,7 +80,7 @@ class _SplashShowPageState extends State<SplashShowPage> {
     });
 
     AdOptions options =
-        AdOptions(spaceId: '15288', splashAdBottomBuilderHeight: 100);
+        AdOptions(spaceId: '15288',screenMode: ScreenMode.fullScreen, splashAdBottomBuilderHeight: 100);
     _splashAd = AMPSSplashAd(config: options, mCallBack: _adCallBack);
   }
 

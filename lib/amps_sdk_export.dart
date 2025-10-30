@@ -13,6 +13,7 @@ export 'package:amps_sdk/controller/amps_interstitial_ad.dart';
 export 'package:amps_sdk/controller/amps_native_ad.dart';
 export 'package:amps_sdk/controller/amps_splash_ad.dart';
 export 'package:amps_sdk/controller/amps_ad_sdk.dart';
+export 'package:amps_sdk/controller/screen_mode.dart';
 
 export 'package:amps_sdk/interstitial_widget.dart';
 export 'package:amps_sdk/native_widget.dart';

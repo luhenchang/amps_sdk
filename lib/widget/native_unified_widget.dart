@@ -222,7 +222,36 @@ class UnifiedAppIconWidget extends LayoutWidget {
     };
   }
 }
+class UnifiedAdSourceLogoWidget extends LayoutWidget {
+  final double width;
+  final double height;
+  final double x;
+  final double y;
+  AMPSAdItemClickType clickType;
+  AMPSAdItemClickIdType clickIdType;
 
+  UnifiedAdSourceLogoWidget({
+    required this.width,
+    required this.height,
+    required this.x,
+    required this.y,
+    this.clickType = AMPSAdItemClickType.none,
+    this.clickIdType = AMPSAdItemClickIdType.click
+  });
+
+  @override
+  Map<String, dynamic> toMap() {
+    return {
+      'type': 'adSourceLogo',
+      'width': width,
+      'height': height,
+      'x': x,
+      'y': y,
+      'clickType': clickType.value,
+      'clickIdType': clickIdType.value
+    };
+  }
+}
 ///自渲染视频
 class UnifiedVideoWidget extends LayoutWidget {
   final double width;

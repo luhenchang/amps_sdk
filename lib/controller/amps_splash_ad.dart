@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
 
+import '../amps_sdk.dart';
 import '../common.dart';
 import '../data/amps_ad.dart';
 import '../widget/splash_bottom_widget.dart';

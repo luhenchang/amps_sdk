@@ -5,6 +5,7 @@ import 'package:amps_sdk_example/widgets/blurred_background.dart';
 import 'package:amps_sdk/amps_sdk_export.dart';
 import 'package:amps_sdk_example/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'data/init_data.dart';
 import 'interstitial_page.dart';
@@ -52,7 +53,7 @@ class _SplashPageState extends State<SplashPage> {
   late AMPSInitConfig sdkConfig;
   @override
   void initState() {
-    //SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     super.initState();
     _callBack = AMPSIInitCallBack(
         initSuccess: () {
@@ -83,11 +84,11 @@ class _SplashPageState extends State<SplashPage> {
     ksSdkEx["crashLog"] = true;
     ksSdkEx["ks_sdk_roller"] = "roller_click";
     ksSdkEx["ks_sdk_location"] = "baidu";
-    sdkConfig = AMPSBuilder("14659")
+    sdkConfig = AMPSBuilder("12379")
         .setCity("北京")
         .setRegion("朝阳区双井")
         .setCurrency(CurrencyType.CURRENCY_TYPE_USD)
-        .setCountryCN(CountryType.countryTypeChinaMainland)
+        .setCountryCN(CountryType.COUNTRY_TYPE_CHINA_MAINLAND)
         //.setDebugSetting(true)
         //.setIsMediation(false)
         //.setIsTestAd(false)

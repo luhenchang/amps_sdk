@@ -112,6 +112,12 @@ class AmpsUnifiedFrameLayout(context: Context) : FrameLayout(context) {
             }
         }
 
+        module.adSourceLogoChild?.let { child ->
+            createAdSourceLogoView(child, unifiedItem)?.let { view ->
+                addView(view)
+            }
+        }
+
         module.appIconChild?.let { child ->
             createAppIconView(child, unifiedItem)?.let { view ->
                 addView(view)
@@ -438,9 +444,9 @@ class AmpsUnifiedFrameLayout(context: Context) : FrameLayout(context) {
         return null
     }
 
-    //---appIcon创建--
-    private fun createAppIconView(
-        child: NativeUnifiedChild.AppIcon,
+    //---adSourceIcon创建--
+    private fun createAdSourceLogoView(
+        child: NativeUnifiedChild.AdSourceLogo,
         unifiedItem: AMPSUnifiedNativeItem
     ): View? {
         return if (unifiedItem.adSourceLogo != null) {
@@ -452,6 +458,22 @@ class AmpsUnifiedFrameLayout(context: Context) : FrameLayout(context) {
             AppCompatImageView(context).apply {
                 layoutParams = createLayoutParams(child.width, child.height, child.x, child.y)
                 ImageLoader().loadImage(this, unifiedItem.adSourceLogoUrl)
+                setupClickListener(this, child.clickType, child.clickIdType)
+            }
+        } else {
+            null
+        }
+    }
+
+    //---appIcon创建--
+    private fun createAppIconView(
+        child: NativeUnifiedChild.AppIcon,
+        unifiedItem: AMPSUnifiedNativeItem
+    ): View? {
+        return if (unifiedItem.iconUrl != null) {
+            AppCompatImageView(context).apply {
+                layoutParams = createLayoutParams(child.width, child.height, child.x, child.y)
+                ImageLoader().loadImage(this, unifiedItem.iconUrl)
                 setupClickListener(this, child.clickType, child.clickIdType)
             }
         } else {
