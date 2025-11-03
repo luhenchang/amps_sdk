@@ -8,11 +8,13 @@
 import Foundation
 import Flutter
 import AMPSAdSDK
+//import ASNPAdSDK//5.2.0.2
 
 
-class AMPSSplashManager: NSObject, AMPSSplashAdDelegate {
+class AMPSSplashManager: NSObject {
     
     private static var instance: AMPSSplashManager?
+//    private var splashAd: ASNPSplashAd?
     private var splashAd: AMPSSplashAd?
 
     // Singleton
@@ -43,6 +45,7 @@ class AMPSSplashManager: NSObject, AMPSSplashAdDelegate {
             handleNotifyRTBLoss(arguments: arguments, result: result)
         case AMPSAdSdkMethodNames.splashIsReadyAd:
             result(splashAd?.isReadyAd() ?? false)
+//            result(false)
         default:
             result(false)
         }
@@ -55,8 +58,10 @@ class AMPSSplashManager: NSObject, AMPSSplashAdDelegate {
             return
         }
         let config = AdOptionModule.getAdConfig(para: param)
-        
+//        config.spaceId = "15351"
         splashAd = AMPSSplashAd(spaceId: config.spaceId, adConfiguration: config)
+//        let config = AdOptionModule.getAsnpAdConfig(para: param)
+//        splashAd = ASNPSplashAd(adConfiguration: config)
         splashAd?.delegate = self
         splashAd?.load()
         result(true)
@@ -120,10 +125,15 @@ class AMPSSplashManager: NSObject, AMPSSplashAdDelegate {
                 }
                 
                 splashAd.adConfiguration.bottomView = bottomView
+                splashAd.showSplashView(in: window)
+//                if let rootVC = getKeyWindow()?.rootViewController {
+//                    splashAd.showSplashView(inRootViewController: rootVC, bottomView: bottomView)
+//                }
+                
             }
             
         }
-        splashAd.showSplashView(in: window)
+
     }
     
     private func handleNotifyRTBWin(arguments: [String: Any]?, result: FlutterResult) {
@@ -170,7 +180,10 @@ class AMPSSplashManager: NSObject, AMPSSplashAdDelegate {
         AMPSEventManager.getInstance().sendToFlutter(method, arg: args)
     }
     
-    // MARK: - AMPSSplashLoadEventListener
+
+}
+
+extension AMPSSplashManager: AMPSSplashAdDelegate {
     func ampsSplashAdLoadSuccess(_ splashAd: AMPSSplashAd) {
         sendMessage(AMPSAdCallBackChannelMethod.onLoadSuccess)
         sendMessage(AMPSAdCallBackChannelMethod.onRenderOk)
@@ -194,6 +207,35 @@ class AMPSSplashManager: NSObject, AMPSSplashAdDelegate {
     func ampsSplashAdDidClose(_ splashAd: AMPSSplashAd) {
         sendMessage(AMPSAdCallBackChannelMethod.onAdClosed)
     }
-
 }
 
+
+//extension AMPSSplashManager: ASNPSplashAdDelegate {
+//    
+//    func adnSplashAdLoadSuccess(_ splashAd: ASNPSplashAd) {
+//        sendMessage(AMPSAdCallBackChannelMethod.onLoadSuccess)
+//        sendMessage(AMPSAdCallBackChannelMethod.onRenderOk)
+//    }
+//    func adnSplashAdLoadFail(_ splashAd: ASNPSplashAd, error: (any Error)?) {
+//        sendMessage(AMPSAdCallBackChannelMethod.onLoadFailure, ["code": (error as? NSError)?.code ?? 0,"message":(error as? NSError)?.localizedDescription ?? ""])
+//    }
+//    func adnSplashAdDidShow(_ splashAd: ASNPSplashAd) {
+//        sendMessage(AMPSAdCallBackChannelMethod.onAdShow)
+//
+//    }
+//    func adnSplashAdExposured(_ splashAd: ASNPSplashAd) {
+//        sendMessage(AMPSAdCallBackChannelMethod.onAdExposure)
+//    }
+//    func adnSplashAdRenderSuccess(_ splashAd: ASNPSplashAd) {
+//        sendMessage(AMPSAdCallBackChannelMethod.onRenderOk)
+//    }
+//    func adnSplashAdRenderFail(_ splashAd: ASNPSplashAd, error: (any Error)?) {
+//        sendMessage(AMPSAdCallBackChannelMethod.onAdShowError,["code": (error as? NSError)?.code ?? 0,"message":(error as? NSError)?.localizedDescription ?? ""])
+//    }
+//    func adnSplashAdDidClick(_ splashAd: ASNPSplashAd) {
+//        sendMessage(AMPSAdCallBackChannelMethod.onAdClicked)
+//    }
+//    func adnSplashAdDidClose(_ splashAd: ASNPSplashAd) {
+//        sendMessage(AMPSAdCallBackChannelMethod.onAdClosed)
+//    }
+//}

@@ -97,3 +97,36 @@ extension UIColor {
         )
     }
 }
+
+
+import UIKit
+
+extension UIViewController {
+    /// 获取当前显示的顶层视图控制器
+    static func current() -> UIViewController? {
+        // 1. 获取当前活跃的窗口（适配 iOS 13+ 多场景）
+        guard let window = getKeyWindow() else {
+            return nil
+        }
+        
+        // 2. 从窗口根控制器开始遍历
+        var currentVC = window.rootViewController
+        
+        // 递归处理容器控制器（导航栏、标签栏、模态窗口等）
+        while let nextVC = currentVC?.presentedViewController {
+            currentVC = nextVC
+        }
+        
+        // 处理 UINavigationController（取顶层控制器）
+        if let nav = currentVC as? UINavigationController {
+            currentVC = nav.topViewController ?? nav.viewControllers.last
+        }
+        
+        // 处理 UITabBarController（取选中的控制器）
+        if let tab = currentVC as? UITabBarController {
+            currentVC = tab.selectedViewController ?? tab.viewControllers?.first
+        }
+        
+        return currentVC
+    }
+}

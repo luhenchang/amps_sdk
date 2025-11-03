@@ -9,11 +9,13 @@ import Foundation
 
 import Flutter
 import AMPSAdSDK
-
+//import ASNPAdSDK
 
 class AMPSNativeManager: NSObject {
     
     private static var instance: AMPSNativeManager?
+//    var nativeAd: ASNPNativeExpressManager?
+//    var adIdMap: [ASNPNativeExpressView: String] = [:]
     var nativeAd: AMPSNativeExpressManager?
     var adIdMap: [AMPSNativeExpressView: String] = [:]
     
@@ -40,19 +42,30 @@ class AMPSNativeManager: NSObject {
         }
         if let type = arguments["nativeType"] as? Int, type == 1 {
             self.unifiedManager.handleMethodCall(call, result: result)
+            return
         }
         switch call.method {
         case AMPSAdSdkMethodNames.nativeLoad:
             handleNativeLoad(arguments: arguments, result: result)
             result(true)
         case AMPSAdSdkMethodNames.nativeGetEcpm:
-            result(nativeAd?.viewsArray.first?.eCPM() ?? 0)
+            if let adId = arguments["adId"] as? String {
+                if  let view = self.getAdView(adId: adId) {
+                    result(view.eCPM())
+                    return
+                }
+            }
+            result(0)
+            
+        case AMPSAdSdkMethodNames.nativeIsNativeExpress:
+            result(true)
         case AMPSAdSdkMethodNames.nativeNotifyRtbWin:
             handleNotifyRTBWin(arguments: arguments, result: result)
         case AMPSAdSdkMethodNames.nativeNotifyRtbLoss:
             handleNotifyRTBLoss(arguments: arguments, result: result)
         case AMPSAdSdkMethodNames.nativeIsReadyAd:
             result(nativeAd?.viewsArray.count ?? 0 > 0)
+//            result(false)
         default:
             result(false)
         }
@@ -65,9 +78,14 @@ class AMPSNativeManager: NSObject {
             return
         }
         
-        let config = AdOptionModule.getAdConfig(para: param)
-//        config.spaceId = "15354"
-        nativeAd = AMPSNativeExpressManager(spaceId: config.spaceId, adConfiguration: config)
+        let configAM = AdOptionModule.getAdConfig(para: param)
+//        let config = AdOptionModule.getAsnpAdConfig(para: param)
+    
+//        configAM.spaceId = "15354"
+//        nativeAd = ASNPNativeExpressManager(adConfiguration: config)
+//        nativeAd?.delegate = self
+//        nativeAd?.loadAd(withCount: configAM.adCount)
+        nativeAd = AMPSNativeExpressManager(spaceId: configAM.spaceId, adConfiguration: configAM)
         nativeAd?.delegate = self
         nativeAd?.load()
         result(true)
@@ -79,7 +97,7 @@ class AMPSNativeManager: NSObject {
         }
         let winPrice = arguments[ArgumentKeys.adWinPrice] as? Int ?? 0
         let secPrice = arguments[ArgumentKeys.adSecPrice] as? Int ?? 0
-        nativeAd?.viewsArray.forEach({ view in
+        self.adIdMap.forEach({ (view,_) in
             view.sendWinNotification(withInfo: [BidKeys.winPrince:winPrice,BidKeys.lossSecondPrice:secPrice])
         })
         result(true)
@@ -89,10 +107,11 @@ class AMPSNativeManager: NSObject {
         guard let arguments =  arguments else{
             return
         }
+        
         let lossWinPrice = arguments[ArgumentKeys.adWinPrice] as? Int ?? 0
         let lossSecPrice = arguments[ArgumentKeys.adSecPrice] as? Int ?? 0
         let lossReason = arguments[ArgumentKeys.adLossReason] as? String ?? ""
-        nativeAd?.viewsArray.forEach({ view in
+        self.adIdMap.forEach({ (view,_) in
             view.sendLossNotification(withInfo: [
                 BidKeys.winPrince:lossWinPrice,
                 BidKeys.lossSecondPrice:lossSecPrice,
@@ -118,8 +137,8 @@ class AMPSNativeManager: NSObject {
         return nil
     }
     
-    func getUnifiedNativeAd(_ adId: String) -> AMPSUnifiedNativeAd?{
-       return self.unifiedManager.getUnifiedNativeAd(adId)
+    func getUnifiedNativeView(_ adId: String) -> AMPSUnifiedNativeView?{
+       return self.unifiedManager.getUnifiedNativeAdView(adId)
     }
     
     
@@ -144,7 +163,6 @@ extension AMPSNativeManager: AMPSNativeExpressManagerDelegate{
     }
     
 }
-
 
 extension AMPSNativeManager: AMPSNativeExpressViewDelegate{
     
@@ -181,6 +199,61 @@ extension AMPSNativeManager: AMPSNativeExpressViewDelegate{
     
     
 }
+//extension AMPSNativeManager: ASNPNativeExpressAdDelegate {
+//    func adnNativeExpressAdLoadSuccess(_ nativeAd: ASNPNativeExpressManager, views: [ASNPNativeExpressView]) {
+//        self.adIdMap.removeAll()
+//        let ids: [String]? =  views.map({ view in
+//            let id = UUID().uuidString
+//            self.adIdMap[view] = id
+//            return id
+//        })
+//        sendMessage(AMPSNativeCallBackChannelMethod.loadOk, ids)
+//        
+//       views.forEach { view in
+//            view.delegate = self
+//            view.renderAd()
+//        }
+//    }
+//    func adnNativeExpressAdLoadFail(_ nativeAd: ASNPNativeExpressManager, error: (any Error)?) {
+//        sendMessage(AMPSNativeCallBackChannelMethod.loadFail,["code":(error as? NSError)?.code ?? 0,"message": error?.localizedDescription ?? ""])
+//    }
+//}
+
+//extension AMPSNativeManager :ASNPNativeExpressViewDelegate {
+//    func adnNativeExpressViewRenderSuccess(_ nativeView: ASNPNativeExpressView) {
+//        if let adID = self.adIdMap[nativeView] {
+//            sendMessage(AMPSNativeCallBackChannelMethod.renderSuccess,adID)
+//        }
+//    }
+//    func adnNativeExpressViewRenderFail(_ nativeView: ASNPNativeExpressView, error: (any Error)?) {
+//        if let adID = self.adIdMap[nativeView] {
+//            sendMessage(AMPSNativeCallBackChannelMethod.renderFailed,["adId":adID,"code":(error as? NSError)?.code ?? 0,"message": error?.localizedDescription ?? ""])
+//        }
+//    }
+//    func adnNativeExpressViewExposured(_ nativeView: ASNPNativeExpressView) {
+//        if let adID = self.adIdMap[nativeView] {
+//            sendMessage(AMPSNativeCallBackChannelMethod.onAdExposure,adID)
+//        }
+//    }
+//    func adnNativeExpressViewDidShow(_ nativeView: ASNPNativeExpressView) {
+//        if let adID = self.adIdMap[nativeView] {
+//            sendMessage(AMPSNativeCallBackChannelMethod.onAdShow,adID)
+//        }
+//    }
+//    func adnNativeExpressViewDidClick(_ nativeView: ASNPNativeExpressView) {
+//        if let adID = self.adIdMap[nativeView] {
+//            sendMessage(AMPSNativeCallBackChannelMethod.onAdClicked,adID)
+//        }
+//    }
+//    func adnNativeExpressViewDidClose(_ nativeView: ASNPNativeExpressView) {
+//        if let adID = self.adIdMap[nativeView] {
+//            sendMessage(AMPSNativeCallBackChannelMethod.onAdClosed,adID)
+//        }
+//        self.adIdMap.removeValue(forKey: nativeView)
+//    }
+//}
+
+
 
 
 

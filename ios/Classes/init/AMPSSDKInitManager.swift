@@ -37,6 +37,7 @@ class AMPSSDKInitManager {
         }
         let initParam: AMPSIOSInitModel? = Tools.convertToModel(from: flutterParams)
         let appid = initParam?.appId ?? ""
+//        let appid = "14659"
         AMPSAdSDKManager.sharedInstance().sdkConfiguration.city = initParam?.city ?? ""
         AMPSAdSDKManager.sharedInstance().sdkConfiguration.province = initParam?.province ?? ""
         AMPSAdSDKManager.sharedInstance().sdkConfiguration.region = initParam?.region ?? ""

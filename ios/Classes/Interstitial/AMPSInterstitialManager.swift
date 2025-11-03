@@ -9,11 +9,13 @@ import Foundation
 
 import Flutter
 import AMPSAdSDK
+//import ASNPAdSDK
 
 
-class AMPSInterstitialManager: NSObject, AMPSInterstitialAdDelegate {
+class AMPSInterstitialManager: NSObject {
     
     private static var instance: AMPSInterstitialManager?
+//    private var interstitialAd: ASNPInterstitialAd?
     private var interstitialAd: AMPSInterstitialAd?
 
     
@@ -44,6 +46,7 @@ class AMPSInterstitialManager: NSObject, AMPSInterstitialAdDelegate {
             handleNotifyRTBLoss(arguments: arguments, result: result)
         case AMPSAdSdkMethodNames.interstitialIsReadyAd:
             result(interstitialAd?.isReadyAd() ?? false)
+//            result(false)
         default:
             result(false)
         }
@@ -55,9 +58,11 @@ class AMPSInterstitialManager: NSObject, AMPSInterstitialAdDelegate {
         guard let param = arguments else {
             return
         }
+//        let config = AdOptionModule.getAsnpAdConfig(para: param)
         let config = AdOptionModule.getAdConfig(para: param)
-        
+//        config.spaceId = "15352"
         interstitialAd = AMPSInterstitialAd(spaceId: config.spaceId, adConfiguration: config)
+//        interstitialAd = ASNPInterstitialAd(adConfiguration: config)
         interstitialAd?.delegate = self
         interstitialAd?.load()
         result(true)
@@ -75,6 +80,7 @@ class AMPSInterstitialManager: NSObject, AMPSInterstitialAdDelegate {
             return
         }
         interstitialAd.show(withRootViewController: vc)
+//        interstitialAd.showInterstitialView(inRootViewController: vc)
         
     
        
@@ -124,7 +130,38 @@ class AMPSInterstitialManager: NSObject, AMPSInterstitialAdDelegate {
         AMPSEventManager.getInstance().sendToFlutter(method, arg: args)
     }
     
-    // MARK: - AMPSInterstitialLoadEventListener
+}
+//extension AMPSInterstitialManager : ASNPInterstitialAdDelegate {
+//    func adnInterstitialAdLoadSuccess(_ interstitalAd: ASNPInterstitialAd) {
+//        sendMessage(AMPSAdCallBackChannelMethod.onLoadSuccess)
+//    }
+//    func adnInterstitialAdLoadFail(_ interstitalAd: ASNPInterstitialAd, error: (any Error)?) {
+//        sendMessage(AMPSAdCallBackChannelMethod.onLoadFailure, ["code": (error as? NSError)?.code ?? 0,"message":(error as? NSError)?.localizedDescription ?? ""])
+//    }
+//    func adnInterstitialAdRenderSuccess(_ interstitalAd: ASNPInterstitialAd) {
+//        sendMessage(AMPSAdCallBackChannelMethod.onRenderOk)
+//    }
+//    func adnInterstitialAdRenderFail(_ interstitalAd: ASNPInterstitialAd, error: (any Error)?) {
+//        sendMessage(AMPSAdCallBackChannelMethod.onRenderFailure,["code": (error as? NSError)?.code ?? 0,"message":(error as? NSError)?.localizedDescription ?? ""])
+//    }
+//    func adnInterstitialAdExposured(_ interstitalAd: ASNPInterstitialAd) {
+//        sendMessage(AMPSAdCallBackChannelMethod.onAdExposure)
+//    }
+//    func adnInterstitialAdDidShowSuccess(_ interstitalAd: ASNPInterstitialAd) {
+//        sendMessage(AMPSAdCallBackChannelMethod.onAdShow)
+//    }
+//    func adnInterstitialAdDidShowFail(_ interstitalAd: ASNPInterstitialAd, error: (any Error)?) {
+//        sendMessage(AMPSAdCallBackChannelMethod.onAdShowError,["code": (error as? NSError)?.code ?? 0,"message":(error as? NSError)?.localizedDescription ?? ""])
+//    }
+//    func adnInterstitialAdDidClick(_ interstitalAd: ASNPInterstitialAd) {
+//        sendMessage(AMPSAdCallBackChannelMethod.onAdClicked)
+//    }
+//    func adnInterstitialAdDidClose(_ interstitalAd: ASNPInterstitialAd) {
+//        sendMessage(AMPSAdCallBackChannelMethod.onAdClosed)
+//    }
+//}
+
+extension AMPSInterstitialManager : AMPSInterstitialAdDelegate {
     func ampsInterstitialAdLoadSuccess(_ interstitialAd: AMPSInterstitialAd) {
         sendMessage(AMPSAdCallBackChannelMethod.onLoadSuccess)
         sendMessage(AMPSAdCallBackChannelMethod.onRenderOk)
@@ -148,5 +185,4 @@ class AMPSInterstitialManager: NSObject, AMPSInterstitialAdDelegate {
     func ampsInterstitialAdDidClose(_ interstitialAd: AMPSInterstitialAd) {
         sendMessage(AMPSAdCallBackChannelMethod.onAdClosed)
     }
-
 }

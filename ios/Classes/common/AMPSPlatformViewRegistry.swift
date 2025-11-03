@@ -25,7 +25,7 @@ class AMPSPlatformViewRegistry {
         
         binding.register(AMPSNAtiveViewFactory(), withId: AMPSPlatformViewIds.nativeViewId)
         
-        
+        binding.register(AMPSUnifiedNAtiveViewFactory(), withId: AMPSPlatformViewIds.unifiedViewId)
         
     }
     
