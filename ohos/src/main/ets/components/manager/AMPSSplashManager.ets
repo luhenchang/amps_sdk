@@ -132,7 +132,7 @@ export class AMPSSplashManager {
 export function SplashBottomBuilder() {
   if (AMPSSplashManager.splashBottomModule?.initialized) {
     Stack() {
-      Image($rawfile(`flutter_assets/${AMPSSplashManager.splashBottomModule?.imgChildren?.imageUrl}`))
+      Image($rawfile(`flutter_assets/${AMPSSplashManager.splashBottomModule?.imgChildren?.imagePath}`))
         .width(AMPSSplashManager.splashBottomModule?.imgChildren?.width)
         .height(AMPSSplashManager.splashBottomModule?.imgChildren?.height)
         .offset({

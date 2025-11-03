@@ -71,7 +71,6 @@ export class OhosPlatformSplashView extends PlatformView implements MethodCallHa
   }
 
   dispose(): void {
-    globalSplashBottomBuilder = undefined;
     OhosPlatformSplashView.splashBottomModule = null;
   }
 }
@@ -81,7 +80,7 @@ export class OhosPlatformSplashView extends PlatformView implements MethodCallHa
 export function MyBuilder() {
   if (OhosPlatformSplashView.splashBottomModule?.initialized) {
     Stack() {
-      Image($rawfile(`flutter_assets/${OhosPlatformSplashView.splashBottomModule?.imgChildren?.imageUrl}`))
+      Image($rawfile(`flutter_assets/${OhosPlatformSplashView.splashBottomModule?.imgChildren?.imagePath}`))
         .width(OhosPlatformSplashView.splashBottomModule?.imgChildren?.width)
         .height(OhosPlatformSplashView.splashBottomModule?.imgChildren?.height)
         .offset({

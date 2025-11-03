@@ -11,7 +11,7 @@ export class OhosPlatformNativeView extends PlatformView {
   static wrapper: AMPSNativeAdWrapper | undefined
   constructor(context: common.Context, viewId: number, args: ESObject, message: BinaryMessenger) {
     super();
-    OhosPlatformNativeView.adId = args.get("posId")
+    OhosPlatformNativeView.adId = args.get("adId")
     if (OhosPlatformNativeView.adId) {
       OhosPlatformNativeView.wrapper = AdWrapperManager.getInstance().getAd(OhosPlatformNativeView.adId)
     }

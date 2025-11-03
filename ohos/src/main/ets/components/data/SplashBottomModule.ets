@@ -17,7 +17,7 @@ class SplashBottomBaseChild {
 class SplashBottomImageChild extends SplashBottomBaseChild {
   width?: number;
   height?: number;
-  imageUrl?: string;
+  imagePath?: string;
 }
 
 // 继承通用父类，并补充自身特有属性
@@ -73,7 +73,7 @@ export class SplashBottomModule {
     child.height = map.get('height');
     child.x = map.get('x');
     child.y = map.get('y');
-    child.imageUrl = map.get('imageUrl');
+    child.imagePath = map.get('imagePath');
     return child;
   }
 

@@ -11,7 +11,7 @@ export class OhosPlatformUnifiedView extends PlatformView {
 
   constructor(context: common.Context, viewId: number, args: ESObject, message: BinaryMessenger) {
     super();
-    OhosPlatformUnifiedView.adId = args.get("posId");
+    OhosPlatformUnifiedView.adId = args.get("adId");
     OhosPlatformUnifiedView.nativeUnifiedModule = new NativeUnifiedModule(args.get("unifiedWidget"));
   }
 

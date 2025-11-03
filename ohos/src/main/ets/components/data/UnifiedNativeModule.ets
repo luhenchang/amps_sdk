@@ -27,7 +27,7 @@ export enum AdClickIdType {
 }
 
 // 定义按钮类型枚举
-enum ButtonType {
+export enum ButtonType {
   CAPSULE = 'capsule',
   CIRCLE = 'circle',
   NORMAL = 'normal',
@@ -86,7 +86,7 @@ class UnifiedVideoChild extends NativeUnifiedBaseChild {
 
 // 7. 关闭按钮
 class UnifiedCloseChild extends NativeUnifiedBaseChild {
-  imageUrl?: string;
+  imagePath?: string;
   width?: number;
   height?: number;
 }
@@ -103,6 +103,7 @@ export class NativeUnifiedModule {
   closeIconChildren?: UnifiedCloseChild;
 
   height?: number;
+  width?: number;
   backgroundColor?: string;
   initialized: boolean = false;
 
@@ -119,6 +120,7 @@ export class NativeUnifiedModule {
 
     this.initialized = true;
     this.height = map.get('height') ?? 0;
+    this.width = map.get('width') ?? 0;
     this.backgroundColor = map.get('backgroundColor');
     const childsMap: List<Map<string, Any>> | undefined = map.get('children');
     if (!childsMap) {
@@ -226,7 +228,7 @@ export class NativeUnifiedModule {
 
   private createCloseChild(map: Map<string, Any>): UnifiedCloseChild {
     const child = new UnifiedCloseChild();
-    child.imageUrl = map.get('imageUrl');
+    child.imagePath = map.get('imagePath');
     child.width = map.get('width');
     child.height = map.get('height');
     child.x = map.get('x');
