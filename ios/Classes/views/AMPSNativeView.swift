@@ -27,7 +27,7 @@ class AMPSNativeView : NSObject, FlutterPlatformView {
     private var iosView: UIView
     init(frame: CGRect,viewId: Int64,args:Any?) {
         self.iosView = UIView(frame: frame)
-//        self.iosView.backgroundColor = UIColor.orange
+        self.iosView.backgroundColor = UIColor.orange
         if let param = args as? [String: Any?]{
            if let adId = param["adId"] as? String {
                if let adView = AMPSNativeManager.getInstance().getAdView(adId: adId) {

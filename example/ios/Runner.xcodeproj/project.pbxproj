@@ -10,6 +10,8 @@
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
+		40891EF32EBA0C48003768CD /* AdScopeFoundation.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40891EF02EBA0C48003768CD /* AdScopeFoundation.xcframework */; };
+		40891EF42EBA0C48003768CD /* AMPSAdSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40891EF12EBA0C48003768CD /* AMPSAdSDK.xcframework */; };
 		40F1CA212EA8C41100633A82 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F1CA202EA8C41000633A82 /* Accelerate.framework */; };
 		40F1CA232EA8C42F00633A82 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F1CA222EA8C42F00633A82 /* AdSupport.framework */; };
 		40F1CA252EA8C43700633A82 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F1CA242EA8C43700633A82 /* AppTrackingTransparency.framework */; };
@@ -81,6 +83,8 @@
 		331C807B294A618700263BE5 /* RunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerTests.swift; sourceTree = "<group>"; };
 		331C8081294A63A400263BE5 /* RunnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
+		40891EF02EBA0C48003768CD /* AdScopeFoundation.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = AdScopeFoundation.xcframework; sourceTree = "<group>"; };
+		40891EF12EBA0C48003768CD /* AMPSAdSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = AMPSAdSDK.xcframework; sourceTree = "<group>"; };
 		40F1CA202EA8C41000633A82 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		40F1CA222EA8C42F00633A82 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		40F1CA242EA8C43700633A82 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
@@ -150,6 +154,7 @@
 				40F1CA5F2EA8C59F00633A82 /* libiconv.tbd in Frameworks */,
 				40F1CA5D2EA8C59300633A82 /* libbz2.tbd in Frameworks */,
 				40F1CA5B2EA8C58A00633A82 /* libc++abi.tbd in Frameworks */,
+				40891EF32EBA0C48003768CD /* AdScopeFoundation.xcframework in Frameworks */,
 				40F1CA592EA8C57F00633A82 /* libxml2.tbd in Frameworks */,
 				40F1CA572EA8C57500633A82 /* libsqlite3.tbd in Frameworks */,
 				40F1CA552EA8C56600633A82 /* libc++.tbd in Frameworks */,
@@ -161,6 +166,7 @@
 				40F1CA492EA8C53700633A82 /* StoreKit.framework in Frameworks */,
 				40F1CA472EA8C52900633A82 /* Security.framework in Frameworks */,
 				40F1CA452EA8C52100633A82 /* QuartzCore.framework in Frameworks */,
+				40891EF42EBA0C48003768CD /* AMPSAdSDK.xcframework in Frameworks */,
 				40F1CA432EA8C51900633A82 /* MobileCoreServices.framework in Frameworks */,
 				40F1CA412EA8C50D00633A82 /* MediaPlayer.framework in Frameworks */,
 				40F1CA3F2EA8C4FA00633A82 /* MapKit.framework in Frameworks */,
@@ -207,6 +213,15 @@
 			path = RunnerTests;
 			sourceTree = "<group>";
 		};
+		40891EF22EBA0C48003768CD /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				40891EF02EBA0C48003768CD /* AdScopeFoundation.xcframework */,
+				40891EF12EBA0C48003768CD /* AMPSAdSDK.xcframework */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
 		9740EEB11CF90186004384FC /* Flutter */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +257,7 @@
 		97C146F01CF9000F007C117D /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				40891EF22EBA0C48003768CD /* libs */,
 				97C146FA1CF9000F007C117D /* Main.storyboard */,
 				97C146FD1CF9000F007C117D /* Assets.xcassets */,
 				97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */,
@@ -329,7 +345,6 @@
 				97C146EC1CF9000F007C117D /* Resources */,
 				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
-				9FACBCF291504B6A2F3D6B34 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -475,23 +490,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build";
-		};
-		9FACBCF291504B6A2F3D6B34 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -7,7 +7,8 @@
 
 import Foundation
 import AMPSAdSDK
-import ASNPAdSDK
+//import ASNPAdSDK
+import AdScopeFoundation
 
 struct AdOptionModule{
     
@@ -22,35 +23,36 @@ struct AdOptionModule{
         if size?.count ?? 0 > 1{
             config.adSize.height = size![1]
         }
-        if let s2s = para[AdOptionKeys.keyS2SImpl] as? String{
-            config.s2sIp = s2s
-        }
-        
-        if let timeout = para[AdOptionKeys.keyTimeoutInterval] as? TimeInterval {
-            config.timeoutInterval = timeout
-        }
-        return config
-    }
-    
-    
-    static func getAsnpAdConfig(para:[String:Any?]) -> ASNPAdConfiguration{
-        let config = ASNPAdConfiguration()
-//        config.spaceId = para[AdOptionKeys.keyAdCount] as? Int ?? 1
-        config.spaceId = para[AdOptionKeys.keySpaceId] as? String ?? ""
-        let size = para[AdOptionKeys.keyExpressSize] as? [CGFloat]
-        if size?.count ?? 0 > 0{
-            config.adSize.width = size![0]
-        }
-        if size?.count ?? 0 > 1{
-            config.adSize.height = size![1]
-        }
 //        if let s2s = para[AdOptionKeys.keyS2SImpl] as? String{
 //            config.s2sIp = s2s
 //        }
+        NSString.adScopeFoundationDirectory()
         
         if let timeout = para[AdOptionKeys.keyTimeoutInterval] as? TimeInterval {
             config.timeoutInterval = timeout
         }
         return config
     }
+    
+    
+//    static func getAsnpAdConfig(para:[String:Any?]) -> ASNPAdConfiguration{
+//        let config = ASNPAdConfiguration()
+////        config.spaceId = para[AdOptionKeys.keyAdCount] as? Int ?? 1
+//        config.spaceId = para[AdOptionKeys.keySpaceId] as? String ?? ""
+//        let size = para[AdOptionKeys.keyExpressSize] as? [CGFloat]
+//        if size?.count ?? 0 > 0{
+//            config.adSize.width = size![0]
+//        }
+//        if size?.count ?? 0 > 1{
+//            config.adSize.height = size![1]
+//        }
+////        if let s2s = para[AdOptionKeys.keyS2SImpl] as? String{
+////            config.s2sIp = s2s
+////        }
+//        
+//        if let timeout = para[AdOptionKeys.keyTimeoutInterval] as? TimeInterval {
+//            config.timeoutInterval = timeout
+//        }
+//        return config
+//    }
 }

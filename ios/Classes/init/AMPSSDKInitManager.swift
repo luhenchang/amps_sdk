@@ -25,7 +25,6 @@ class AMPSSDKInitManager {
         case AMPSAdSdkMethodNames.sdk_init:
             initAMPSSDK(flutterParams)
             result(true)
-            
         default:
             result(FlutterMethodNotImplemented)
         }
@@ -37,20 +36,45 @@ class AMPSSDKInitManager {
         }
         let initParam: AMPSIOSInitModel? = Tools.convertToModel(from: flutterParams)
         let appid = initParam?.appId ?? ""
-//        let appid = "14659"
-        AMPSAdSDKManager.sharedInstance().sdkConfiguration.city = initParam?.city ?? ""
-        AMPSAdSDKManager.sharedInstance().sdkConfiguration.province = initParam?.province ?? ""
-        AMPSAdSDKManager.sharedInstance().sdkConfiguration.region = initParam?.region ?? ""
+        
+        let config =  AMPSAdSDKConfiguration()
+       
         if let https = initParam?._isUseHttps{
-            AMPSAdSDKManager.sharedInstance().sdkConfiguration.isUseHttps = https
+            config.isUseHttps = https
         }
         if let recommend = initParam?.adController?.isSupportPersonalized{
-            AMPSAdSDKManager.sharedInstance().sdkConfiguration.recommend = recommend ? .open : .close
+            config.recommend = recommend ? .open : .close
         }
-        if let adapterNames = initParam?.adapterNames {
-            AMPSAdSDKManager.sharedInstance().sdkConfiguration.adapterName = adapterNames
+//        if let adapterNames = initParam?.adapterNames {
+//            config. = adapterNames
+//        }
+        let locationPro =  AMPSAdSDKLocationProvider()
+        if let idfa = initParam?.adController?.OAID{
+            config.customIDFA = idfa
         }
-        AMPSAdSDKManager.sharedInstance().startAsync(withAppId: appid) { status in
+        if let currency = initParam?.currency{
+            config.county_CN =  currency == "CNY" ? true : false
+        }
+        
+         
+        if let location = initParam?.adController?.location{
+            locationPro.canUseLocation = initParam?.adController?.isLocationEnabled ?? true
+            if let coordinate = location.coordinate{
+                locationPro.coordinate = coordinate
+            }
+            if let latitude = location.latitude {
+                locationPro.latitude = Float(latitude)
+            }
+            if let longitude = location.longitude{
+                locationPro.longitude = Float(longitude)
+            }
+            if let timeStamp = location.timeStamp{
+                locationPro.timestamp = UInt64(timeStamp)
+            }
+        
+        }
+        AMPSAdSDKManager.sharedInstance().startAsync(withAppId: appid, configuration: config) { status in
+    
             if status == AMPSAdSDKInitStatus.success {
                 self.sendMessage(AMPSInitChannelMethod.initSuccess)
             }else if status == AMPSAdSDKInitStatus.fail {
@@ -61,8 +85,6 @@ class AMPSSDKInitManager {
                 self.sendMessage(AMPSInitChannelMethod.alreadyInit)
             }
         }
-        AMPSAdSDKManager.sharedInstance().sdkConfiguration.recommend = AMPSPersonalizedRecommendState.open
-        
     
     }
     

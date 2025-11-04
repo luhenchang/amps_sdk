@@ -8,7 +8,6 @@
 import Foundation
 import Flutter
 import AMPSAdSDK
-import YYWebImage
 
 
 class AMPSUnifiedNAtiveViewFactory: NSObject, FlutterPlatformViewFactory {
@@ -29,7 +28,7 @@ class AMPSSelfRenderView : NSObject, FlutterPlatformView {
     init(frame: CGRect,viewId: Int64,args:Any?) {
         self.iosView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 300))
         super.init()
-//        self.iosView.backgroundColor = UIColor.orange
+        self.iosView.backgroundColor = UIColor.orange
         
         if let param = args as? [String: Any?]{
             let model: FlutterUnifiedParam? = Tools.convertToModel(from: param as [String : Any])
@@ -59,11 +58,11 @@ class AMPSSelfRenderView : NSObject, FlutterPlatformView {
         let ad = adView.nativeAd
         
         if ad.nativeMode == .unifiedVideo {
-            adView.mediaView?.delegate = AMPSNativeManager.getInstance().unifiedManager
+            adView.mediaView.delegate = AMPSNativeManager.getInstance().unifiedManager
             if let videoModel = model.unifiedWidget?.children?.first(where: { child in
                 child.type == .video
             }){
-                adView.mediaView?.resetLayout(with: CGRect(x: videoModel.x ?? 0, y: videoModel.y ?? 0, width:  videoModel.width ?? adView.frame.width, height: videoModel.height ?? 150))
+                adView.mediaView.resetLayout(with: CGRect(x: videoModel.x ?? 0, y: videoModel.y ?? 0, width:  videoModel.width ?? adView.frame.width, height: videoModel.height ?? 150))
             }
         } else if ad.imageUrls.count > 0 {
             for i in 0..<ad.imageUrls.count {
@@ -75,8 +74,12 @@ class AMPSSelfRenderView : NSObject, FlutterPlatformView {
                     height: 150
                 ))
                 imgView.contentMode = .scaleAspectFit
-                if let urlString = ad.imageUrls[i] as? String, let url = URL(string: urlString) {
-                    imgView.yy_setImage(with: url, placeholder: nil)
+                if let urlString = ad.imageUrls[i] as? String, let _ = URL(string: urlString) {
+                    Tools.fetchImageData(from: urlString) { [weak imgView] result in
+                        if case let .success(data) = result {
+                            imgView?.image = UIImage(data: data)
+                        }
+                    }
                    
                 }
                 adView.addSubview(imgView)
@@ -95,8 +98,12 @@ class AMPSSelfRenderView : NSObject, FlutterPlatformView {
                 
             }
             imageView.contentMode = .scaleAspectFit
-            if let url = URL(string: imageUrl) {
-                imageView.yy_setImage(with: url, placeholder: nil)
+            if let _ = URL(string: imageUrl) {
+                Tools.fetchImageData(from: imageUrl) { [weak imageView] result in
+                    if case let .success(data) = result {
+                        imageView?.image = UIImage(data: data)
+                    }
+                }
             }
             
             adView.addSubview(imageView)
@@ -105,17 +112,21 @@ class AMPSSelfRenderView : NSObject, FlutterPlatformView {
         }
 
         // 设置广告Logo
-        adView.adLogoImageView.frame = CGRect(x: adView.frame.width - 50, y: adView.frame.width - 20, width: 36, height: 14)
-        adView.adLogoImageView.contentMode = .scaleAspectFit
+        let adLogoImageView = UIImageView(frame: CGRect(x: adView.frame.width - 50, y: adView.frame.width - 20, width: 36, height: 14))
+        adLogoImageView.contentMode = .scaleAspectFit
         if let imgModel = model.unifiedWidget?.children?.first(where: { child in
             child.type == .adSourceLogo
         }){
-            adView.adLogoImageView.frame = CGRect(x: imgModel.x ?? adView.frame.width - 50, y: imgModel.y ?? adView.frame.width - 20, width: imgModel.width ?? 36, height: imgModel.height ?? 14)
+           adLogoImageView.frame = CGRect(x: imgModel.x ?? adView.frame.width - 50, y: imgModel.y ?? adView.frame.width - 20, width: imgModel.width ?? 36, height: imgModel.height ?? 14)
         }
         if  !ad.adLogoUrl.isEmpty {
             let adLogoUrl = ad.adLogoUrl
             if let url = URL(string: adLogoUrl) {
-                adView.adLogoImageView.yy_setImage(with: url, placeholder: nil)
+                Tools.fetchImageData(from: adLogoUrl) { [weak adLogoImageView] result in
+                    if case let .success(data) = result {
+                        adLogoImageView?.image = UIImage(data: data)
+                    }
+                }
             }
         }
 
@@ -125,8 +136,12 @@ class AMPSSelfRenderView : NSObject, FlutterPlatformView {
             let iconUrl = ad.iconUrl
             iconImageView.frame = CGRect(x: 5, y: 165, width: 65, height: 65)
             iconImageView.contentMode = .scaleAspectFit
-            if let url = URL(string: iconUrl) {
-                iconImageView.yy_setImage(with: url, placeholder: nil)
+            if let _ = URL(string: iconUrl) {
+                Tools.fetchImageData(from: iconUrl) { [weak iconImageView] result in
+                    if case let .success(data) = result {
+                        iconImageView?.image = UIImage(data: data)
+                    }
+                }
             }
         }
         if let imgModel = model.unifiedWidget?.children?.first(where: { child in
@@ -187,6 +202,7 @@ class AMPSSelfRenderView : NSObject, FlutterPlatformView {
             }
         }
         // 添加子视图
+        adView.addSubview(adLogoImageView)
         adView.addSubview(iconImageView)
         adView.addSubview(titleLabel)
         adView.addSubview(descLabel)

@@ -45,8 +45,9 @@ class AMPSInterstitialManager: NSObject {
         case AMPSAdSdkMethodNames.interstitialNotifyRtbLoss:
             handleNotifyRTBLoss(arguments: arguments, result: result)
         case AMPSAdSdkMethodNames.interstitialIsReadyAd:
-            result(interstitialAd?.isReadyAd() ?? false)
-//            result(false)
+//            result(interstitialAd?.isReadyAd() ?? false)
+            
+            result(false)
         default:
             result(false)
         }
@@ -60,8 +61,7 @@ class AMPSInterstitialManager: NSObject {
         }
 //        let config = AdOptionModule.getAsnpAdConfig(para: param)
         let config = AdOptionModule.getAdConfig(para: param)
-//        config.spaceId = "15352"
-        interstitialAd = AMPSInterstitialAd(spaceId: config.spaceId, adConfiguration: config)
+        interstitialAd = AMPSInterstitialAd(adConfiguration: config)
 //        interstitialAd = ASNPInterstitialAd(adConfiguration: config)
         interstitialAd?.delegate = self
         interstitialAd?.load()

@@ -44,7 +44,51 @@ struct Tools {
             return nil
         }
     }
+    /// 异步请求网络图片数据（推荐，不阻塞主线程）
+    /// - Parameters:
+    ///   - urlString: 图片URL字符串
+    ///   - completion: 回调结果（Data? 或 Error?）
+        
+    static func fetchImageData(from urlString: String, completion: @escaping (Result<Data, Error>) -> Void) {
+        // 1. 校验URL
+        guard let url = URL(string: urlString) else {
+            completion(.failure(NSError(domain: "InvalidURL", code: -1, userInfo: [NSLocalizedDescriptionKey: "无效的图片URL"])))
+            return
+        }
+        
+        // 2. 创建URLSession任务
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            // 处理错误
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            // 3. 校验响应状态（HTTP 200 OK）
+            guard let httpResponse = response as? HTTPURLResponse,
+                  httpResponse.statusCode == 200 else {
+                completion(.failure(NSError(domain: "InvalidResponse", code: -2, userInfo: [NSLocalizedDescriptionKey: "网络响应无效"])))
+                return
+            }
+            
+            // 4. 校验数据
+            guard let imageData = data else {
+                completion(.failure(NSError(domain: "NoData", code: -3, userInfo: [NSLocalizedDescriptionKey: "未获取到图片数据"])))
+                return
+            }
+            
+            // 5. 回调成功结果（确保在主线程回调，方便后续更新UI）
+            DispatchQueue.main.async {
+                completion(.success(imageData))
+            }
+        }
+        
+        // 启动任务
+        task.resume()
+    }
 }
+
+
 
 
 extension UIColor {

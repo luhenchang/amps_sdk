@@ -79,13 +79,7 @@ class AMPSNativeManager: NSObject {
         }
         
         let configAM = AdOptionModule.getAdConfig(para: param)
-//        let config = AdOptionModule.getAsnpAdConfig(para: param)
-    
-//        configAM.spaceId = "15354"
-//        nativeAd = ASNPNativeExpressManager(adConfiguration: config)
-//        nativeAd?.delegate = self
-//        nativeAd?.loadAd(withCount: configAM.adCount)
-        nativeAd = AMPSNativeExpressManager(spaceId: configAM.spaceId, adConfiguration: configAM)
+        nativeAd = AMPSNativeExpressManager(adConfiguration: configAM)
         nativeAd?.delegate = self
         nativeAd?.load()
         result(true)
@@ -155,7 +149,7 @@ extension AMPSNativeManager: AMPSNativeExpressManagerDelegate{
         
         nativeAd.viewsArray.forEach { view in
             view.delegate = self
-            view.render()
+            view.renderAd()
         }
     }
     func ampsNativeAdLoadFail(_ nativeAd: AMPSNativeExpressManager, error: (any Error)?) {

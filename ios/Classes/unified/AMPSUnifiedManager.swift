@@ -80,7 +80,7 @@ class AmpsIosUnifiedNativeManager: NSObject,AMPSUnifiedNativeManagerDelegate {
         
         let config = AdOptionModule.getAdConfig(para: param)
 //        config.spaceId = "117907"
-        unifiedNative = AMPSUnifiedNativeManager(spaceId: config.spaceId, adConfiguration: config)
+        unifiedNative = AMPSUnifiedNativeManager(adConfiguration: config)
         unifiedNative?.delegate = self
         unifiedNative?.load()
         result(true)
@@ -132,7 +132,7 @@ class AmpsIosUnifiedNativeManager: NSObject,AMPSUnifiedNativeManagerDelegate {
             view.viewController = vc
             view.refreshData(ad)
             view.delegate = self
-            view.mediaView?.delegate = self
+            view.mediaView.delegate = self
             self.adIdMap[id] = view
             return id
         })

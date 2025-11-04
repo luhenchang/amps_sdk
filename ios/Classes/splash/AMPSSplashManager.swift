@@ -44,8 +44,8 @@ class AMPSSplashManager: NSObject {
         case AMPSAdSdkMethodNames.splashNotifyRtbLoss:
             handleNotifyRTBLoss(arguments: arguments, result: result)
         case AMPSAdSdkMethodNames.splashIsReadyAd:
-            result(splashAd?.isReadyAd() ?? false)
-//            result(false)
+//            result(splashAd?.isReadyAd() ?? false)
+            result(false)
         default:
             result(false)
         }
@@ -58,8 +58,8 @@ class AMPSSplashManager: NSObject {
             return
         }
         let config = AdOptionModule.getAdConfig(para: param)
-//        config.spaceId = "15351"
-        splashAd = AMPSSplashAd(spaceId: config.spaceId, adConfiguration: config)
+        config.spaceId = "15285"
+        splashAd = AMPSSplashAd(adConfiguration: config)
 //        let config = AdOptionModule.getAsnpAdConfig(para: param)
 //        splashAd = ASNPSplashAd(adConfiguration: config)
         splashAd?.delegate = self
@@ -124,14 +124,18 @@ class AMPSSplashManager: NSObject {
                     tagLabel.frame.size.height = fittingSize.height // 应用计算出的高度
                 }
                 
-                splashAd.adConfiguration.bottomView = bottomView
                 splashAd.showSplashView(in: window)
-//                if let rootVC = getKeyWindow()?.rootViewController {
-//                    splashAd.showSplashView(inRootViewController: rootVC, bottomView: bottomView)
-//                }
+                if let window = getKeyWindow() {
+                    splashAd.showSplashView(in: window, bottomView: bottomView)
+                }
                 
             }
             
+        }
+        else{
+            if let window = getKeyWindow() {
+                splashAd.showSplashView(in: window)
+            }
         }
 
     }
