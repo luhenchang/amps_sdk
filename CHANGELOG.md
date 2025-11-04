@@ -21,3 +21,7 @@
 ## 0.0.6
 
 *Splash Adapter Height by screenMode
+
+## 0.0.7
+
+*Add IOS Adapt to SDK
