@@ -25,3 +25,7 @@
 ## 0.0.7
 
 *Add IOS Adapt to SDK
+
+## 0.0.8
+
+*Android IOS Adapted done
