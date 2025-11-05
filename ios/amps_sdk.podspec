@@ -15,6 +15,7 @@ A new Flutter plugin project.
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.vendored_frameworks = 'libs/AMPSAdSDK.xcframework','libs/AdScopeFoundation.xcframework'
+  s.xcconfig = { 'OTHER_LDFLAGS' => '-ObjC' }
   s.dependency 'Flutter'
   s.platform = :ios, '13.0'
 
