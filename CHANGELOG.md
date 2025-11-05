@@ -29,3 +29,7 @@
 ## 0.0.8
 
 *Android IOS Adapted done
+
+## 0.0.9
+
+*IOS Adapted done
