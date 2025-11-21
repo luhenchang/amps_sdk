@@ -13,7 +13,9 @@ import AMPSAdSDK
 
 class AMPSNativeManager: NSObject {
     
-    private static var instance: AMPSNativeManager?
+    static let shared: AMPSNativeManager = .init()
+    // Singleton
+    private override init() {}
 //    var nativeAd: ASNPNativeExpressManager?
 //    var adIdMap: [ASNPNativeExpressView: String] = [:]
     var nativeAd: AMPSNativeExpressManager?
@@ -24,15 +26,7 @@ class AMPSNativeManager: NSObject {
 
     var isNativeExpress:Bool = true
 
-    // Singleton
-    static func getInstance() -> AMPSNativeManager {
-        if instance == nil {
-            instance = AMPSNativeManager()
-        }
-        return instance!
-    }
-
-    private override init() {}
+    
     
     // MARK: - Public Methods
     func handleMethodCall(_ call: FlutterMethodCall, result: FlutterResult) {
@@ -117,7 +111,7 @@ class AMPSNativeManager: NSObject {
     
     
     private func sendMessage(_ method: String, _ args: Any? = nil) {
-        AMPSEventManager.getInstance().sendToFlutter(method, arg: args)
+        AMPSEventManager.shared.sendToFlutter(method, arg: args)
     }
     
     

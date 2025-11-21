@@ -11,11 +11,9 @@ import Flutter
 
 class AMPSEventManager : NSObject{
    
-    private static let instance = AMPSEventManager()
-    private override init(){ }
-    static func getInstance() -> AMPSEventManager{
-        return AMPSEventManager.instance
-    }
+    static let shared = AMPSEventManager()
+    private override init(){super.init()}
+    
     var channel: FlutterMethodChannel?
     var registrar: FlutterPluginRegistrar?
     func regist(_ registrar: FlutterPluginRegistrar) {
@@ -26,11 +24,11 @@ class AMPSEventManager : NSObject{
             case let name where  initMethodNames.contains(name):
                 AMPSSDKInitManager.shared.handleMethodCall(methodCall, result: result)
             case let name where splashMethodNames.contains(name):
-                AMPSSplashManager.getInstance().handleMethodCall(methodCall, result:result)
+                AMPSSplashManager.shared.handleMethodCall(methodCall, result:result)
             case let name where interstitialMethodNames.contains(name):
-                AMPSInterstitialManager.getInstance().handleMethodCall(methodCall, result: result)
+                AMPSInterstitialManager.shared.handleMethodCall(methodCall, result: result)
             case let name where  nativeMethodNames.contains(name):
-                AMPSNativeManager.getInstance().handleMethodCall(methodCall, result: result)
+                AMPSNativeManager.shared.handleMethodCall(methodCall, result: result)
             default:
                 result(FlutterMethodNotImplemented)
             }

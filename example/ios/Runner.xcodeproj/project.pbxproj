@@ -30,7 +30,6 @@
 		40F1CA432EA8C51900633A82 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F1CA422EA8C51800633A82 /* MobileCoreServices.framework */; };
 		40F1CA452EA8C52100633A82 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F1CA442EA8C52100633A82 /* QuartzCore.framework */; };
 		40F1CA472EA8C52900633A82 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F1CA462EA8C52900633A82 /* Security.framework */; };
-		40F1CA492EA8C53700633A82 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F1CA482EA8C53700633A82 /* StoreKit.framework */; };
 		40F1CA4B2EA8C54000633A82 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F1CA4A2EA8C54000633A82 /* SystemConfiguration.framework */; };
 		40F1CA4D2EA8C54700633A82 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F1CA4C2EA8C54700633A82 /* UIKit.framework */; };
 		40F1CA4F2EA8C54D00633A82 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F1CA4E2EA8C54D00633A82 /* WebKit.framework */; };
@@ -101,7 +100,6 @@
 		40F1CA422EA8C51800633A82 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		40F1CA442EA8C52100633A82 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		40F1CA462EA8C52900633A82 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		40F1CA482EA8C53700633A82 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		40F1CA4A2EA8C54000633A82 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		40F1CA4C2EA8C54700633A82 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		40F1CA4E2EA8C54D00633A82 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -158,7 +156,6 @@
 				40F1CA4F2EA8C54D00633A82 /* WebKit.framework in Frameworks */,
 				40F1CA4D2EA8C54700633A82 /* UIKit.framework in Frameworks */,
 				40F1CA4B2EA8C54000633A82 /* SystemConfiguration.framework in Frameworks */,
-				40F1CA492EA8C53700633A82 /* StoreKit.framework in Frameworks */,
 				40F1CA472EA8C52900633A82 /* Security.framework in Frameworks */,
 				40F1CA452EA8C52100633A82 /* QuartzCore.framework in Frameworks */,
 				40F1CA432EA8C51900633A82 /* MobileCoreServices.framework in Frameworks */,
@@ -269,7 +266,6 @@
 				40F1CA4E2EA8C54D00633A82 /* WebKit.framework */,
 				40F1CA4C2EA8C54700633A82 /* UIKit.framework */,
 				40F1CA4A2EA8C54000633A82 /* SystemConfiguration.framework */,
-				40F1CA482EA8C53700633A82 /* StoreKit.framework */,
 				40F1CA462EA8C52900633A82 /* Security.framework */,
 				40F1CA442EA8C52100633A82 /* QuartzCore.framework */,
 				40F1CA422EA8C51800633A82 /* MobileCoreServices.framework */,
@@ -586,14 +582,14 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = S7F2A3DK84;
+				DEVELOPMENT_TEAM = 6245M2ZZ7W;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.ampsSdkExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.ampsSdk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -772,14 +768,14 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = S7F2A3DK84;
+				DEVELOPMENT_TEAM = 6245M2ZZ7W;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.ampsSdkExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.ampsSdk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -798,14 +794,14 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = S7F2A3DK84;
+				DEVELOPMENT_TEAM = 6245M2ZZ7W;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.ampsSdkExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.ampsSdk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";

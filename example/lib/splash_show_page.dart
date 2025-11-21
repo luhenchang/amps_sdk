@@ -3,6 +3,8 @@ import 'package:amps_sdk_example/widgets/blurred_background.dart';
 import 'package:amps_sdk_example/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
 
+import 'data/common.dart';
+
 class SplashShowPage extends StatefulWidget {
   const SplashShowPage({super.key, required this.title});
 
@@ -80,7 +82,7 @@ class _SplashShowPageState extends State<SplashShowPage> {
     });
 
     AdOptions options =
-        AdOptions(spaceId: '15288',screenMode: ScreenMode.fullScreen, splashAdBottomBuilderHeight: 100);
+        AdOptions(spaceId: splashSpaceId,screenMode: ScreenMode.fullScreen, splashAdBottomBuilderHeight: 100);
     _splashAd = AMPSSplashAd(config: options, mCallBack: _adCallBack);
   }
 

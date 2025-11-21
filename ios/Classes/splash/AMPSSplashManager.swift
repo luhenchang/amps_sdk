@@ -13,19 +13,11 @@ import AMPSAdSDK
 
 class AMPSSplashManager: NSObject {
     
-    private static var instance: AMPSSplashManager?
+    static let shared: AMPSSplashManager = .init()
+    private override init() {}
 //    private var splashAd: ASNPSplashAd?
     private var splashAd: AMPSSplashAd?
 
-    // Singleton
-    static func getInstance() -> AMPSSplashManager {
-        if instance == nil {
-            instance = AMPSSplashManager()
-        }
-        return instance!
-    }
-//    
-    private override init() {}
     
     // MARK: - Public Methods
     func handleMethodCall(_ call: FlutterMethodCall, result: FlutterResult) {
@@ -58,7 +50,7 @@ class AMPSSplashManager: NSObject {
             return
         }
         let config = AdOptionModule.getAdConfig(para: param)
-        config.spaceId = "15285"
+//        config.spaceId = "15285"
         splashAd = AMPSSplashAd(adConfiguration: config)
 //        let config = AdOptionModule.getAsnpAdConfig(para: param)
 //        splashAd = ASNPSplashAd(adConfiguration: config)
@@ -102,7 +94,7 @@ class AMPSSplashManager: NSObject {
                 if let imageModel = imageModel {
                     let imageView = UIImageView(frame: CGRect(x: imageModel.x ?? 0, y: imageModel.y ?? 0, width: imageModel.width ?? 100, height: imageModel.height ?? 100))
                     if let imageName =  imageModel.imagePath {
-                        imageView.image = AMPSEventManager.getInstance().getImage(imageName)
+                        imageView.image = AMPSEventManager.shared.getImage(imageName)
                     }
                     
                     bottomView.addSubview(imageView)
@@ -181,7 +173,7 @@ class AMPSSplashManager: NSObject {
     }
     
     private func sendMessage(_ method: String, _ args: Any? = nil) {
-        AMPSEventManager.getInstance().sendToFlutter(method, arg: args)
+        AMPSEventManager.shared.sendToFlutter(method, arg: args)
     }
     
 

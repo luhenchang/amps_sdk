@@ -1,4 +1,5 @@
 import 'package:amps_sdk/amps_sdk_export.dart';
+import 'package:amps_sdk_example/data/common.dart';
 import 'package:amps_sdk_example/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -78,7 +79,7 @@ class _SplashPageState extends State<NativePage> {
     });
 
     AdOptions options = AdOptions(
-        spaceId: '15295',
+        spaceId: nativeSpaceId,
         adCount: 2,
         expressSize: [expressWidth, expressHeight]);
     _nativeAd = AMPSNativeAd(

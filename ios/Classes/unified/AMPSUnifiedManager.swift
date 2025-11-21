@@ -118,7 +118,7 @@ class AmpsIosUnifiedNativeManager: NSObject,AMPSUnifiedNativeManagerDelegate {
     
     
     private func sendMessage(_ method: String, _ args: Any? = nil) {
-        AMPSEventManager.getInstance().sendToFlutter(method, arg: args)
+        AMPSEventManager.shared.sendToFlutter(method, arg: args)
     }
     
     

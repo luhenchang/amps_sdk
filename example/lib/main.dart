@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'package:amps_sdk_example/data/common.dart';
 import 'package:amps_sdk_example/interstitial_show_page.dart';
 import 'package:amps_sdk_example/splash_show_page.dart';
 import 'package:amps_sdk_example/widgets/blurred_background.dart';
@@ -84,7 +85,7 @@ class _SplashPageState extends State<SplashPage> {
     ksSdkEx["crashLog"] = true;
     ksSdkEx["ks_sdk_roller"] = "roller_click";
     ksSdkEx["ks_sdk_location"] = "baidu";
-    sdkConfig = AMPSBuilder("12379")
+    sdkConfig = AMPSBuilder(appId)
         .setCity("北京")
         .setRegion("朝阳区双井")
         .setCurrency(CurrencyType.CURRENCY_TYPE_USD)

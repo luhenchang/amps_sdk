@@ -30,7 +30,7 @@ class AMPSNativeView : NSObject, FlutterPlatformView {
         self.iosView.backgroundColor = UIColor.orange
         if let param = args as? [String: Any?]{
            if let adId = param["adId"] as? String {
-               if let adView = AMPSNativeManager.getInstance().getAdView(adId: adId) {
+               if let adView = AMPSNativeManager.shared.getAdView(adId: adId) {
                    if let width = param["width"] as? CGFloat {
                        adView.bounds.size.width = width
                        self.iosView.frame.size.width = UIScreen.main.bounds.width

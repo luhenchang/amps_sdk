@@ -11,10 +11,7 @@ import AMPSAdSDK
 
 
 class AMPSSDKInitManager {
-    static let shared: AMPSSDKInitManager = {
-        let instance = AMPSSDKInitManager()
-        return instance
-    }()
+    static let shared: AMPSSDKInitManager = AMPSSDKInitManager()
     
     private init() {}
     
@@ -89,7 +86,7 @@ class AMPSSDKInitManager {
     }
     
     func sendMessage(_ method: String, args: Any? = nil) {
-        AMPSEventManager.getInstance().sendToFlutter(method)
+        AMPSEventManager.shared.sendToFlutter(method)
     }
 }
 

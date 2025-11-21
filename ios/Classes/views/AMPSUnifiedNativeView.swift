@@ -33,7 +33,7 @@ class AMPSSelfRenderView : NSObject, FlutterPlatformView {
         if let param = args as? [String: Any?]{
             let model: FlutterUnifiedParam? = Tools.convertToModel(from: param as [String : Any])
             if let adId = model?.adId {
-               if let adView = AMPSNativeManager.getInstance().getUnifiedNativeView(adId) {
+               if let adView = AMPSNativeManager.shared.getUnifiedNativeView(adId) {
                    self.iosView.frame.size.width = UIScreen.main.bounds.width
                    self.iosView.frame.size.height = model?.unifiedWidget?.height ?? 200
                    let x =  (UIScreen.main.bounds.width - (model?.unifiedWidget?.width ?? 0))/2
@@ -58,7 +58,7 @@ class AMPSSelfRenderView : NSObject, FlutterPlatformView {
         let ad = adView.nativeAd
         
         if ad.nativeMode == .unifiedVideo {
-            adView.mediaView.delegate = AMPSNativeManager.getInstance().unifiedManager
+            adView.mediaView.delegate = AMPSNativeManager.shared.unifiedManager
             if let videoModel = model.unifiedWidget?.children?.first(where: { child in
                 child.type == .video
             }){
@@ -121,7 +121,7 @@ class AMPSSelfRenderView : NSObject, FlutterPlatformView {
         }
         if  !ad.adLogoUrl.isEmpty {
             let adLogoUrl = ad.adLogoUrl
-            if let url = URL(string: adLogoUrl) {
+            if URL(string: adLogoUrl) != nil {
                 Tools.fetchImageData(from: adLogoUrl) { [weak adLogoImageView] result in
                     if case let .success(data) = result {
                         adLogoImageView?.image = UIImage(data: data)

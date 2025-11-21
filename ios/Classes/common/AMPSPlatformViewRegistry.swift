@@ -11,13 +11,7 @@ import Flutter
 class AMPSPlatformViewRegistry {
     
     
-    private static var instance: AMPSPlatformViewRegistry?
-    static func getInstance() -> AMPSPlatformViewRegistry{
-        if AMPSPlatformViewRegistry.instance == nil {
-            AMPSPlatformViewRegistry.instance = .init()
-        }
-        return AMPSPlatformViewRegistry.instance!
-    }
+    static let shared: AMPSPlatformViewRegistry = .init()
     private init() {}
     
     

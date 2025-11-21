@@ -14,19 +14,10 @@ import AMPSAdSDK
 
 class AMPSInterstitialManager: NSObject {
     
-    private static var instance: AMPSInterstitialManager?
-//    private var interstitialAd: ASNPInterstitialAd?
-    private var interstitialAd: AMPSInterstitialAd?
-
-    
-    static func getInstance() -> AMPSInterstitialManager {
-        if instance == nil {
-            instance = AMPSInterstitialManager()
-        }
-        return instance!
-    }
-//
+    static let shared: AMPSInterstitialManager = .init()
     private override init() {}
+    
+    private var interstitialAd: AMPSInterstitialAd?
     
     // MARK: - Public Methods
     func handleMethodCall(_ call: FlutterMethodCall, result: FlutterResult) {
@@ -127,7 +118,7 @@ class AMPSInterstitialManager: NSObject {
     }
     
     private func sendMessage(_ method: String, _ args: Any? = nil) {
-        AMPSEventManager.getInstance().sendToFlutter(method, arg: args)
+        AMPSEventManager.shared.sendToFlutter(method, arg: args)
     }
     
 }
