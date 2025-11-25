@@ -33,3 +33,7 @@
 ## 0.0.9
 
 *IOS Adapted done
+
+## 0.1.0
+
+*IOS Update 
