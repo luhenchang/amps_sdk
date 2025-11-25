@@ -9,13 +9,11 @@ import Foundation
 
 import Flutter
 import AMPSAdSDK
-//import ASNPAdSDK
-
 
 class AMPSInterstitialManager: NSObject {
     
-    static let shared: AMPSInterstitialManager = .init()
-    private override init() {}
+    static let shared = AMPSInterstitialManager()
+    private override init() {super.init()}
     
     private var interstitialAd: AMPSInterstitialAd?
     
@@ -25,10 +23,8 @@ class AMPSInterstitialManager: NSObject {
         switch call.method {
         case AMPSAdSdkMethodNames.interstitialLoad:
             handleInterstitialLoad(arguments: arguments, result: result)
-            result(true)
         case AMPSAdSdkMethodNames.interstitialShowAd:
             handleInterstitialShowAd(arguments: arguments, result: result)
-            result(true)
         case AMPSAdSdkMethodNames.interstitialGetEcpm:
             result(interstitialAd?.eCPM() ?? 0)
         case AMPSAdSdkMethodNames.interstitialNotifyRtbWin:
@@ -36,9 +32,7 @@ class AMPSInterstitialManager: NSObject {
         case AMPSAdSdkMethodNames.interstitialNotifyRtbLoss:
             handleNotifyRTBLoss(arguments: arguments, result: result)
         case AMPSAdSdkMethodNames.interstitialIsReadyAd:
-//            result(interstitialAd?.isReadyAd() ?? false)
-            
-            result(false)
+            result(interstitialAd != nil)
         default:
             result(false)
         }
@@ -102,18 +96,8 @@ class AMPSInterstitialManager: NSObject {
         result(true)
     }
     
-    private func cleanupExistingInterstitialViews() {
-        UIApplication.shared.windows.forEach { window in
-            window.subviews.forEach { subview in
-                if subview.tag == 12345 { // Match the tag used for main container
-                    subview.removeFromSuperview()
-                }
-            }
-        }
-    }
     
     private func cleanupViewsAfterAdClosed() {
-        cleanupExistingInterstitialViews()
         interstitialAd = nil
     }
     
@@ -175,5 +159,6 @@ extension AMPSInterstitialManager : AMPSInterstitialAdDelegate {
     }
     func ampsInterstitialAdDidClose(_ interstitialAd: AMPSInterstitialAd) {
         sendMessage(AMPSAdCallBackChannelMethod.onAdClosed)
+        cleanupViewsAfterAdClosed()
     }
 }

@@ -13,9 +13,9 @@ import AMPSAdSDK
 
 class AMPSNativeManager: NSObject {
     
-    static let shared: AMPSNativeManager = .init()
+    static let shared = AMPSNativeManager()
     // Singleton
-    private override init() {}
+    private override init() {super.init()}
 //    var nativeAd: ASNPNativeExpressManager?
 //    var adIdMap: [ASNPNativeExpressView: String] = [:]
     var nativeAd: AMPSNativeExpressManager?

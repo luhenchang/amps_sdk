@@ -26,7 +26,6 @@ struct AdOptionModule{
 //        if let s2s = para[AdOptionKeys.keyS2SImpl] as? String{
 //            config.s2sIp = s2s
 //        }
-        NSString.adScopeFoundationDirectory()
         
         if let timeout = para[AdOptionKeys.keyTimeoutInterval] as? TimeInterval {
             config.timeoutInterval = timeout
