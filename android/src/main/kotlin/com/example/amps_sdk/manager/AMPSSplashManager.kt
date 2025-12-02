@@ -1,6 +1,5 @@
 package com.example.amps_sdk.manager
 
-import android.app.Activity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
@@ -9,17 +8,15 @@ import biz.beizi.adn.amps.ad.splash.AMPSSplashAd
 import biz.beizi.adn.amps.ad.splash.AMPSSplashLoadEventListener
 import biz.beizi.adn.amps.common.AMPSError
 import biz.beizi.adn.amps.config.AMPSRequestParameters
-import com.example.amps_sdk.view.SplashBottomViewFactory
 import com.example.amps_sdk.data.*
+import com.example.amps_sdk.utils.FlutterPluginUtil
 import com.example.amps_sdk.utils.dpToPx
+import com.example.amps_sdk.view.SplashBottomViewFactory
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel.Result
-import java.lang.ref.WeakReference
 
 class AMPSSplashManager private constructor() {
     private var mSplashAd: AMPSSplashAd? = null
-    private var currentActivityRef: WeakReference<Activity>? =
-        WeakReference(AMPSEventManager.getInstance().getContext())
 
     companion object {
         @Volatile
@@ -31,8 +28,6 @@ class AMPSSplashManager private constructor() {
             }
         }
     }
-
-    private fun getCurrentActivity(): Activity? = currentActivityRef?.get()
 
     private val adCallback = object : AMPSSplashLoadEventListener {
         override fun onAmpsAdLoaded() {
@@ -68,7 +63,7 @@ class AMPSSplashManager private constructor() {
      * @param
      */
     private fun cleanupViewsAfterAdClosed() {
-        val activity = getCurrentActivity()
+        val activity = FlutterPluginUtil.getActivity()
         val decorView = activity?.window?.decorView as? ViewGroup
         decorView?.findViewWithTag<View>("splash_main_container_tag")?.let { viewToRemove ->
             decorView.removeView(viewToRemove)
@@ -113,7 +108,7 @@ class AMPSSplashManager private constructor() {
     }
 
     private fun handleSplashLoad(call: MethodCall, result: Result) {
-        val activity = getCurrentActivity()
+        val activity = FlutterPluginUtil.getActivity()
         if (activity == null) {
             result.error("LOAD_FAILED", "Activity not available for loading splash ad.", null)
             return
@@ -132,7 +127,7 @@ class AMPSSplashManager private constructor() {
 
     // handleSplashShowAd 现在也接收 MethodCall 和 Result，以便统一错误处理和参数获取
     private fun handleSplashShowAd(call: MethodCall, result: Result) {
-        val activity = getCurrentActivity()
+        val activity = FlutterPluginUtil.getActivity()
         if (mSplashAd == null) {
             result.error("SHOW_FAILED", "Splash ad not loaded.", null)
             return

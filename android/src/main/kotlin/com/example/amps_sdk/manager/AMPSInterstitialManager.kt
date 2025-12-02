@@ -12,6 +12,7 @@ import com.example.amps_sdk.data.AMPSAdCallBackChannelMethod
 import com.example.amps_sdk.data.AMPSAdSdkMethodNames
 import com.example.amps_sdk.data.AdOptionsModule
 import com.example.amps_sdk.data.StringConstants
+import com.example.amps_sdk.utils.FlutterPluginUtil
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel.Result
 import java.lang.ref.WeakReference
@@ -22,8 +23,6 @@ import java.lang.ref.WeakReference
  */
 class AMPSInterstitialManager private constructor() {
     private var interstitialAd: AMPSInterstitialAd? = null
-    private var currentActivityRef: WeakReference<Activity>? =
-        WeakReference(AMPSEventManager.getInstance().getContext())
 
     companion object {
         @Volatile
@@ -35,8 +34,6 @@ class AMPSInterstitialManager private constructor() {
             }
         }
     }
-
-    private fun getCurrentActivity(): Activity? = currentActivityRef?.get()
 
     private val adCallback = object : AMPSInterstitialLoadEventListener {
         override fun onAmpsAdLoaded() {
@@ -112,7 +109,7 @@ class AMPSInterstitialManager private constructor() {
     }
 
     private fun handleSplashLoad(call: MethodCall, result: Result) {
-        val activity = getCurrentActivity()
+        val activity = FlutterPluginUtil.getActivity()
         if (activity == null) {
             result.error("LOAD_FAILED", "Activity not available for loading interstitia ad.", null)
             return
@@ -131,7 +128,7 @@ class AMPSInterstitialManager private constructor() {
 
     // handleSplashShowAd 现在也接收 MethodCall 和 Result，以便统一错误处理和参数获取
     private fun handleSplashShowAd(call: MethodCall, result: Result) {
-        val activity = getCurrentActivity()
+        val activity = FlutterPluginUtil.getActivity()
         if (interstitialAd == null) {
             result.error("SHOW_FAILED", "InterstitiaAd ad not loaded.", null)
             return

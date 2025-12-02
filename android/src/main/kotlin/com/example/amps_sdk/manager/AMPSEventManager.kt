@@ -1,21 +1,19 @@
 package com.example.amps_sdk.manager
 
-import android.app.Activity
 import com.example.amps_sdk.data.InitMethodNames
-import com.example.amps_sdk.data.SplashMethodNames
 import com.example.amps_sdk.data.InterstitialMethodNames
 import com.example.amps_sdk.data.NativeMethodNames
+import com.example.amps_sdk.data.SplashMethodNames
+import com.example.amps_sdk.utils.FlutterPluginUtil
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
-import java.lang.ref.WeakReference
 
 class AMPSEventManager private constructor() : MethodCallHandler {
 
     private var channel: MethodChannel? = null
-    private var mContext: WeakReference<Activity>? = null // 在 Android 中通常使用 Context
 
     companion object {
         private var sInstance: AMPSEventManager? = null
@@ -24,14 +22,6 @@ class AMPSEventManager private constructor() : MethodCallHandler {
                 sInstance ?: AMPSEventManager().also { sInstance = it }
             }
         }
-    }
-
-    fun setContext(context: Activity) {
-        this.mContext = WeakReference(context) // 存储 application context 避免内存泄漏
-    }
-
-    fun getContext(): Activity? {
-        return this.mContext?.get()
     }
 
     /**
@@ -74,7 +64,9 @@ class AMPSEventManager private constructor() : MethodCallHandler {
      * @param args 参数，可以是 null 或任何 Flutter 支持的类型
      */
     fun sendMessageToFlutter(method: String, args: Any?) { // args 类型改为 Any? 更灵活
-        channel?.invokeMethod(method, args)
+        FlutterPluginUtil.runOnUiThread {
+            channel?.invokeMethod(method, args)
+        }
     }
 
     /**
@@ -83,6 +75,5 @@ class AMPSEventManager private constructor() : MethodCallHandler {
     fun release() {
         channel?.setMethodCallHandler(null)
         channel = null // 可选，如果不再需要这个channel实例
-        mContext = null
     }
 }

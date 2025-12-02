@@ -2,6 +2,7 @@ package com.example.amps_sdk
 
 import com.example.amps_sdk.manager.AMPSEventManager
 import com.example.amps_sdk.manager.AMPSPlatformViewManager
+import com.example.amps_sdk.utils.FlutterPluginUtil
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -16,10 +17,11 @@ class AmpsSdkPlugin :
     }
 
     override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
+        AMPSEventManager.getInstance().release()
     }
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
-        AMPSEventManager.getInstance().setContext(binding.activity)
+        FlutterPluginUtil.setActivity(binding.activity)
     }
 
     override fun onDetachedFromActivityForConfigChanges() {
@@ -29,6 +31,5 @@ class AmpsSdkPlugin :
     }
 
     override fun onDetachedFromActivity() {
-        AMPSEventManager.getInstance().release()
     }
 }

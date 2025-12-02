@@ -9,6 +9,7 @@ import biz.beizi.adn.amps.ad.splash.AMPSSplashAd
 import biz.beizi.adn.amps.ad.splash.AMPSSplashLoadEventListener
 import biz.beizi.adn.amps.common.AMPSError
 import com.example.amps_sdk.data.*
+import com.example.amps_sdk.utils.FlutterPluginUtil
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
@@ -72,7 +73,7 @@ class AMPSSplashView(
 
         val creationArgsMap = args as? Map<*, *>?
         val adOptionFromArgs = creationArgsMap?.get(CONFIG)
-            ?.let { AdOptionsModule.getAdOptionFromMap(it as? Map<String, Any?>, context) }
+            ?.let { AdOptionsModule.getAdOptionFromMap(it as? Map<String, Any?>, FlutterPluginUtil.getActivity()!!) }
 
         if (adOptionFromArgs == null) {
             println("AMPSSplashView Error: AdOptions are null. Aborting ad load.")

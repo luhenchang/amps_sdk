@@ -37,3 +37,7 @@
 ## 0.1.0
 
 *IOS Update 
+
+## 0.1.1
+
+*Android Update Activity lifecycle
