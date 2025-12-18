@@ -1,0 +1,6 @@
+<resources>
+    <string name="permission_info">权限详情</string>
+    <string name="privacy_agreement">隐私协议</string>
+    <string name="function_description">功能介绍</string>
+    <string name="page_back">返回</string>
+</resources>

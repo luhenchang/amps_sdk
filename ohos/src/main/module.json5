@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "amps_sdk",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}
