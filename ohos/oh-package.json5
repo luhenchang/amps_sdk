@@ -1,0 +1,12 @@
+{
+  "name": "amps_sdk",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "index.ets",
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "biz.beizi.adn": "file:./libs/biz.beizi.adn_5.3.2.har"//提交到鸿蒙端分支，其他端分支需要去除ohos模块。
+  },
+  "modelVersion": "1.0.0"
+}
