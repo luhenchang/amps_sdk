@@ -104,7 +104,7 @@ enum AMPSAdSdkMethodNames {
     // 插屏广告相关方法
     static let interstitialLoad = "AMPSInterstitial_load"
     static let interstitialShowAd = "AMPSSInterstitial_showAd"
-    static let interstitialGetEcpm = "AMPSSInterstitial_getECPM"
+    static let interstitialGetEcpm = "AMPSInterstitial_getECPM"
     static let interstitialNotifyRtbWin = "AMPSInterstitial_notifyRTBWin"
     static let interstitialNotifyRtbLoss = "AMPSInterstitial_notifyRTBLoss"
     static let interstitialIsReadyAd = "AMPSInterstitial_isReadyAd"

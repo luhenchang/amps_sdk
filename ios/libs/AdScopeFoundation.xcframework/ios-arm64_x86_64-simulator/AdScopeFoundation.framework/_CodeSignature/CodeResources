@@ -46,7 +46,7 @@
 		</data>
 		<key>Headers/AdScopeDBHelperModel.h</key>
 		<data>
-		v1cBRVbFajj/LcZioIhyNoMLyew=
+		VW5udmQU32qUgVLWWm5Jmm1ssbE=
 		</data>
 		<key>Headers/AdScopeDeviceInfo.h</key>
 		<data>
@@ -90,7 +90,7 @@
 		</data>
 		<key>Headers/AdScopeTimer.h</key>
 		<data>
-		mS/2H7gDXdBqAFgGssDvSVPcAmo=
+		tnb9QyNFi6zpc4vF39LFFg7VeNE=
 		</data>
 		<key>Headers/AdScopeUserInfo.h</key>
 		<data>
@@ -150,7 +150,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		r0+Vb8wvPyZprTlE62mhTgnspis=
+		SkpLxrpP8uebv1jDS06GFJ3OD1E=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -161,10 +161,6 @@
 	<dict>
 		<key>Headers/AdScopeAFCompatibilityMacros.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			fAwFiwmjE1o2z9EI+hsU4bMem3M=
-			</data>
 			<key>hash2</key>
 			<data>
 			ZmWx8rNOkId8LqrVif8f/iN1vVX6KZkWPAPEgXw14vY=
@@ -172,10 +168,6 @@
 		</dict>
 		<key>Headers/AdScopeAFHTTPSessionManager.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			lT/f3GlH8J3p5wDJCM7LCT6OC6A=
-			</data>
 			<key>hash2</key>
 			<data>
 			MPhP7w0JUEqTJa2MKXNzC70Vb+ILMT3FbJ3Ou6h1HdA=
@@ -183,10 +175,6 @@
 		</dict>
 		<key>Headers/AdScopeAFNetworkReachabilityManager.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			uSHudoXZhtMy00460L846TamzuM=
-			</data>
 			<key>hash2</key>
 			<data>
 			WPE/3z7bSq24gUvvayXCtTDHuTLFexZ1h6CweYj+kyI=
@@ -194,10 +182,6 @@
 		</dict>
 		<key>Headers/AdScopeAFNetworking.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			EDZmrsmQ0Qp1wgDcv58/eyA4g50=
-			</data>
 			<key>hash2</key>
 			<data>
 			UNu1YjyqSt9UoBQXPsXIorGk6iS31nz+hfIm6wHQazg=
@@ -205,10 +189,6 @@
 		</dict>
 		<key>Headers/AdScopeAFSecurityPolicy.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			oqv5liY5QEFWKICkcRzPK5nNJf8=
-			</data>
 			<key>hash2</key>
 			<data>
 			OIagoZhrNpLjIHkZQ+CZNzLaOUktkm87XE/LWJYsgEM=
@@ -216,10 +196,6 @@
 		</dict>
 		<key>Headers/AdScopeAFURLRequestSerialization.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			cBnOE0H9FARTo3qIgJvXVWAszo4=
-			</data>
 			<key>hash2</key>
 			<data>
 			QYupBKAfMZuDbdi44bTOnCsvbFKBcYrjqjo5zR90S7s=
@@ -227,10 +203,6 @@
 		</dict>
 		<key>Headers/AdScopeAFURLResponseSerialization.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			ZHp9tdo0cpMc11Tyq0zROgoksBE=
-			</data>
 			<key>hash2</key>
 			<data>
 			cBKgB/EoSasGaZUaAyHldfiLkTy7O01cgcLh5djKy54=
@@ -238,10 +210,6 @@
 		</dict>
 		<key>Headers/AdScopeAFURLSessionManager.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			WWBrxOktN+3libNh0HmGR253YO8=
-			</data>
 			<key>hash2</key>
 			<data>
 			6Qn7eOY3yQ9UTsGTN18OzMSHMnXA8KB5WMTS23PaqLQ=
@@ -249,10 +217,6 @@
 		</dict>
 		<key>Headers/AdScopeAppInfo.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			GwovIUGHn10k2zgCfyvDU7IftcE=
-			</data>
 			<key>hash2</key>
 			<data>
 			Mzi99+G1OI6VFAqLudMhgdVyctqZOKFVi1VkYTgGdEI=
@@ -260,10 +224,6 @@
 		</dict>
 		<key>Headers/AdScopeCrashHandle.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			5g57stvdyEux8qTyB0PKS2e/YDo=
-			</data>
 			<key>hash2</key>
 			<data>
 			AgTxc3TaiAjkpDGQyejkn6UKJRv1R7NnYXjbHkZwA+g=
@@ -271,21 +231,13 @@
 		</dict>
 		<key>Headers/AdScopeDBHelperModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			v1cBRVbFajj/LcZioIhyNoMLyew=
-			</data>
 			<key>hash2</key>
 			<data>
-			cp/ut3iq/jMr9C/qROMuOjOuGGzQZrWiLTlP7kfL1AE=
+			Ph74VggNpOFp5Fa/bhvdZ2vFhsMy1HowoQ0p67EkRBc=
 			</data>
 		</dict>
 		<key>Headers/AdScopeDeviceInfo.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			jt2oioxBG8Tm8Ku72wumPuaFjlg=
-			</data>
 			<key>hash2</key>
 			<data>
 			AvbbCuVCGbXxFcIhv0ABsx2OvtysyvA4neL0vwCwH0s=
@@ -293,10 +245,6 @@
 		</dict>
 		<key>Headers/AdScopeEventManager.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			B0ketyK4mREJMQF0jpaAYEtn454=
-			</data>
 			<key>hash2</key>
 			<data>
 			Q7pJDQ9vGUuJ2GB/sDgC6o758eSG+NUleDZUxC5mcYc=
@@ -304,10 +252,6 @@
 		</dict>
 		<key>Headers/AdScopeEventReportManager.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			vaTDb6qLZ+cPHeayhkMvXpGsF5g=
-			</data>
 			<key>hash2</key>
 			<data>
 			prC9XoFtEi2fqtLRTo6HWsgDMTbFPsU/JFgDqNevo0g=
@@ -315,10 +259,6 @@
 		</dict>
 		<key>Headers/AdScopeFoundation.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			OvF1ISDLQWY98rxnZimEhsWJPNc=
-			</data>
 			<key>hash2</key>
 			<data>
 			vVw8DXzhbUUIexXDHAPNFXgLtVaOa/VtJh7IbYHPkdA=
@@ -326,10 +266,6 @@
 		</dict>
 		<key>Headers/AdScopeIOAOPs.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			ahBdBqNOXyqtxgB5Tidq1T9bdn0=
-			</data>
 			<key>hash2</key>
 			<data>
 			0+j2HvxN4hnvIAx65flZWHIVjy/JNxYnLgZFUb6hvxg=
@@ -337,10 +273,6 @@
 		</dict>
 		<key>Headers/AdScopeMacros.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			IxXDFZDRRJ9nO/IXEw8SzfUBEfw=
-			</data>
 			<key>hash2</key>
 			<data>
 			RFegIULdIbnKNscnejzykCTwMmWPbMzq7C6EnYvQuvY=
@@ -348,10 +280,6 @@
 		</dict>
 		<key>Headers/AdScopeOSLogTools.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			bD3WtMUHT7LILaUGRG0UU/7RHFI=
-			</data>
 			<key>hash2</key>
 			<data>
 			IzCJvtdpm4QYqA4WrPeTbkmr9BEXue8NOoUdhiZzWlo=
@@ -359,10 +287,6 @@
 		</dict>
 		<key>Headers/AdScopeThreadSafeAccessor.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			BvXpWGR2jkcuSfWRB6xjTxwMdBA=
-			</data>
 			<key>hash2</key>
 			<data>
 			2L0qqzo6DQUl00z0LmMBumvrySwlzZzfDb1C95zHdno=
@@ -370,10 +294,6 @@
 		</dict>
 		<key>Headers/AdScopeThreadSafeArray.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			Jb4tSI6W+M32xb5VBK19Le9jH40=
-			</data>
 			<key>hash2</key>
 			<data>
 			UywKUHxhzpTIg26vTX/Rxt/disSm4dIGEMCB+7Je7cA=
@@ -381,10 +301,6 @@
 		</dict>
 		<key>Headers/AdScopeThreadSafeDictionary.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			Z6CawxVRx7c5PP/oBNQCJDIKNVU=
-			</data>
 			<key>hash2</key>
 			<data>
 			Z6CjAp7QI5VZp3zxR7haifQzyOz01EGTxwvEF2YKAcU=
@@ -392,21 +308,13 @@
 		</dict>
 		<key>Headers/AdScopeTimer.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			mS/2H7gDXdBqAFgGssDvSVPcAmo=
-			</data>
 			<key>hash2</key>
 			<data>
-			ElFL8P3oLyUiflQp81QkHT4WN6GX1OQ1WRi0eCc/R08=
+			1hj9cqn9VdB3hWhUrquw22ct81yf0ukVYfTWD2iSP80=
 			</data>
 		</dict>
 		<key>Headers/AdScopeUserInfo.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			IBJOiGkH+A2c79BBF78Do2IK/Uk=
-			</data>
 			<key>hash2</key>
 			<data>
 			1nChU90qvT9ChNR4PdvJH50xJMw1B9pa5s6AyCwaWVE=
@@ -414,10 +322,6 @@
 		</dict>
 		<key>Headers/AdScpoeSafeUtilities.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			R3xKHo4qilKyk9MPaKzmfVDJXGQ=
-			</data>
 			<key>hash2</key>
 			<data>
 			tyL7xAYyux3xeRs4Jj8PLCgYNQivoW41uo7y+vOsYKQ=
@@ -425,10 +329,6 @@
 		</dict>
 		<key>Headers/NSArray+AdScopeSafeExtension.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			UMNYjCvTpkpu/ECRVQpTdUPU4dI=
-			</data>
 			<key>hash2</key>
 			<data>
 			6FqbBo9EqHV8mI5jlO9v27F9OzxsK1gbvgcZKCXHVpg=
@@ -436,10 +336,6 @@
 		</dict>
 		<key>Headers/NSData+AdScopeDataExtension.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			DsYKSVqIPxKBvYT9jTauGUPwYMY=
-			</data>
 			<key>hash2</key>
 			<data>
 			ubnrPvmXqPRPAseSG2v3Tgu/EnspR0UwUupadd35WpI=
@@ -447,10 +343,6 @@
 		</dict>
 		<key>Headers/NSDictionary+AdScopeSafeExtension.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			bx9If+z3LP9mF9/NnRSaPupTk2w=
-			</data>
 			<key>hash2</key>
 			<data>
 			OkgaRngAbQoP95mNR7heFCZu6DAcCDvn+u52sRL4nRU=
@@ -458,10 +350,6 @@
 		</dict>
 		<key>Headers/NSJSONSerialization+AdScopeSafeExtension.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			fPaA2TTzbV8JE0tYlWyTrtHgB0k=
-			</data>
 			<key>hash2</key>
 			<data>
 			7PhB1vCeEI/5LGE2tZhQwhD7BiwD1nA/5LATyuJ/XVs=
@@ -469,10 +357,6 @@
 		</dict>
 		<key>Headers/NSObject+AdScopeInvoker.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			/5jlbjqk9ThZJekmy+fE6oEtVjc=
-			</data>
 			<key>hash2</key>
 			<data>
 			1kr+p+7Q8opdCNcxzvfmCJr9CvZej6N3uavuyzUcagg=
@@ -480,10 +364,6 @@
 		</dict>
 		<key>Headers/NSObject+AdScopeJSONModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			+7MnyNGdaKHBYgnuAIkHAZC0Fhs=
-			</data>
 			<key>hash2</key>
 			<data>
 			WBbk84wGyvlRoodwV3x/g5jQUce4EBvzDLzWBzeR/ic=
@@ -491,10 +371,6 @@
 		</dict>
 		<key>Headers/NSObject+AdScopeThreadSafeExtension.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			bSfhfzYAHhVSEazbqWlKQIpy2uo=
-			</data>
 			<key>hash2</key>
 			<data>
 			er2/aa6MAxNXlxuU6H8ahes117dOdXzHfE19c+yt4jY=
@@ -502,10 +378,6 @@
 		</dict>
 		<key>Headers/NSString+AdScopeStringExtension.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			enL/8//xZT5SxEHNqeQv+XH+Uwk=
-			</data>
 			<key>hash2</key>
 			<data>
 			GsmoHysbLinzbKCZpGj0pER8ASIt3A04WYHTZVhZ1ok=
@@ -513,10 +385,6 @@
 		</dict>
 		<key>Headers/NSTimer+AdScopeTimerExtension.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			cScGNAA2yq6MG8eT8KXYCBQcoOM=
-			</data>
 			<key>hash2</key>
 			<data>
 			36rxJzZdyuHc1qHKND0ClO1Gob/fJQ3TIoMbxyUKHnQ=
@@ -524,10 +392,6 @@
 		</dict>
 		<key>Headers/UIColor+AdScopeColorExtension.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			EcyRtwYkn5L8bWKum+WZIjiM/6s=
-			</data>
 			<key>hash2</key>
 			<data>
 			BcRrtmbqyxfl8soaLLt0N5RbGN16q03Sht6cx5/BX0Q=
@@ -535,10 +399,6 @@
 		</dict>
 		<key>Headers/UIImage+AdScopeImageExtension.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			3bkruHF3R26TJL8PzAtjarHlNHk=
-			</data>
 			<key>hash2</key>
 			<data>
 			DOgK3MbQriSgWMQdE29Wn5N9la/d0wAqYQw8QOQSG7Q=
@@ -546,10 +406,6 @@
 		</dict>
 		<key>Headers/UIView+AdScopeAutoLayout.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			YfqCcVpFW6WPLRq3Jo4qE55ZZMU=
-			</data>
 			<key>hash2</key>
 			<data>
 			16O6GGlwkS5msbdfXM+LBVzczRTs0xJGjopRyfGwsfY=
@@ -557,10 +413,6 @@
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			QrCjkNpbIxpPoYbH5l/z7KKcb24=
-			</data>
 			<key>hash2</key>
 			<data>
 			EKg3CB+IY+o3rSyXsjxrg0YEknF1VG/9lur+HWcy3C8=

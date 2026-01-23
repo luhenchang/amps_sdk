@@ -21,6 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (readonly, nonatomic) NSString *temp;
 
+/// 重新设置间隔时间
+/// - Parameter newTimeInterval: 新的间隔时间
+- (void)resetTimeInterval:(NSTimeInterval)newTimeInterval;
+
 - (void)invalidate;
 
 - (void)fire;

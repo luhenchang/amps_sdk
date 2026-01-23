@@ -36,7 +36,9 @@ class AMPSEventManager : NSObject{
         
     }
     func sendToFlutter(_ method:String,arg:Any? = nil){
-        channel?.invokeMethod(method, arguments: arg)
+        DispatchQueue.main.async { [weak self] in
+            self?.channel?.invokeMethod(method, arguments: arg)
+        }
     }
     
     func getImage(_ name:String) -> UIImage?  {

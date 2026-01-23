@@ -35,6 +35,9 @@ NS_ASSUME_NONNULL_BEGIN
 /** 表中数据个数 */
 + (int)tableItemCount:(NSString *)tableName;
 
+/// 根据条件获取数据条数
++ (int)tableItemCount:(NSString *)tableName format:(NSString *)format, ...;
+
 /** 表中的字段*/
 + (NSArray *)getColumnsTable:(NSString *)tableName;
 
