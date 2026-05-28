@@ -87,7 +87,8 @@ class _NativeWidgetState extends State<NativeWidget> with AutomaticKeepAliveClie
 
   }
   void _onPlatformViewCreated(int id) {
-    widget.adNative?.setAdCloseCallBack((){
+    widget.adNative?.setAdCloseCallBack((adId) {
+      if (adId != widget.adId) return;
       setState(() {
         widgetNeedClose = true;
       });

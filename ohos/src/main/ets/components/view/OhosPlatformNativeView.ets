@@ -7,13 +7,14 @@ import { AMPSNativeAdComponent } from './AMPSNativeAdComponent';
 
 @Observed
 export class OhosPlatformNativeView extends PlatformView {
-  static adId: string | undefined;
-  static wrapper: AMPSNativeAdWrapper | undefined
+  adId?: string;
+  wrapper?: AMPSNativeAdWrapper;
+
   constructor(context: common.Context, viewId: number, args: ESObject, message: BinaryMessenger) {
     super();
-    OhosPlatformNativeView.adId = args.get("adId")
-    if (OhosPlatformNativeView.adId) {
-      OhosPlatformNativeView.wrapper = AdWrapperManager.getInstance().getAd(OhosPlatformNativeView.adId)
+    this.adId = args.get('adId');
+    if (this.adId) {
+      this.wrapper = AdWrapperManager.getInstance().getAd(this.adId);
     }
   }
 
@@ -25,8 +26,8 @@ export class OhosPlatformNativeView extends PlatformView {
   }
 }
 
-
 @Builder
 export function AMPSNativeWrappedBuilder(params: Params) {
-  AMPSNativeAdComponent({ params: params, adId: OhosPlatformNativeView.adId })
+  const platformView = params.platformView as OhosPlatformNativeView;
+  AMPSNativeAdComponent({ params: params, adId: platformView.adId ?? '' });
 }

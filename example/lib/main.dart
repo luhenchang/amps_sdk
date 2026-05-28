@@ -142,7 +142,7 @@ class _SplashPageState extends State<SplashPage> {
           ),
           const SizedBox(height: 20,width: 0),
           ButtonWidget(
-              buttonText: '开屏show案例页面',
+              buttonText: '开屏 show · 双实例 A/B',
               callBack: () {
                 // 使用命名路由跳转
                 Navigator.pushNamed(context, 'SplashShowPage');
@@ -158,7 +158,7 @@ class _SplashPageState extends State<SplashPage> {
           ),
           const SizedBox(height: 20,width: 0),
           ButtonWidget(
-              buttonText: '插屏show案例页面',
+              buttonText: '插屏 show · 双实例 A/B',
               callBack: () {
                 // 使用命名路由跳转
                 Navigator.pushNamed(context, 'InterstitialShowPage');
@@ -174,7 +174,7 @@ class _SplashPageState extends State<SplashPage> {
           ),
           const SizedBox(height: 20,width: 0),
           ButtonWidget(
-              buttonText: '点击跳转原生页面',
+              buttonText: '原生 · 双实例 A/B',
               callBack: () {
                 // 使用命名路由跳转
                 Navigator.pushNamed(context, 'NativePage');
@@ -182,7 +182,7 @@ class _SplashPageState extends State<SplashPage> {
           ),
           const SizedBox(height: 20,width: 0),
           ButtonWidget(
-              buttonText: '点击跳转自渲染页面',
+              buttonText: '自渲染 · 双实例 A/B',
               callBack: () {
                 // 使用命名路由跳转
                 Navigator.pushNamed(context, 'NativeUnifiedPage');

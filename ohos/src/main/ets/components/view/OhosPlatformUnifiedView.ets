@@ -6,15 +6,14 @@ import { NativeUnifiedModule } from '../data/UnifiedNativeModule';
 
 @Observed
 export class OhosPlatformUnifiedView extends PlatformView {
-  static adId: string | undefined;
-  static nativeUnifiedModule: NativeUnifiedModule | undefined;
+  adId?: string;
+  nativeUnifiedModule?: NativeUnifiedModule;
 
   constructor(context: common.Context, viewId: number, args: ESObject, message: BinaryMessenger) {
     super();
-    OhosPlatformUnifiedView.adId = args.get("adId");
-    OhosPlatformUnifiedView.nativeUnifiedModule = new NativeUnifiedModule(args.get("unifiedWidget"));
+    this.adId = args.get('adId');
+    this.nativeUnifiedModule = new NativeUnifiedModule(args.get('unifiedWidget'));
   }
-
 
   getView(): WrappedBuilder<[Params]> {
     return new WrappedBuilder(AMPSUnifiedWrappedBuilder);
@@ -24,12 +23,12 @@ export class OhosPlatformUnifiedView extends PlatformView {
   }
 }
 
-
 @Builder
 export function AMPSUnifiedWrappedBuilder(params: Params) {
+  const platformView = params.platformView as OhosPlatformUnifiedView;
   AMPSUnifiedAdComponent({
     params: params,
-    adId: OhosPlatformUnifiedView.adId,
-    unifiedModule: OhosPlatformUnifiedView.nativeUnifiedModule
-  })
+    adId: platformView.adId,
+    unifiedModule: platformView.nativeUnifiedModule,
+  });
 }

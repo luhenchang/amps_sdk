@@ -1,7 +1,12 @@
 import { Any, MethodCall, MethodResult } from '@ohos/flutter_ohos';
 import {
   AD_LOSS_REASON,
-  AD_SEC_PRICE, AD_WIN_PRICE, AMPSAdCallBackChannelMethod, AMPSAdSdkMethodNames } from '../data/common';
+  AD_SEC_PRICE,
+  AD_WIN_PRICE,
+  AMPSAdCallBackChannelMethod,
+  AMPSAdSdkMethodNames,
+} from '../data/common';
+import { InstanceChannelHelper } from '../data/InstanceChannelHelper';
 import { AMPSEventManager } from '../sdk/AMPSEventManager';
 import { ampsAd, AMPSSplashAd } from 'biz.beizi.adn';
 import { AdOptionsModule } from '../data/AdOptionsModule';
@@ -10,13 +15,26 @@ import { window } from '@kit.ArkUI';
 import { HashMap } from '@kit.ArkTS';
 import { StringConstants } from '../data/StringConstants';
 
-export let globalSplashBottomBuilder: WrappedBuilder<[]> | undefined  = wrapBuilder(SplashBottomBuilder);
+export let globalSplashBottomBuilder: WrappedBuilder<[]> | undefined = wrapBuilder(SplashBottomBuilder);
+
+class SplashAdEntry {
+  instanceId: string;
+  mSplashAd?: AMPSSplashAd;
+  splashBottomModule?: SplashBottomModule | null;
+
+  constructor(instanceId: string) {
+    this.instanceId = instanceId;
+  }
+}
+
 export class AMPSSplashManager {
   private static instance: AMPSSplashManager;
+  private ads: Map<string, SplashAdEntry> = new Map();
   private mWindowStage?: window.WindowStage;
-  private mSplashAd?: AMPSSplashAd;
   private mWindow?: window.Window;
-  static splashBottomModule: SplashBottomModule | null | undefined = null
+
+  /** 当前展示开屏的底部视图配置（Builder 读取） */
+  static splashBottomModule: SplashBottomModule | null | undefined = null;
 
   public static getInstance(): AMPSSplashManager {
     if (!AMPSSplashManager.instance) {
@@ -25,27 +43,55 @@ export class AMPSSplashManager {
     return AMPSSplashManager.instance;
   }
 
-  // 优化回调定义，减少重复代码
-  private callback: ampsAd.CallBack = {
-    onLoadSuccess: () => this.sendMessage(AMPSAdCallBackChannelMethod.onLoadSuccess),
-    onLoadFailure: (code: number, message: string) =>
-    this.sendMessage(AMPSAdCallBackChannelMethod.onLoadFailure, { code, message }),
-    onRenderOk: () => this.sendMessage(AMPSAdCallBackChannelMethod.onRenderOk),
-    onAdShow: () => this.sendMessage(AMPSAdCallBackChannelMethod.onAdShow),
-    onAdExposure: () => this.sendMessage(AMPSAdCallBackChannelMethod.onAdExposure),
-    onAdClicked: () => this.sendMessage(AMPSAdCallBackChannelMethod.onAdClicked),
-    onAdClosed: () => this.sendMessage(AMPSAdCallBackChannelMethod.onAdClosed),
-    onRenderFailure: () => this.sendMessage(AMPSAdCallBackChannelMethod.onRenderFailure),
-    onAdShowError: (code: number, message: string) =>
-    this.sendMessage(AMPSAdCallBackChannelMethod.onAdShowError, { code, message }),
-    onVideoPlayStart: () => this.sendMessage(AMPSAdCallBackChannelMethod.onVideoPlayStart),
-    onVideoPlayEnd: () => this.sendMessage(AMPSAdCallBackChannelMethod.onVideoPlayEnd),
-    onVideoPlayError: (code: number, message: string) =>
-    this.sendMessage(AMPSAdCallBackChannelMethod.onVideoPlayEnd, { code, message }),
-    onVideoSkipToEnd: (playDurationMs?: number) =>
-    this.sendMessage(AMPSAdCallBackChannelMethod.onVideoSkipToEnd, { playDurationMs }),
-    onAdReward: () => this.sendMessage(AMPSAdCallBackChannelMethod.onAdReward)
-  };
+  private findEntry(args: Any): SplashAdEntry | undefined {
+    const id = InstanceChannelHelper.instanceId(args);
+    if (!id) {
+      return undefined;
+    }
+    return this.ads.get(id);
+  }
+
+  private getOrCreateEntry(instanceId: string): SplashAdEntry {
+    let entry = this.ads.get(instanceId);
+    if (!entry) {
+      entry = new SplashAdEntry(instanceId);
+      this.ads.set(instanceId, entry);
+    }
+    return entry;
+  }
+
+  private createCallback(instanceId: string): ampsAd.CallBack {
+    return {
+      onLoadSuccess: () =>
+        InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.onLoadSuccess, instanceId),
+      onLoadFailure: (code: number, message: string) =>
+        InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.onLoadFailure, instanceId, { code, message }),
+      onRenderOk: () =>
+        InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.onRenderOk, instanceId),
+      onAdShow: () =>
+        InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.onAdShow, instanceId),
+      onAdExposure: () =>
+        InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.onAdExposure, instanceId),
+      onAdClicked: () =>
+        InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.onAdClicked, instanceId),
+      onAdClosed: () =>
+        InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.onAdClosed, instanceId),
+      onRenderFailure: () =>
+        InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.onRenderFailure, instanceId),
+      onAdShowError: (code: number, message: string) =>
+        InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.onAdShowError, instanceId, { code, message }),
+      onVideoPlayStart: () =>
+        InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.onVideoPlayStart, instanceId),
+      onVideoPlayEnd: () =>
+        InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.onVideoPlayEnd, instanceId),
+      onVideoPlayError: (code: number, message: string) =>
+        InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.onVideoPlayError, instanceId, { code, message }),
+      onVideoSkipToEnd: (playDurationMs?: number) =>
+        InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.onVideoSkipToEnd, instanceId, { playDurationMs }),
+      onAdReward: () =>
+        InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.onAdReward, instanceId),
+    };
+  }
 
   handleMethodCall(call: MethodCall, result: MethodResult) {
     switch (call.method) {
@@ -56,46 +102,52 @@ export class AMPSSplashManager {
         this.handleSplashShowAd(result, call.args);
         break;
       case AMPSAdSdkMethodNames.splashGetECPM:
-        const mEcpm = this.mSplashAd?.getECPM() ?? 0
-        result.success(mEcpm);
+        result.success(this.findEntry(call.args)?.mSplashAd?.getECPM() ?? 0);
         break;
-      case AMPSAdSdkMethodNames.splashNotifyRTBWin:
+      case AMPSAdSdkMethodNames.splashNotifyRTBWin: {
+        const entry = this.findEntry(call.args);
         const params: HashMap<String, number> = call.args;
-        const winPrice: number = params.get(AD_WIN_PRICE) ?? 0
-        const secPrice: number = params.get(AD_SEC_PRICE) ?? 0
-        if (winPrice != undefined && secPrice != undefined) {
-          this.mSplashAd?.notifyRTBWin(winPrice, secPrice)
-        }
+        const winPrice: number = params.get(AD_WIN_PRICE) ?? 0;
+        const secPrice: number = params.get(AD_SEC_PRICE) ?? 0;
+        entry?.mSplashAd?.notifyRTBWin(winPrice, secPrice);
+        result.success(null);
         break;
-      case AMPSAdSdkMethodNames.splashNotifyRTBLoss:
+      }
+      case AMPSAdSdkMethodNames.splashNotifyRTBLoss: {
+        const entry = this.findEntry(call.args);
         const lossParams: HashMap<String, Any> = call.args;
-        const lossWinPrice: number = lossParams.get(AD_WIN_PRICE) ?? 0
-        const lossSecPrice: number = lossParams.get(AD_SEC_PRICE) ?? 0
-        const lossReason: string = lossParams.get(AD_LOSS_REASON) ?? StringConstants.EMPTY_STRING
-        if (lossWinPrice != undefined  && lossSecPrice != undefined  && lossReason != undefined ) {
-          this.mSplashAd?.notifyRTBLoss(lossWinPrice, lossSecPrice, lossReason)
-        }
+        const lossWinPrice: number = lossParams.get(AD_WIN_PRICE) ?? 0;
+        const lossSecPrice: number = lossParams.get(AD_SEC_PRICE) ?? 0;
+        const lossReason: string = lossParams.get(AD_LOSS_REASON) ?? StringConstants.EMPTY_STRING;
+        entry?.mSplashAd?.notifyRTBLoss(lossWinPrice, lossSecPrice, lossReason);
+        result.success(null);
         break;
+      }
       case AMPSAdSdkMethodNames.splashIsReadyAd:
-        result.success(this.mSplashAd?.isReadyAd() ?? false);
+        result.success(this.findEntry(call.args)?.mSplashAd?.isReadyAd() ?? false);
         break;
       default:
         result.notImplemented();
     }
   }
 
-
-  // 处理开屏广告加载
   private handleSplashLoad(call: MethodCall, result: MethodResult): void {
+    const instanceId = InstanceChannelHelper.instanceId(call.args);
+    if (!instanceId) {
+      result.error('LOAD_FAILED', 'instanceId is required', undefined);
+      return;
+    }
+
     try {
       const adOption: ampsAd.AdOptions = AdOptionsModule.getAdOptionFromMap(call.args);
-      let context = AMPSEventManager.getInstance().getContext()
+      const context = AMPSEventManager.getInstance().getContext();
       this.mWindowStage = context?.windowStage;
       if (this.mWindowStage) {
         this.mWindow = this.mWindowStage.getMainWindowSync();
         if (this.mWindow) {
-          this.mSplashAd = new AMPSSplashAd(adOption, this.callback, this.mWindow.getUIContext());
-          this.mSplashAd.load();
+          const entry = this.getOrCreateEntry(instanceId);
+          entry.mSplashAd = new AMPSSplashAd(adOption, this.createCallback(instanceId), this.mWindow.getUIContext());
+          entry.mSplashAd.load();
           result.success(true);
         } else {
           result.error('LOAD_FAILED', '获取窗口或UI上下文失败', undefined);
@@ -108,12 +160,13 @@ export class AMPSSplashManager {
     }
   }
 
-  // 处理开屏广告显示
   private handleSplashShowAd(result: MethodResult, args: Any): void {
+    const entry = this.findEntry(args);
     try {
-      if (this.mSplashAd && this.mWindowStage) {
-        AMPSSplashManager.splashBottomModule = new SplashBottomModule(args);
-        this.mSplashAd.showAd({ windowStage: this.mWindowStage, bottomWrappedBuilder: globalSplashBottomBuilder });
+      if (entry?.mSplashAd && this.mWindowStage) {
+        entry.splashBottomModule = new SplashBottomModule(args);
+        AMPSSplashManager.splashBottomModule = entry.splashBottomModule;
+        entry.mSplashAd.showAd({ windowStage: this.mWindowStage, bottomWrappedBuilder: globalSplashBottomBuilder });
         result.success(true);
       } else {
         result.error('SHOW_FAILED', '广告未加载或WindowStage不存在', undefined);
@@ -121,10 +174,6 @@ export class AMPSSplashManager {
     } catch (error) {
       result.error('SHOW_EXCEPTION', `显示广告异常: ${error instanceof Error ? error.message : error}`, undefined);
     }
-  }
-
-  public sendMessage = (method: string, args?: Any) => {
-    AMPSEventManager.getInstance().sendMessageToFlutter(method, args)
   }
 }
 
@@ -137,18 +186,18 @@ export function SplashBottomBuilder() {
         .height(AMPSSplashManager.splashBottomModule?.imgChildren?.height)
         .offset({
           x: AMPSSplashManager.splashBottomModule?.imgChildren?.x,
-          y: AMPSSplashManager.splashBottomModule?.imgChildren?.y
-        })
+          y: AMPSSplashManager.splashBottomModule?.imgChildren?.y,
+        });
       Text(AMPSSplashManager.splashBottomModule?.textChildren?.text)
         .fontColor(AMPSSplashManager.splashBottomModule?.textChildren?.color)
         .offset({
           x: AMPSSplashManager.splashBottomModule?.textChildren?.x,
-          y: AMPSSplashManager.splashBottomModule?.textChildren?.y
-        })
+          y: AMPSSplashManager.splashBottomModule?.textChildren?.y,
+        });
     }
     .backgroundColor(AMPSSplashManager.splashBottomModule?.backgroundColor)
     .height(AMPSSplashManager.splashBottomModule?.height)
     .width('100%')
-    .alignContent(Alignment.TopStart)
+    .alignContent(Alignment.TopStart);
   }
 }

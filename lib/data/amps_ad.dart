@@ -86,5 +86,5 @@ class AdCallBack {
     this.onAdReward,
   });
 }
-///组件关闭通知接口
-typedef AdWidgetNeedCloseCall = void Function();
+/// 组件关闭通知接口（原生 dislike/关闭时携带 adId）
+typedef AdWidgetNeedCloseCall = void Function(String adId);

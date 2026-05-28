@@ -1,5 +1,6 @@
 library;
 export 'package:amps_sdk/data/amps_ad.dart';
+export 'package:amps_sdk/data/amps_channel_dispatcher.dart';
 export 'package:amps_sdk/data/amps_init_config.dart';
 export 'package:amps_sdk/data/amps_native_Interactive_listener.dart';
 export 'package:amps_sdk/data/amps_sdk_api_keys.dart';

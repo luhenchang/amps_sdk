@@ -95,7 +95,8 @@ class _UnifiedWidgetState extends State<UnifiedWidget> with AutomaticKeepAliveCl
 
   }
   void _onPlatformViewCreated(int id) {
-    widget.adNative?.setAdCloseCallBack((){
+    widget.adNative?.setAdCloseCallBack((adId) {
+      if (adId != widget.adId) return;
       setState(() {
         widgetNeedClose = true;
       });

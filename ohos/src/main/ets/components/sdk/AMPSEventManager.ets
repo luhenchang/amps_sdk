@@ -1,4 +1,4 @@
-import { BinaryMessenger, MethodCall, MethodChannel, MethodResult } from '@ohos/flutter_ohos';
+import { BinaryMessenger, MethodCall, MethodChannel, MethodResult, Any } from '@ohos/flutter_ohos';
 import { InitMethodNames, InterstitialMethodNames, NativeMethodNames, SplashMethodNames } from '../data/common';
 import { AMPSSDKInitManager } from '../manager/AMPSSDKInitManager';
 import { common } from '@kit.AbilityKit';
@@ -48,7 +48,7 @@ export class AMPSEventManager {
     }
   }
 
-  sendMessageToFlutter(method: string, args: undefined) {
+  sendMessageToFlutter(method: string, args?: Any) {
     this.channel?.invokeMethod(method, args)
   }
 

@@ -9,6 +9,7 @@ class AdUnifiedWrapperManager private constructor() {
     // 使用ConcurrentHashMap保证线程安全
     private val adViewMap: MutableMap<String, View> = ConcurrentHashMap()
     private val adItemMap: MutableMap<String, AMPSUnifiedNativeItem> = ConcurrentHashMap()
+    private val adInstanceIdMap: MutableMap<String, String> = ConcurrentHashMap()
 
     companion object {
         // 单例实例，使用双重校验锁保证线程安全
@@ -33,10 +34,17 @@ class AdUnifiedWrapperManager private constructor() {
         }
     }
 
-    fun addAdItem(adId: String, adItem: AMPSUnifiedNativeItem) {
+    fun addAdItem(adId: String, adItem: AMPSUnifiedNativeItem, instanceId: String? = null) {
         if (adId.isNotBlank()) {
             adItemMap[adId] = adItem
+            if (!instanceId.isNullOrBlank()) {
+                adInstanceIdMap[adId] = instanceId
+            }
         }
+    }
+
+    fun getInstanceId(adId: String): String? {
+        return adInstanceIdMap[adId]
     }
 
     /**
@@ -62,6 +70,7 @@ class AdUnifiedWrapperManager private constructor() {
     }
 
     fun removeAdItem(adId: String): Boolean {
+        adInstanceIdMap.remove(adId)
         return adItemMap.remove(adId) != null
     }
 
@@ -74,6 +83,7 @@ class AdUnifiedWrapperManager private constructor() {
 
     fun clearAllAdsItem() {
         adItemMap.clear()
+        adInstanceIdMap.clear()
     }
 
     /**

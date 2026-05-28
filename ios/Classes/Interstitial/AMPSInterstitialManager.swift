@@ -1,164 +1,166 @@
 //
-//  AMPS interstitialManager.swift
+//  AMPSInterstitialManager.swift
 //  amps_sdk
-//
-//  Created by duzhaoquan on 2025/10/23.
 //
 
 import Foundation
-
 import Flutter
 import AMPSAdSDK
 
 class AMPSInterstitialManager: NSObject {
-    
+
     static let shared = AMPSInterstitialManager()
-    private override init() {super.init()}
-    
-    private var interstitialAd: AMPSInterstitialAd?
-    
-    // MARK: - Public Methods
-    func handleMethodCall(_ call: FlutterMethodCall, result: FlutterResult) {
-        let arguments = call.arguments as? [String: Any]
+    private override init() { super.init() }
+
+    private var ads: [String: InterstitialAdEntry] = [:]
+
+    private final class InterstitialAdEntry {
+        let instanceId: String
+        var interstitialAd: AMPSInterstitialAd?
+        lazy var delegateHandler: InterstitialDelegateHandler = InterstitialDelegateHandler(entry: self)
+
+        init(instanceId: String) {
+            self.instanceId = instanceId
+        }
+
+        func cleanup() {
+            interstitialAd?.delegate = nil
+            interstitialAd = nil
+        }
+    }
+
+    private final class InterstitialDelegateHandler: NSObject, AMPSInterstitialAdDelegate {
+        private weak var entry: InterstitialAdEntry?
+
+        init(entry: InterstitialAdEntry) {
+            self.entry = entry
+        }
+
+        func ampsInterstitialAdLoadSuccess(_ interstitialAd: AMPSInterstitialAd) {
+            guard let id = entry?.instanceId else { return }
+            InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.onLoadSuccess, instanceId: id)
+            InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.onRenderOk, instanceId: id)
+        }
+
+        func ampsInterstitialAdLoadFail(_ interstitialAd: AMPSInterstitialAd, error: (any Error)?) {
+            guard let id = entry?.instanceId else { return }
+            InstanceChannelHelper.send(
+                AMPSAdCallBackChannelMethod.onLoadFailure,
+                instanceId: id,
+                data: ["code": (error as? NSError)?.code ?? 0, "message": (error as? NSError)?.localizedDescription ?? ""]
+            )
+        }
+
+        func ampsInterstitialAdDidShow(_ interstitialAd: AMPSInterstitialAd) {
+            guard let id = entry?.instanceId else { return }
+            InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.onAdShow, instanceId: id)
+        }
+
+        func ampsInterstitialAdExposured(_ interstitialAd: AMPSInterstitialAd) {
+            guard let id = entry?.instanceId else { return }
+            InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.onAdExposure, instanceId: id)
+        }
+
+        func ampsInterstitialAdDidClick(_ interstitialAd: AMPSInterstitialAd) {
+            guard let id = entry?.instanceId else { return }
+            InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.onAdClicked, instanceId: id)
+        }
+
+        func ampsInterstitialAdShowFail(_ interstitialAd: AMPSInterstitialAd, error: (any Error)?) {
+            guard let id = entry?.instanceId else { return }
+            InstanceChannelHelper.send(
+                AMPSAdCallBackChannelMethod.onAdShowError,
+                instanceId: id,
+                data: ["code": (error as? NSError)?.code ?? 0, "message": (error as? NSError)?.localizedDescription ?? ""]
+            )
+        }
+
+        func ampsInterstitialAdDidClose(_ interstitialAd: AMPSInterstitialAd) {
+            guard let id = entry?.instanceId else { return }
+            InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.onAdClosed, instanceId: id)
+            entry?.cleanup()
+        }
+    }
+
+    func handleMethodCall(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch call.method {
         case AMPSAdSdkMethodNames.interstitialLoad:
-            handleInterstitialLoad(arguments: arguments, result: result)
+            handleInterstitialLoad(arguments: call.arguments, result: result)
         case AMPSAdSdkMethodNames.interstitialShowAd:
-            handleInterstitialShowAd(arguments: arguments, result: result)
+            handleInterstitialShowAd(arguments: call.arguments, result: result)
         case AMPSAdSdkMethodNames.interstitialGetEcpm:
-            result(interstitialAd?.eCPM() ?? 0)
+            result(findEntry(from: call.arguments)?.interstitialAd?.eCPM() ?? 0)
         case AMPSAdSdkMethodNames.interstitialNotifyRtbWin:
-            handleNotifyRTBWin(arguments: arguments, result: result)
+            handleNotifyRTBWin(arguments: call.arguments, result: result)
         case AMPSAdSdkMethodNames.interstitialNotifyRtbLoss:
-            handleNotifyRTBLoss(arguments: arguments, result: result)
+            handleNotifyRTBLoss(arguments: call.arguments, result: result)
         case AMPSAdSdkMethodNames.interstitialIsReadyAd:
-            result(interstitialAd != nil)
+            result(findEntry(from: call.arguments)?.interstitialAd != nil)
         default:
             result(false)
         }
     }
-//
-//    // MARK: - Private Methods
-    private func handleInterstitialLoad(arguments: [String: Any]?, result: FlutterResult) {
-    
-        guard let param = arguments else {
-            return
-        }
-//        let config = AdOptionModule.getAsnpAdConfig(para: param)
-        let config = AdOptionModule.getAdConfig(para: param)
-        interstitialAd = AMPSInterstitialAd(adConfiguration: config)
-//        interstitialAd = ASNPInterstitialAd(adConfiguration: config)
-        interstitialAd?.delegate = self
-        interstitialAd?.load()
-        result(true)
+
+    private func findEntry(from arguments: Any?) -> InterstitialAdEntry? {
+        guard let id = InstanceChannelHelper.instanceId(from: arguments) else { return nil }
+        return ads[id]
     }
-    
-    private func handleInterstitialShowAd(arguments: [String: Any]?, result: FlutterResult) {
-        guard let interstitialAd = interstitialAd else {
+
+    private func handleInterstitialLoad(arguments: Any?, result: @escaping FlutterResult) {
+        guard let map = arguments as? [String: Any],
+              let instanceId = map[InstanceChannelKeys.instanceId] as? String else {
             result(false)
             return
         }
-        
-        guard let vc = getKeyWindow()?.rootViewController else {
-            
+
+        ads[instanceId]?.cleanup()
+
+        let entry = InterstitialAdEntry(instanceId: instanceId)
+        let config = AdOptionModule.getAdConfig(para: map)
+        entry.interstitialAd = AMPSInterstitialAd(adConfiguration: config)
+        entry.interstitialAd?.delegate = entry.delegateHandler
+        ads[instanceId] = entry
+        entry.interstitialAd?.load()
+        result(true)
+    }
+
+    private func handleInterstitialShowAd(arguments: Any?, result: @escaping FlutterResult) {
+        guard let entry = findEntry(from: arguments),
+              let interstitialAd = entry.interstitialAd,
+              let vc = getKeyWindow()?.rootViewController else {
             result(false)
             return
         }
         interstitialAd.show(withRootViewController: vc)
-//        interstitialAd.showInterstitialView(inRootViewController: vc)
-        
-    
-       
-    }
-    
-    private func handleNotifyRTBWin(arguments: [String: Any]?, result: FlutterResult) {
-        guard let arguments =  arguments else{
-            return
-        }
-        let winPrice = arguments[ArgumentKeys.adWinPrice] as? Int ?? 0
-        let secPrice = arguments[ArgumentKeys.adSecPrice] as? Int ?? 0
-        interstitialAd?.sendWinNotification(withInfo: [BidKeys.winPrince:winPrice,BidKeys.lossSecondPrice:secPrice])
         result(true)
     }
-    
-    private func handleNotifyRTBLoss(arguments: [String: Any]?, result: FlutterResult) {
-        guard let arguments =  arguments else{
+
+    private func handleNotifyRTBWin(arguments: Any?, result: @escaping FlutterResult) {
+        guard let map = arguments as? [String: Any],
+              let entry = findEntry(from: arguments) else {
+            result(false)
             return
         }
-        let lossWinPrice = arguments[ArgumentKeys.adWinPrice] as? Int ?? 0
-        let lossSecPrice = arguments[ArgumentKeys.adSecPrice] as? Int ?? 0
-        let lossReason = arguments[ArgumentKeys.adLossReason] as? String ?? ""
-        interstitialAd?.sendLossNotification(withInfo: [
-            BidKeys.winPrince:lossWinPrice,
-            BidKeys.lossSecondPrice:lossSecPrice,
-            BidKeys.lossReason:lossReason
+        let winPrice = map[ArgumentKeys.adWinPrice] as? Int ?? 0
+        let secPrice = map[ArgumentKeys.adSecPrice] as? Int ?? 0
+        entry.interstitialAd?.sendWinNotification(withInfo: [BidKeys.winPrince: winPrice, BidKeys.lossSecondPrice: secPrice])
+        result(true)
+    }
+
+    private func handleNotifyRTBLoss(arguments: Any?, result: @escaping FlutterResult) {
+        guard let map = arguments as? [String: Any],
+              let entry = findEntry(from: arguments) else {
+            result(false)
+            return
+        }
+        let lossWinPrice = map[ArgumentKeys.adWinPrice] as? Int ?? 0
+        let lossSecPrice = map[ArgumentKeys.adSecPrice] as? Int ?? 0
+        let lossReason = map[ArgumentKeys.adLossReason] as? String ?? ""
+        entry.interstitialAd?.sendLossNotification(withInfo: [
+            BidKeys.winPrince: lossWinPrice,
+            BidKeys.lossSecondPrice: lossSecPrice,
+            BidKeys.lossReason: lossReason,
         ])
         result(true)
-    }
-    
-    
-    private func cleanupViewsAfterAdClosed() {
-        interstitialAd = nil
-    }
-    
-    private func sendMessage(_ method: String, _ args: Any? = nil) {
-        AMPSEventManager.shared.sendToFlutter(method, arg: args)
-    }
-    
-}
-//extension AMPSInterstitialManager : ASNPInterstitialAdDelegate {
-//    func adnInterstitialAdLoadSuccess(_ interstitalAd: ASNPInterstitialAd) {
-//        sendMessage(AMPSAdCallBackChannelMethod.onLoadSuccess)
-//    }
-//    func adnInterstitialAdLoadFail(_ interstitalAd: ASNPInterstitialAd, error: (any Error)?) {
-//        sendMessage(AMPSAdCallBackChannelMethod.onLoadFailure, ["code": (error as? NSError)?.code ?? 0,"message":(error as? NSError)?.localizedDescription ?? ""])
-//    }
-//    func adnInterstitialAdRenderSuccess(_ interstitalAd: ASNPInterstitialAd) {
-//        sendMessage(AMPSAdCallBackChannelMethod.onRenderOk)
-//    }
-//    func adnInterstitialAdRenderFail(_ interstitalAd: ASNPInterstitialAd, error: (any Error)?) {
-//        sendMessage(AMPSAdCallBackChannelMethod.onRenderFailure,["code": (error as? NSError)?.code ?? 0,"message":(error as? NSError)?.localizedDescription ?? ""])
-//    }
-//    func adnInterstitialAdExposured(_ interstitalAd: ASNPInterstitialAd) {
-//        sendMessage(AMPSAdCallBackChannelMethod.onAdExposure)
-//    }
-//    func adnInterstitialAdDidShowSuccess(_ interstitalAd: ASNPInterstitialAd) {
-//        sendMessage(AMPSAdCallBackChannelMethod.onAdShow)
-//    }
-//    func adnInterstitialAdDidShowFail(_ interstitalAd: ASNPInterstitialAd, error: (any Error)?) {
-//        sendMessage(AMPSAdCallBackChannelMethod.onAdShowError,["code": (error as? NSError)?.code ?? 0,"message":(error as? NSError)?.localizedDescription ?? ""])
-//    }
-//    func adnInterstitialAdDidClick(_ interstitalAd: ASNPInterstitialAd) {
-//        sendMessage(AMPSAdCallBackChannelMethod.onAdClicked)
-//    }
-//    func adnInterstitialAdDidClose(_ interstitalAd: ASNPInterstitialAd) {
-//        sendMessage(AMPSAdCallBackChannelMethod.onAdClosed)
-//    }
-//}
-
-extension AMPSInterstitialManager : AMPSInterstitialAdDelegate {
-    func ampsInterstitialAdLoadSuccess(_ interstitialAd: AMPSInterstitialAd) {
-        sendMessage(AMPSAdCallBackChannelMethod.onLoadSuccess)
-        sendMessage(AMPSAdCallBackChannelMethod.onRenderOk)
-    }
-    func ampsInterstitialAdLoadFail(_ interstitialAd: AMPSInterstitialAd, error: (any Error)?) {
-        sendMessage(AMPSAdCallBackChannelMethod.onLoadFailure, ["code": (error as? NSError)?.code ?? 0,"message":(error as? NSError)?.localizedDescription ?? ""])
-    }
-    func ampsInterstitialAdDidShow(_ interstitialAd: AMPSInterstitialAd) {
-        sendMessage(AMPSAdCallBackChannelMethod.onAdShow)
-    }
-    func ampsInterstitialAdExposured(_ interstitialAd: AMPSInterstitialAd){
-        sendMessage(AMPSAdCallBackChannelMethod.onAdExposure)
-    }
-    func ampsInterstitialAdDidClick(_ interstitialAd: AMPSInterstitialAd) {
-        sendMessage(AMPSAdCallBackChannelMethod.onAdClicked)
-    }
-    
-    func ampsInterstitialAdShowFail(_ interstitialAd: AMPSInterstitialAd, error: (any Error)?) {
-        sendMessage(AMPSAdCallBackChannelMethod.onAdShowError,["code": (error as? NSError)?.code ?? 0,"message":(error as? NSError)?.localizedDescription ?? ""])
-    }
-    func ampsInterstitialAdDidClose(_ interstitialAd: AMPSInterstitialAd) {
-        sendMessage(AMPSAdCallBackChannelMethod.onAdClosed)
-        cleanupViewsAfterAdClosed()
     }
 }

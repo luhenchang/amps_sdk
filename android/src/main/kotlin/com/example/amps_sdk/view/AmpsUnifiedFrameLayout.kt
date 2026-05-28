@@ -28,7 +28,9 @@ import com.example.amps_sdk.data.AppDetailKeys
 import com.example.amps_sdk.data.DownLoadCallBackChannelMethod
 import com.example.amps_sdk.data.NativeUnifiedChild
 import com.example.amps_sdk.data.NativeUnifiedModule
+import com.example.amps_sdk.data.InstanceChannelHelper
 import com.example.amps_sdk.manager.AMPSEventManager
+import com.example.amps_sdk.manager.AdUnifiedWrapperManager
 import com.example.amps_sdk.utils.asActivity
 import com.example.amps_sdk.utils.dpToPx
 import xyz.adscope.common.imageloader.ImageLoader
@@ -258,7 +260,8 @@ class AmpsUnifiedFrameLayout(context: Context) : FrameLayout(context) {
                 override fun onVideoError(p0: AMPSUnifiedNativeAdError?) {
                     sendMessageToFlutter(
                         AMPSNativeCallBackChannelMethod.ON_VIDEO_PLAY_ERROR,
-                        mapOf("adId" to adId,"code" to p0?.code, "message" to p0?.msg)
+                        adId,
+                        mapOf("adId" to adId, "code" to p0?.code, "message" to p0?.msg),
                     )
                 }
 
@@ -353,7 +356,8 @@ class AmpsUnifiedFrameLayout(context: Context) : FrameLayout(context) {
                 override fun onDownloadPaused(position: Int) {
                     sendMessageToFlutter(
                         DownLoadCallBackChannelMethod.onDownloadPaused,
-                        mapOf("position" to position, "adId" to adId)
+                        adId,
+                        mapOf("position" to position, "adId" to adId),
                     )
                 }
 
@@ -364,7 +368,8 @@ class AmpsUnifiedFrameLayout(context: Context) : FrameLayout(context) {
                 override fun onDownloadProgressUpdate(position: Int) {
                     sendMessageToFlutter(
                         DownLoadCallBackChannelMethod.onDownloadProgressUpdate,
-                        mapOf("position" to position, "adId" to adId)
+                        adId,
+                        mapOf("position" to position, "adId" to adId),
                     )
                 }
 
@@ -502,13 +507,21 @@ class AmpsUnifiedFrameLayout(context: Context) : FrameLayout(context) {
             // 关闭按钮通常有固定的点击行为
             setOnClickListener {
                 sendMessageToFlutter(AMPSNativeCallBackChannelMethod.ON_AD_CLOSED, adId)
+                AdUnifiedWrapperManager.getInstance().removeAdItem(adId)
+                removeAllViews()
+                visibility = View.GONE
+                layoutParams = LayoutParams(0, 0)
             }
         }
     }
 
-    private fun sendMessageToFlutter(method: String, args: Any?) {
-        AMPSEventManager.getInstance()
-            .sendMessageToFlutter(method, args)
+    private fun sendMessageToFlutter(method: String, adId: String, data: Any? = adId) {
+        val instanceId = AdUnifiedWrapperManager.getInstance().getInstanceId(adId)
+        if (instanceId != null) {
+            InstanceChannelHelper.send(method, instanceId, data)
+        } else {
+            AMPSEventManager.getInstance().sendMessageToFlutter(method, data)
+        }
     }
 
     private fun createLayoutParams(

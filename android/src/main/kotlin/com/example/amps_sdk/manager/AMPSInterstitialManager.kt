@@ -1,28 +1,24 @@
 package com.example.amps_sdk.manager
 
-import android.app.Activity
 import biz.beizi.adn.amps.ad.interstitial.AMPSInterstitialAd
 import biz.beizi.adn.amps.ad.interstitial.AMPSInterstitialLoadEventListener
 import biz.beizi.adn.amps.common.AMPSError
 import biz.beizi.adn.amps.config.AMPSRequestParameters
-import com.example.amps_sdk.data.AD_LOSS_REASON
-import com.example.amps_sdk.data.AD_SEC_PRICE
-import com.example.amps_sdk.data.AD_WIN_PRICE
-import com.example.amps_sdk.data.AMPSAdCallBackChannelMethod
-import com.example.amps_sdk.data.AMPSAdSdkMethodNames
-import com.example.amps_sdk.data.AdOptionsModule
-import com.example.amps_sdk.data.StringConstants
+import com.example.amps_sdk.data.*
 import com.example.amps_sdk.utils.FlutterPluginUtil
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel.Result
-import java.lang.ref.WeakReference
 
 /**
- * 插屏广告管理器 (单例)
- * 负责处理来自 Flutter 的方法调用
+ * 多实例插屏广告管理器。
  */
 class AMPSInterstitialManager private constructor() {
-    private var interstitialAd: AMPSInterstitialAd? = null
+
+    private class AdEntry(val instanceId: String) {
+        var interstitialAd: AMPSInterstitialAd? = null
+    }
+
+    private val ads = mutableMapOf<String, AdEntry>()
 
     companion object {
         @Volatile
@@ -35,108 +31,137 @@ class AMPSInterstitialManager private constructor() {
         }
     }
 
-    private val adCallback = object : AMPSInterstitialLoadEventListener {
-        override fun onAmpsAdLoaded() {
-            sendMessage(AMPSAdCallBackChannelMethod.ON_LOAD_SUCCESS)
-            // 在旧代码中，这里也有 ON_RENDER_OK，如果 SDK 行为如此，则保留
-            sendMessage(AMPSAdCallBackChannelMethod.ON_RENDER_OK)
-        }
-
-        override fun onAmpsAdShow() {
-            sendMessage(AMPSAdCallBackChannelMethod.ON_AD_SHOW)
-        }
-
-        override fun onAmpsAdClicked() {
-            sendMessage(AMPSAdCallBackChannelMethod.ON_AD_CLICKED)
-        }
-
-        override fun onAmpsAdDismiss() {
-            sendMessage(AMPSAdCallBackChannelMethod.ON_AD_CLOSED)
-            interstitialAd?.destroy()
-        }
-
-        override fun onAmpsAdFailed(error: AMPSError?) {
-            sendMessage(
-                AMPSAdCallBackChannelMethod.ON_LOAD_FAILURE,
-                mapOf("code" to error?.code, "message" to error?.message)
-            )
-        }
-
-        override fun onAmpsSkippedAd() {
-            sendMessage(AMPSAdCallBackChannelMethod.ON_VIDEO_SKIP_TO_END)
-        }
-
-        override fun onAmpsVideoPlayStart() {
-            sendMessage(AMPSAdCallBackChannelMethod.ON_VIDEO_PLAY_START)
-        }
-
-        override fun onAmpsVideoPlayEnd() {
-            sendMessage(AMPSAdCallBackChannelMethod.ON_VIDEO_PLAY_END)
-        }
+    private fun findEntry(call: MethodCall): AdEntry? {
+        val id = InstanceChannelHelper.instanceId(call.arguments) ?: return null
+        return ads[id]
     }
 
+    private fun getOrCreateEntry(instanceId: String): AdEntry {
+        return ads.getOrPut(instanceId) { AdEntry(instanceId) }
+    }
+
+    private fun createAdListener(instanceId: String): AMPSInterstitialLoadEventListener =
+        object : AMPSInterstitialLoadEventListener {
+            override fun onAmpsAdLoaded() {
+                InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.ON_LOAD_SUCCESS, instanceId)
+                InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.ON_RENDER_OK, instanceId)
+            }
+
+            override fun onAmpsAdShow() {
+                InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.ON_AD_SHOW, instanceId)
+            }
+
+            override fun onAmpsAdClicked() {
+                InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.ON_AD_CLICKED, instanceId)
+            }
+
+            override fun onAmpsAdDismiss() {
+                InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.ON_AD_CLOSED, instanceId)
+                ads[instanceId]?.interstitialAd?.destroy()
+                ads[instanceId]?.interstitialAd = null
+            }
+
+            override fun onAmpsAdFailed(error: AMPSError?) {
+                InstanceChannelHelper.send(
+                    AMPSAdCallBackChannelMethod.ON_LOAD_FAILURE,
+                    instanceId,
+                    mapOf("code" to error?.code, "message" to error?.message),
+                )
+            }
+
+            override fun onAmpsSkippedAd() {
+                InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.ON_VIDEO_SKIP_TO_END, instanceId)
+            }
+
+            override fun onAmpsVideoPlayStart() {
+                InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.ON_VIDEO_PLAY_START, instanceId)
+            }
+
+            override fun onAmpsVideoPlayEnd() {
+                InstanceChannelHelper.send(AMPSAdCallBackChannelMethod.ON_VIDEO_PLAY_END, instanceId)
+            }
+        }
+
+    @Suppress("UNCHECKED_CAST")
     fun handleMethodCall(call: MethodCall, result: Result) {
         val args = call.arguments<Map<String, Any>?>()
         when (call.method) {
-            AMPSAdSdkMethodNames.INTERSTITIAL_LOAD -> handleSplashLoad(call, result)
-            AMPSAdSdkMethodNames.INTERSTITIAL_SHOW_AD -> handleSplashShowAd(call, result) // 更改了参数传递
+            AMPSAdSdkMethodNames.INTERSTITIAL_LOAD -> handleInterstitialLoad(call, result)
+            AMPSAdSdkMethodNames.INTERSTITIAL_SHOW_AD -> handleInterstitialShowAd(call, result)
             AMPSAdSdkMethodNames.INTERSTITIAL_GET_ECPM -> {
-                result.success(interstitialAd?.ecpm ?: 0)
+                result.success(findEntry(call)?.interstitialAd?.ecpm ?: 0)
             }
 
             AMPSAdSdkMethodNames.INTERSTITIAL_NOTIFY_RTB_WIN -> {
+                val entry = findEntry(call)
                 val winPrice = args?.get(AD_WIN_PRICE) as? Number ?: 0
                 val secPrice = args?.get(AD_SEC_PRICE) as? Number ?: 0
-                interstitialAd?.notifyRTBWin(winPrice.toInt(), secPrice.toInt())
+                entry?.interstitialAd?.notifyRTBWin(winPrice.toInt(), secPrice.toInt())
                 result.success(null)
             }
 
             AMPSAdSdkMethodNames.INTERSTITIAL_NOTIFY_RTB_LOSS -> {
+                val entry = findEntry(call)
                 val lossWinPrice = args?.get(AD_WIN_PRICE) as? Number ?: 0
                 val lossSecPrice = args?.get(AD_SEC_PRICE) as? Number ?: 0
                 val lossReason =
                     args?.get(AD_LOSS_REASON) as? String ?: StringConstants.EMPTY_STRING
-                interstitialAd?.notifyRTBLoss(lossWinPrice.toInt(), lossSecPrice.toInt(), lossReason)
+                entry?.interstitialAd?.notifyRTBLoss(
+                    lossWinPrice.toInt(),
+                    lossSecPrice.toInt(),
+                    lossReason,
+                )
                 result.success(null)
             }
 
             AMPSAdSdkMethodNames.INTERSTITIAL_IS_READY_AD -> {
-                result.success(interstitialAd?.isReady ?: false)
+                result.success(findEntry(call)?.interstitialAd?.isReady ?: false)
             }
 
             else -> result.notImplemented()
         }
     }
 
-    private fun handleSplashLoad(call: MethodCall, result: Result) {
+    private fun handleInterstitialLoad(call: MethodCall, result: Result) {
         val activity = FlutterPluginUtil.getActivity()
         if (activity == null) {
-            result.error("LOAD_FAILED", "Activity not available for loading interstitia ad.", null)
+            result.error("LOAD_FAILED", "Activity not available for loading interstitial ad.", null)
+            return
+        }
+
+        val instanceId = InstanceChannelHelper.instanceId(call.arguments)
+        if (instanceId.isNullOrEmpty()) {
+            result.error("LOAD_FAILED", "instanceId is required.", null)
             return
         }
 
         try {
             val adOptionsMap = call.arguments<Map<String, Any>?>()
-            val adOption: AMPSRequestParameters = AdOptionsModule.getAdOptionFromMap(adOptionsMap, activity)
-            interstitialAd = AMPSInterstitialAd(activity, adOption, adCallback)
-            interstitialAd?.loadAd()
+            val adOption: AMPSRequestParameters =
+                AdOptionsModule.getAdOptionFromMap(adOptionsMap, activity)
+            val entry = getOrCreateEntry(instanceId)
+            entry.interstitialAd =
+                AMPSInterstitialAd(activity, adOption, createAdListener(instanceId))
+            entry.interstitialAd?.loadAd()
             result.success(true)
         } catch (e: Exception) {
-            result.error("LOAD_EXCEPTION", "Error loading interstitiaAd ad: ${e.message}", e.toString())
+            result.error("LOAD_EXCEPTION", "Error loading interstitial ad: ${e.message}", e.toString())
         }
     }
 
-    // handleSplashShowAd 现在也接收 MethodCall 和 Result，以便统一错误处理和参数获取
-    private fun handleSplashShowAd(call: MethodCall, result: Result) {
+    private fun handleInterstitialShowAd(call: MethodCall, result: Result) {
+        val entry = findEntry(call)
+        val interstitialAd = entry?.interstitialAd
         val activity = FlutterPluginUtil.getActivity()
         if (interstitialAd == null) {
-            result.error("SHOW_FAILED", "InterstitiaAd ad not loaded.", null)
+            result.error("SHOW_FAILED", "Interstitial ad not loaded.", null)
             return
         }
-       interstitialAd?.show(activity)
-    }
-
-    private fun sendMessage(method: String, args: Any? = null) {
-        AMPSEventManager.getInstance().sendMessageToFlutter(method, args)
+        if (activity == null) {
+            result.error("SHOW_FAILED", "Activity not available.", null)
+            return
+        }
+        interstitialAd.show(activity)
+        result.success(true)
     }
 }
