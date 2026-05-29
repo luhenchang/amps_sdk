@@ -182,14 +182,22 @@ class _NativeUnifiedPageState extends State<NativeUnifiedPage> {
     }
   }
 
-  void _loadTwoUnifiedAds() {
+  Future<void> _loadTwoUnifiedAds() async {
     if (_cardWidth <= 0) return;
 
-    _isBLoaded = false;
-    _bAdId = null;
-    _isShowingB = false;
-    _pendingShowBAfterAClosed = false;
-    setState(() => feedAdList.clear());
+    setState(() {
+      feedAdList.clear();
+      _isBLoaded = false;
+      _bAdId = null;
+      _isShowingB = false;
+      _pendingShowBAfterAClosed = false;
+      _nativeAdA = null;
+      _nativeAdB = null;
+    });
+
+    // 等待上一轮 PlatformView dispose 完成，避免 Android 11 上 ImageReader 竞态崩溃。
+    await Future<void>.delayed(const Duration(milliseconds: 300));
+    if (!mounted) return;
 
     _nativeAdA = _createNativeAd('A');
     _nativeAdB = _createNativeAd('B');

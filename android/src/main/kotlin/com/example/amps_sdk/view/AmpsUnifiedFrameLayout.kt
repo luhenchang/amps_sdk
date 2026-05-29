@@ -13,8 +13,6 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.widget.AppCompatImageView
-import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.graphics.toColorInt
 import biz.beizi.adn.amps.ad.unified.AMPSUnifiedNativeAdError
 import biz.beizi.adn.amps.ad.unified.inter.AMPSAppDetail
@@ -189,7 +187,7 @@ class AmpsUnifiedFrameLayout(context: Context) : FrameLayout(context) {
             unifiedItem.mainImageViews?.firstOrNull()?.view
         } else {
             unifiedItem.mainImageUrl?.let { imageUrl ->
-                AppCompatImageView(context).apply {
+                ImageView(context).apply {
                     layoutParams = createLayoutParams(child.width, child.height, child.x, child.y)
                     scaleType = ImageView.ScaleType.FIT_XY//目前用户设置多大就多大。
                     ImageLoader().loadImage(this, imageUrl)
@@ -282,7 +280,7 @@ class AmpsUnifiedFrameLayout(context: Context) : FrameLayout(context) {
         child: NativeUnifiedChild.Title,
         text: String
     ): View? {
-        return AppCompatTextView(context).apply {
+        return TextView(context).apply {
             this.text = text
             layoutParams = createLayoutParams(null, null, child.x, child.y)
             child.fontSize?.let { textSize = it.toFloat() }
@@ -298,7 +296,7 @@ class AmpsUnifiedFrameLayout(context: Context) : FrameLayout(context) {
 
     //描述
     private fun createDescriptionView(child: NativeUnifiedChild.Description, text: String): View? {
-        return AppCompatTextView(context).apply {
+        return TextView(context).apply {
             this.text = text
             layoutParams = createLayoutParams(child.width, null, child.x, child.y)
             child.fontSize?.let { textSize = it.toFloat() }
@@ -460,7 +458,7 @@ class AmpsUnifiedFrameLayout(context: Context) : FrameLayout(context) {
                 setupClickListener(this, child.clickType, child.clickIdType)
             }
         } else if (!TextUtils.isEmpty(unifiedItem.adSourceLogoUrl)) {
-            AppCompatImageView(context).apply {
+            ImageView(context).apply {
                 layoutParams = createLayoutParams(child.width, child.height, child.x, child.y)
                 ImageLoader().loadImage(this, unifiedItem.adSourceLogoUrl)
                 setupClickListener(this, child.clickType, child.clickIdType)
@@ -476,7 +474,7 @@ class AmpsUnifiedFrameLayout(context: Context) : FrameLayout(context) {
         unifiedItem: AMPSUnifiedNativeItem
     ): View? {
         return if (unifiedItem.iconUrl != null) {
-            AppCompatImageView(context).apply {
+            ImageView(context).apply {
                 layoutParams = createLayoutParams(child.width, child.height, child.x, child.y)
                 ImageLoader().loadImage(this, unifiedItem.iconUrl)
                 setupClickListener(this, child.clickType, child.clickIdType)
@@ -494,7 +492,7 @@ class AmpsUnifiedFrameLayout(context: Context) : FrameLayout(context) {
         if (child.imagePath == null) {
             return null
         }
-        return AppCompatImageView(context).apply {
+        return ImageView(context).apply {
             layoutParams = createLayoutParams(child.width, child.height, child.x, child.y)
             // 从 Flutter assets 加载图片（这是一个简化的例子）
             // 在实际项目中，你可能需要一个更稳健的方法来获取资源 ID

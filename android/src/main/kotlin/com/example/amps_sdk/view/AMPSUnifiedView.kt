@@ -147,10 +147,10 @@ class AMPSUnifiedView(
     override fun getView(): View = unifiedView // 简化 getter
 
     override fun dispose() {
-        adId?.let { id ->
-            AdUnifiedWrapperManager.getInstance().removeAdItem(id) // 清理 Manager 资源
-        }
+        // 滑动离开视口时会触发 dispose，此处仅 detach 视图，保留 adItem 供再次滑入时复用。
+        // 广告关闭时由 AmpsUnifiedFrameLayout 主动 removeAdItem。
         rootView.removeAllViews()
+        unifiedView.removeAllViews()
     }
 
     override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {

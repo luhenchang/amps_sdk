@@ -3,6 +3,7 @@ import 'package:amps_sdk/amps_sdk_export.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'common.dart';
+import 'widget/amps_android_platform_view.dart';
 import 'widget/native_unified_widget.dart';
 
 class UnifiedWidget extends StatefulWidget {
@@ -27,7 +28,8 @@ class UnifiedWidget extends StatefulWidget {
   State<StatefulWidget> createState() => _UnifiedWidgetState();
 }
 
-class _UnifiedWidgetState extends State<UnifiedWidget> with AutomaticKeepAliveClientMixin{
+class _UnifiedWidgetState extends State<UnifiedWidget>
+    with AutomaticKeepAliveClientMixin {
   /// 创建参数
   late Map<String, dynamic> creationParams;
   /// 宽高
@@ -60,11 +62,11 @@ class _UnifiedWidgetState extends State<UnifiedWidget> with AutomaticKeepAliveCl
     }
     Widget view;
     if (Platform.isAndroid) {
-      view = AndroidView(
-          viewType: AMPSPlatformViewRegistry.ampsSdkUnifiedViewId,
-          creationParams: creationParams,
-          onPlatformViewCreated: _onPlatformViewCreated,
-          creationParamsCodec: const StandardMessageCodec());
+      view = buildAmpsAndroidPlatformView(
+        viewType: AMPSPlatformViewRegistry.ampsSdkUnifiedViewId,
+        creationParams: creationParams,
+        onPlatformViewCreated: _onPlatformViewCreated,
+      );
     } else if (Platform.isIOS) {
       view =  UiKitView(
           viewType: AMPSPlatformViewRegistry.ampsSdkUnifiedViewId,

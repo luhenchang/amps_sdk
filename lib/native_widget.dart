@@ -3,6 +3,7 @@ import 'package:amps_sdk/amps_sdk_export.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'common.dart';
+import 'widget/amps_android_platform_view.dart';
 
 class NativeWidget extends StatefulWidget {
   // 返回的广告 id，这里不是广告位id
@@ -24,7 +25,8 @@ class NativeWidget extends StatefulWidget {
   State<StatefulWidget> createState() => _NativeWidgetState();
 }
 
-class _NativeWidgetState extends State<NativeWidget> with AutomaticKeepAliveClientMixin{
+class _NativeWidgetState extends State<NativeWidget>
+    with AutomaticKeepAliveClientMixin {
   /// 创建参数
   late Map<String, dynamic> creationParams;
   /// 宽高
@@ -52,11 +54,11 @@ class _NativeWidgetState extends State<NativeWidget> with AutomaticKeepAliveClie
     }
     Widget view;
     if (Platform.isAndroid) {
-      view = AndroidView(
-          viewType: AMPSPlatformViewRegistry.ampsSdkNativeViewId,
-          creationParams: creationParams,
-          onPlatformViewCreated: _onPlatformViewCreated,
-          creationParamsCodec: const StandardMessageCodec());
+      view = buildAmpsAndroidPlatformView(
+        viewType: AMPSPlatformViewRegistry.ampsSdkNativeViewId,
+        creationParams: creationParams,
+        onPlatformViewCreated: _onPlatformViewCreated,
+      );
     } else if (Platform.isIOS) {
       view =  UiKitView(
           viewType: AMPSPlatformViewRegistry.ampsSdkNativeViewId,

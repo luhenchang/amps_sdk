@@ -93,9 +93,7 @@ class AMPSNativeView(
     }
 
     override fun dispose() {
-        adId?.let {
-            AdWrapperManager.getInstance().removeAdItem(it) // 假设 Manager 有这样的清理方法
-        }
+        // 滑动离开视口时保留 adItem，关闭广告或重新 load 时再清理。
         rootView.removeAllViews()
     }
 
