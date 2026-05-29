@@ -8,7 +8,6 @@ export 'package:amps_sdk/data/amps_ad_video_play_config.dart';
 export 'package:amps_sdk/data/app_detail.dart';
 
 export 'package:amps_sdk/widget/splash_bottom_widget.dart';
-export 'package:amps_sdk/widget/amps_keep_alive.dart';
 export 'package:amps_sdk/splash_widget.dart';
 
 export 'package:amps_sdk/controller/amps_interstitial_ad.dart';
